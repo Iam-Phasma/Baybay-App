@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lessons_Introduction">
+
+    <Button
+        android:id="@+id/btn_charsound_exit3"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#DA4848"
+        android:fontFamily="@font/sans_serif_bold"
+        android:text="BACK"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#6BFFFFFF" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_introduction"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:background="#00BF2F2F"
+        android:backgroundTint="#00B13636"
+        android:max="1000"
+        android:progress="1"
+        android:progressBackgroundTint="#252196F3"
+        android:progressTint="#FE9866"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="229dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/sans_serif_bold"
+        android:lineSpacingExtra="2sp"
+        android:text="A brief introduction to Baybayin script"
+        android:textColor="#1F2029"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/progressBar_introduction"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_introduction" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedsv_introduction"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_charsound_exit3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView36"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/imgbtn_playpause2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#00C17474"
+                android:scaleType="fitCenter"
+                app:tint="#FF313345"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/videoView_abakada2"
+                app:srcCompat="@drawable/video_play_icon" />
+
+            <VideoView
+                android:id="@+id/videoView_abakada2"
+                android:layout_width="0dp"
+                android:layout_height="218dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:elevation="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction" />
+
+            <SeekBar
+                android:id="@+id/seekBar_video2"
+                style="@android:style/Widget.SeekBar"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:progressBackgroundTint="#BAD8D7D7"
+                android:progressTint="#FF9800"
+                android:thumbTint="#FF9800"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_playpause2"
+                app:layout_constraintEnd_toEndOf="@+id/videoView_abakada2"
+                app:layout_constraintStart_toEndOf="@+id/imgbtn_playpause2"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_playpause2" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Text"
+                android:textColor="#FF313345"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Text"
+                android:textColor="#FF313345"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/seekBar_video2" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/sans_serif_bold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="B17 version"
+                android:textColor="#FF313345"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction2" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/sans_serif_bold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="B17+ version"
+                android:textColor="#FF313345"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_introduction_v17" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/sans_serif_bold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="B18 version"
+                android:textColor="#FF313345"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_introduction_v17plus" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/sans_serif_bold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="B20+version"
+                android:textColor="#FF313345"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_introduction_v18" />
+
+            <ImageView
+                android:id="@+id/imageView35"
+                android:layout_width="328dp"
+                android:layout_height="225dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/version_b17"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction3" />
+
+            <ImageView
+                android:id="@+id/imageView37"
+                android:layout_width="328dp"
+                android:layout_height="217dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/version_b18"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction6" />
+
+            <ImageView
+                android:id="@+id/imageView38"
+                android:layout_width="360dp"
+                android:layout_height="242dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/version_b20plus"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction7" />
+
+            <TextView
+                android:id="@+id/tv_introduction_v17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Text"
+                android:textColor="#FF313345"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView35" />
+
+            <TextView
+                android:id="@+id/tv_introduction_v17plus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Text"
+                android:textColor="#FF313345"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction5" />
+
+            <TextView
+                android:id="@+id/tv_introduction_v18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Text"
+                android:textColor="#FF313345"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView37" />
+
+            <TextView
+                android:id="@+id/tv_introduction_v20plus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Text"
+                android:textColor="#FF313345"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView38" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

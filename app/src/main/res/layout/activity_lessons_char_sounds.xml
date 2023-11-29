@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lessons_CharSounds">
+
+    <Button
+        android:id="@+id/btn_charsound_exit"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#DA4848"
+        android:fontFamily="@font/sans_serif_bold"
+        android:text="BACK"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/nestedScrollView"
+        app:layout_constraintStart_toStartOf="@+id/nestedScrollView"
+        app:rippleColor="#6BFFFFFF" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_charsound_exit"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progressBar_charsound"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="30dp"
+                android:background="#00BF2F2F"
+                android:backgroundTint="#00B13636"
+                android:max="20"
+                android:progress="1"
+                android:progressBackgroundTint="#252196F3"
+                android:progressTint="#FE9866"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgview_charsoundboard"
+                android:layout_width="341dp"
+                android:layout_height="430dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView47"
+                app:layout_constraintStart_toStartOf="@+id/imageView47"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar_charsound"
+                app:srcCompat="@drawable/charsound_a" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_charsound_volume"
+                android:layout_width="63dp"
+                android:layout_height="56dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/imgview_charsoundboard"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_charsoundboard"
+                app:layout_constraintHorizontal_bias="0.841"
+                app:layout_constraintStart_toStartOf="@+id/imgview_charsoundboard"
+                app:layout_constraintTop_toTopOf="@+id/imgview_charsoundboard"
+                app:layout_constraintVertical_bias="0.526"
+                app:srcCompat="@drawable/charsound_volume_icon" />
+
+            <Button
+                android:id="@+id/btn_charsound_previous"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="70dp"
+                android:backgroundTint="#57CD5C"
+                android:fontFamily="@font/sans_serif_bold"
+                android:text="PREVIOUS"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="8dp"
+                app:layout_constraintStart_toStartOf="@+id/imgview_charsoundboard"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_charsoundboard"
+                app:rippleColor="#6BFFFFFF" />
+
+            <Button
+                android:id="@+id/btn_charsound_next"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="#57CD5C"
+                android:fontFamily="@font/sans_serif_bold"
+                android:text="NEXT"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_charsound_previous"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_charsoundboard"
+                app:layout_constraintTop_toTopOf="@+id/btn_charsound_previous"
+                app:rippleColor="#6BFFFFFF" />
+
+            <ImageView
+                android:id="@+id/imageView39"
+                android:layout_width="270dp"
+                android:layout_height="94dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.46"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_charsound_previous"
+                app:srcCompat="@drawable/scriptsounds_abk" />
+
+            <ImageView
+                android:id="@+id/imageView40"
+                android:layout_width="0dp"
+                android:layout_height="97dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView39"
+                app:layout_constraintStart_toStartOf="@+id/imageView39"
+                app:layout_constraintTop_toBottomOf="@+id/imageView39"
+                app:srcCompat="@drawable/scriptsounds_deg" />
+
+            <ImageView
+                android:id="@+id/imageView41"
+                android:layout_width="0dp"
+                android:layout_height="97dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView40"
+                app:layout_constraintStart_toStartOf="@+id/imageView40"
+                app:layout_constraintTop_toBottomOf="@+id/imageView40"
+                app:srcCompat="@drawable/scriptsounds_hil" />
+
+            <ImageView
+                android:id="@+id/imageView42"
+                android:layout_width="0dp"
+                android:layout_height="97dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView41"
+                app:layout_constraintStart_toStartOf="@+id/imageView41"
+                app:layout_constraintTop_toBottomOf="@+id/imageView41"
+                app:srcCompat="@drawable/scriptsounds_mnnga" />
+
+            <ImageView
+                android:id="@+id/imageView43"
+                android:layout_width="0dp"
+                android:layout_height="97dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView42"
+                app:layout_constraintStart_toStartOf="@+id/imageView42"
+                app:layout_constraintTop_toBottomOf="@+id/imageView42"
+                app:srcCompat="@drawable/scriptsounds_opr" />
+
+            <ImageView
+                android:id="@+id/imageView44"
+                android:layout_width="0dp"
+                android:layout_height="97dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView43"
+                app:layout_constraintStart_toStartOf="@+id/imageView43"
+                app:layout_constraintTop_toBottomOf="@+id/imageView43"
+                app:srcCompat="@drawable/scriptsounds_stu" />
+
+            <ImageView
+                android:id="@+id/imageView47"
+                android:layout_width="170dp"
+                android:layout_height="97dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView44"
+                app:layout_constraintStart_toStartOf="@+id/imageView44"
+                app:layout_constraintTop_toBottomOf="@+id/imageView44"
+                app:srcCompat="@drawable/scriptsounds_wy" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

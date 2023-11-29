@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chart_Letters">
+
+    <ImageButton
+        android:id="@+id/imgbtn_exit_chartletter"
+        android:layout_width="76dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#00FFFFFF"
+        android:elevation="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btn_exit_chart" />
+
+    <ImageView
+        android:id="@+id/imgviewChart_empty"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtn_seeall"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/chart_board" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_next"
+        android:layout_width="133dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="-50dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toEndOf="@+id/imgbtn_seeall"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_previous"
+        app:srcCompat="@drawable/btn_chart_next" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_previous"
+        android:layout_width="133dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="-50dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtn_exit_chartletter"
+        app:layout_constraintEnd_toStartOf="@+id/imgbtn_seeall"
+        app:srcCompat="@drawable/btn_chart_previous" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_seeall"
+        android:layout_width="133dp"
+        android:layout_height="54dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtn_previous"
+        app:layout_constraintEnd_toEndOf="@+id/imgviewChart_empty"
+        app:layout_constraintStart_toStartOf="@+id/imgviewChart_empty"
+        app:srcCompat="@drawable/btn_chart_seeall" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

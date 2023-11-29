@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Modes_Quiz">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="59dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="30dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/quiz_remaining" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="309dp"
+        android:layout_height="279dp"
+        android:layout_marginTop="-10dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtnChoice1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/quiz_board_bamboo" />
+
+    <ImageButton
+        android:id="@+id/imgbtnChoice1"
+        android:layout_width="177dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="-5dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtnChoice2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:srcCompat="@drawable/quiz_choice_default" />
+
+    <ImageButton
+        android:id="@+id/imgbtnChoice2"
+        android:layout_width="0dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="-5dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtnChoice3"
+        app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imgbtnChoice1"
+        app:srcCompat="@drawable/quiz_choice_default" />
+
+    <ImageButton
+        android:id="@+id/imgbtnChoice3"
+        android:layout_width="0dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="-5dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtnChoice4"
+        app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imgbtnChoice1"
+        app:srcCompat="@drawable/quiz_choice_default" />
+
+    <ImageButton
+        android:id="@+id/imgbtnChoice4"
+        android:layout_width="0dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="50dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imgbtnChoice1"
+        app:srcCompat="@drawable/quiz_choice_default" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_quizpause"
+        android:layout_width="59dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="32dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/quiz_menubutton" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="141dp"
+        android:layout_height="47dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/imgbtn_quizpause"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/quiz_time" />
+
+    <TextView
+        android:id="@+id/tvChoice1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/amasis_black"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtnChoice1"
+        app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice1"
+        app:layout_constraintStart_toStartOf="@+id/imgbtnChoice1"
+        app:layout_constraintTop_toTopOf="@+id/imgbtnChoice1" />
+
+    <TextView
+        android:id="@+id/tvChoice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/amasis_black"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtnChoice2"
+        app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice2"
+        app:layout_constraintStart_toStartOf="@+id/imgbtnChoice2"
+        app:layout_constraintTop_toTopOf="@+id/imgbtnChoice2" />
+
+    <TextView
+        android:id="@+id/tvChoice3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/amasis_black"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtnChoice3"
+        app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice3"
+        app:layout_constraintStart_toStartOf="@+id/imgbtnChoice3"
+        app:layout_constraintTop_toTopOf="@+id/imgbtnChoice3" />
+
+    <TextView
+        android:id="@+id/tvChoice4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/amasis_black"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtnChoice4"
+        app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice4"
+        app:layout_constraintStart_toStartOf="@+id/imgbtnChoice4"
+        app:layout_constraintTop_toTopOf="@+id/imgbtnChoice4" />
+
+    <ImageView
+        android:id="@+id/imgview_questionimage"
+        android:layout_width="161dp"
+        android:layout_height="91dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:tint="#3A2C1B"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.522"
+        app:srcCompat="@drawable/quiz_b" />
+
+    <TextView
+        android:id="@+id/tv_quizTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/sans_serif_demibold"
+        android:text="00:00"
+        android:textColor="#FFEB3B"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/tv_quizQuestionCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sans_serif_demibold"
+        android:text="0"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

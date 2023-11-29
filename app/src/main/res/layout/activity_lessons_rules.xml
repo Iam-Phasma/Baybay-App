@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lessons_Rules">
+
+    <ProgressBar
+        android:id="@+id/progressBar_rules"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="#00BF2F2F"
+        android:backgroundTint="#00B13636"
+        android:max="8"
+        android:progress="1"
+        android:progressBackgroundTint="#252196F3"
+        android:progressTint="#FE9866"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgview_rulesboard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/btn_rules_previous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_rules"
+        app:srcCompat="@drawable/rules_kudlit_2a" />
+
+    <Button
+        android:id="@+id/btn_rules_previous"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#57CD5C"
+        android:fontFamily="@font/sans_serif_bold"
+        android:text="PREVIOUS"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_rules_exit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#6BFFFFFF" />
+
+    <Button
+        android:id="@+id/btn_rules_next"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="#57CD5C"
+        android:fontFamily="@font/sans_serif_bold"
+        android:text="NEXT"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_rules_previous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_rules_previous"
+        app:layout_constraintVertical_bias="1.0"
+        app:rippleColor="#6BFFFFFF" />
+
+    <Button
+        android:id="@+id/btn_rules_exit"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#DA4848"
+        android:fontFamily="@font/sans_serif_bold"
+        android:text="EXIT"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#6BFFFFFF" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Baybay"
+        tools:targetApi="31">
+        <activity
+            android:name=".Modes_Spell"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LineGraph"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Lessons_Introduction"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Gameplay_History"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PdfViewerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Library"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".History"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Lessons_Rules"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Lessons_CharSounds"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Lessons_Paint"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Lessons"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".More"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/MoreActivityTheme" />
+        <activity
+            android:name=".Modes_Matching"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Modes_Quiz"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Chart_Letters"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Chart_Chapters"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Modes"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainMenu"
+            android:exported="true"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

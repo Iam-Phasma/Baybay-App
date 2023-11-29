@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LineGraph">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgview_graph_pb"
+                android:layout_width="0dp"
+                android:layout_height="193dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="3dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView37"
+                app:srcCompat="@drawable/graph_progressbar_board" />
+
+            <ImageView
+                android:id="@+id/imageView54"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView44"
+                app:srcCompat="@drawable/graph_itemboard" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Average Proficiency"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/imgview_graph_pb"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_graph_quiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="%"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_graph_quiz2"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_graph_quiz"
+                app:layout_constraintTop_toTopOf="@+id/tv_graph_quiz2" />
+
+            <TextView
+                android:id="@+id/tv_graph_quiz2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Quiz"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_graph_quiz"
+                app:layout_constraintTop_toTopOf="@+id/imgview_graph_pb" />
+
+            <TextView
+                android:id="@+id/tv_graph_quizCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Quiz : 0"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView54"
+                app:layout_constraintStart_toStartOf="@+id/imageView54"
+                app:layout_constraintTop_toTopOf="@+id/imageView54" />
+
+            <TextView
+                android:id="@+id/tv_graph_matchCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Match : 0"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView54"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView54" />
+
+            <TextView
+                android:id="@+id/tv_graph_spellCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Spell : 0"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView54"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageView54"
+                app:layout_constraintTop_toTopOf="@+id/imageView54" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_graph_quiz"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:background="#00BF2F2F"
+                android:backgroundTint="#00B13636"
+                android:max="100"
+                android:progress="0"
+                android:progressBackgroundTint="#2538A0F3"
+                android:progressTint="#FFA316"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imgview_graph_pb"
+                app:layout_constraintTop_toBottomOf="@+id/tv_graph_quiz2" />
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Spell"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_graph_spell"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar_graph_quiz" />
+
+            <TextView
+                android:id="@+id/tv_graph_spell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="%"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView43"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_graph_spell"
+                app:layout_constraintTop_toTopOf="@+id/textView43" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_graph_spell"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#00BF2F2F"
+                android:backgroundTint="#00B13636"
+                android:max="100"
+                android:progress="0"
+                android:progressBackgroundTint="#2538A0F3"
+                android:progressTint="#0DE4FB"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_graph_quiz"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_graph_quiz"
+                app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Match"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_graph_match"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar_graph_spell" />
+
+            <TextView
+                android:id="@+id/tv_graph_match"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="%"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView42"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_graph_match"
+                app:layout_constraintTop_toTopOf="@+id/textView42" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_graph_match"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#00BF2F2F"
+                android:backgroundTint="#00B13636"
+                android:max="100"
+                android:progress="0"
+                android:progressBackgroundTint="#2538A0F3"
+                android:progressTint="#7B9AFA"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar_graph_spell"
+                app:layout_constraintStart_toStartOf="@+id/progressBar_graph_spell"
+                app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Progress Graph"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/imageView52"
+                app:layout_constraintTop_toBottomOf="@+id/imageView54" />
+
+            <Button
+                android:id="@+id/graph_chart_zoom"
+                android:layout_width="65dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#03A9F4"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="View"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:cornerRadius="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                app:layout_constraintEnd_toEndOf="@+id/chartview"
+                app:layout_constraintTop_toTopOf="@+id/textView38" />
+
+            <Button
+                android:id="@+id/graph_chart_view"
+                android:layout_width="65dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="#03A9F4"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Mode"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:cornerRadius="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                app:layout_constraintEnd_toStartOf="@+id/graph_chart_zoom"
+                app:layout_constraintTop_toTopOf="@+id/textView38" />
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Number of  Gameplay"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/imageView52"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_graph_pb" />
+
+            <ImageView
+                android:id="@+id/imageView52"
+                android:layout_width="0dp"
+                android:layout_height="490dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="50dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView38"
+                app:srcCompat="@drawable/graph_mainboard" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chartview"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView52"
+                app:layout_constraintEnd_toEndOf="@+id/imageView52"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView52"
+                app:layout_constraintTop_toTopOf="@+id/imageView52"
+                app:layout_constraintVertical_bias="0.0">
+
+            </com.github.mikephil.charting.charts.LineChart>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageButton
+        android:id="@+id/imgbtn_grapgh_exit"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:elevation="30dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/guide_history_exit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

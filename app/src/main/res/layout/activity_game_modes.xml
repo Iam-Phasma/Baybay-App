@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Modes">
+
+    <ImageView
+        android:id="@+id/mode_title"
+        android:layout_width="0dp"
+        android:layout_height="167dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gamemode_banner" />
+
+    <ImageButton
+        android:id="@+id/btn_modes_back"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btn_modes_back" />
+
+    <ImageButton
+        android:id="@+id/btn_modes_3"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/btn_modes_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_modes_2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_modes_2"
+        app:srcCompat="@drawable/item_blank" />
+
+    <ImageButton
+        android:id="@+id/btn_modes_2"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/btn_modes_1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_modes_1"
+        app:layout_constraintTop_toBottomOf="@+id/btn_modes_1"
+        app:srcCompat="@drawable/item_blank" />
+
+    <ImageButton
+        android:id="@+id/btn_modes_1"
+        android:layout_width="257dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mode_title"
+        app:srcCompat="@drawable/item_blank" />
+
+    <ImageView
+        android:id="@+id/imgview_board_selected"
+        android:layout_width="317dp"
+        android:layout_height="209dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_modes_3"
+        app:srcCompat="@drawable/gamemodes_selection_board" />
+
+    <TextView
+        android:id="@+id/txt_quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/amasis_black"
+        android:text="QUIZ"
+        android:textColor="#4C2424"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_modes_1"
+        app:layout_constraintEnd_toEndOf="@+id/btn_modes_1"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/btn_modes_1"
+        app:layout_constraintTop_toTopOf="@+id/btn_modes_1"
+        app:layout_constraintVertical_bias="0.576" />
+
+    <TextView
+        android:id="@+id/txt_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amasis_black"
+        android:text="SPELL"
+        android:textColor="#4C2424"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_modes_2"
+        app:layout_constraintEnd_toEndOf="@+id/btn_modes_2"
+        app:layout_constraintStart_toStartOf="@+id/btn_modes_2"
+        app:layout_constraintTop_toTopOf="@+id/btn_modes_2" />
+
+    <TextView
+        android:id="@+id/txt_match"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amasis_black"
+        android:text="MATCH"
+        android:textColor="#4C2424"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_modes_3"
+        app:layout_constraintEnd_toEndOf="@+id/btn_modes_3"
+        app:layout_constraintStart_toStartOf="@+id/btn_modes_3"
+        app:layout_constraintTop_toTopOf="@+id/btn_modes_3" />
+
+    <TextView
+        android:id="@+id/tvPlay"
+        android:layout_width="113dp"
+        android:layout_height="45dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/amasis_black"
+        android:maxLines="2"
+        android:minLines="2"
+        android:textAlignment="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/imgview_board_selected"
+        app:layout_constraintEnd_toEndOf="@+id/imgview_board_selected"
+        app:layout_constraintStart_toStartOf="@+id/imgview_board_selected"
+        app:layout_constraintTop_toTopOf="@+id/imgview_board_selected"
+        app:layout_constraintVertical_bias="0.859"
+        tools:text="PLAY" />
+
+    <TextView
+        android:id="@+id/tv_gamemodes_classic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:clickable="true"
+        android:fontFamily="@font/amasis_black"
+        android:text="Classic"
+        android:textColor="#95FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imgview_board_selected"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/imgview_board_selected"
+        app:layout_constraintTop_toBottomOf="@+id/btn_modes_3" />
+
+    <TextView
+        android:id="@+id/tv_gamemodes_extra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:fontFamily="@font/amasis_black"
+        android:text="Extra"
+        android:textColor="#95FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_gamemodes_classic"
+        app:layout_constraintStart_toStartOf="@+id/tv_gamemodes_classic"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gamemodes_classic" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lessons">
+
+    <ImageButton
+        android:id="@+id/btn_lesson_exit"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/lessons_btn_exit_red" />
+
+    <ImageButton
+        android:id="@+id/btn_lesson_information"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lessons_information_icon" />
+
+    <ImageButton
+        android:id="@+id/btn_lesson_gameplay_history"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="-10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_lesson_information"
+        app:layout_constraintStart_toEndOf="@+id/btn_lesson_information"
+        app:layout_constraintTop_toTopOf="@+id/btn_lesson_information"
+        app:srcCompat="@drawable/lessons_gameplay_history" />
+
+    <ImageButton
+        android:id="@+id/btn_lesson_reset"
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="-10dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_lesson_information"
+        app:layout_constraintEnd_toStartOf="@+id/imgbtn_keys"
+        app:layout_constraintTop_toTopOf="@+id/btn_lesson_information"
+        app:srcCompat="@drawable/lessons_reset_icon" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_keys"
+        android:layout_width="110dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginEnd="-12dp"
+        android:backgroundTint="#00FFFFFF"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_lesson_information"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_lesson_information"
+        app:srcCompat="@drawable/lessons_trophy_holder" />
+
+    <TextView
+        android:id="@+id/tv_keys"
+        android:layout_width="45dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="15dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/amasis_black"
+        android:text="00"
+        android:textAlignment="center"
+        android:textColor="#FEFEFE"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn_keys"
+        app:layout_constraintStart_toStartOf="@+id/imgbtn_keys"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_keys"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_lesson_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_lesson_gameplay_history">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgbtn_nursery"
+                android:layout_width="329dp"
+                android:layout_height="134dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/lessons_l1" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_characters"
+                android:layout_width="329dp"
+                android:layout_height="134dp"
+                android:layout_marginTop="-25dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_nursery"
+                app:srcCompat="@drawable/lessons_l2" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_rules"
+                android:layout_width="329dp"
+                android:layout_height="134dp"
+                android:layout_marginTop="-25dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_characters"
+                app:srcCompat="@drawable/lessons_l3" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_handwriting"
+                android:layout_width="329dp"
+                android:layout_height="134dp"
+                android:layout_marginTop="-25dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_rules"
+                app:srcCompat="@drawable/lessons_l4" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_reading"
+                android:layout_width="329dp"
+                android:layout_height="134dp"
+                android:layout_marginTop="-25dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_handwriting"
+                app:srcCompat="@drawable/lessons_l5" />
+
+            <ImageView
+                android:id="@+id/gif_wave1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="55dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_nursery"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_nursery"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_nursery"
+                app:srcCompat="@drawable/lessons_wave" />
+
+            <ImageView
+                android:id="@+id/gif_note2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="55dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_characters"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_characters"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_characters"
+                app:srcCompat="@drawable/lessons_notes" />
+
+            <ImageView
+                android:id="@+id/gif_flag3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="55dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_rules"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_rules"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_rules"
+                app:srcCompat="@drawable/lessons_flag" />
+
+            <ImageView
+                android:id="@+id/gif_globe4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="55dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_handwriting"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_handwriting"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_handwriting"
+                app:srcCompat="@drawable/lessons_globe" />
+
+            <ImageView
+                android:id="@+id/gif_cowboy5"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="55dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_reading"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_reading"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_reading"
+                app:srcCompat="@drawable/lessons_cowboy" />
+
+            <ImageButton
+                android:id="@+id/lockicon_l1"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="-5dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_nursery"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_nursery"
+                app:srcCompat="@drawable/lessons_lock_icon" />
+
+            <ImageButton
+                android:id="@+id/lockicon_l2"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="-5dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_characters"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_characters"
+                app:srcCompat="@drawable/lessons_lock_icon" />
+
+            <ImageButton
+                android:id="@+id/lockicon_l3"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="-5dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_rules"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_rules"
+                app:srcCompat="@drawable/lessons_lock_icon" />
+
+            <ImageButton
+                android:id="@+id/lockicon_l4"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="-5dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_handwriting"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_handwriting"
+                app:srcCompat="@drawable/lessons_lock_icon" />
+
+            <ImageButton
+                android:id="@+id/lockicon_l5"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="-5dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_reading"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_reading"
+                app:srcCompat="@drawable/lessons_lock_icon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

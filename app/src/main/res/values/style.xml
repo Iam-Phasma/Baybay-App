@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/values-v27/styles.xml -->
+<resources>
+    <style name="MoreActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- No windowLayoutInDisplayCutoutMode for devices with API level < 27 -->
+    </style>
+</resources>
+

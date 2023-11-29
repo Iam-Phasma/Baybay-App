@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chart_Chapters">
+
+    <ImageButton
+        android:id="@+id/imgbtn_exit_chapter"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#00FFFFFF"
+        android:elevation="0sp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btn_exit_chart" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtn_exit_chapter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sans_serif_demibold"
+                android:text="Baybayin B20 plus Version"
+                android:textAlignment="viewEnd"
+                android:textColor="#ADFFEDDD"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="0dp"
+                android:layout_height="494dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="15dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView39"
+                app:srcCompat="@drawable/chart_board" />
+
+            <ImageButton
+                android:id="@+id/btn_kudlit"
+                android:layout_width="60dp"
+                android:layout_height="65dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/gridLayout2"
+                app:layout_constraintEnd_toEndOf="@+id/gridLayout2"
+                app:layout_constraintStart_toStartOf="@+id/gridLayout2"
+                app:srcCompat="@drawable/btn_chart_kudlitr" />
+
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/gridLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="25dp"
+                app:columnCount="4"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3">
+
+                <ImageButton
+                    android:id="@+id/btn_a"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_a" />
+
+                <ImageButton
+                    android:id="@+id/btn_b"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_b" />
+
+                <ImageButton
+                    android:id="@+id/btn_k"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_k" />
+
+                <ImageButton
+                    android:id="@+id/btn_d"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_d" />
+
+                <ImageButton
+                    android:id="@+id/btn_e"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_e" />
+
+                <ImageButton
+                    android:id="@+id/btn_g"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_g" />
+
+                <ImageButton
+                    android:id="@+id/btn_h"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_h" />
+
+                <ImageButton
+                    android:id="@+id/btn_i"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_i" />
+
+                <ImageButton
+                    android:id="@+id/btn_l"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_l" />
+
+                <ImageButton
+                    android:id="@+id/btn_m"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_m" />
+
+                <ImageButton
+                    android:id="@+id/btn_n"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_n" />
+
+                <ImageButton
+                    android:id="@+id/btn_ng"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_ng" />
+
+                <ImageButton
+                    android:id="@+id/btn_o"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_o" />
+
+                <ImageButton
+                    android:id="@+id/btn_p"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_p" />
+
+                <ImageButton
+                    android:id="@+id/btn_r"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_r" />
+
+                <ImageButton
+                    android:id="@+id/btn_s"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_s" />
+
+                <ImageButton
+                    android:id="@+id/btn_t"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_t" />
+
+                <ImageButton
+                    android:id="@+id/btn_u"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_u" />
+
+                <ImageButton
+                    android:id="@+id/btn_w"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_w" />
+
+                <ImageButton
+                    android:id="@+id/btn_y"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/btn_chart_y" />
+            </androidx.gridlayout.widget.GridLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

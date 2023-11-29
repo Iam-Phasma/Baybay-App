@@ -1,0 +1,140 @@
+<resources>
+    <string name="app_name">Baybay</string>
+
+    <string name="baybayin_introduction">
+        Baybayin, an ancient script in the Philippines predating Spanish colonization, is just one of several indigenous scripts, including Kapampangan Kulitan, Tagbanwa of Palawan, as well as the Hanunoo and Buhid scripts of Mindoro.
+    </string>
+
+    <string name="baybayin_introduction2">Understanding the Baybayin script is crucial for Filipinos as it represents an invaluable link to the country rich cultural and historical heritage.
+        It provides a tangible link to pre-colonial Philippine civilizations, providing insight into  indigenous languages and means of communication.
+        Embracing Baybayin fosters a sense of cultural identity and pride, thereby strengthening the Philippines\' unique cultural diversity.
+        \n\nAdditionally, it encourages a deeper appreciation of diversity within the archipelago and emphasizes the importance of preserving and celebrating indigenous knowledge in the face of cultural globalization.
+        In essence, familiarity with the Baybayin script contributes to a deeper understanding of its origins and cultural heritage, fostering a sense of unity and continuity across generations.
+        \n\nThe video above showcases the contemporary iteration of the Baybayin script, specifically referred to as version B20+. Notably, this updated script incorporates several modifications compared to its predecessors. An important enhancement is the clear distinction between the characters \"Da\" and \"Ra\," a development aimed at reducing ambiguity during reading and consequently enhancing reading speed. Additionally, the vowels \"e and i,\" as well as \"o and u,\" now possess distinct characters, further refining the script clarity and usability.
+    \n\nBelow are the discussion of the previous Baybayin versions.
+    </string>
+
+    <string name="baybayin_version17">The B17 version comprises 17 characters. Notably, the characters for \"e\" and \"i\" are the same, as are those for \"o\" and \"u,\" as well as \"da\" and \"ra.\" In this version, the krus kudlit, a diacritic mark, has not been introduced yet, which means it is impossible to write independent letters. As an example, the word \"tatsulok\" would be written as \"tatasuloka.\"</string>
+
+    <string name="baybayin_version17plus">This version retains the same script characters as B17, but it introduces the implementation of the krus kudlit. This addition allows for the writing of standalone characters, making the script more versatile.</string>
+
+    <string name="baybayin_version18">In B18, there are notable changes. Specifically, the characters for \"da\" and \"ra\" are now separate, each with its own distinct character. This separation helps to eliminate any confusion between the two sounds.</string>
+
+    <string name="baybayin_version20plus">The B20+ version brings significant improvements to the Baybayin script. Here, the characters for \"e\" and \"i,\" as well as \"o\" and \"u,\" have been given their own distinct characters, enhancing the script readability. These changes make it easier to distinguish and read the individual vowels, making the script more user friendly.\n </string>
+
+    <string name="baybayin_overview">
+        \n
+        <big><big><b>Chapter 1</b></big></big>
+        \n
+        <i>The Origin</i>
+        \n\nThe Baybayin script is a fascinating writing system with origins that have sparked ongoing debates among scholars. Some theories propose that it developed independently within the Philippine archipelago, while others suggest possible influences from neighboring regions, like the Indian Brahmi script or the Javanese Kawi script. The idea that it might have come from India gains support due to its affiliation with the Brahmic scripts, and linguistic evidence indicates that approximately 25% of Philippine vocabularies may be traced back to Indian influence.
+        \n\nDuring the pre-colonial period, Baybayin evolved, becoming one of the earliest writing systems used in the Philippines. It had diverse applications, often utilized for writing poetry, announcements, and other short forms of communication.
+        \n\nThe term \"baybayin\" itself derives from the Tagalog root word \"baybay,\" meaning \"to spell,\" which highlights its purpose as a script for conveying language through written characters.
+        \n\nConsidering these various perspectives and historical evidence, the exact origins of the Baybayin script remain intriguing and subject to ongoing scholarly exploration.
+        \n\n\n
+
+        <big><big><b>Chapter 2</b></big></big>
+        \n
+        <i>Early Usage</i>
+        \n\nBaybayin, an ancient script in the Philippines, found extensive use among various indigenous groups, notably the Tagalog and Visayan peoples. It served as a versatile tool for communication, record-keeping, and expressing cultural beliefs. To preserve their knowledge and traditions, Baybayin was applied to diverse materials, including bamboo, tree bark, palm leaves, and other organic surfaces.
+        \n\nPriests and babaylan, the indigenous spiritual leaders or shamans, played a significant role in utilizing Baybayin to write sacred texts, perform important rituals, and document traditional practices, thus reinforcing its role in the spiritual and cultural life of the communities.
+        \n\nHistorical records indicate that the early usage of Baybayin included recording business transactions, folk tales, poetry, songs, and other literary compositions. Additionally, it was used to write poetry, incantations, and letters, showcasing its versatility in various contexts.
+        \n\nThroughout the 16th and 17th centuries, Baybayin enjoyed widespread use in Luzon and other regions of the Philippines.
+        \n\n\n
+
+        <big><big><b>Chapter 3</b></big></big>
+        \n
+        <i>Adaptation and Influence</i>
+        \n\nThe Baybayin script had regional variations in its character forms and usage, adapting to the linguistic and cultural diversity across the Philippine islands. Different ethnic groups had their own distinct ways of writing in Baybayin, leading to slight variations in characters and pronunciation. Additionally, the script absorbed influences from other writing systems present in Southeast Asia during this time, demonstrating the Philippines interactions with neighboring cultures. Some of the possible sources of influence for Baybayin are:
+        \n\n
+        1. The Pallava script from Sumatra, which is attested to the 7th century.
+        \n\n
+        2. The Liboginese and/or Makassarese scripts of Sulawesi, which could have been introduced or borrowed and adapted into Baybayin.
+        \n\n
+        3. The Old Assamese script, a variant of Eastern Nagari script, which could have been introduced to the Philippines via Bengal.
+        \n\n
+        4. The Cham script, which was used by the Cham people of Vietnam and Cambodia.
+        \n\nThe Baybayin script also influenced other Philippine scripts, such as the Buhid, Hanunuo, Kulitan, Palawan, and Tagbanwa scripts. These scripts are still used by some indigenous groups today. The Baybayin script also has a legacy in modern Filipino culture, as it is seen as a symbol of national identity and heritage. Some people advocate for the revival and promotion of Baybayin as a national writing system.
+        \n\n\n
+
+        <big><big><b>Chapter 4</b></big></big>
+        \n
+        <i>Spanish Colonization</i>
+        \n\nThe arrival of the Spanish expedition led by Ferdinand Magellan in 1521 marked the beginning of Spanish colonization in the Philippines. Over the following decades, Spanish missionaries and colonizers aimed to convert the indigenous population to Christianity and assert Spanish control. Part of their strategy was to impose the Latin alphabet and the Spanish language on the native population, leading to the decline of Baybayin widespread use.
+        \n\n\n
+
+        <big><big><b>Chapter 5</b></big></big>
+        \n
+        <i>Suppression and Decline</i>
+        \n\nDuring the Spanish colonial era, the Baybayin script faced significant challenges as Spanish authorities perceived native writing systems as potential obstacles to their colonization and Christianization efforts. As part of their strategy, the Spanish discouraged and suppressed the use of Baybayin systematically. Educational institutions and religious organizations actively promoted the exclusive adoption of the Latin alphabet for education, religious texts, and official documentation, further marginalizing Baybayin.
+        \n\nThe impact of these measures was profound, leading to the gradual decline of Baybayin in common usage and posing a serious risk of extinction. The Spanish language introduced new sounds and words that Baybayin could not accurately represent, contributing to its limitations in adapting to the evolving linguistic landscape. Moreover, the rapid acquisition of literacy in the Latin script offered social and material benefits to the native population, incentivizing them to abandon Baybayin.
+        \n\nTraditional family activities, such as parents or elders teaching Baybayin to their children, were disrupted, contributing to the decline of intergenerational knowledge transmission. The Spanish friars, viewing Baybayin writings as works of the devil, engaged in its suppression and destruction, further erasing its presence in society.
+        \n\nDespite these challenges, some indigenous groups, including the Tagbanwa, Buhid, Hanunuo, and Palawan, preserved their versions of Baybayin, demonstrating resilience and cultural continuity. Today, Baybayin retains significance in modern Filipino culture, symbolizing national identity and heritage. Advocates call for its revival and promotion as a national writing system to preserve this important aspect of the Philippine history.
+        \n\n\n
+
+        <big><big><b>Chapter 6</b></big></big>
+        \n
+        <i>Rediscovery and Revival</i>
+        \n\nThe Baybayin script, an ancient writing system of the Philippines, experienced a resurgence of interest and appreciation in recent years after being largely forgotten and replaced by the Latin alphabet during Spanish colonization. The rediscovery and revival of Baybayin brought forth fascinating facts and insights.
+        \n\nOne of the earliest known documents written in Baybayin is the Laguna Copperplate Inscription, dating back to 900 AD, providing valuable historical evidence of its ancient usage.
+        \n\nSpanish friars studied Baybayin and utilized it to teach Christianity to the native population. Notably, early printed books in the Philippines, such as the Doctrina Christiana, featured Baybayin alongside Latinized Tagalog, reflecting its importance during that time.
+        \n\nWhile the script gradually declined and was replaced by the Latin alphabet in most parts of the Philippines, some indigenous groups like the Tagbanwa, Buhid, Hanunuo, and Palawan continued to preserve and use their own versions of Baybayin.
+        \n\nThe revival of Baybayin gained momentum during the late 19th and early 20th centuries, driven by Filipino scholars and nationalists who saw it as a powerful symbol of national identity and heritage.
+        \n\nToday, Baybayin has captivated the interest of the younger generation of Filipinos, who explore their cultural roots and history through artistic expressions like tattoos, calligraphy, shirts, and digital fonts.
+        \n\nBeyond the Philippines, Baybayin has attracted curiosity from people worldwide, leading some to learn the script through online resources or mobile apps to understand its origins and meanings.
+        \n\nDespite its growing popularity, the Baybayin revival has sparked debates among Filipinos. While some advocate for its revival and promotion as a national writing system, others argue about its relevance and practicality in the modern world, questioning its representation of all Filipinos and compatibility with current languages and technologies.
+        \n\nDuring the early 20th century, the revival of Baybayin gained momentum, with Filipino scholars and historians delving into the study of the script and striving to decipher its characters and meanings. Notable figures like Paul Versoza, Jose Rizal, and Epifanio de los Santos played pivotal roles in this revival effort, publishing works that aimed to preserve and document the significant role of Baybayin in Philippine history. This ongoing resurgence has become a testament to the enduring cultural value of the Baybayin script in contemporary times.
+        \n\n\n
+
+        <big><big><b>Chapter 7</b></big></big>
+        \n
+        <i>Modern Usage</i>
+        \n\nIn recent years, a remarkable cultural and artistic renaissance has taken place surrounding the Baybayin script, kindling a newfound appreciation among Filipinos. Artists, designers, and cultural enthusiasts have embraced Baybayin characters, integrating them into contemporary art, tattoos, clothing, and accessories, thus infusing this ancient script with a fresh and vibrant energy. This creative movement celebrates Baybayin as a symbol of Filipino heritage.
+        \n\nThe significance of Baybayin has transcended the realm of artistic expression and found its way into the insignia of prominent government agencies, including the National Museum of the Philippines, the National Commission for Culture and the Arts, and the Department of Education. As an emblem of cultural pride, Baybayin represents a rich link to the Philippine past and serves as a testament to its enduring legacy.
+        \n\nBeyond aesthetics, Baybayin has taken on multiple roles in the modern world. It becomes a tool for education, with schools and organizations actively teaching Baybayin to students and enthusiasts keen to delve into their cultural heritage and history. This educational aspect fosters an appreciation for the script significance and preserves it for future generations.
+        \n\nMoreover, Baybayin has become a catalyst for advocacy and activism, with impassioned individuals championing it as a national writing system and a symbol of the Filipino identity. Proposals have surfaced, suggesting bills to declare Baybayin as the official script of the Philippines and to mandate its use in public signs and documents. This movement aims to revitalize the script relevance and foster a deeper connection to Filipino culture.
+        \n\nThroughout its existence, Baybayin has not merely endured but evolved, representing the rich and diverse history and culture of the Philippines. Its versatility and adaptability enable its continued relevance and meaningfulness in the modern world. As a script that has weathered the tests of time, Baybayin stands as a testament to the enduring spirit of Filipino heritage, cherished and celebrated by the present generation and poised to inspire generations to come.
+        \n
+    </string>
+
+    <string name="alamat_description">Embark on a timeless voyage through the rich tapestry of human imagination with this captivating collection of legends and myths. Within these pages, ancient tales come to life, weaving together the mystical and the mundane to create a world where gods, heroes, and mythical creatures walk among mortals. Discover the origin stories of civilizations, the epic adventures of legendary heroes, and the enchanting folklore that has shaped cultures for centuries. These narratives, passed down through generations, offer glimpses into the beliefs, values, and traditions of diverse societies around the world.
+        \n\n
+        <b><i>Contents (5)</i></b>\n\n
+
+        1. Ang Alamat ni Daragang Mayon \n
+        2. Ang Alamat ng Bundok Arayat \n
+        3. Ang Alamat ng Bundok Makiling \n
+        4. Ang Alamat ng Buwan at Bituin \n
+        5. Ang Alamat ni Huwan Tamad \n\n
+    </string>
+    <string name="likhang_makabayan_description">Immerse yourself in the stirring world of patriotic literature, where the heartbeats of nations echo through the written word. This anthology is a testament to the love, pride, and dedication that writers have poured into their works to celebrate their homelands. These writings resonate with the ideals, history, and shared experiences of a nation, creating a powerful bond between the reader and the spirit of patriotism. From stirring speeches that have inspired movements to timeless essays that explore the essence of the country identity, this collection offers a diverse array of voices and perspectives.
+        \n\n
+        <b><i>Contents (4)</i></b>\n\n
+
+        1. Lupang Hinirang \n
+        2. Pandaigdig na Pagpapahayag ng mga Karapatan ng Tao \n
+        3. Panunumpa sa Watawat \n
+        4. Panatang Makabayan \n\n
+    </string>
+    <string name="maikling_kwento_description">Step into a world of diverse narratives and captivating tales with this collection of short stories. Within these pages, you will embark on a literary journey where each story offers a unique perspective, characters that come to life, and themes that resonate with the human experience. From heartwarming tales of love and friendship to spine tingling mysteries and thought provoking journeys into the unknown, this anthology promises to transport you to different realms and emotions with every turn of the page.
+        \n\n
+        <b><i>Contents (5)</i></b>\n\n
+
+        1. Bakit Mataas ang Langit? \n
+        2. Ang Matinong Pintor \n
+        3. Ang Manok at ang Uwak \n
+        4. Matapat na Bayani \n
+        5. Si Paruparo at si Langgam \n\n
+    </string>
+    <string name="tula_description">Delve into the realm of emotions and lyrical beauty with this enchanting collection of poems. Each verse is a carefully crafted expression of the human experience, offering insights into love, loss, hope, and the myriad of emotions that shape our lives. From the poignant and heartfelt to the whimsical and thought-provoking, these poems paint vivid images with words and melodies that linger in the soul.
+        \n\n
+        <b><i>Contents (5)</i></b>\n\n
+
+        1. Pag-ibig \n
+        2. Bayan Ko \n
+        3. Marupok \n
+        4. Makabuhay \n
+        5. Kabayanihan \n\n
+    </string>
+
+</resources>
