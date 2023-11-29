@@ -98,7 +98,7 @@ public class Lessons extends AppCompatActivity {
 
         //Refresh keys
         TvKeys = findViewById(R.id.tv_keys);
-//        TvKeys.setText(String.valueOf(Z_LessonManager.trophies));
+        //TvKeys.setText(String.valueOf(Z_LessonManager.trophies));
 
         int trophies = Z_TrophyManager.getTrophies();
         TvKeys.setText(String.valueOf(trophies));

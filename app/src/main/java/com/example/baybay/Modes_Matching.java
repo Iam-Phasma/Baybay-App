@@ -448,23 +448,20 @@ public class Modes_Matching extends AppCompatActivity {
         tv_MatchTimer = findViewById(R.id.tv_MatchTimer);
         preferencesTime = PreferenceManager.getDefaultSharedPreferences(this);
 
-        // Check if there's a stored totalSeconds value, or initialize it to 2 minutes
-
-        // Initialize the secondsPassed variable based on the stored totalSeconds
+        //secondsPassed variable based on the stored totalSeconds
         secondsPassed = preferencesTime.getInt("secondsPassed", 0);
 
-        // Initialize the timer text
+        //timer text
         updateTimerText(secondsPassed);
 
-        // Create a new Handler and Runnable to update the timer every second
         handler = new Handler();
         timerRunnable = new Runnable() {
             @Override
             public void run() {
-                // Increment the secondsPassed variable by 1 every second
+                // Increment secondsPassed variable by 1 every second
                 secondsPassed++;
 
-                // Update the timer text view with the new time
+                // Update timer text view with the new time
                 updateTimerText(secondsPassed);
 
                 //Start countdown sound effects
@@ -481,7 +478,7 @@ public class Modes_Matching extends AppCompatActivity {
                 }
 
 
-                // Stop the timer when it reaches certain time
+                // Stop timer when it reaches..
                 if(difficulty == 1){
                     if (secondsPassed == 120) {
                         stopTimer();
@@ -529,18 +526,17 @@ public class Modes_Matching extends AppCompatActivity {
             totalSeconds = 60;
         }
 
-
         // Update the remaining seconds and minutes
         int remainingSeconds = totalSeconds - seconds;
         int remainingMinutes = remainingSeconds / 60;
         remainingSeconds = remainingSeconds % 60;
 
-        // Format the time as "mm:ss" and set it to the TextView
+        // set time as "mm:ss" then set it to the TextView
         @SuppressLint("DefaultLocale") String timerText = String.format("%02d:%02d", remainingMinutes, remainingSeconds);
         tv_MatchTimer.setText(timerText);
         TimeTaken = timerText;
 
-        // Check if the timer has reached 00:00
+        // if the timer has reached 00:00
         if (remainingSeconds == 0 && remainingMinutes == 0) {
             // Store the totalSeconds value in SharedPreferences
             SharedPreferences.Editor editor = preferencesTime.edit();

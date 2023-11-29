@@ -344,7 +344,6 @@ public class Modes_Quiz extends AppCompatActivity {
                 // Mark the current question as used
                 usedQuestionIndices.add(questionList_classic.indexOf(currentQuestion));
 
-                // Rest of the existing code...
                 imgview_questionimage.setImageResource(currentQuestion.getQuestionImage());
 
                 List<String> choices = currentQuestion.getChoices();
@@ -368,7 +367,7 @@ public class Modes_Quiz extends AppCompatActivity {
                 // If no unused question is found, all questions have been used, and the quiz is completed.
                 if (currentQuestion == null) {
 
-                    //showToast("Quiz completed! 2");
+                    //("Quiz completed! 2");
                     choiceDisable();
                     return;
                 }
@@ -376,7 +375,6 @@ public class Modes_Quiz extends AppCompatActivity {
                 // Mark the current question as used
                 usedQuestionIndices.add(questionList_word.indexOf(currentQuestion));
 
-                // Rest of the existing code...
                 imgview_questionimage.setImageResource(currentQuestion.getQuestionImage());
 
                 List<String> choices = currentQuestion.getChoices();
@@ -387,11 +385,8 @@ public class Modes_Quiz extends AppCompatActivity {
 
                 // Increment the number of questions answered
                 questionsAnswered++;
-
             }
         }
-
-
     }
 
     private int questionsAnswered = 0;

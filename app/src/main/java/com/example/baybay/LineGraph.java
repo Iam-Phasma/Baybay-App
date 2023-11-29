@@ -239,11 +239,7 @@ public class LineGraph extends AppCompatActivity {
             // Set the new data and refresh the chart
             lineChart.setData(newLineData);
             lineChart.invalidate();
-
-
         });
-
-
     }
 
 
@@ -259,7 +255,6 @@ public class LineGraph extends AppCompatActivity {
                 xValue++;
             }
         }
-
         return entries1;
     }
 
@@ -293,7 +288,6 @@ public class LineGraph extends AppCompatActivity {
                 xValue++;
             }
         }
-
         return entries3;
     }
 
