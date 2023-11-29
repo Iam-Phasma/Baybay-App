@@ -42,7 +42,7 @@ public class Lessons_Rules extends AppCompatActivity {
         // Get the root view of the layout
         View rootView = getWindow().getDecorView().getRootView();
 
-        // Set the background color using a hexadecimal color value
+        // Set the background color
         rootView.setBackgroundColor(Color.parseColor("#F2F2F2"));
 
         refreshRulesPb();
@@ -55,7 +55,6 @@ public class Lessons_Rules extends AppCompatActivity {
             setRulesBoard();
             refreshRulesPb();
         });
-
 
         Button btnNext = findViewById(R.id.btn_rules_next);
         btnNext.setOnClickListener(v -> {
