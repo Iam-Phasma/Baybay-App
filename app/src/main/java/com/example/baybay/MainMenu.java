@@ -440,6 +440,7 @@ public class MainMenu extends AppCompatActivity {
                 cancelToast();
                 animateButton(ImgbtnHistory);
                 animateButton(TvHistory);
+                ImgbtnHistory.setEnabled(false);
                 //disableGuideMenuButtons();
                 handler.postDelayed(() -> {
                     Intent Mainmenu = new Intent(getApplicationContext(), History.class);
@@ -457,7 +458,7 @@ public class MainMenu extends AppCompatActivity {
                 cancelToast();
                 animateButton(ImgbtnLessons);
                 animateButton(TvLessons);
-                //disableGuideMenuButtons();
+                ImgbtnLessons.setEnabled(false);
                 handler.postDelayed(() -> {
                     Intent Mainmenu = new Intent(getApplicationContext(), Lessons.class);
                     startActivity(Mainmenu);
@@ -487,6 +488,7 @@ public class MainMenu extends AppCompatActivity {
                     globalToast.show();
                 }else{
                     handler.postDelayed(() -> {
+                        ImgbtnLibrary.setEnabled(false);
                         Intent Mainmenu = new Intent(getApplicationContext(), Library.class);
                         startActivity(Mainmenu);
                         finish();
