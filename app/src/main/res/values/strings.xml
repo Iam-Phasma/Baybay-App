@@ -139,7 +139,7 @@
 
     <string-array name="baybayin_trivia">
         <item>Baybayin is an ancient script used by the Tagalog people in the Philippines.</item>
-        <item>The name "Baybayin" is derived from the Tagalog word "baybay," meaning to spell or write.</item>
+        <item>The name \"Baybayin\" is derived from the Tagalog word \"baybay,\" meaning to spell or write.</item>
         <item>Modern baybayin consists of 20 basic characters, each representing a specific phoneme.</item>
         <item>It is a syllabic script, with each character representing a combination of a consonant and a vowel sound.</item>
         <item>Baybayin was predominantly written on bamboo using a knife or similar sharp object.</item>

@@ -66,15 +66,27 @@ public class NewUI_Dashboard extends AppCompatActivity {
         // Set the custom GradientDrawable as the window background
         getWindow().setBackgroundDrawable(gradientDrawable);
 
+
+
+
         //Initialize Music and SFx
         preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         Z_SoundManager.isBgon[0] = preferences.getBoolean("isBgon", true);
         Z_SoundManager.isSoundFx[0] = preferences.getBoolean("isSFx", true);
-
         BackgroundSound();
+
 
         TvTrivia = findViewById(R.id.tv_trivia);
         ImgbtnTrivia_Refresh = findViewById(R.id.imgbtn_trivia_refresh);
+
+        ImgbtnTrivia_Refresh.setEnabled(false);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            ImgbtnTrivia_Refresh.setEnabled(true);
+        }, 2000); // 700 milliseconds delay
+
+        setRandomTextWithAnimation(TvTrivia);
+
+
         ImgbtnTrivia_Refresh.setOnClickListener(v -> {
             animateButton(ImgbtnTrivia_Refresh);
             setRandomTextWithAnimation(TvTrivia);
@@ -177,7 +189,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
         Z_SoundManager.setActivityModesPaused(true);
     }
 
-    //Setting random trivia
+    //Set random trivia
     private void setRandomTextWithAnimation(final TextView textView) {
         String[] stringArray = getResources().getStringArray(R.array.baybayin_trivia);
         int randomIndex = new Random().nextInt(stringArray.length);
@@ -185,7 +197,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         currentText = "";
         final int length = newText.length();
-        final int duration = 10; // Adjust the duration as needed
+        final int duration = 12; // Adjust here
 
         for (int i = 0; i < length; i++) {
             final int finalI = i;
