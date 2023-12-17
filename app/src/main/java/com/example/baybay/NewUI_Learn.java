@@ -9,6 +9,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -66,6 +67,7 @@ public class NewUI_Learn extends AppCompatActivity {
 
         ImgbtnLearExit = findViewById(R.id.imgbtn_learn_exit);
         ImgbtnLearExit.setOnClickListener(v -> {
+            ClickSoundEffect();
             finish();
         });
 
@@ -82,11 +84,14 @@ public class NewUI_Learn extends AppCompatActivity {
         AtomicBoolean isL1Clicked = new AtomicBoolean(false);
         Origin.setOnClickListener(v -> {
             animateButton(Origin);
+
             isL1Clicked.set(!isL1Clicked.get());
 
             if (isL1Clicked.get()) {
+                FlipRightSound();
                 Origin.setImageResource(R.drawable.newui_lesson1_sel);
             } else {
+                FlipLeftSound();
                 Origin.setImageResource(R.drawable.newui_lesson1_unsel);
             }
 
@@ -99,8 +104,10 @@ public class NewUI_Learn extends AppCompatActivity {
             isL2Clicked.set(!isL2Clicked.get());
 
             if (isL2Clicked.get()) {
+                FlipRightSound();
                 Introduction.setImageResource(R.drawable.newui_lesson2_sel);
             } else {
+                FlipLeftSound();
                 Introduction.setImageResource(R.drawable.newui_lesson2_unsel);
             }
 
@@ -113,8 +120,10 @@ public class NewUI_Learn extends AppCompatActivity {
             isL3Clicked.set(!isL3Clicked.get());
 
             if (isL3Clicked.get()) {
+                FlipRightSound();
                 Characters.setImageResource(R.drawable.newui_lesson3_sel);
             } else {
+                FlipLeftSound();
                 Characters.setImageResource(R.drawable.newui_lesson3_unsel);
             }
 
@@ -127,8 +136,10 @@ public class NewUI_Learn extends AppCompatActivity {
             isL4Clicked.set(!isL4Clicked.get());
 
             if (isL4Clicked.get()) {
+                FlipRightSound();
                 Rules.setImageResource(R.drawable.newui_lesson4_sel);
             } else {
+                FlipLeftSound();
                 Rules.setImageResource(R.drawable.newui_lesson4_unsel);
             }
 
@@ -201,6 +212,35 @@ public class NewUI_Learn extends AppCompatActivity {
 
         // Start the button click animation
         animatorSet.start();
+    }
+
+    void ClickSoundEffect() {
+        boolean[] sfxPass = Z_SoundManager.isSoundFx;
+        if (sfxPass.length > 0 && sfxPass[0]) {
+            Z_SoundManager soundManager = new Z_SoundManager();
+            soundManager.RegButtonClickSound(this);
+        }
+    }
+
+    void FlipLeftSound() {
+        MediaPlayer mediaPlayer;
+        boolean[] sfxPass = Z_SoundManager.isSoundFx;
+        if (sfxPass.length > 0 && sfxPass[0]) {
+            mediaPlayer = MediaPlayer.create(NewUI_Learn.this, R.raw.page_flip_left);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+        }
+    }
+
+
+    void FlipRightSound() {
+        MediaPlayer mediaPlayer;
+        boolean[] sfxPass = Z_SoundManager.isSoundFx;
+        if (sfxPass.length > 0 && sfxPass[0]) {
+            mediaPlayer = MediaPlayer.create(NewUI_Learn.this, R.raw.pag_flip_right);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+        }
     }
 
 }

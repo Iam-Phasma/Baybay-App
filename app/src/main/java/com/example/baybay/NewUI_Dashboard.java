@@ -182,9 +182,10 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         ImgbtnLearn = findViewById(R.id.imgbtn_learn);
         ImgbtnLearn.setOnClickListener(v -> {
+            ClickSoundEffect();
             Intent Dashboard = new Intent(getApplicationContext(), NewUI_Learn.class);
             startActivity(Dashboard);
-            //finish();
+
         });
 
     }

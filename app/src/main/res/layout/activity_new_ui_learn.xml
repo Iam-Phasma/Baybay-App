@@ -60,13 +60,45 @@
         app:layout_constraintStart_toStartOf="@+id/textView49"
         app:layout_constraintTop_toBottomOf="@+id/textView49" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView3">
+
+        <ImageButton
+            android:id="@+id/imgbtn_learn_exit2"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/newui_downloadable_button"
+            tools:src="@drawable/newui_downloadable_button" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_learn_exit3"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/newui_chart_button"
+            tools:src="@drawable/newui_chart_button" />
+    </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="80dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +141,7 @@
                         android:layout_gravity="right"
                         android:backgroundTint="#00FFFFFF"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/newui_lesson1_sub3"
+                        android:src="@drawable/newui_lesson1_sub1"
                         tools:src="@drawable/newui_lesson1_sub1" />
 
                     <ImageButton
@@ -279,4 +311,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
