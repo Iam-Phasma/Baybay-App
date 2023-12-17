@@ -137,4 +137,27 @@
         5. Kabayanihan \n\n
     </string>
 
+    <string-array name="baybayin_trivia">
+        <item>Baybayin is an ancient script used by the Tagalog people in the Philippines.</item>
+        <item>The name "Baybayin" is derived from the Tagalog word "baybay," meaning to spell or write.</item>
+        <item>Modern baybayin consists of 20 basic characters, each representing a specific phoneme.</item>
+        <item>It is a syllabic script, with each character representing a combination of a consonant and a vowel sound.</item>
+        <item>Baybayin was predominantly written on bamboo using a knife or similar sharp object.</item>
+        <item>Spanish colonizers in the 16th century documented Baybayin in historical records.</item>
+        <item>The script was widely used before the arrival of the Spanish, appearing on various artifacts and documents.</item>
+        <item>Baybayin was officially declared a national script of the Philippines in 2019.</item>
+        <item>Modern efforts aim to revive and promote the use of Baybayin in contemporary Filipino society.</item>
+        <item>Despite its historical significance, Baybayin is not widely taught in schools in the Philippines.</item>
+        <item>There are ongoing debates and discussions about the standardization of Baybayin characters.</item>
+        <item>The script has symbols for special characters like the cross, which may have been influenced by the Spanish colonial era.</item>
+        <item>Baybayin was used for various purposes, including poetry, legal documents, and communication among indigenous communities.</item>
+        <item>Several fonts and digital tools have been developed to facilitate the use and learning of Baybayin in the modern age.</item>
+        <item>The script is considered a cultural treasure and a symbol of pre-colonial Philippine identity.</item>
+        <item>Baybayin inscriptions have been found on artifacts dating back to the 14th century.</item>
+        <item>Efforts to promote Baybayin involve workshops, educational programs, and cultural events.</item>
+        <item>Some contemporary Filipino artists incorporate Baybayin in their works, blending tradition with modern expression.</item>
+        <item>Baybayin is not exclusive to Tagalog; other Philippine ethnic groups also had their own variations of the script.</item>
+        <item>The revival of Baybayin is seen as a way to reconnect with Filipino cultural roots and heritage.</item>
+    </string-array>
+
 </resources>

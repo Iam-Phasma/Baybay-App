@@ -105,6 +105,14 @@ public class MainMenu extends AppCompatActivity {
         Z_LessonManager.lesson5isUnlock[0] = sharedPreferences.getBoolean("lesson5", false);
         //Toasty.info(MainMenu.this, String.valueOf(Z_LessonManager.lesson5isUnlock[0]), Toasty.LENGTH_SHORT).show();
 
+        ImageView MainTitle = findViewById(R.id.main_title);
+        MainTitle.setOnClickListener(v -> {
+            Intent Mainmenu = new Intent(getApplicationContext(), NewUI_Dashboard.class);
+            startActivity(Mainmenu);
+        });
+
+
+
         //Play button
         ImgbtnDrills = findViewById(R.id.imgbtn_play);
         ImgbtnDrills.setOnClickListener(v -> {
@@ -229,7 +237,6 @@ public class MainMenu extends AppCompatActivity {
                 ImageButton ImgBtnSoundBg = dlg.findViewById(R.id.cb_Background);
                 ImageButton ImgBtnSoundFx = dlg.findViewById(R.id.cb_SEffects);
                 ImageButton ImgbtnSoundExit = dlg.findViewById(R.id.imgbtn_sound_exit);
-                //ImageButton ImgbtnCredits = dlg.findViewById(R.id.imgbtn_settings_credits);
 
                 //Initialize buttons icon when dialog is opened
                 if (Z_SoundManager.isBgon[0]) {
@@ -262,22 +269,6 @@ public class MainMenu extends AppCompatActivity {
                     } else {
                         ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
                     }
-
-                /*
-                if (isBgon[0]) {
-                    ImgBtnSoundBg.setImageResource(R.drawable.cb_soundon);
-                    BackgroundSound(isBgon);
-                } else {
-                    ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
-                    songMain.stop();
-                    songMain.release();
-                    songMain = null;
-                }
-                // Save Background Music state
-                SharedPreferences.Editor editorBg = preferences.edit();
-                editorBg.putBoolean("isBgon", isBgon[0]);
-                editorBg.apply();
-                editorBg.commit();*/
                 });
 
                 ImgBtnSoundFx.setOnClickListener(v12 -> {
@@ -295,19 +286,6 @@ public class MainMenu extends AppCompatActivity {
                     } else {
                         ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
                     }
-
-                /*
-                if (isSoundFx[0]) {
-                    ImgBtnSoundFx.setImageResource(R.drawable.cb_soundon);
-                } else {
-                    ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
-                }
-                // Save Sound Effects state
-                SharedPreferences.Editor editorSFXicon = preferences.edit();
-                editorSFXicon.putBoolean("isSFx", isSoundFx[0]);
-                editorSFXicon.apply();
-                editorSFXicon.commit();*/
-
                 });
 
                 ImgbtnSoundExit.setOnClickListener(v13 -> {
@@ -325,8 +303,6 @@ public class MainMenu extends AppCompatActivity {
                     }, 800);
                     ExitGuideMenu(); //for buttons animation
                 });
-
-                //ImgbtnCredits.setOnClickListener(v14 -> ClickSoundEffect());
 
                 //Prevents back press on sound dialog menu
                 dlg.setOnKeyListener((dialog, keyCode, event) -> {
