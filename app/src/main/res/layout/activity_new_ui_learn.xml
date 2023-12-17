@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI_Learn">
+
+    <ImageButton
+        android:id="@+id/imgbtn_learn_exit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        android:src="@drawable/newui_back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/newui_back_button" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amasis_black"
+        android:text="Learn"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn_learn_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_learn_exit" />
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="sans-serif-black"
+        android:maxLines="2"
+        android:text="What are you interested in learning? "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imgbtn_learn_exit"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_learn_exit" />
+
+    <TextView
+        android:id="@+id/textView50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:text="You can expand a lesson by choosing one below."
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/textView49"
+        app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="75dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView50">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/mainButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_lesson1_unsel"
+                    tools:src="@drawable/newui_lesson1_unsel" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenButtonsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/hiddenButton1"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson1_sub3"
+                        tools:src="@drawable/newui_lesson1_sub1" />
+
+                    <ImageButton
+                        android:id="@+id/hiddenButton2"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson1_sub2"
+                        tools:src="@drawable/newui_lesson1_sub2" />
+
+                    <ImageButton
+                        android:id="@+id/hiddenButton3"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson1_sub3"
+                        tools:src="@drawable/newui_lesson1_sub3" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/mainButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_lesson2_unsel"
+                    tools:src="@drawable/newui_lesson2_unsel" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenButtons2Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/hidden2Button1"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson2_sub1"
+                        tools:src="@drawable/newui_lesson2_sub1" />
+
+                    <ImageButton
+                        android:id="@+id/hidden2Button2"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson2_sub2"
+                        tools:src="@drawable/newui_lesson2_sub2" />
+
+                    <ImageButton
+                        android:id="@+id/hidden2Button3"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson2_sub3"
+                        tools:src="@drawable/newui_lesson2_sub3" />
+
+                    <ImageButton
+                        android:id="@+id/hidden2Button4"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson2_sub4"
+                        tools:src="@drawable/newui_lesson2_sub4" />
+
+                    <ImageButton
+                        android:id="@+id/hidden2Button5"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson2_sub5"
+                        tools:src="@drawable/newui_lesson2_sub5" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/mainButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_lesson3_unsel"
+                    app:tint="#00FFFFFF"
+                    tools:src="@drawable/newui_lesson3_unsel" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenButtons3Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/hidden3Button1"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson1_sub3"
+                        tools:src="@drawable/newui_lesson1_sub1" />
+
+                    <ImageButton
+                        android:id="@+id/hidden3Button2"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson1_sub2"
+                        tools:src="@drawable/newui_lesson1_sub2" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/mainButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_lesson4_unsel"
+                    app:tint="#00FFFFFF"
+                    tools:src="@drawable/newui_lesson4_unsel" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenButtons4Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/hidden4Button1"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson1_sub3"
+                        tools:src="@drawable/newui_lesson1_sub1" />
+
+                    <ImageButton
+                        android:id="@+id/hidden4Button2"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson1_sub2"
+                        tools:src="@drawable/newui_lesson1_sub2" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

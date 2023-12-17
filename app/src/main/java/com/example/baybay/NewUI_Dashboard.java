@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -30,6 +31,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
     TextView TvTrivia;
     private String currentText = "";
     SharedPreferences preferences;
+    ImageButton ImgbtnLearn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -176,6 +178,13 @@ public class NewUI_Dashboard extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        });
+
+        ImgbtnLearn = findViewById(R.id.imgbtn_learn);
+        ImgbtnLearn.setOnClickListener(v -> {
+            Intent Dashboard = new Intent(getApplicationContext(), NewUI_Learn.class);
+            startActivity(Dashboard);
+            //finish();
         });
 
     }
