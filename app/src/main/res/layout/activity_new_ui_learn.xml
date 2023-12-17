@@ -207,7 +207,6 @@
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/newui_lesson3_unsel"
-                    app:tint="#00FFFFFF"
                     tools:src="@drawable/newui_lesson3_unsel" />
 
                 <LinearLayout
@@ -245,7 +244,6 @@
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/newui_lesson4_unsel"
-                    app:tint="#00FFFFFF"
                     tools:src="@drawable/newui_lesson4_unsel" />
 
                 <LinearLayout
