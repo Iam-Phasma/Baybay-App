@@ -80,7 +80,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
         ImgbtnTrivia_Refresh.setEnabled(false);
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             ImgbtnTrivia_Refresh.setEnabled(true);
-        }, 2000); // 700 milliseconds delay
+        }, 2000);
 
         setRandomTextWithAnimation(TvTrivia);
 
@@ -92,7 +92,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
             ImgbtnTrivia_Refresh.setEnabled(false);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 ImgbtnTrivia_Refresh.setEnabled(true);
-            }, 2000); // 700 milliseconds delay
+            }, 2000);
         });
 
         ImgbtnDashboardMenu = findViewById(R.id.imgbtn_dashboard_menu);

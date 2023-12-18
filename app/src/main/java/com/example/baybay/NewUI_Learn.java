@@ -13,6 +13,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -35,6 +37,7 @@ public class NewUI_Learn extends AppCompatActivity {
     private ImageButton Rules;
 
     private ImageButton FullChart;
+    private ImageButton Downloadable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,8 +157,18 @@ public class NewUI_Learn extends AppCompatActivity {
 
         FullChart = findViewById(R.id.imgbtn_learn_chart);
         FullChart.setOnClickListener(v -> {
-            Intent Learn = new Intent(getApplicationContext(), Chart_Letters.class);
-            startActivity(Learn);
+            ClickSoundEffect();
+            animateButton(FullChart);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                Intent Learn = new Intent(getApplicationContext(), Chart_Letters.class);
+                startActivity(Learn);
+            }, 500);
+        });
+
+        Downloadable = findViewById(R.id.imgbtn_learn_dowanloadable);
+        Downloadable.setOnClickListener(v -> {
+//            Intent MainMenu = new Intent(getApplicationContext(), More.class);
+//            startActivity(MainMenu);
         });
 
     }
