@@ -7,6 +7,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
@@ -32,6 +33,8 @@ public class NewUI_Learn extends AppCompatActivity {
     private ImageButton Introduction;
     private ImageButton Characters;
     private ImageButton Rules;
+
+    private ImageButton FullChart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +147,15 @@ public class NewUI_Learn extends AppCompatActivity {
             }
 
             toggleVisibilityWithAnimation(hiddenButtons4Layout);
+        });
+
+
+
+
+        FullChart = findViewById(R.id.imgbtn_learn_chart);
+        FullChart.setOnClickListener(v -> {
+            Intent Learn = new Intent(getApplicationContext(), Chart_Letters.class);
+            startActivity(Learn);
         });
 
     }

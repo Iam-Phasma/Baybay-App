@@ -80,14 +80,6 @@ public class Chart_Chapters extends AppCompatActivity {
         View.OnClickListener buttonClickListener = v -> {
             ClickSoundEffect();
             animateButton(v);
-            new Handler().postDelayed(() -> {
-                Intent Chart = new Intent(getApplicationContext(), Chart_Letters.class);
-                //passing the clicked button value
-                Chart.putExtra("cycle", cycleselect);
-                startActivity(Chart);
-                overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_up);
-                finish();
-            }, 500);
 
             // Disable all buttons
             for (ImageButton button : buttons) {
@@ -95,6 +87,17 @@ public class Chart_Chapters extends AppCompatActivity {
             }
 
             ImgbtnExitChart.setEnabled(false);
+
+            new Handler().postDelayed(() -> {
+                Intent Chart = new Intent(getApplicationContext(), Chart_Letters.class);
+                //passing the clicked button value
+                Chart.putExtra("cycle", cycleselect);
+                startActivity(Chart);
+//                overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_up);
+                finish();
+            }, 500);
+
+
 
             // BACKGROUND MUSIC
             //======Z_SoundManager.setActivityLetterPaused(false);
@@ -148,9 +151,9 @@ public class Chart_Chapters extends AppCompatActivity {
         //Stop BG Music
         //=======Z_SoundManager.StopChartBgMusic();
 
-        Intent Chart = new Intent(getApplicationContext(), MainMenu.class);
+        Intent Chart = new Intent(getApplicationContext(), Chart_Letters.class);
         startActivity(Chart);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
     }
 

@@ -54,15 +54,15 @@ public class Chart_Letters extends AppCompatActivity {
         ImgbtnSeeAll.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(ImgbtnSeeAll);
-            ImgbtnSeeAll.setEnabled(false);
-            ImgbtnPrevious.setEnabled(false);
-            ImgbtnNext.setEnabled(false);
+//            ImgbtnSeeAll.setEnabled(false);
+//            ImgbtnPrevious.setEnabled(false);
+//            ImgbtnNext.setEnabled(false);
             //BACKGROUND MUSIC
             //=======Z_SoundManager.setActivityChapterPaused(false);
             new Handler().postDelayed(() -> {
                 Intent SeeAll = new Intent(getApplicationContext(), Chart_Chapters.class);
                 startActivity(SeeAll);
-                overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
+//                overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
                 finish();
             }, 500);
         });
@@ -123,11 +123,12 @@ public class Chart_Letters extends AppCompatActivity {
             //stop music
             //=======Z_SoundManager.StopChartBgMusic();
 
-            Intent ChartLetters = new Intent(getApplicationContext(), MainMenu.class);
-            startActivity(ChartLetters);
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//            Intent ChartLetters = new Intent(getApplicationContext(), MainMenu.class);
+//            startActivity(ChartLetters);
+//            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             finish();
         });
+
         ChartDeafult();
 
     }
@@ -364,9 +365,9 @@ public class Chart_Letters extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         cancelToast();
-        Intent ChartLetters = new Intent(getApplicationContext(), Chart_Chapters.class);
-        startActivity(ChartLetters);
-        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
+//        Intent ChartLetters = new Intent(getApplicationContext(), Chart_Chapters.class);
+//        startActivity(ChartLetters);
+//        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
         finish();
     }
 
