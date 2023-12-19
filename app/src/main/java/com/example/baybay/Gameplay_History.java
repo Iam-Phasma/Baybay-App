@@ -1,5 +1,8 @@
 package com.example.baybay;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +12,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
@@ -118,9 +122,9 @@ public class Gameplay_History extends AppCompatActivity {
 
         ImgbtnGameplayChangeViewMode = findViewById(R.id.imgbtn_gameplayhistory_changeviewmode);
         ImgbtnGameplayChangeViewMode.setOnClickListener(view -> {
+            animateButton(ImgbtnGameplayChangeViewMode);
             TvGameplayViewMode = findViewById(R.id.tv_gameplayhistory_viewmode);
             if (viewModeCount != 4){
-
                 if (viewModeCount == 1){
                     TvGameplayViewMode.setText("View Mode: Quiz");
                 } else if (viewModeCount == 2) {
@@ -133,9 +137,7 @@ public class Gameplay_History extends AppCompatActivity {
                 viewModeCount = 1;
                 TvGameplayViewMode.setText("View Mode: All");
             }
-
             updateRecyclerView();
-
         });
 
 
@@ -213,7 +215,31 @@ public class Gameplay_History extends AppCompatActivity {
         }
     }
 
+    // Method to animate the button click
+    private void animateButton(View view) {
+        // Create a scale animator to shrink the button
+        ObjectAnimator shrinkAnimator = ObjectAnimator.ofPropertyValuesHolder(
+                view,
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 1.0f, 0.9f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.0f, 0.9f)
+        );
+        shrinkAnimator.setDuration(200); // Set the duration of the shrink animation
 
+        // Create a scale animator to restore the button to its original size
+        ObjectAnimator restoreAnimator = ObjectAnimator.ofPropertyValuesHolder(
+                view,
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 0.9f, 1.0f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.9f, 1.0f)
+        );
+        restoreAnimator.setDuration(300); // Set the duration of the restore animation
+
+        // Set up the animator set to play the shrink and restore animations sequentially
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playSequentially(shrinkAnimator, restoreAnimator);
+
+        // Start the button click animation
+        animatorSet.start();
+    }
 
 
 

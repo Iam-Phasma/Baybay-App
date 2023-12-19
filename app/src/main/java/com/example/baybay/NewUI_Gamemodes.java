@@ -70,7 +70,9 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         GameHistory.setOnClickListener(v -> {
             animateButton(GameHistory);
             ClickSoundEffect();
+            GameHistory.setEnabled(false);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                GameHistory.setEnabled(true);
                 Intent Gamemodes = new Intent(getApplicationContext(), Gameplay_History.class);
                 startActivity(Gamemodes);
             }, 500);
@@ -81,8 +83,10 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         Progress = findViewById(R.id.imgbtn_gm_progress);
         Progress.setOnClickListener(v -> {
             animateButton(Progress);
+            animateButton(Progress);
             ClickSoundEffect();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                Progress.setEnabled(true);
                 Intent Gamemodes = new Intent(getApplicationContext(), LineGraph.class);
                 startActivity(Gamemodes);
             }, 500);
@@ -140,6 +144,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         // Start the button click animation
         animatorSet.start();
     }
+
     void ClickSoundEffect() {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {

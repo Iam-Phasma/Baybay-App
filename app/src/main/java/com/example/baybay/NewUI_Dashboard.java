@@ -183,9 +183,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         ImgbtnLearn = findViewById(R.id.imgbtn_learn);
         ImgbtnLearn.setOnClickListener(v -> {
+            ImgbtnLearn.setEnabled(false);
             ClickSoundEffect();
             animateButton(ImgbtnLearn);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                ImgbtnLearn.setEnabled(true);
                 Intent Dashboard = new Intent(getApplicationContext(), NewUI_Learn.class);
                 startActivity(Dashboard);
             }, 500);
@@ -193,9 +195,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         PlayGames = findViewById(R.id.imgbtn_playgames);
         PlayGames.setOnClickListener(v -> {
+            PlayGames.setEnabled(false);
             ClickSoundEffect();
             animateButton(PlayGames);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                PlayGames.setEnabled(true);
                 Intent Dashboard = new Intent(getApplicationContext(), NewUI_Gamemodes.class);
                 startActivity(Dashboard);
             }, 500);

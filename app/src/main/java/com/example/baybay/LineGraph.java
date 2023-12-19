@@ -2,10 +2,15 @@ package com.example.baybay;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -57,7 +62,21 @@ public class LineGraph extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
 
-        getWindow().setBackgroundDrawableResource(R.drawable.bg_graph2);
+        // Set the gradient background color
+        int singleColor = Color.parseColor("#FCF4E7");
+
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
+
+
 
 
         //View rootView = getWindow().getDecorView().getRootView();
@@ -190,10 +209,11 @@ public class LineGraph extends AppCompatActivity {
         averageGraph(this);
 
         final boolean[] isZoomedOut = {false};
-        Button GraphChartZoom = findViewById(R.id.graph_chart_zoom);
+        ImageButton GraphChartZoom = findViewById(R.id.graph_chart_zoom);
         GraphChartZoom.setOnClickListener(view -> {
             cancelToast();
             ClickSoundEffect();
+            animateButton(GraphChartZoom);
             if (isZoomedOut[0]) {
                 lineChart.zoom(4f, 1f, 0, 0);
                 isZoomedOut[0] = false;
@@ -207,10 +227,11 @@ public class LineGraph extends AppCompatActivity {
         });
 
         final AtomicInteger[] clickCount = {new AtomicInteger()};
-        Button GraphChartView = findViewById(R.id.graph_chart_view);
+        ImageButton GraphChartView = findViewById(R.id.graph_chart_view);
         GraphChartView.setOnClickListener(view -> {
             cancelToast();
             ClickSoundEffect();
+            animateButton(GraphChartView);
             clickCount[0].getAndIncrement();
 
             LineData newLineData = new LineData();
@@ -397,6 +418,32 @@ public class LineGraph extends AppCompatActivity {
             Z_SoundManager soundManager = new Z_SoundManager();
             soundManager.RegButtonClickSound(this);
         }
+    }
+
+    // Method to animate the button click
+    private void animateButton(View view) {
+        // Create a scale animator to shrink the button
+        ObjectAnimator shrinkAnimator = ObjectAnimator.ofPropertyValuesHolder(
+                view,
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 1.0f, 0.9f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.0f, 0.9f)
+        );
+        shrinkAnimator.setDuration(200); // Set the duration of the shrink animation
+
+        // Create a scale animator to restore the button to its original size
+        ObjectAnimator restoreAnimator = ObjectAnimator.ofPropertyValuesHolder(
+                view,
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 0.9f, 1.0f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.9f, 1.0f)
+        );
+        restoreAnimator.setDuration(300); // Set the duration of the restore animation
+
+        // Set up the animator set to play the shrink and restore animations sequentially
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playSequentially(shrinkAnimator, restoreAnimator);
+
+        // Start the button click animation
+        animatorSet.start();
     }
 
     @Override

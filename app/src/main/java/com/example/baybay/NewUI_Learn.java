@@ -161,7 +161,9 @@ public class NewUI_Learn extends AppCompatActivity {
         FullChart.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(FullChart);
+            FullChart.setEnabled(false);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                FullChart.setEnabled(true);
                 Intent Learn = new Intent(getApplicationContext(), Chart_Letters.class);
                 startActivity(Learn);
             }, 500);
@@ -171,8 +173,12 @@ public class NewUI_Learn extends AppCompatActivity {
         Downloadable.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(Downloadable);
-//            Intent MainMenu = new Intent(getApplicationContext(), More.class);
-//            startActivity(MainMenu);
+            Downloadable.setEnabled(false);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                Downloadable.setEnabled(true);
+//              Intent MainMenu = new Intent(getApplicationContext(), More.class);
+//              startActivity(MainMenu);
+            }, 500);
         });
 
     }

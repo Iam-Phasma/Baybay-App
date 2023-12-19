@@ -70,12 +70,11 @@ public class Chart_Letters extends AppCompatActivity {
         ImgbtnSeeAll.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(ImgbtnSeeAll);
-//            ImgbtnSeeAll.setEnabled(false);
-//            ImgbtnPrevious.setEnabled(false);
-//            ImgbtnNext.setEnabled(false);
+            ImgbtnSeeAll.setEnabled(false);
             //BACKGROUND MUSIC
             //=======Z_SoundManager.setActivityChapterPaused(false);
             new Handler().postDelayed(() -> {
+                ImgbtnSeeAll.setEnabled(true);
                 Intent SeeAll = new Intent(getApplicationContext(), Chart_Chapters.class);
                 startActivity(SeeAll);
 //                overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
