@@ -94,7 +94,7 @@ public class NewUi_Progress_Chart extends AppCompatActivity {
         ImgviewGraph_pb = findViewById(R.id.imgview_graph_pb);
         ImgviewGraph_pb.setOnClickListener(view -> {
             cancelToast();
-            globalToast= Toasty.info(NewUi_Progress_Chart.this, "Calculated by summing up a gameplay scores and dividing by the number of gameplay.", Toasty.LENGTH_LONG);
+            globalToast= Toasty.info(NewUi_Progress_Chart.this, "For a much more accurate result, play at least 10 of each game.", Toasty.LENGTH_LONG);
             globalToast.show();
         });
 
@@ -164,8 +164,6 @@ public class NewUi_Progress_Chart extends AppCompatActivity {
                 }
             }
         });
-
-
 
 
         LineDataSet dataSet1 = new LineDataSet(entries1, "QUIZ");
