@@ -77,8 +77,8 @@
             android:layout_marginStart="10dp"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="fitCenter"
-            android:src="@drawable/newui_gm_progress_button"
-            tools:src="@drawable/newui_gm_progress_button" />
+            android:src="@drawable/newui_gm_gamehistory_button"
+            tools:src="@drawable/newui_gm_gamehistory_button" />
 
         <ImageButton
             android:id="@+id/imgbtn_gm_progress"
@@ -87,8 +87,8 @@
             android:layout_marginEnd="10dp"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="fitCenter"
-            android:src="@drawable/newui_gm_gamehistory_button"
-            tools:src="@drawable/newui_gm_gamehistory_button" />
+            android:src="@drawable/newui_gm_progress_button"
+            tools:src="@drawable/newui_gm_progress_button" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView

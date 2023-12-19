@@ -6,10 +6,13 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -67,12 +70,22 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         GameHistory.setOnClickListener(v -> {
             animateButton(GameHistory);
             ClickSoundEffect();
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                Intent Gamemodes = new Intent(getApplicationContext(), Gameplay_History.class);
+                startActivity(Gamemodes);
+            }, 500);
         });
+
+
 
         Progress = findViewById(R.id.imgbtn_gm_progress);
         Progress.setOnClickListener(v -> {
             animateButton(Progress);
             ClickSoundEffect();
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                Intent Gamemodes = new Intent(getApplicationContext(), LineGraph.class);
+                startActivity(Gamemodes);
+            }, 500);
         });
 
 
@@ -88,7 +101,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         Z_ScoreManager scoreManager = Z_ScoreManager.getInstance(context);
 
         List<Integer> quizScoreList = scoreManager.getQuizScoreList();
-        List<Integer> spellScoreList = scoreManager.getQuizScoreList();
+        List<Integer> spellScoreList = scoreManager.getSpellScoreList();
         List<Integer> matchScoreList = scoreManager.getMatchScoreList();
 
         TextView QuizNoOfGame = findViewById(R.id.tv_gm_quiz_numberofgame);

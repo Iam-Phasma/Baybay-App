@@ -69,7 +69,7 @@ public class Chart_Letters extends AppCompatActivity {
         ImgbtnSeeAll = findViewById(R.id.imgbtn_seeall);
         ImgbtnSeeAll.setOnClickListener(v -> {
             ClickSoundEffect();
-            //animateButton(ImgbtnSeeAll);
+            animateButton(ImgbtnSeeAll);
 //            ImgbtnSeeAll.setEnabled(false);
 //            ImgbtnPrevious.setEnabled(false);
 //            ImgbtnNext.setEnabled(false);
@@ -313,16 +313,16 @@ public class Chart_Letters extends AppCompatActivity {
         // Create a scale animator to shrink the button
         ObjectAnimator shrinkAnimator = ObjectAnimator.ofPropertyValuesHolder(
                 view,
-                PropertyValuesHolder.ofFloat(View.SCALE_X, 1.0f, 0.7f),
-                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.0f, 0.7f)
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 1.0f, 0.9f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.0f, 0.9f)
         );
         shrinkAnimator.setDuration(200); // Set the duration of the shrink animation
 
         // Create a scale animator to restore the button to its original size
         ObjectAnimator restoreAnimator = ObjectAnimator.ofPropertyValuesHolder(
                 view,
-                PropertyValuesHolder.ofFloat(View.SCALE_X, 0.7f, 1.0f),
-                PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.7f, 1.0f)
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 0.9f, 1.0f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.9f, 1.0f)
         );
         restoreAnimator.setDuration(300); // Set the duration of the restore animation
 

@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
@@ -53,8 +56,23 @@ public class Gameplay_History extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
 
-        // Set the background to a drawable resource
-        getWindow().setBackgroundDrawableResource(R.drawable.bg_lessons3);
+        // Set the gradient background color
+        int singleColor = Color.parseColor("#FCF4E7");
+
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
+
+
+
+
 
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         loadGameplayList(sharedPreferences);
@@ -81,22 +99,22 @@ public class Gameplay_History extends AppCompatActivity {
             finish();
         });
 
-        ImageButton ImgbtnChart = findViewById(R.id.imgbtn_gameplayhistory_progressionchart);
-        ImgbtnChart.setOnClickListener(view -> {
-            Intent GameplayHistory = new Intent(getApplicationContext(), LineGraph.class);
-            Z_SoundManager.setActivityRulesPaused(true);
-            startActivity(GameplayHistory);
-        });
+//        ImageButton ImgbtnChart = findViewById(R.id.imgbtn_gameplayhistory_progressionchart);
+//        ImgbtnChart.setOnClickListener(view -> {
+//            Intent GameplayHistory = new Intent(getApplicationContext(), LineGraph.class);
+//            Z_SoundManager.setActivityRulesPaused(true);
+//            startActivity(GameplayHistory);
+//        });
+//
+//        TvprogressionChart = findViewById(R.id.tv_history_progressionchart);
+//        TvprogressionChart.setOnClickListener(view -> {
+//            ImgbtnChart.performClick();
+//        });
 
-        TvprogressionChart = findViewById(R.id.tv_history_progressionchart);
-        TvprogressionChart.setOnClickListener(view -> {
-            ImgbtnChart.performClick();
-        });
-
-        TvGamelayChangeViewMode = findViewById(R.id.tv_gameplayhistory_viewmode);
-        TvGamelayChangeViewMode.setOnClickListener(view -> {
-            ImgbtnGameplayChangeViewMode.performClick();
-        });
+//        TvGamelayChangeViewMode = findViewById(R.id.tv_gameplayhistory_viewmode);
+//        TvGamelayChangeViewMode.setOnClickListener(view -> {
+//            ImgbtnGameplayChangeViewMode.performClick();
+//        });
 
         ImgbtnGameplayChangeViewMode = findViewById(R.id.imgbtn_gameplayhistory_changeviewmode);
         ImgbtnGameplayChangeViewMode.setOnClickListener(view -> {
@@ -104,16 +122,16 @@ public class Gameplay_History extends AppCompatActivity {
             if (viewModeCount != 4){
 
                 if (viewModeCount == 1){
-                    TvGameplayViewMode.setText("View: Quiz");
+                    TvGameplayViewMode.setText("View Mode: Quiz");
                 } else if (viewModeCount == 2) {
-                    TvGameplayViewMode.setText("View: Match");
+                    TvGameplayViewMode.setText("View Mode: Match");
                 }else if (viewModeCount == 3) {
-                    TvGameplayViewMode.setText("View: Spell");
+                    TvGameplayViewMode.setText("View Mode: Spell");
                 }
                 viewModeCount++;
             }else{
                 viewModeCount = 1;
-                TvGameplayViewMode.setText("View: All");
+                TvGameplayViewMode.setText("View Mode: All");
             }
 
             updateRecyclerView();
@@ -161,16 +179,16 @@ public class Gameplay_History extends AppCompatActivity {
 
         for (Gameplay gameplay : gameplaysList) {
             if (viewModeCount == 1) {
-                TvGameplayViewMode.setText("View: All");
+                TvGameplayViewMode.setText("View Mode: All");
                 filteredList.add(gameplay); // Show all items
             } else if (viewModeCount == 2 && isFilterApplied && gameplay.getGameplay().contains("QUIZ")) {
-                TvGameplayViewMode.setText("View: Quiz");
+                TvGameplayViewMode.setText("View Mode: Quiz");
                 filteredList.add(gameplay); // Show items containing "QUIZ"
             } else if (viewModeCount == 3 && isFilterApplied && gameplay.getGameplay().contains("MATCH")) {
-                TvGameplayViewMode.setText("View: Match");
+                TvGameplayViewMode.setText("View Mode: Match");
                 filteredList.add(gameplay); // Show items containing "MATCH"
             } else if (viewModeCount == 4 && isFilterApplied && gameplay.getGameplay().contains("SPELL")) {
-                TvGameplayViewMode.setText("View: Spell");
+                TvGameplayViewMode.setText("View Mode: Spell");
                 filteredList.add(gameplay); // Show items containing "SPELL"
             }
         }
