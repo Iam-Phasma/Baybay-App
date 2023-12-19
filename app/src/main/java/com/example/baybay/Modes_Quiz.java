@@ -219,26 +219,26 @@ public class Modes_Quiz extends AppCompatActivity {
                 }, 500);
             });
 
-            ImgbtnHome = dlg.findViewById(R.id.imgbtnHome);
-            ImgbtnHome.setOnClickListener(v14 -> {
-                disablePauseMenuButtons();
-                stopTimer();
-                ClickSoundEffect();
-                animateButton(ImgbtnHome);
-                new Handler().postDelayed(() -> {
-                    //Stop BG Music
-                    Z_SoundManager soundManager = new Z_SoundManager();
-                    soundManager.StopGamesBackgroundMusic();
-
-                    dlg.dismiss();
-                    Intent Quiz = new Intent(getApplicationContext(), MainMenu.class);
-                    startActivity(Quiz);
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                    //Quiz.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    //Quiz.setFlags((Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                    finish();
-                }, 500);
-            });
+//            ImgbtnHome = dlg.findViewById(R.id.imgbtnHome);
+//            ImgbtnHome.setOnClickListener(v14 -> {
+//                disablePauseMenuButtons();
+//                stopTimer();
+//                ClickSoundEffect();
+//                animateButton(ImgbtnHome);
+//                new Handler().postDelayed(() -> {
+//                    //Stop BG Music
+//                    Z_SoundManager soundManager = new Z_SoundManager();
+//                    soundManager.StopGamesBackgroundMusic();
+//
+//                    dlg.dismiss();
+//                    Intent Quiz = new Intent(getApplicationContext(), MainMenu.class);
+//                    startActivity(Quiz);
+//                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//                    //Quiz.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                    //Quiz.setFlags((Intent.FLAG_ACTIVITY_CLEAR_TOP));
+//                    finish();
+//                }, 500);
+//            });
 
         });
     }
@@ -248,7 +248,7 @@ public class Modes_Quiz extends AppCompatActivity {
         ImgbtnResume.setEnabled(false);
         ImgbtnRetry.setEnabled(false);
         ImgbtnQuit.setEnabled(false);
-        ImgbtnHome.setEnabled(false);
+        //ImgbtnHome.setEnabled(false);
     }
 
 //    public void enablePauseMenuButtons(){
@@ -871,9 +871,9 @@ public class Modes_Quiz extends AppCompatActivity {
     }
 
     private void exitQuizActivity(){
-        Intent Quiz = new Intent(getApplicationContext(), Modes.class);
-        startActivity(Quiz);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        //Intent Quiz = new Intent(getApplicationContext(), NewUI_Gamemodes.class);
+        //startActivity(Quiz);
+        //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         //Quiz.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         //Quiz.setFlags((Intent.FLAG_ACTIVITY_CLEAR_TOP));
         finish();

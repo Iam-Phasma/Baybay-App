@@ -114,39 +114,39 @@ public class MainMenu extends AppCompatActivity {
 
 
         //Play button
-        ImgbtnDrills = findViewById(R.id.imgbtn_play);
-        ImgbtnDrills.setOnClickListener(v -> {
-            disableMainMenuButtons();
-            ClickSoundEffect();
-            animateButton(ImgbtnDrills);
-            handler.postDelayed(() -> {
-                Intent MainMenu = new Intent(getApplicationContext(), Modes.class);
-                startActivity(MainMenu);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                //MainMenu.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                //MainMenu.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                finish();
-            }, 500);
-            //BACKGROUND MUSIC
-            Z_SoundManager.setActivityModesPaused(false);
-        });
+//        ImgbtnDrills = findViewById(R.id.imgbtn_play);
+//        ImgbtnDrills.setOnClickListener(v -> {
+//            disableMainMenuButtons();
+//            ClickSoundEffect();
+//            animateButton(ImgbtnDrills);
+//            handler.postDelayed(() -> {
+//                Intent MainMenu = new Intent(getApplicationContext(), Modes.class);
+//                startActivity(MainMenu);
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//                //MainMenu.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                //MainMenu.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                finish();
+//            }, 500);
+//            //BACKGROUND MUSIC
+//            Z_SoundManager.setActivityModesPaused(false);
+//        });
 
         //Chart button
-        ImgbtnChart = findViewById(R.id.imgbtn_chart);
-        ImgbtnChart.setOnClickListener(v -> {
-            disableMainMenuButtons();
-            ClickSoundEffect();
-            animateButton(ImgbtnChart);
-            handler.postDelayed(() -> {
-//                Intent MainMenu = new Intent(getApplicationContext(), Chart_Letters.class);
-//                startActivity(MainMenu);
-                //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                //MainMenu.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                //MainMenu.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                finish();
-            }, 500);
-
-        });
+//        ImgbtnChart = findViewById(R.id.imgbtn_chart);
+//        ImgbtnChart.setOnClickListener(v -> {
+//            disableMainMenuButtons();
+//            ClickSoundEffect();
+//            animateButton(ImgbtnChart);
+//            handler.postDelayed(() -> {
+////                Intent MainMenu = new Intent(getApplicationContext(), Chart_Letters.class);
+////                startActivity(MainMenu);
+//                //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//                //MainMenu.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                //MainMenu.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+////                finish();
+//            }, 500);
+//
+//        });
 
         //Guide button
         ImgbtnGuide = findViewById(R.id.imgbtn_guide);

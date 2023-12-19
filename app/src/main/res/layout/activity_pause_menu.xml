@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="500dp"
     android:layout_gravity="center"
@@ -9,51 +10,49 @@
     android:backgroundTintMode="screen"
     android:layout_margin="20dp">
 
-    <ImageButton
-        android:id="@+id/imgbtnQuit"
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="88dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="@+id/imgbtnRetry"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imgbtnRetry"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtnRetry"
-        app:srcCompat="@drawable/pause_quit" />
-
-    <ImageButton
-        android:id="@+id/imgbtnHome"
-        android:layout_width="0dp"
-        android:layout_height="88dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="@+id/imgbtnQuit"
-        app:layout_constraintStart_toStartOf="@+id/imgbtnQuit"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtnQuit"
-        app:srcCompat="@drawable/pause_home" />
-
-    <ImageButton
-        android:id="@+id/imgbtnResume"
-        android:layout_width="200dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="100dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="fitCenter"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pause_resume" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/imgbtnRetry"
-        android:layout_width="200dp"
-        android:layout_height="88dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtnResume"
-        app:srcCompat="@drawable/pause_retry" />
+        <ImageButton
+            android:id="@+id/imgbtnResume"
+            android:layout_width="200dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/pause_resume" />
+
+        <ImageButton
+            android:id="@+id/imgbtnRetry"
+            android:layout_width="200dp"
+            android:layout_height="88dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/pause_retry" />
+
+        <ImageButton
+            android:id="@+id/imgbtnQuit"
+            android:layout_width="200dp"
+            android:layout_height="88dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/pause_quit" />
+
+        <ImageButton
+            android:id="@+id/imgbtnHome"
+            android:layout_width="0dp"
+            android:layout_height="88dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            app:srcCompat="@drawable/pause_home" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

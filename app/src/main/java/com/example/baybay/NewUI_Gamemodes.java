@@ -1,10 +1,12 @@
 package com.example.baybay;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,16 +18,32 @@ import android.os.Looper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 public class NewUI_Gamemodes extends AppCompatActivity {
 
+    int GametoPlay = 0;
+    int difficulty = 0;
+
+
+
     private ImageButton GamemodesExit;
     private ImageButton GameHistory;
     private ImageButton Progress;
+    private ImageView Quiz;
+    private ImageView Spelling;
+    private ImageView Matching;
+    public ImageView ImgviewModeSlectedboard;
+    private ImageButton ImgbtnSelectionstart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +84,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
             finish();
         });
 
-        GameHistory = findViewById(R.id.imgbtn_gm_gamehistory);
+        GameHistory = findViewById(R.id.imgbtn_gm_selectionback);
         GameHistory.setOnClickListener(v -> {
             animateButton(GameHistory);
             ClickSoundEffect();
@@ -78,9 +96,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
             }, 500);
         });
 
-
-
-        Progress = findViewById(R.id.imgbtn_gm_progress);
+        Progress = findViewById(R.id.imgbtn_gm_advanced);
         Progress.setOnClickListener(v -> {
             animateButton(Progress);
             animateButton(Progress);
@@ -92,13 +108,154 @@ public class NewUI_Gamemodes extends AppCompatActivity {
             }, 500);
         });
 
-
-
-
-
-
-
         noOfGameplay(this);
+
+        Quiz = findViewById(R.id.imgview_quiz);
+        Quiz.setOnClickListener(v -> {
+            GametoPlay = 1;
+            openDialogGameSelection();
+        });
+
+        Spelling = findViewById(R.id.imgview_spelling);
+        Spelling.setOnClickListener(v -> {
+            GametoPlay = 2;
+            openDialogGameSelection();
+        });
+
+        Matching = findViewById(R.id.imgview_matching);
+        Matching.setOnClickListener(v -> {
+            GametoPlay = 3;
+            openDialogGameSelection();
+        });
+
+
+    }
+
+    private void openDialogGameSelection(){
+        Dialog dlg;
+        dlg = new Dialog(NewUI_Gamemodes.this, R.style.PopupDialog);
+        dlg.setCanceledOnTouchOutside(false);  //disable dialog dismiss when touch outside
+        dlg.setContentView(R.layout.activity_newui_gamemodes);
+        dlg.show();
+
+        View dialogWindowView = dlg.getWindow().getDecorView();
+        Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+
+        //Dismiss dialog when view is clicked
+        ConstraintLayout ConstraintLayoutSnapshot = dlg.findViewById(R.id.constraintlayout_gamemodeselection);
+        ConstraintLayoutSnapshot.setOnClickListener(v -> {
+            dlg.dismiss(); // Close the dialog
+        });
+
+        //Dismiss dialog when clicked outside the layout
+        dialogWindowView.setOnClickListener(v -> {
+            dlg.dismiss(); // Close the dialog
+        });
+
+        ImgviewModeSlectedboard = dlg.findViewById(R.id.imgview_mode_selectedboard);
+
+        if (GametoPlay == 1){
+            ImgviewModeSlectedboard.setImageResource(R.drawable.newui_gm_g1selected);
+        }else if (GametoPlay == 2){
+            ImgviewModeSlectedboard.setImageResource(R.drawable.newui_gm_g2selected);
+        }else if (GametoPlay == 3){
+            ImgviewModeSlectedboard.setImageResource(R.drawable.newui_gm_g3selected);
+        }
+
+        //Close dialog reminder
+        TextView TvSelectionBackreminder = dlg.findViewById(R.id.tv_gm_selection_backreminder);
+        Animation fadeInAnimation = createContinuousFadeInAnimation();
+        TvSelectionBackreminder.setVisibility(View.INVISIBLE);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            TvSelectionBackreminder.startAnimation(fadeInAnimation);
+            TvSelectionBackreminder.setVisibility(View.VISIBLE);
+        }, 1000);
+
+
+        //Textview difficulty reminder
+        TextView TvDifficultySelected = dlg.findViewById(R.id.tv_difficulty_selected);
+
+        ImageButton ImgbtnGamemodeClassic = dlg.findViewById(R.id.imgbtn_gm_selectionback);
+        ImageButton ImgbtnGamemodeAdvanced = dlg.findViewById(R.id.imgbtn_gm_advanced);
+
+        difficulty = 1;
+        ImgbtnGamemodeClassic.setOnClickListener(v -> {
+            ImgbtnGamemodeClassic.setImageResource(R.drawable.newui_gm_classic_sel);
+            ImgbtnGamemodeAdvanced.setImageResource(R.drawable.newui_gm_advanced_unsel);
+            TvDifficultySelected.setText("Selected: Classic");
+
+            difficulty = 1;
+        });
+
+        ImgbtnGamemodeAdvanced.setOnClickListener(v -> {
+            ImgbtnGamemodeClassic.setImageResource(R.drawable.newui_gm_classic_unsel);
+            ImgbtnGamemodeAdvanced.setImageResource(R.drawable.newui_gm_advanced_sel);
+            TvDifficultySelected.setText("Selected: Advanced");
+
+            difficulty = 2;
+        });
+
+        ImgbtnSelectionstart = dlg.findViewById(R.id.imgbtn_gm_selectionstart);
+        ImgbtnSelectionstart.setOnClickListener(v -> {
+            //Toast.makeText(NewUI_Gamemodes.this, String.valueOf(GametoPlay + " " + difficulty), Toast.LENGTH_SHORT).show();
+
+            if (GametoPlay == 1){
+                Intent Gamemodes = new Intent(getApplicationContext(), Modes_Quiz.class);
+                Gamemodes.putExtra("DIFFICULTY", difficulty);
+                startActivity(Gamemodes);
+                dlg.dismiss();
+                //finish();
+            } else if (GametoPlay == 2) {
+                Intent Gamemodes = new Intent(getApplicationContext(), Modes_Spell.class);
+                Gamemodes.putExtra("DIFFICULTY", difficulty);
+                startActivity(Gamemodes);
+                dlg.dismiss();
+                //finish();
+            } else if (GametoPlay == 3) {
+                Intent Gamemodes = new Intent(getApplicationContext(), Modes_Matching.class);
+                Gamemodes.putExtra("DIFFICULTY", difficulty);
+                startActivity(Gamemodes);
+                dlg.dismiss();
+                //finish();
+            }
+
+        });
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private Animation createContinuousFadeInAnimation() {
+        // Create a continuous fade-in animation
+        AlphaAnimation fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setDuration(1000); // Set the duration of the fade-in animation in milliseconds
+        fadeIn.setInterpolator(new LinearInterpolator()); // Use a linear interpolator
+        fadeIn.setRepeatMode(Animation.REVERSE); // Reverse the animation when it reaches the end
+        fadeIn.setRepeatCount(Animation.INFINITE); // Repeat indefinitely
+
+        return fadeIn;
     }
 
     private void noOfGameplay(Context context){

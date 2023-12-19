@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nestedScrollView5">
 
         <ImageButton
-            android:id="@+id/imgbtn_gm_gamehistory"
+            android:id="@+id/imgbtn_gm_selectionback"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -81,7 +81,7 @@
             tools:src="@drawable/newui_gm_gamehistory_button" />
 
         <ImageButton
-            android:id="@+id/imgbtn_gm_progress"
+            android:id="@+id/imgbtn_gm_advanced"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView55"
+                android:id="@+id/imgview_quiz"
                 android:layout_width="300dp"
                 android:layout_height="225dp"
                 android:layout_marginTop="10dp"
@@ -129,11 +129,11 @@
                 android:text="0"
                 android:textColor="#050505"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView55"
-                app:layout_constraintEnd_toEndOf="@+id/imageView55"
+                app:layout_constraintBottom_toBottomOf="@+id/imgview_quiz"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_quiz"
                 app:layout_constraintHorizontal_bias="0.301"
-                app:layout_constraintStart_toStartOf="@+id/imageView55"
-                app:layout_constraintTop_toTopOf="@+id/imageView55"
+                app:layout_constraintStart_toStartOf="@+id/imgview_quiz"
+                app:layout_constraintTop_toTopOf="@+id/imgview_quiz"
                 app:layout_constraintVertical_bias="0.82" />
 
             <TextView
@@ -144,15 +144,15 @@
                 android:text="20"
                 android:textColor="#050505"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView55"
-                app:layout_constraintEnd_toEndOf="@+id/imageView55"
+                app:layout_constraintBottom_toBottomOf="@+id/imgview_quiz"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_quiz"
                 app:layout_constraintHorizontal_bias="0.714"
-                app:layout_constraintStart_toStartOf="@+id/imageView55"
-                app:layout_constraintTop_toTopOf="@+id/imageView55"
+                app:layout_constraintStart_toStartOf="@+id/imgview_quiz"
+                app:layout_constraintTop_toTopOf="@+id/imgview_quiz"
                 app:layout_constraintVertical_bias="0.82" />
 
             <ImageView
-                android:id="@+id/imageView56"
+                android:id="@+id/imgview_spelling"
                 android:layout_width="300dp"
                 android:layout_height="225dp"
                 android:layout_marginTop="30dp"
@@ -160,7 +160,7 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView55"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_quiz"
                 app:srcCompat="@drawable/newui_gm_g2_button"
                 tools:srcCompat="@drawable/newui_gm_g2_button" />
 
@@ -172,11 +172,11 @@
                 android:text="0"
                 android:textColor="#050505"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView56"
-                app:layout_constraintEnd_toEndOf="@+id/imageView56"
+                app:layout_constraintBottom_toBottomOf="@+id/imgview_spelling"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_spelling"
                 app:layout_constraintHorizontal_bias="0.301"
-                app:layout_constraintStart_toStartOf="@+id/imageView56"
-                app:layout_constraintTop_toTopOf="@+id/imageView56"
+                app:layout_constraintStart_toStartOf="@+id/imgview_spelling"
+                app:layout_constraintTop_toTopOf="@+id/imgview_spelling"
                 app:layout_constraintVertical_bias="0.8" />
 
             <TextView
@@ -187,15 +187,15 @@
                 android:text="10"
                 android:textColor="#050505"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView56"
-                app:layout_constraintEnd_toEndOf="@+id/imageView56"
+                app:layout_constraintBottom_toBottomOf="@+id/imgview_spelling"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_spelling"
                 app:layout_constraintHorizontal_bias="0.714"
-                app:layout_constraintStart_toStartOf="@+id/imageView56"
-                app:layout_constraintTop_toTopOf="@+id/imageView56"
+                app:layout_constraintStart_toStartOf="@+id/imgview_spelling"
+                app:layout_constraintTop_toTopOf="@+id/imgview_spelling"
                 app:layout_constraintVertical_bias="0.83" />
 
             <ImageView
-                android:id="@+id/imageView57"
+                android:id="@+id/imgview_matching"
                 android:layout_width="300dp"
                 android:layout_height="225dp"
                 android:layout_marginTop="30dp"
@@ -203,7 +203,7 @@
                 android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView56"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_spelling"
                 app:srcCompat="@drawable/newui_gm_g3_button"
                 tools:srcCompat="@drawable/newui_gm_g3_button" />
 
@@ -215,11 +215,11 @@
                 android:text="0"
                 android:textColor="#050505"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView57"
-                app:layout_constraintEnd_toEndOf="@+id/imageView57"
+                app:layout_constraintBottom_toBottomOf="@+id/imgview_matching"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_matching"
                 app:layout_constraintHorizontal_bias="0.301"
-                app:layout_constraintStart_toStartOf="@+id/imageView57"
-                app:layout_constraintTop_toTopOf="@+id/imageView57"
+                app:layout_constraintStart_toStartOf="@+id/imgview_matching"
+                app:layout_constraintTop_toTopOf="@+id/imgview_matching"
                 app:layout_constraintVertical_bias="0.83" />
 
             <TextView
@@ -230,11 +230,11 @@
                 android:text="20"
                 android:textColor="#050505"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView57"
-                app:layout_constraintEnd_toEndOf="@+id/imageView57"
+                app:layout_constraintBottom_toBottomOf="@+id/imgview_matching"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_matching"
                 app:layout_constraintHorizontal_bias="0.742"
-                app:layout_constraintStart_toStartOf="@+id/imageView57"
-                app:layout_constraintTop_toTopOf="@+id/imageView57"
+                app:layout_constraintStart_toStartOf="@+id/imgview_matching"
+                app:layout_constraintTop_toTopOf="@+id/imgview_matching"
                 app:layout_constraintVertical_bias="0.81" />
 
             <ImageView
@@ -242,11 +242,11 @@
                 android:layout_width="21dp"
                 android:layout_height="76dp"
                 android:rotation="5"
-                app:layout_constraintBottom_toTopOf="@+id/imageView56"
-                app:layout_constraintEnd_toEndOf="@+id/imageView55"
+                app:layout_constraintBottom_toTopOf="@+id/imgview_spelling"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_quiz"
                 app:layout_constraintHorizontal_bias="0.534"
-                app:layout_constraintStart_toStartOf="@+id/imageView55"
-                app:layout_constraintTop_toBottomOf="@+id/imageView55"
+                app:layout_constraintStart_toStartOf="@+id/imgview_quiz"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_quiz"
                 app:layout_constraintVertical_bias="0.478"
                 app:srcCompat="@drawable/newui_gm_ribbon_button"
                 tools:srcCompat="@drawable/newui_gm_ribbon_button" />
@@ -257,8 +257,8 @@
                 android:layout_height="76dp"
                 android:rotation="50"
                 android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="@+id/imageView55"
-                app:layout_constraintEnd_toEndOf="@+id/imageView55"
+                app:layout_constraintBottom_toTopOf="@+id/imgview_quiz"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_quiz"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.37"
                 app:srcCompat="@drawable/newui_gm_ribbon_button"
@@ -270,8 +270,8 @@
                 android:layout_height="76dp"
                 android:rotation="-40"
                 android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="@+id/imageView55"
-                app:layout_constraintStart_toStartOf="@+id/imageView55"
+                app:layout_constraintBottom_toTopOf="@+id/imgview_quiz"
+                app:layout_constraintStart_toStartOf="@+id/imgview_quiz"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/newui_gm_ribbon_button"
                 tools:srcCompat="@drawable/newui_gm_ribbon_button" />
@@ -281,11 +281,11 @@
                 android:layout_width="21dp"
                 android:layout_height="76dp"
                 android:rotation="-7"
-                app:layout_constraintBottom_toTopOf="@+id/imageView57"
-                app:layout_constraintEnd_toEndOf="@+id/imageView56"
+                app:layout_constraintBottom_toTopOf="@+id/imgview_matching"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_spelling"
                 app:layout_constraintHorizontal_bias="0.534"
-                app:layout_constraintStart_toStartOf="@+id/imageView56"
-                app:layout_constraintTop_toBottomOf="@+id/imageView56"
+                app:layout_constraintStart_toStartOf="@+id/imgview_spelling"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_spelling"
                 app:srcCompat="@drawable/newui_gm_ribbon_button"
                 tools:srcCompat="@drawable/newui_gm_ribbon_button" />
 
@@ -296,10 +296,10 @@
                 android:layout_marginTop="-50dp"
                 android:rotation="-7"
                 android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="@+id/imageView57"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_matching"
                 app:layout_constraintHorizontal_bias="0.534"
-                app:layout_constraintStart_toStartOf="@+id/imageView57"
-                app:layout_constraintTop_toBottomOf="@+id/imageView57"
+                app:layout_constraintStart_toStartOf="@+id/imgview_matching"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_matching"
                 app:srcCompat="@drawable/newui_gm_ribbon_button"
                 tools:srcCompat="@drawable/newui_gm_ribbon_button" />
 

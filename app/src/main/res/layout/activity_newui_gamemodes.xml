@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintlayout_gamemodeselection"
+    android:layout_width="370dp"
+    android:layout_height="650dp"
+    android:layout_gravity="center"
+    android:layout_margin="0dp"
+    android:backgroundTint="@android:color/transparent"
+    android:backgroundTintMode="screen">
+
+    <ImageView
+        android:id="@+id/imgview_mode_selectedboard"
+        android:layout_width="320dp"
+        android:layout_height="140dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24000001"
+        app:srcCompat="@drawable/newui_gm_g1selected"
+        tools:srcCompat="@drawable/newui_gm_g1selected" />
+
+    <ImageView
+        android:id="@+id/imgview_quiz3"
+        android:layout_width="300dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgview_mode_selectedboard"
+        app:srcCompat="@drawable/newui_gm_difficultyselectionboard"
+        tools:srcCompat="@drawable/newui_gm_difficultyselectionboard" />
+
+    <TextView
+        android:id="@+id/tv_difficulty_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Selected: Classic"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/imgview_quiz3"
+        app:layout_constraintTop_toTopOf="@+id/imgview_quiz3" />
+
+    <TextView
+        android:id="@+id/tv_gm_selection_backreminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Click anywhere to close dialog."
+        android:textColor="#FFF0F0"
+        android:textSize="14sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/imgview_quiz3"
+        app:layout_constraintEnd_toEndOf="@+id/imgview_quiz3"
+        app:layout_constraintStart_toStartOf="@+id/imgview_quiz3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_difficulty_selected">
+
+        <ImageButton
+            android:id="@+id/imgbtn_gm_selectionback"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/newui_gm_classic_sel"
+            tools:src="@drawable/newui_gm_classic_sel" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_gm_advanced"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/newui_gm_advanced_unsel"
+            tools:src="@drawable/newui_gm_advanced_unsel" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/imgview_quiz3"
+        app:layout_constraintStart_toStartOf="@+id/imgview_quiz3"
+        app:layout_constraintTop_toBottomOf="@+id/imgview_quiz3">
+
+        <ImageButton
+            android:id="@+id/imgbtn_gm_selectionexit"
+            android:layout_width="165dp"
+            android:layout_height="75dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/newui_gm_back_button"
+            android:visibility="gone"
+            tools:src="@drawable/newui_gm_back_button" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_gm_selectionstart"
+            android:layout_width="165dp"
+            android:layout_height="75dp"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/newui_gm_start_button"
+            tools:src="@drawable/newui_gm_start_button" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

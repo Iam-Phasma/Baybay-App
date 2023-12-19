@@ -55,7 +55,6 @@
                     android:layout_width="250dp"
                     android:layout_height="80dp"
                     android:backgroundTint="#00FFFFFF"
-                    android:clickable="true"
                     android:focusable="true"
                     android:scaleType="fitCenter"
                     app:layout_constraintEnd_toEndOf="parent"

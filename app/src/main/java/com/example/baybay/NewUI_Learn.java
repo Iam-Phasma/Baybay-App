@@ -157,7 +157,7 @@ public class NewUI_Learn extends AppCompatActivity {
 
 
 
-        FullChart = findViewById(R.id.imgbtn_gm_progress);
+        FullChart = findViewById(R.id.imgbtn_gm_advanced);
         FullChart.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(FullChart);
@@ -169,7 +169,7 @@ public class NewUI_Learn extends AppCompatActivity {
             }, 500);
         });
 
-        Downloadable = findViewById(R.id.imgbtn_gm_gamehistory);
+        Downloadable = findViewById(R.id.imgbtn_gm_selectionback);
         Downloadable.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(Downloadable);

@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nestedScrollView3">
 
         <ImageButton
-            android:id="@+id/imgbtn_gm_gamehistory"
+            android:id="@+id/imgbtn_gm_selectionback"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -82,7 +82,7 @@
             tools:src="@drawable/newui_downloadable_button" />
 
         <ImageButton
-            android:id="@+id/imgbtn_gm_progress"
+            android:id="@+id/imgbtn_gm_advanced"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
