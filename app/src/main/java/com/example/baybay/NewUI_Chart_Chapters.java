@@ -16,7 +16,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Chart_Chapters extends AppCompatActivity {
+public class NewUI_Chart_Chapters extends AppCompatActivity {
 
     ImageButton ImgbtnExitChart;
     ImageButton Imgkudlit, ImgA, ImgB, ImgK, ImgD, ImgE, ImgG, ImgH, ImgI, ImgL, ImgM, ImgN, ImgNG, ImgO, ImgP, ImgR, ImgS, ImgT, ImgU, ImgW, ImgY;
@@ -34,7 +34,7 @@ public class Chart_Chapters extends AppCompatActivity {
         //Do not sleep when the app is open
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        setContentView(R.layout.activity_chart);
+        setContentView(R.layout.activity_new_ui_chart);
 
         //Fullscreen beyond punch hole camera
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -106,7 +106,7 @@ public class Chart_Chapters extends AppCompatActivity {
             ImgbtnExitChart.setEnabled(false);
 
             new Handler().postDelayed(() -> {
-                Intent Chart = new Intent(getApplicationContext(), Chart_Letters.class);
+                Intent Chart = new Intent(getApplicationContext(), NewUI_Chart_Letters.class);
                 //passing the clicked button value
                 Chart.putExtra("cycle", cycleselect);
                 startActivity(Chart);
@@ -168,7 +168,7 @@ public class Chart_Chapters extends AppCompatActivity {
         //Stop BG Music
         //=======Z_SoundManager.StopChartBgMusic();
 
-        Intent Chart = new Intent(getApplicationContext(), Chart_Letters.class);
+        Intent Chart = new Intent(getApplicationContext(), NewUI_Chart_Letters.class);
         startActivity(Chart);
 //        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();

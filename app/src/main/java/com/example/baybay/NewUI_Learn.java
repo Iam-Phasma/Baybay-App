@@ -164,12 +164,12 @@ public class NewUI_Learn extends AppCompatActivity {
             FullChart.setEnabled(false);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 FullChart.setEnabled(true);
-                Intent Learn = new Intent(getApplicationContext(), Chart_Letters.class);
+                Intent Learn = new Intent(getApplicationContext(), NewUI_Chart_Letters.class);
                 startActivity(Learn);
             }, 500);
         });
 
-        Downloadable = findViewById(R.id.imgbtn_gm_selectionback);
+        Downloadable = findViewById(R.id.imgbtn_gameplayhistory_reset);
         Downloadable.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(Downloadable);

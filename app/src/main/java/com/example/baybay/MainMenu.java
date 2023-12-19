@@ -227,7 +227,7 @@ public class MainMenu extends AppCompatActivity {
                 Dialog dlg;
                 dlg = new Dialog(MainMenu.this, R.style.PopupDialog);
                 dlg.setCanceledOnTouchOutside(false);  //disable dialog dismiss when touch outside
-                dlg.setContentView(R.layout.activity_sound);
+                dlg.setContentView(R.layout.activity_new_ui_sound);
                 dlg.show();
 
                 View dialogWindowView = dlg.getWindow().getDecorView();

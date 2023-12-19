@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -37,7 +36,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import es.dmoral.toasty.Toasty;
 
-public class LineGraph extends AppCompatActivity {
+public class NewUi_Progress_Chart extends AppCompatActivity {
     private Toast globalToast;
     ImageButton imgbtnGrapghExit;
     ImageView ImgviewGraph_pb;
@@ -55,7 +54,7 @@ public class LineGraph extends AppCompatActivity {
         //Do not sleep when the app is open
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        setContentView(R.layout.activity_line_chart);
+        setContentView(R.layout.activity_new_ui_progress_chart);
 
         //Fullscreen beyond punch hole camera
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -95,7 +94,7 @@ public class LineGraph extends AppCompatActivity {
         ImgviewGraph_pb = findViewById(R.id.imgview_graph_pb);
         ImgviewGraph_pb.setOnClickListener(view -> {
             cancelToast();
-            globalToast= Toasty.info(LineGraph.this, "Calculated by summing up a gameplay scores and dividing by the number of gameplay.", Toasty.LENGTH_LONG);
+            globalToast= Toasty.info(NewUi_Progress_Chart.this, "Calculated by summing up a gameplay scores and dividing by the number of gameplay.", Toasty.LENGTH_LONG);
             globalToast.show();
         });
 
@@ -139,7 +138,7 @@ public class LineGraph extends AppCompatActivity {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xValues));
         xAxis.setGranularity(1f);
-        xAxis.setTextColor(Color.WHITE); // __
+        xAxis.setTextColor(Color.DKGRAY); // __
         //xAxis.setDrawGridLines(false);
         xAxis.setLabelCount(10);
         //xAxis.setAxisMinimum(6);
@@ -152,7 +151,7 @@ public class LineGraph extends AppCompatActivity {
         yAxis.setAxisLineColor(Color.GRAY);
         yAxis.setLabelCount(10);
         yAxis.enableGridDashedLine(20f, 10f, 0f);
-        yAxis.setTextColor(Color.WHITE); // |
+        yAxis.setTextColor(Color.DKGRAY); // |
         yAxis.setXOffset(15f); // Set space between Y-axis labels and the axis line
         yAxis.setDrawGridLines(false);
         yAxis.setValueFormatter(new ValueFormatter() {
@@ -173,10 +172,10 @@ public class LineGraph extends AppCompatActivity {
         dataSet1.setLineWidth(10);
         dataSet1.setCircleRadius(8);
         dataSet1.setCircleHoleRadius(3);
-        dataSet1.setValueTextColor(Color.WHITE);
+        dataSet1.setValueTextColor(Color.DKGRAY);
         dataSet1.setValueTextSize(10);
-        dataSet1.setCircleColor(Color.parseColor("#FFA316"));
-        dataSet1.setColor(Color.parseColor("#FFA316"));
+        dataSet1.setCircleColor(Color.parseColor("#CD4422"));
+        dataSet1.setColor(Color.parseColor("#CD4422"));
         dataSet1.setMode(LineDataSet.Mode.LINEAR);
         dataSet1.enableDashedLine(10,10,0);
 
@@ -184,10 +183,10 @@ public class LineGraph extends AppCompatActivity {
         dataSet2.setLineWidth(10);
         dataSet2.setCircleRadius(8);
         dataSet2.setCircleHoleRadius(3);
-        dataSet2.setValueTextColor(Color.WHITE);
+        dataSet2.setValueTextColor(Color.DKGRAY);
         dataSet2.setValueTextSize(10);
-        dataSet2.setCircleColor(Color.parseColor("#7B9AFA"));
-        dataSet2.setColor(Color.parseColor("#7B9AFA"));
+        dataSet2.setCircleColor(Color.parseColor("#6B8FFF"));
+        dataSet2.setColor(Color.parseColor("#6B8FFF"));
         dataSet2.setMode(LineDataSet.Mode.LINEAR);
         dataSet2.enableDashedLine(10,10,0);
 
@@ -195,10 +194,10 @@ public class LineGraph extends AppCompatActivity {
         dataSet3.setLineWidth(10);
         dataSet3.setCircleRadius(8);
         dataSet3.setCircleHoleRadius(3);
-        dataSet3.setValueTextColor(Color.WHITE);
+        dataSet3.setValueTextColor(Color.DKGRAY);
         dataSet3.setValueTextSize(10);
-        dataSet3.setCircleColor(Color.parseColor("#0DE4FB"));
-        dataSet3.setColor(Color.parseColor("#0DE4FB"));
+        dataSet3.setCircleColor(Color.parseColor("#00A3B5"));
+        dataSet3.setColor(Color.parseColor("#00A3B5"));
         dataSet3.setMode(LineDataSet.Mode.LINEAR);
         dataSet3.enableDashedLine(10,10,0);
 
@@ -217,11 +216,11 @@ public class LineGraph extends AppCompatActivity {
             if (isZoomedOut[0]) {
                 lineChart.zoom(4f, 1f, 0, 0);
                 isZoomedOut[0] = false;
-                globalToast = Toasty.info(LineGraph.this,"Zoomed In", Toast.LENGTH_SHORT);
+                globalToast = Toasty.info(NewUi_Progress_Chart.this,"Zoomed In", Toast.LENGTH_SHORT);
             } else {
                 lineChart.fitScreen();
                 isZoomedOut[0] = true;
-                globalToast= Toasty.info(LineGraph.this, "Zoomed Out", Toasty.LENGTH_SHORT);
+                globalToast= Toasty.info(NewUi_Progress_Chart.this, "Zoomed Out", Toasty.LENGTH_SHORT);
             }
             globalToast.show();
         });
@@ -238,18 +237,18 @@ public class LineGraph extends AppCompatActivity {
 
             if (clickCount[0].get() == 1) {
                 newLineData.addDataSet(dataSet1);
-                globalToast= Toasty.info(LineGraph.this, "Quiz", Toasty.LENGTH_SHORT);
+                globalToast= Toasty.info(NewUi_Progress_Chart.this, "Quiz", Toasty.LENGTH_SHORT);
             } else if (clickCount[0].get() == 2) {
                 newLineData.addDataSet(dataSet3);
-                globalToast= Toasty.info(LineGraph.this, "Spell", Toasty.LENGTH_SHORT);
+                globalToast= Toasty.info(NewUi_Progress_Chart.this, "Spell", Toasty.LENGTH_SHORT);
             } else if (clickCount[0].get() == 3) {
                 newLineData.addDataSet(dataSet2);
-                globalToast= Toasty.info(LineGraph.this, "Match", Toasty.LENGTH_SHORT);
+                globalToast= Toasty.info(NewUi_Progress_Chart.this, "Match", Toasty.LENGTH_SHORT);
             } else if (clickCount[0].get() == 4) {
                 newLineData.addDataSet(dataSet1);
                 newLineData.addDataSet(dataSet2);
                 newLineData.addDataSet(dataSet3);
-                globalToast= Toasty.info(LineGraph.this, "All", Toasty.LENGTH_SHORT);
+                globalToast= Toasty.info(NewUi_Progress_Chart.this, "All", Toasty.LENGTH_SHORT);
 
                 clickCount[0].set(0);
             }

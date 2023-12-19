@@ -105,7 +105,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
                 Dialog dlg;
                 dlg = new Dialog(NewUI_Dashboard.this, R.style.PopupDialog);
                 dlg.setCanceledOnTouchOutside(false);  //disable dialog dismiss when touch outside
-                dlg.setContentView(R.layout.activity_sound);
+                dlg.setContentView(R.layout.activity_new_ui_sound);
                 dlg.show();
 
                 View dialogWindowView = dlg.getWindow().getDecorView();

@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_difficulty_selected">
 
         <ImageButton
-            android:id="@+id/imgbtn_gm_selectionback"
+            android:id="@+id/imgbtn_gameplayhistory_reset"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

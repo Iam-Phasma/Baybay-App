@@ -37,7 +37,7 @@ import java.util.Set;
 import es.dmoral.toasty.Toasty;
 
 
-public class Modes_Matching extends AppCompatActivity {
+public class NewUI_Modes_Matching extends AppCompatActivity {
     private Toast globalToast;
     private Handler handler;
     ImageButton ImgbtnResume, ImgbtnRetry, ImgbtnQuit, ImgbtnHome;
@@ -110,7 +110,7 @@ public class Modes_Matching extends AppCompatActivity {
         Imgbtn_MatchingPause.setOnClickListener(v -> {
             pauseTimer();
 
-            Dialog dlg = new Dialog(Modes_Matching.this, R.style.PopupDialog);
+            Dialog dlg = new Dialog(NewUI_Modes_Matching.this, R.style.PopupDialog);
             dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
             dlg.setContentView(R.layout.activity_pause_menu);
             dlg.show();
@@ -577,7 +577,7 @@ public class Modes_Matching extends AppCompatActivity {
 
     public String StarCollected;
     void ScoreboardMethod() {
-        Dialog dlg = new Dialog(Modes_Matching.this, R.style.PopupDialog);
+        Dialog dlg = new Dialog(NewUI_Modes_Matching.this, R.style.PopupDialog);
         dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
         dlg.setContentView(R.layout.activity_result_board);
         dlg.show();
@@ -683,9 +683,9 @@ public class Modes_Matching extends AppCompatActivity {
                 soundManager.StopGamesBackgroundMusic();
 
                 dlg.dismiss();
-                Intent Quiz = new Intent(getApplicationContext(), Modes.class);
-                startActivity(Quiz);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+//                Intent Quiz = new Intent(getApplicationContext(), Modes.class);
+//                startActivity(Quiz);
+//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 //Quiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
             }, 500);
@@ -710,22 +710,22 @@ public class Modes_Matching extends AppCompatActivity {
             formattedDate = currentDate.format(formatter);
         }
 
-        if (Gameplay_History.gameplaysList == null) {
-            Gameplay_History.gameplaysList = new ArrayList<>();
-            Gameplay_History.loadGameplayList(sharedPreferences);
+        if (NewUI_Gameplay_History.gameplaysList == null) {
+            NewUI_Gameplay_History.gameplaysList = new ArrayList<>();
+            NewUI_Gameplay_History.loadGameplayList(sharedPreferences);
         }
 
-        Gameplay_History.gameplaysList.add(0, new Gameplay("MATCH      " + String.format("%02d", MatchScore) + "       " + gamemode +"       " + TimeTaken + "       " + formattedDate));
+        NewUI_Gameplay_History.gameplaysList.add(0, new Gameplay("MATCH      " + String.format("%02d", MatchScore) + "       " + gamemode +"       " + TimeTaken + "       " + formattedDate));
 
-        if (Gameplay_History.gameplaysList.size() > 50) {
-            Gameplay_History.gameplaysList.remove(Gameplay_History.gameplaysList.size() - 1);
+        if (NewUI_Gameplay_History.gameplaysList.size() > 50) {
+            NewUI_Gameplay_History.gameplaysList.remove(NewUI_Gameplay_History.gameplaysList.size() - 1);
         }
 
         // Save the updated list
         saveGameplayList(sharedPreferences);
 
         // Adding a score to the Matchscorelist
-        Z_ScoreManager scoreManager = Z_ScoreManager.getInstance(Modes_Matching.this);
+        Z_ScoreManager scoreManager = Z_ScoreManager.getInstance(NewUI_Modes_Matching.this);
         scoreManager.addItemToMatchScoreList(MatchScore);
     }
 
@@ -733,7 +733,7 @@ public class Modes_Matching extends AppCompatActivity {
         SharedPreferences.Editor editor = this.sharedPreferences.edit();
         Set<String> gameplaySet = new HashSet<>();
 
-        for (Gameplay gameplay : Gameplay_History.gameplaysList) {
+        for (Gameplay gameplay : NewUI_Gameplay_History.gameplaysList) {
             gameplaySet.add(gameplay.getGameplay());
         }
         editor.putStringSet("userList", gameplaySet);
@@ -809,7 +809,7 @@ public class Modes_Matching extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice0(Modes_Matching.this);
+                soundManager.QuizVoice0(NewUI_Modes_Matching.this);
             }
         }, 200);
     }
@@ -818,7 +818,7 @@ public class Modes_Matching extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice1(Modes_Matching.this);
+                soundManager.QuizVoice1(NewUI_Modes_Matching.this);
             }
         }, 200);
     }
@@ -828,7 +828,7 @@ public class Modes_Matching extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice2(Modes_Matching.this);
+                soundManager.QuizVoice2(NewUI_Modes_Matching.this);
             }
         }, 200);
     }
@@ -838,7 +838,7 @@ public class Modes_Matching extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice3(Modes_Matching.this);
+                soundManager.QuizVoice3(NewUI_Modes_Matching.this);
             }
         }, 200);
     }

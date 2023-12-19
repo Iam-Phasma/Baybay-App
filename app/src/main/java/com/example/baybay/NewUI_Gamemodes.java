@@ -20,12 +20,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -84,14 +82,14 @@ public class NewUI_Gamemodes extends AppCompatActivity {
             finish();
         });
 
-        GameHistory = findViewById(R.id.imgbtn_gm_selectionback);
+        GameHistory = findViewById(R.id.imgbtn_gameplayhistory_reset);
         GameHistory.setOnClickListener(v -> {
             animateButton(GameHistory);
             ClickSoundEffect();
             GameHistory.setEnabled(false);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 GameHistory.setEnabled(true);
-                Intent Gamemodes = new Intent(getApplicationContext(), Gameplay_History.class);
+                Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Gameplay_History.class);
                 startActivity(Gamemodes);
             }, 500);
         });
@@ -103,7 +101,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
             ClickSoundEffect();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 Progress.setEnabled(true);
-                Intent Gamemodes = new Intent(getApplicationContext(), LineGraph.class);
+                Intent Gamemodes = new Intent(getApplicationContext(), NewUi_Progress_Chart.class);
                 startActivity(Gamemodes);
             }, 500);
         });
@@ -175,7 +173,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         //Textview difficulty reminder
         TextView TvDifficultySelected = dlg.findViewById(R.id.tv_difficulty_selected);
 
-        ImageButton ImgbtnGamemodeClassic = dlg.findViewById(R.id.imgbtn_gm_selectionback);
+        ImageButton ImgbtnGamemodeClassic = dlg.findViewById(R.id.imgbtn_gameplayhistory_reset);
         ImageButton ImgbtnGamemodeAdvanced = dlg.findViewById(R.id.imgbtn_gm_advanced);
 
         difficulty = 1;
@@ -200,19 +198,19 @@ public class NewUI_Gamemodes extends AppCompatActivity {
             //Toast.makeText(NewUI_Gamemodes.this, String.valueOf(GametoPlay + " " + difficulty), Toast.LENGTH_SHORT).show();
 
             if (GametoPlay == 1){
-                Intent Gamemodes = new Intent(getApplicationContext(), Modes_Quiz.class);
+                Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Quiz.class);
                 Gamemodes.putExtra("DIFFICULTY", difficulty);
                 startActivity(Gamemodes);
                 dlg.dismiss();
                 //finish();
             } else if (GametoPlay == 2) {
-                Intent Gamemodes = new Intent(getApplicationContext(), Modes_Spell.class);
+                Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Spelling.class);
                 Gamemodes.putExtra("DIFFICULTY", difficulty);
                 startActivity(Gamemodes);
                 dlg.dismiss();
                 //finish();
             } else if (GametoPlay == 3) {
-                Intent Gamemodes = new Intent(getApplicationContext(), Modes_Matching.class);
+                Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Matching.class);
                 Gamemodes.putExtra("DIFFICULTY", difficulty);
                 startActivity(Gamemodes);
                 dlg.dismiss();

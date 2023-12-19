@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import es.dmoral.toasty.Toasty;
 
-public class Chart_Letters extends AppCompatActivity {
+public class NewUI_Chart_Letters extends AppCompatActivity {
 
     ImageButton ImgbtnSeeAll, ImgbtnPrevious, ImgbtnNext, ImgbtnExitChartLetters;
     int cycle = 0;
@@ -39,7 +39,7 @@ public class Chart_Letters extends AppCompatActivity {
         // Do not sleep when the app is open
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        setContentView(R.layout.activity_chart_letters);
+        setContentView(R.layout.activity_new_ui_chart_letters);
 
         // Fullscreen beyond punch hole camera
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -75,7 +75,7 @@ public class Chart_Letters extends AppCompatActivity {
             //=======Z_SoundManager.setActivityChapterPaused(false);
             new Handler().postDelayed(() -> {
                 ImgbtnSeeAll.setEnabled(true);
-                Intent SeeAll = new Intent(getApplicationContext(), Chart_Chapters.class);
+                Intent SeeAll = new Intent(getApplicationContext(), NewUI_Chart_Chapters.class);
                 startActivity(SeeAll);
 //                overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
                 finish();
@@ -97,7 +97,7 @@ public class Chart_Letters extends AppCompatActivity {
                 }else{
                     ImgbtnPrevious.setEnabled(false);
                     cancelToast();
-                    globalToast = Toasty.info(Chart_Letters.this,  "Your are on the first page.", Toast.LENGTH_SHORT);
+                    globalToast = Toasty.info(NewUI_Chart_Letters.this,  "Your are on the first page.", Toast.LENGTH_SHORT);
                     globalToast.show();
                     ImgbtnNext.setEnabled(true);
                     ImgbtnExitChartLetters.setEnabled(true);
@@ -121,7 +121,7 @@ public class Chart_Letters extends AppCompatActivity {
                 }else{
                     ImgbtnNext.setEnabled(false);
                     cancelToast();
-                    globalToast = Toasty.info(Chart_Letters.this, "Your are on the last page.", Toast.LENGTH_SHORT);
+                    globalToast = Toasty.info(NewUI_Chart_Letters.this, "Your are on the last page.", Toast.LENGTH_SHORT);
                     globalToast.show();
                     ImgbtnPrevious.setEnabled(true);
                     ImgbtnExitChartLetters.setEnabled(true);
@@ -348,7 +348,7 @@ public class Chart_Letters extends AppCompatActivity {
         MediaPlayer mediaPlayer;
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            mediaPlayer = MediaPlayer.create(Chart_Letters.this, R.raw.page_flip_left);
+            mediaPlayer = MediaPlayer.create(NewUI_Chart_Letters.this, R.raw.page_flip_left);
             mediaPlayer.start();
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
         }
@@ -359,7 +359,7 @@ public class Chart_Letters extends AppCompatActivity {
         MediaPlayer mediaPlayer;
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            mediaPlayer = MediaPlayer.create(Chart_Letters.this, R.raw.pag_flip_right);
+            mediaPlayer = MediaPlayer.create(NewUI_Chart_Letters.this, R.raw.pag_flip_right);
             mediaPlayer.start();
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
         }

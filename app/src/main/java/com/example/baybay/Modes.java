@@ -12,8 +12,6 @@ import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -236,7 +234,7 @@ public class Modes extends AppCompatActivity {
             }else{
                 cancelToast();
                 if (GametoPlay == 1){
-                    Intent Gamemodes = new Intent(getApplicationContext(), Modes_Quiz.class);
+                    Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Quiz.class);
                     Gamemodes.putExtra("DIFFICULTY", difficulty);
                     startActivity(Gamemodes);
 
@@ -244,7 +242,7 @@ public class Modes extends AppCompatActivity {
                     Gamemodes.setFlags((Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     finish();
                 } else if (GametoPlay == 2) {
-                    Intent Gamemodes = new Intent(getApplicationContext(), Modes_Spell.class);
+                    Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Spelling.class);
                     Gamemodes.putExtra("DIFFICULTY", difficulty);
                     startActivity(Gamemodes);
 
@@ -253,7 +251,7 @@ public class Modes extends AppCompatActivity {
                     finish();
 
                 } else if (GametoPlay == 3) {
-                    Intent Gamemodes = new Intent(getApplicationContext(), Modes_Matching.class);
+                    Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Matching.class);
                     Gamemodes.putExtra("DIFFICULTY", difficulty);
                     startActivity(Gamemodes);
 

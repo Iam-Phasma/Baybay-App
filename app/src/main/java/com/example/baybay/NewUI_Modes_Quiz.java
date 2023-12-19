@@ -1,6 +1,6 @@
 package com.example.baybay;
 
-import static com.example.baybay.Gameplay_History.loadGameplayList;
+import static com.example.baybay.NewUI_Gameplay_History.loadGameplayList;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -37,7 +37,7 @@ import java.util.Set;
 
 import es.dmoral.toasty.Toasty;
 
-public class Modes_Quiz extends AppCompatActivity {
+public class NewUI_Modes_Quiz extends AppCompatActivity {
     private Toast globalToast;
     private ImageView imgview_questionimage;
     private TextView tvChoice1, tvChoice2, tvChoice3, tvChoice4;
@@ -167,7 +167,7 @@ public class Modes_Quiz extends AppCompatActivity {
         imgbtnQuizPause = findViewById(R.id.imgbtn_quizpause);
         imgbtnQuizPause.setOnClickListener(v -> {
             pauseTimer();
-            dlg = new Dialog(Modes_Quiz.this, R.style.PopupDialog);
+            dlg = new Dialog(NewUI_Modes_Quiz.this, R.style.PopupDialog);
             dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
             dlg.setContentView(R.layout.activity_pause_menu);
             dlg.show();
@@ -501,7 +501,7 @@ public class Modes_Quiz extends AppCompatActivity {
     public String TimeTaken;
     public String StarCollected;
     void ScoreboardMethod(){
-        Dialog dlg = new Dialog(Modes_Quiz.this, R.style.PopupDialog);
+        Dialog dlg = new Dialog(NewUI_Modes_Quiz.this, R.style.PopupDialog);
         dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
         dlg.setContentView(R.layout.activity_result_board);
         dlg.show();
@@ -607,8 +607,8 @@ public class Modes_Quiz extends AppCompatActivity {
                 soundManager.StopGamesBackgroundMusic();
 
                 dlg.dismiss();
-                Intent Quiz = new Intent(getApplicationContext(), Modes.class);
-                startActivity(Quiz);
+//                Intent Quiz = new Intent(getApplicationContext(), Modes.class);
+//                startActivity(Quiz);
                 //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 //Quiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
@@ -638,22 +638,22 @@ public class Modes_Quiz extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         loadGameplayList(sharedPreferences);
 
-        if (Gameplay_History.gameplaysList == null) {
-            Gameplay_History.gameplaysList = new ArrayList<>();
+        if (NewUI_Gameplay_History.gameplaysList == null) {
+            NewUI_Gameplay_History.gameplaysList = new ArrayList<>();
             loadGameplayList(sharedPreferences);
         }
 
-        Gameplay_History.gameplaysList.add(0, new Gameplay("QUIZ       " + String.format("%02d", correctAnswer) + "       " + gamemode + "       "+ TimeTaken + "       " + formattedDate));
+        NewUI_Gameplay_History.gameplaysList.add(0, new Gameplay("QUIZ       " + String.format("%02d", correctAnswer) + "       " + gamemode + "       "+ TimeTaken + "       " + formattedDate));
 
-        if (Gameplay_History.gameplaysList.size() > 50) {
-            Gameplay_History.gameplaysList.remove(Gameplay_History.gameplaysList.size() - 1);
+        if (NewUI_Gameplay_History.gameplaysList.size() > 50) {
+            NewUI_Gameplay_History.gameplaysList.remove(NewUI_Gameplay_History.gameplaysList.size() - 1);
         }
 
         // Save the updated list
         saveGameplayList(sharedPreferences);
 
         // Adding a score to the Quizscorelist
-        Z_ScoreManager scoreManager = Z_ScoreManager.getInstance(Modes_Quiz.this);
+        Z_ScoreManager scoreManager = Z_ScoreManager.getInstance(NewUI_Modes_Quiz.this);
         scoreManager.addItemToQuizScoreList(correctAnswer);
     }
 
@@ -661,7 +661,7 @@ public class Modes_Quiz extends AppCompatActivity {
         SharedPreferences.Editor editor = this.sharedPreferences.edit();
         Set<String> gameplaySet = new HashSet<>();
 
-        for (Gameplay gameplay : Gameplay_History.gameplaysList) {
+        for (Gameplay gameplay : NewUI_Gameplay_History.gameplaysList) {
             gameplaySet.add(gameplay.getGameplay());
         }
         editor.putStringSet("userList", gameplaySet);
@@ -794,7 +794,7 @@ public class Modes_Quiz extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice0(Modes_Quiz.this);
+                soundManager.QuizVoice0(NewUI_Modes_Quiz.this);
             }
         }, 200);
     }
@@ -804,7 +804,7 @@ public class Modes_Quiz extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice1(Modes_Quiz.this);
+                soundManager.QuizVoice1(NewUI_Modes_Quiz.this);
             }
         }, 200);
     }
@@ -814,7 +814,7 @@ public class Modes_Quiz extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice2(Modes_Quiz.this);
+                soundManager.QuizVoice2(NewUI_Modes_Quiz.this);
             }
         }, 200);
     }
@@ -824,7 +824,7 @@ public class Modes_Quiz extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice3(Modes_Quiz.this);
+                soundManager.QuizVoice3(NewUI_Modes_Quiz.this);
             }
         }, 200);
     }

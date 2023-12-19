@@ -27,11 +27,11 @@
             android:name=".NewUI_Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Modes_Spell"
+            android:name=".NewUI_Modes_Spelling"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LineGraph"
+            android:name=".NewUi_Progress_Chart"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -39,7 +39,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Gameplay_History"
+            android:name=".NewUI_Gameplay_History"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -76,19 +76,19 @@
             android:screenOrientation="portrait"
             android:theme="@style/MoreActivityTheme" />
         <activity
-            android:name=".Modes_Matching"
+            android:name=".NewUI_Modes_Matching"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Modes_Quiz"
+            android:name=".NewUI_Modes_Quiz"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Chart_Letters"
+            android:name=".NewUI_Chart_Letters"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Chart_Chapters"
+            android:name=".NewUI_Chart_Chapters"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

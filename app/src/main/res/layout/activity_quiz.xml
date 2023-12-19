@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Modes_Quiz">
+    tools:context=".NewUI_Modes_Quiz">
 
     <ImageView
         android:id="@+id/imageView"

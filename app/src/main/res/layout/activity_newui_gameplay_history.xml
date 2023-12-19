@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Gameplay_History">
+    tools:context=".NewUI_Gameplay_History">
 
     <ImageButton
         android:id="@+id/btn_gameplay_exit"
@@ -25,8 +25,9 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/imgbtn_gameplayhistory_changeviewmode"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +54,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
 
         app:layout_constraintBottom_toBottomOf="@+id/imageView32"
         app:layout_constraintEnd_toEndOf="@+id/imageView32"
@@ -61,18 +62,6 @@
         app:layout_constraintStart_toStartOf="@+id/imageView32"
         app:layout_constraintTop_toTopOf="@+id/imageView32"
         app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/imgbtn_gameplayhistory_changeviewmode"
-        android:layout_width="160dp"
-        android:layout_height="100dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView32"
-        app:layout_constraintStart_toStartOf="@+id/imageView32"
-        app:srcCompat="@drawable/newui_gmhistory_changeview_button"
-        tools:srcCompat="@drawable/newui_gmhistory_changeview_button" />
 
     <TextView
         android:id="@+id/tv_gameplayhistory_viewmode"
@@ -100,5 +89,35 @@
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/tv_gameplayhistory_viewmode"
         app:layout_constraintTop_toBottomOf="@+id/tv_gameplayhistory_viewmode" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgbtn_gameplayhistory_reset"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/newui_gmhistory_reset_button"
+            tools:src="@drawable/newui_gmhistory_reset_button" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_gameplayhistory_changeviewmode"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/newui_gmhistory_changeview_button"
+            tools:srcCompat="@drawable/newui_gmhistory_changeview_button" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

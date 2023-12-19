@@ -4,14 +4,15 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -23,14 +24,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import es.dmoral.toasty.Toasty;
 
-public class Gameplay_History extends AppCompatActivity {
-    ImageButton ImgbtnGameplayExit, ImgbtnGameplayChangeViewMode;
+public class NewUI_Gameplay_History extends AppCompatActivity {
+    ImageButton ImgbtnGameplayExit, ImgbtnGameplayChangeViewMode, ImgbtnGameplayHistoryReset;
     TextView TvGamelayChangeViewMode, TvprogressionChart;
     private Toast globalToast;
     public static ArrayList<Gameplay> gameplaysList;
@@ -53,7 +56,7 @@ public class Gameplay_History extends AppCompatActivity {
         //Do not sleep when the app is open
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        setContentView(R.layout.activity_gameplay_history);
+        setContentView(R.layout.activity_newui_gameplay_history);
 
         //Fullscreen beyond punch hole camera
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -140,10 +143,88 @@ public class Gameplay_History extends AppCompatActivity {
             updateRecyclerView();
         });
 
+        ImgbtnGameplayHistoryReset = findViewById(R.id.imgbtn_gameplayhistory_reset);
+        ImgbtnGameplayHistoryReset.setOnClickListener(v -> {
+            animateButton(ImgbtnGameplayHistoryReset);
+            cancelToast();
+            globalToast = Toasty.info(NewUI_Gameplay_History.this, "If you wish to reset your gameplay history and progress, long press the button carefully.", Toast.LENGTH_SHORT);
+            globalToast.show();
+        });
+        ImgbtnGameplayHistoryReset.setOnLongClickListener(v -> {
+            animateButton(ImgbtnGameplayHistoryReset);
+
+            final Dialog dlg = new Dialog(NewUI_Gameplay_History.this, R.style.PopupDialog);
+            dlg.setCanceledOnTouchOutside(false);
+            dlg.setContentView(R.layout.activity_lessons_reset);
+            dlg.show();
+
+            //Prevents back press on sound dialog menu
+            dlg.setOnKeyListener((dialog, keyCode, event) -> keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP);
+
+            final boolean[] isAgreed = {false};
+            LottieAnimationView checkbox = dlg.findViewById(R.id.cb_reset_agree);
+            checkbox.setOnClickListener(v1 -> {
+                cancelToast();
+                if (!isAgreed[0]) {
+                    // Play animation forward
+                    checkbox.setSpeed(1);
+                    checkbox.playAnimation();
+                    globalToast = Toasty.warning(NewUI_Gameplay_History.this, "I agree and understand the notice as this action cannot be undone.", Toast.LENGTH_LONG);
+                    globalToast.show();
+
+                    new Handler().postDelayed(checkbox::pauseAnimation, 1000);
+                } else {
+                    globalToast = Toasty.warning(NewUI_Gameplay_History.this, "Unchecked", Toast.LENGTH_SHORT);
+                    globalToast.show();
+                    checkbox.setSpeed(0);
+                    checkbox.playAnimation();
+                }
+                isAgreed[0] = !isAgreed[0];
+            });
+
+            ImageButton ImgbtnResetOk = dlg.findViewById(R.id.imgbtn_reset_ok);
+            ImgbtnResetOk.setOnClickListener(v12 -> {
+                globalToast.cancel();
+                if(isAgreed[0]){
+                    cancelToast();
+                    globalToast = Toasty.success(NewUI_Gameplay_History.this, "Progress has been reset successfully!", Toast.LENGTH_SHORT);
+                    globalToast.show();
+
+                    //Gameplay History
+                    if (NewUI_Gameplay_History.gameplaysList == null) {
+                        NewUI_Gameplay_History.gameplaysList = new ArrayList<>();
+                    } else {
+                        NewUI_Gameplay_History.gameplaysList.clear();
+                    }
+                    saveGameplayList();
+
+                    // Clear the Games Scores array
+                    Z_ScoreManager scoreManager = Z_ScoreManager.getInstance(this);
+                    scoreManager.clearQuizScoreList();
+                    scoreManager.clearMatchScoreList();
+                    scoreManager.clearSpellScoreList();
+
+                    dlg.dismiss();
+                    recreate();
+                }else{
+                    cancelToast();
+                    globalToast = Toasty.error(NewUI_Gameplay_History.this, "To perform the action, you must confirm your agreement.", Toast.LENGTH_SHORT);
+                    globalToast.show();
+                }
+            });
+
+            ImageButton ImgbtnResetBack = dlg.findViewById(R.id.imgbtn_reset_back);
+            ImgbtnResetBack.setOnClickListener(v13 -> dlg.dismiss());
+
+
+
+            return false;
+        });
+
 
         if (gameplaysList.size() == 0) {
             cancelToast();
-            globalToast = Toasty.info(Gameplay_History.this, "It's empty, play some games!", Toast.LENGTH_SHORT);
+            globalToast = Toasty.info(NewUI_Gameplay_History.this, "It's empty, play some games!", Toast.LENGTH_SHORT);
             globalToast.show();
         }
     }
@@ -203,13 +284,13 @@ public class Gameplay_History extends AppCompatActivity {
         if (filteredList.isEmpty()) {
             cancelToast();
             if (viewModeCount == 2) {
-                globalToast = Toasty.info(Gameplay_History.this, "No Quiz Gameplay yet!", Toasty.LENGTH_SHORT);
+                globalToast = Toasty.info(NewUI_Gameplay_History.this, "No Quiz Gameplay yet!", Toasty.LENGTH_SHORT);
                 globalToast.show();
             } else if (viewModeCount == 3) {
-                globalToast = Toasty.info(Gameplay_History.this, "No Match Gameplay yet!", Toasty.LENGTH_SHORT);
+                globalToast = Toasty.info(NewUI_Gameplay_History.this, "No Match Gameplay yet!", Toasty.LENGTH_SHORT);
                 globalToast.show();
             }else if (viewModeCount == 4) {
-                globalToast = Toasty.info(Gameplay_History.this, "No Spell Gameplay yet!", Toasty.LENGTH_SHORT);
+                globalToast = Toasty.info(NewUI_Gameplay_History.this, "No Spell Gameplay yet!", Toasty.LENGTH_SHORT);
                 globalToast.show();
             }
         }

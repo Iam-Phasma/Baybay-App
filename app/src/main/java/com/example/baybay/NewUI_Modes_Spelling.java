@@ -1,6 +1,6 @@
 package com.example.baybay;
 
-import static com.example.baybay.Gameplay_History.loadGameplayList;
+import static com.example.baybay.NewUI_Gameplay_History.loadGameplayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,7 +44,7 @@ import java.util.Set;
 
 import es.dmoral.toasty.Toasty;
 
-public class Modes_Spell extends AppCompatActivity {
+public class NewUI_Modes_Spelling extends AppCompatActivity {
     private Toast globalToast;
     Dialog dlg;
     public int difficulty;
@@ -377,7 +377,7 @@ public class Modes_Spell extends AppCompatActivity {
                         if (remainingAttempts == 5) {
                             correctAnswer += 2; // -> IF PERFECT
                             cancelToast();
-                            globalToast = Toasty.success(Modes_Spell.this, "PERFECT!", Toast.LENGTH_SHORT);
+                            globalToast = Toasty.success(NewUI_Modes_Spelling.this, "PERFECT!", Toast.LENGTH_SHORT);
                             globalToast.show();
                         }
                     } else if (difficulty == 1) {
@@ -386,7 +386,7 @@ public class Modes_Spell extends AppCompatActivity {
                         }else if (remainingAttempts == 5){
                             correctAnswer += 2; // -> IF PERFECT
                             cancelToast();
-                            globalToast = Toasty.success(Modes_Spell.this, "PERFECT!", Toast.LENGTH_SHORT);
+                            globalToast = Toasty.success(NewUI_Modes_Spelling.this, "PERFECT!", Toast.LENGTH_SHORT);
                             globalToast.show();
                         }
                     }
@@ -452,7 +452,7 @@ public class Modes_Spell extends AppCompatActivity {
 
     public String StarCollected;
     void ScoreboardMethod(){
-        Dialog dlg = new Dialog(Modes_Spell.this, R.style.PopupDialog);
+        Dialog dlg = new Dialog(NewUI_Modes_Spelling.this, R.style.PopupDialog);
         dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
         dlg.setContentView(R.layout.activity_result_board);
         dlg.show();
@@ -561,8 +561,8 @@ public class Modes_Spell extends AppCompatActivity {
                 soundManager.StopGamesBackgroundMusic();
 
                 dlg.dismiss();
-                Intent Quiz = new Intent(getApplicationContext(), Modes.class);
-                startActivity(Quiz);
+//                Intent Quiz = new Intent(getApplicationContext(), Modes.class);
+//                startActivity(Quiz);
                 //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 //Quiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
@@ -589,22 +589,22 @@ public class Modes_Spell extends AppCompatActivity {
             formattedDate = currentDate.format(formatter);
         }
 
-        if (Gameplay_History.gameplaysList == null) {
-            Gameplay_History.gameplaysList = new ArrayList<>();
+        if (NewUI_Gameplay_History.gameplaysList == null) {
+            NewUI_Gameplay_History.gameplaysList = new ArrayList<>();
             loadGameplayList(sharedPreferences);
         }
 
-        Gameplay_History.gameplaysList.add(0, new Gameplay("SPELL       " + String.format("%02d", correctAnswer) + "       " + gamemode + "       "+ TimeTaken + "       " + formattedDate));
+        NewUI_Gameplay_History.gameplaysList.add(0, new Gameplay("SPELL       " + String.format("%02d", correctAnswer) + "       " + gamemode + "       "+ TimeTaken + "       " + formattedDate));
 
-        if (Gameplay_History.gameplaysList.size() > 50) {
-            Gameplay_History.gameplaysList.remove(Gameplay_History.gameplaysList.size() - 1);
+        if (NewUI_Gameplay_History.gameplaysList.size() > 50) {
+            NewUI_Gameplay_History.gameplaysList.remove(NewUI_Gameplay_History.gameplaysList.size() - 1);
         }
 
         // Save the updated list
         saveGameplayList(sharedPreferences);
 
         // Adding a score to the Spellscorelist
-        Z_ScoreManager scoreManager = Z_ScoreManager.getInstance(Modes_Spell.this);
+        Z_ScoreManager scoreManager = Z_ScoreManager.getInstance(NewUI_Modes_Spelling.this);
         scoreManager.addItemToSpellScoreList(correctAnswer);
     }
 
@@ -612,7 +612,7 @@ public class Modes_Spell extends AppCompatActivity {
         SharedPreferences.Editor editor = this.sharedPreferences.edit();
         Set<String> gameplaySet = new HashSet<>();
 
-        for (Gameplay gameplay : Gameplay_History.gameplaysList) {
+        for (Gameplay gameplay : NewUI_Gameplay_History.gameplaysList) {
             gameplaySet.add(gameplay.getGameplay());
         }
         editor.putStringSet("userList", gameplaySet);
@@ -623,7 +623,7 @@ public class Modes_Spell extends AppCompatActivity {
 
     public void spellPauseMethod(){
         pauseTimer();
-        dlg = new Dialog(Modes_Spell.this, R.style.PopupDialog);
+        dlg = new Dialog(NewUI_Modes_Spelling.this, R.style.PopupDialog);
         dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
         dlg.setContentView(R.layout.activity_pause_menu);
         dlg.show();
@@ -734,7 +734,7 @@ public class Modes_Spell extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice0(Modes_Spell.this);
+                soundManager.QuizVoice0(NewUI_Modes_Spelling.this);
             }
         }, 200);
     }
@@ -744,7 +744,7 @@ public class Modes_Spell extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice1(Modes_Spell.this);
+                soundManager.QuizVoice1(NewUI_Modes_Spelling.this);
             }
         }, 200);
     }
@@ -754,7 +754,7 @@ public class Modes_Spell extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice2(Modes_Spell.this);
+                soundManager.QuizVoice2(NewUI_Modes_Spelling.this);
             }
         }, 200);
     }
@@ -764,7 +764,7 @@ public class Modes_Spell extends AppCompatActivity {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
                 Z_SoundManager soundManager = new Z_SoundManager();
-                soundManager.QuizVoice3(Modes_Spell.this);
+                soundManager.QuizVoice3(NewUI_Modes_Spelling.this);
             }
         }, 200);
     }

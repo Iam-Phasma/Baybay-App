@@ -5,7 +5,7 @@
     android:id="@+id/layout_modes_matching"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Modes_Matching">
+    tools:context=".NewUI_Modes_Matching">
 
     <ImageView
         android:id="@+id/imageView8"

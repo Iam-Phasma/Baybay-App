@@ -147,7 +147,7 @@ public class Lessons extends AppCompatActivity {
             animateButton(ImgbtnGameplayHistory);
             ImgbtnGameplayHistory.setEnabled(false);
             new Handler().postDelayed(() -> {
-                Intent Lessons = new Intent(getApplicationContext(), Gameplay_History.class);
+                Intent Lessons = new Intent(getApplicationContext(), NewUI_Gameplay_History.class);
                 startActivity(Lessons);
                 //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 //Lessons.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -252,10 +252,10 @@ public class Lessons extends AppCompatActivity {
                         editorL5.apply();
 
                         //Gameplay History
-                        if (Gameplay_History.gameplaysList == null) {
-                            Gameplay_History.gameplaysList = new ArrayList<>();
+                        if (NewUI_Gameplay_History.gameplaysList == null) {
+                            NewUI_Gameplay_History.gameplaysList = new ArrayList<>();
                         } else {
-                            Gameplay_History.gameplaysList.clear();
+                            NewUI_Gameplay_History.gameplaysList.clear();
                         }
                         saveGameplayList();
 
@@ -496,7 +496,7 @@ public class Lessons extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Set<String> gameplaySet = new HashSet<>();
 
-        for (Gameplay gameplay : Gameplay_History.gameplaysList) {
+        for (Gameplay gameplay : NewUI_Gameplay_History.gameplaysList) {
             gameplaySet.add(gameplay.getGameplay());
         }
         editor.putStringSet("userList", gameplaySet);
