@@ -4,6 +4,8 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -44,8 +46,22 @@ public class Chart_Letters extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
 
-        // Set the background to a drawable resource
-        getWindow().setBackgroundDrawableResource(R.drawable.chartletters_crop_bg);
+        // Set the gradient background color
+        int singleColor = Color.parseColor("#FCF4E7");
+
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
+
+
+
 
         // Retrieve the value of cycleselect from the previous activity
         cycle = getIntent().getIntExtra("cycle", 0);
@@ -53,7 +69,7 @@ public class Chart_Letters extends AppCompatActivity {
         ImgbtnSeeAll = findViewById(R.id.imgbtn_seeall);
         ImgbtnSeeAll.setOnClickListener(v -> {
             ClickSoundEffect();
-            animateButton(ImgbtnSeeAll);
+            //animateButton(ImgbtnSeeAll);
 //            ImgbtnSeeAll.setEnabled(false);
 //            ImgbtnPrevious.setEnabled(false);
 //            ImgbtnNext.setEnabled(false);

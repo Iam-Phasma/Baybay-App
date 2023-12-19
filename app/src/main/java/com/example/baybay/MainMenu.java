@@ -138,12 +138,12 @@ public class MainMenu extends AppCompatActivity {
             ClickSoundEffect();
             animateButton(ImgbtnChart);
             handler.postDelayed(() -> {
-                Intent MainMenu = new Intent(getApplicationContext(), Chart_Letters.class);
-                startActivity(MainMenu);
+//                Intent MainMenu = new Intent(getApplicationContext(), Chart_Letters.class);
+//                startActivity(MainMenu);
                 //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 //MainMenu.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 //MainMenu.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                finish();
+//                finish();
             }, 500);
 
         });

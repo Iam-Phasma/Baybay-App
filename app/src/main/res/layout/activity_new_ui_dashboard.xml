@@ -127,7 +127,7 @@
                 tools:src="@drawable/newui_lets_learn" />
 
             <ImageButton
-                android:id="@+id/imageButton5"
+                android:id="@+id/imgbtn_playgames"
                 android:layout_width="wrap_content"
                 android:layout_height="105dp"
                 android:backgroundTint="#00FFFFFF"
@@ -149,7 +149,7 @@
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/imageView53"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_playgames" />
 
             <ImageButton
                 android:id="@+id/imageButton8"
@@ -159,8 +159,8 @@
                 android:backgroundTint="#00FFFFFF"
                 android:scaleType="fitCenter"
                 android:src="@drawable/newui_arts_and_crafts"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton5"
-                app:layout_constraintStart_toStartOf="@+id/imageButton5"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_playgames"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_playgames"
                 app:layout_constraintTop_toBottomOf="@+id/textView47"
                 tools:src="@drawable/newui_arts_and_crafts" />
 
@@ -173,8 +173,8 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/newui_join_community"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton5"
-                app:layout_constraintStart_toStartOf="@+id/imageButton5"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_playgames"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_playgames"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton8"
                 tools:src="@drawable/newui_join_community" />
 

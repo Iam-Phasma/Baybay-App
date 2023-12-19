@@ -8,64 +8,100 @@
 
     <ImageButton
         android:id="@+id/imgbtn_exit_chartletter"
-        android:layout_width="76dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#00FFFFFF"
-        android:elevation="20dp"
+        android:elevation="0dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/newui_back_button" />
+
+    <TextView
+        android:id="@+id/textView54"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amasis_black"
+        android:text="B20+ Chart"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn_exit_chartletter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/btn_exit_chart" />
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_exit_chartletter" />
 
     <ImageView
         android:id="@+id/imgviewChart_empty"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/imgbtn_seeall"
+        app:layout_constraintBottom_toTopOf="@+id/imageView63"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_exit_chartletter"
         app:srcCompat="@drawable/chart_kudlit" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_next"
-        android:layout_width="133dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="-50dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toEndOf="@+id/imgbtn_seeall"
-        app:layout_constraintTop_toTopOf="@+id/imgbtn_previous"
-        app:srcCompat="@drawable/btn_chart_next" />
+    <ImageView
+        android:id="@+id/imageView63"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="35dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/newui_chartletters_bar" />
 
-    <ImageButton
-        android:id="@+id/imgbtn_previous"
-        android:layout_width="133dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="-50dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/imgbtn_exit_chartletter"
-        app:layout_constraintEnd_toStartOf="@+id/imgbtn_seeall"
-        app:srcCompat="@drawable/btn_chart_previous" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView63"
+        app:layout_constraintEnd_toEndOf="@+id/imageView63"
+        app:layout_constraintStart_toStartOf="@+id/imageView63"
+        app:layout_constraintTop_toTopOf="@+id/imageView63">
 
-    <ImageButton
-        android:id="@+id/imgbtn_seeall"
-        android:layout_width="133dp"
-        android:layout_height="54dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/imgbtn_previous"
-        app:layout_constraintEnd_toEndOf="@+id/imgviewChart_empty"
-        app:layout_constraintStart_toStartOf="@+id/imgviewChart_empty"
-        app:srcCompat="@drawable/btn_chart_seeall" />
+        <ImageButton
+            android:id="@+id/imgbtn_seeall"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="5dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#00FFFFFF"
+            android:paddingStart="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/newui_chartletters_menu" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_previous"
+            android:layout_width="70dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center|right"
+            android:backgroundTint="#00FFFFFF"
+            android:rotation="180"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/newui_chartletters_arrow" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_next"
+            android:layout_width="70dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center|right"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#00FFFFFF"
+            android:paddingEnd="5dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/newui_chartletters_arrow" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

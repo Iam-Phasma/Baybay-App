@@ -71,6 +71,8 @@ public class NewUI_Learn extends AppCompatActivity {
         getWindow().setBackgroundDrawable(gradientDrawable);
 
 
+
+
         ImgbtnLearExit = findViewById(R.id.imgbtn_learn_exit);
         ImgbtnLearExit.setOnClickListener(v -> {
             ClickSoundEffect();
@@ -155,7 +157,7 @@ public class NewUI_Learn extends AppCompatActivity {
 
 
 
-        FullChart = findViewById(R.id.imgbtn_learn_chart);
+        FullChart = findViewById(R.id.imgbtn_gm_progress);
         FullChart.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(FullChart);
@@ -165,8 +167,10 @@ public class NewUI_Learn extends AppCompatActivity {
             }, 500);
         });
 
-        Downloadable = findViewById(R.id.imgbtn_learn_dowanloadable);
+        Downloadable = findViewById(R.id.imgbtn_gm_gamehistory);
         Downloadable.setOnClickListener(v -> {
+            ClickSoundEffect();
+            animateButton(Downloadable);
 //            Intent MainMenu = new Intent(getApplicationContext(), More.class);
 //            startActivity(MainMenu);
         });

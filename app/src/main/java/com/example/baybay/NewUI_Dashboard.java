@@ -32,6 +32,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
     private String currentText = "";
     SharedPreferences preferences;
     ImageButton ImgbtnLearn;
+    ImageButton PlayGames;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +87,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
 
         ImgbtnTrivia_Refresh.setOnClickListener(v -> {
-            animateButton(ImgbtnTrivia_Refresh);
+            animateButtonTrivia(ImgbtnTrivia_Refresh);
             setRandomTextWithAnimation(TvTrivia);
             ClickSoundEffect();
             ImgbtnTrivia_Refresh.setEnabled(false);
@@ -183,9 +184,21 @@ public class NewUI_Dashboard extends AppCompatActivity {
         ImgbtnLearn = findViewById(R.id.imgbtn_learn);
         ImgbtnLearn.setOnClickListener(v -> {
             ClickSoundEffect();
-            Intent Dashboard = new Intent(getApplicationContext(), NewUI_Learn.class);
-            startActivity(Dashboard);
+            animateButton(ImgbtnLearn);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                Intent Dashboard = new Intent(getApplicationContext(), NewUI_Learn.class);
+                startActivity(Dashboard);
+            }, 500);
+        });
 
+        PlayGames = findViewById(R.id.imgbtn_playgames);
+        PlayGames.setOnClickListener(v -> {
+            ClickSoundEffect();
+            animateButton(PlayGames);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                Intent Dashboard = new Intent(getApplicationContext(), NewUI_Gamemodes.class);
+                startActivity(Dashboard);
+            }, 500);
         });
 
     }
@@ -223,7 +236,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
 
     // Method to animate refresh trivia
-    private void animateButton(View view) {
+    private void animateButtonTrivia(View view) {
         //Scale shrink
         ObjectAnimator shrinkAnimator = ObjectAnimator.ofPropertyValuesHolder(
                 view,
@@ -248,6 +261,32 @@ public class NewUI_Dashboard extends AppCompatActivity {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.play(shrinkAnimator).with(rotateAnimator);
         animatorSet.play(restoreAnimator).after(rotateAnimator);
+
+        // Start the button click animation
+        animatorSet.start();
+    }
+
+    // Method to animate the button click
+    private void animateButton(View view) {
+        // Create a scale animator to shrink the button
+        ObjectAnimator shrinkAnimator = ObjectAnimator.ofPropertyValuesHolder(
+                view,
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 1.0f, 0.9f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.0f, 0.9f)
+        );
+        shrinkAnimator.setDuration(200); // Set the duration of the shrink animation
+
+        // Create a scale animator to restore the button to its original size
+        ObjectAnimator restoreAnimator = ObjectAnimator.ofPropertyValuesHolder(
+                view,
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 0.9f, 1.0f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.9f, 1.0f)
+        );
+        restoreAnimator.setDuration(300); // Set the duration of the restore animation
+
+        // Set up the animator set to play the shrink and restore animations sequentially
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playSequentially(shrinkAnimator, restoreAnimator);
 
         // Start the button click animation
         animatorSet.start();

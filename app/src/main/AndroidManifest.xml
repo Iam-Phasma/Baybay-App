@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Baybay"
         tools:targetApi="31">
         <activity
+            android:name=".NewUI_Gamemodes"
+            android:exported="false" />
+        <activity
             android:name=".NewUI_Learn"
             android:exported="false" />
         <activity

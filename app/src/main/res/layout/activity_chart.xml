@@ -6,59 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".Chart_Chapters">
 
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amasis_black"
+        android:text="B20+ Chart"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn_exit_chapter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_exit_chapter" />
+
+    <TextView
+        android:id="@+id/textView55"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="sans-serif-black"
+        android:maxLines="2"
+        android:text="Wanna jump to another script?"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imgbtn_exit_chapter"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_exit_chapter" />
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:text="Choose a button below to navigate to its relative script"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/textView55"
+        app:layout_constraintTop_toBottomOf="@+id/textView55" />
+
     <ImageButton
         android:id="@+id/imgbtn_exit_chapter"
-        android:layout_width="0dp"
-        android:layout_height="61dp"
-        android:layout_marginBottom="25dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#00FFFFFF"
         android:elevation="0sp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/btn_exit_chart" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/newui_back_button" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/imgbtn_exit_chapter"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView56">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView39"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sans_serif_demibold"
-                android:text="Baybayin B20 plus Version"
-                android:textAlignment="viewEnd"
-                android:textColor="#ADFFEDDD"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="0dp"
                 android:layout_height="494dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
                 android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView39"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/chart_board" />
 
             <ImageButton

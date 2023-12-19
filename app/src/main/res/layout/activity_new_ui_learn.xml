@@ -36,6 +36,7 @@
         android:id="@+id/textView49"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         android:fontFamily="sans-serif-black"
@@ -71,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nestedScrollView3">
 
         <ImageButton
-            android:id="@+id/imgbtn_learn_dowanloadable"
+            android:id="@+id/imgbtn_gm_gamehistory"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -81,7 +82,7 @@
             tools:src="@drawable/newui_downloadable_button" />
 
         <ImageButton
-            android:id="@+id/imgbtn_learn_chart"
+            android:id="@+id/imgbtn_gm_progress"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
