@@ -14,7 +14,6 @@ import android.widget.ImageView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.google.android.material.slider.Slider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
     private ImageButton ImgbtnArtsCratsExit;
     private NestedScrollView NsvMain;
     private ImageView ImgviewPens, ImgviewShirtsPants, ImgviewBags, ImgviewStickers, ImgviewAccessories, ImgviewCalligraphy, ImgviewTattoos, ImgviewEngraving, ImgviewSignsBrands;
-    private ImageButton ImgbtnTagPen, ImgbtnTagShirtsPants, ImgbtnTagBags, ImgbtnTagStickers, ImgbtnTagAccessories, ImgbtnTagCalligraphy, ImgbtnTagTattoos, ImgbtnTagEngraving, ImgbtnTagSignsBrands;
+    private ImageButton ImgbtnTagPens, ImgbtnTagShirtsPants, ImgbtnTagBags, ImgbtnTagStickers, ImgbtnTagAccessories, ImgbtnTagCalligraphy, ImgbtnTagTattoos, ImgbtnTagEngraving, ImgbtnTagSignsBrands;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +65,32 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
             finish();
         });
 
+
         NsvMain = findViewById(R.id.ncv_main);
+
+        ImgviewPens = findViewById(R.id.imageViewPens);
+        ImgbtnTagPens = findViewById(R.id.imgbtn_artscrafts_tagpen);
+        ImgbtnTagPens.setOnClickListener(v -> {
+            NsvMain.smoothScrollTo(0, (int) ImgviewPens.getY(), 700);
+        });
+
+        ImgviewShirtsPants = findViewById(R.id.imageViewShirtsPants);
+        ImgbtnTagShirtsPants = findViewById(R.id.imgbtn_artscrafts_tagshirtspants);
+        ImgbtnTagShirtsPants.setOnClickListener(v -> {
+            NsvMain.smoothScrollTo(0, (int) ImgviewShirtsPants.getY(), 700);
+        });
+
+        ImgviewBags = findViewById(R.id.imageViewBags);
+        ImgbtnTagBags = findViewById(R.id.imgbtn_artscrafts_tagbags);
+        ImgbtnTagBags.setOnClickListener(v -> {
+            NsvMain.smoothScrollTo(0, (int) ImgviewBags.getY(), 700);
+        });
+
+        ImgviewStickers = findViewById(R.id.imageViewStickers);
+        ImgbtnTagStickers = findViewById(R.id.imgbtn_artscrafts_tagstickers);
+        ImgbtnTagStickers.setOnClickListener(v -> {
+            NsvMain.smoothScrollTo(0, (int) ImgviewStickers.getY(), 700);
+        });
 
         ImgviewAccessories = findViewById(R.id.imageViewAccessories);
         ImgbtnTagAccessories = findViewById(R.id.imgbtn_artscrafts_tagaccessories);
@@ -74,6 +98,29 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
             NsvMain.smoothScrollTo(0, (int) ImgviewAccessories.getY(), 700);
         });
 
+        ImgviewCalligraphy = findViewById(R.id.imageViewCalligraphy);
+        ImgbtnTagCalligraphy = findViewById(R.id.imgbtn_artscrafts_tagcalligraphy);
+        ImgbtnTagCalligraphy.setOnClickListener(v -> {
+            NsvMain.smoothScrollTo(0, (int) ImgviewCalligraphy.getY(), 700);
+        });
+
+        ImgviewTattoos = findViewById(R.id.imageViewTattoos);
+        ImgbtnTagTattoos = findViewById(R.id.imgbtn_artscrafts_tagtattoos);
+        ImgbtnTagTattoos.setOnClickListener(v -> {
+            NsvMain.smoothScrollTo(0, (int) ImgviewTattoos.getY(), 700);
+        });
+
+        ImgviewEngraving = findViewById(R.id.imageViewEngraving);
+        ImgbtnTagEngraving = findViewById(R.id.imgbtn_artscrafts_tagengraving);
+        ImgbtnTagEngraving.setOnClickListener(v -> {
+            NsvMain.smoothScrollTo(0, (int) ImgviewEngraving.getY(), 700);
+        });
+
+        ImgviewSignsBrands = findViewById(R.id.imageViewSignsBrands);
+        ImgbtnTagSignsBrands = findViewById(R.id.imgbtn_artscrafts_tagsignbrands);
+        ImgbtnTagSignsBrands.setOnClickListener(v -> {
+            NsvMain.smoothScrollTo(0, (int) ImgviewSignsBrands.getY(), 700);
+        });
 
 
         ImageSlider ImgSliderPen = findViewById(R.id.slider_pen);
