@@ -26,13 +26,10 @@ import java.util.Random;
 
 public class NewUI_Dashboard extends AppCompatActivity {
 
-    ImageButton ImgbtnDashboardMenu;
-    ImageButton ImgbtnTrivia_Refresh;
+    ImageButton ImgbtnDashboardMenu, ImgbtnTrivia_Refresh, ImgbtnLearn, PlayGames, Community, ArtsCrafts;
     TextView TvTrivia;
     private String currentText = "";
     SharedPreferences preferences;
-    ImageButton ImgbtnLearn;
-    ImageButton PlayGames;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +106,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
                 dlg.show();
 
                 View dialogWindowView = dlg.getWindow().getDecorView();
-                Z_Dialogs_Animation.applyBounceAnimation(dialogWindowView);
+                Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
                 // Access the button from the dialog's content view
                 ImageButton ImgBtnSoundBg = dlg.findViewById(R.id.cb_Background);
@@ -205,6 +202,29 @@ public class NewUI_Dashboard extends AppCompatActivity {
             }, 500);
         });
 
+        ArtsCrafts = findViewById(R.id.imgbtn_artcrafts);
+        ArtsCrafts.setOnClickListener(v -> {
+            ArtsCrafts.setEnabled(false);
+            animateButton(ArtsCrafts);
+            ClickSoundEffect();
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                ArtsCrafts.setEnabled(true);
+                Intent Dashboard = new Intent(getApplicationContext(), NewUI_ArtsCrafts.class);
+                startActivity(Dashboard);
+            }, 500);
+        });
+
+        Community = findViewById(R.id.imgbtn_community);
+        Community.setOnClickListener(v -> {
+            Community.setEnabled(false);
+            animateButton(Community);
+            ClickSoundEffect();
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                Community.setEnabled(true);
+                Intent Dashboard = new Intent(getApplicationContext(), NewUI_Community.class);
+                startActivity(Dashboard);
+            }, 500);
+        });
     }
 
     void BackgroundSound() {

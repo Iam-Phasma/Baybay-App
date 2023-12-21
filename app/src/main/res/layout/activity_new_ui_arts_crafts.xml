@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI_ArtsCrafts">
+
+    <ImageButton
+        android:id="@+id/imgbtn_artscrafts_exit"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        android:src="@drawable/newui_back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/newui_back_button" />
+
+    <TextView
+        android:id="@+id/textView74"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amasis_black"
+        android:text="Arts and Crafts"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn_artscrafts_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_artscrafts_exit" />
+
+    <TextView
+        android:id="@+id/textView75"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="sans-serif-black"
+        android:maxLines="2"
+        android:text="Inspire your imagination"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imgbtn_artscrafts_exit"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_artscrafts_exit" />
+
+    <TextView
+        android:id="@+id/textView76"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="sans-serif"
+        android:maxLines="2"
+        android:text="Expanding the baybayin\'s cultural preservation with creative real-life applications"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView75"
+        app:layout_constraintTop_toBottomOf="@+id/textView75" />
+
+    <TextView
+        android:id="@+id/textView77"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="sans-serif"
+        android:maxLines="2"
+        android:text="Filter tags: press to exclude selection"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView75"
+        app:layout_constraintTop_toBottomOf="@+id/textView76" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:scrollbarSize="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView77">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/imgbtn_artscrafts_exit5"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/newui_artscrafts_pens_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/newui_artscrafts_pens_tag" />
+
+                <ImageButton
+                    android:id="@+id/imgbtn_artscrafts_exit6"
+                    android:layout_width="125dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="-8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/newui_artscrafts_shirtspants_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/newui_artscrafts_shirtspants_tag" />
+
+                <ImageButton
+                    android:id="@+id/imgbtn_artscrafts_exit7"
+                    android:layout_width="85dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="-8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_artscrafts_bags_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/newui_artscrafts_bags_tag" />
+
+                <ImageButton
+                    android:id="@+id/imgbtn_artscrafts_exit8"
+                    android:layout_width="95dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="-8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_artscrafts_stickers_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/newui_artscrafts_stickers_tag" />
+
+                <ImageButton
+                    android:id="@+id/imgbtn_artscrafts_exit9"
+                    android:layout_width="110dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="-8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_artscrafts_accessories_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/newui_artscrafts_accessories_tag" />
+
+                <ImageButton
+                    android:id="@+id/imgbtn_artscrafts_exit10"
+                    android:layout_width="110dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="-8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_artscrafts_calligraphy_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/newui_artscrafts_calligraphy_tag" />
+
+                <ImageButton
+                    android:id="@+id/imgbtn_artscrafts_exit11"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="-8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_artscrafts_tattoos_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/newui_artscrafts_tattoos_tag" />
+
+                <ImageButton
+                    android:id="@+id/imgbtn_artscrafts_exit12"
+                    android:layout_width="110dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="-8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_artscrafts_engraving_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/newui_artscrafts_engraving_tag" />
+
+                <ImageButton
+                    android:id="@+id/imgbtn_artscrafts_exit13"
+                    android:layout_width="130dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="-8dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_artscrafts_signsbrands_tag"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/newui_artscrafts_signsbrands_tag" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:id="@+id/imageView66"
+                android:layout_width="0dp"
+                android:layout_height="260dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/newui_artscrafts_pens_board"
+                tools:srcCompat="@drawable/newui_artscrafts_pens_board" />
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="85dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView66"
+                app:layout_constraintEnd_toEndOf="@+id/imageView66"
+                app:layout_constraintStart_toStartOf="@+id/imageView66"
+                app:layout_constraintTop_toTopOf="@+id/imageView66" />
+
+
+            <ImageView
+                android:id="@+id/imageView68"
+                android:layout_width="0dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/imageView66"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView66"
+                app:layout_constraintTop_toBottomOf="@+id/imageView66"
+                app:srcCompat="@drawable/newui_artscrafts_shirtspants_baord"
+                tools:srcCompat="@drawable/newui_artscrafts_shirtspants_baord" />
+
+            <ImageView
+                android:id="@+id/imageView76"
+                android:layout_width="0dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/imageView68"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView68"
+                app:layout_constraintTop_toBottomOf="@+id/imageView68"
+                app:srcCompat="@drawable/newui_artscrafts_bags_board"
+                tools:srcCompat="@drawable/newui_artscrafts_bags_board" />
+
+            <ImageView
+                android:id="@+id/imageView77"
+                android:layout_width="0dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/imageView76"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView76"
+                app:layout_constraintTop_toBottomOf="@+id/imageView76"
+                app:srcCompat="@drawable/newui_artscrafts_stickers_board"
+                tools:srcCompat="@drawable/newui_artscrafts_stickers_board" />
+
+            <ImageView
+                android:id="@+id/imageView78"
+                android:layout_width="0dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/imageView77"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView77"
+                app:layout_constraintTop_toBottomOf="@+id/imageView77"
+                app:srcCompat="@drawable/newui_artscrafts_accessories_board"
+                tools:srcCompat="@drawable/newui_artscrafts_accessories_board" />
+
+            <ImageView
+                android:id="@+id/imageView79"
+                android:layout_width="0dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/imageView78"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView78"
+                app:layout_constraintTop_toBottomOf="@+id/imageView78"
+                app:srcCompat="@drawable/newui_artscrafts_calligraphy_board"
+                tools:srcCompat="@drawable/newui_artscrafts_calligraphy_board" />
+
+            <ImageView
+                android:id="@+id/imageView80"
+                android:layout_width="0dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/imageView79"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView79"
+                app:layout_constraintTop_toBottomOf="@+id/imageView79"
+                app:srcCompat="@drawable/newui_artscrafts_tattoos_board"
+                tools:srcCompat="@drawable/newui_artscrafts_tattoos_board" />
+
+            <ImageView
+                android:id="@+id/imageView81"
+                android:layout_width="0dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/imageView80"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView80"
+                app:layout_constraintTop_toBottomOf="@+id/imageView80"
+                app:srcCompat="@drawable/newui_artscrafts_engraving_board"
+                tools:srcCompat="@drawable/newui_artscrafts_engraving_board" />
+
+            <ImageView
+                android:id="@+id/imageView82"
+                android:layout_width="0dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/imageView81"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView81"
+                app:layout_constraintTop_toBottomOf="@+id/imageView81"
+                app:srcCompat="@drawable/newui_artscrafts_signsbrands_board"
+                tools:srcCompat="@drawable/newui_artscrafts_signsbrands_board" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

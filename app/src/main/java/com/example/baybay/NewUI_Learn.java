@@ -176,8 +176,8 @@ public class NewUI_Learn extends AppCompatActivity {
             Downloadable.setEnabled(false);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 Downloadable.setEnabled(true);
-//              Intent MainMenu = new Intent(getApplicationContext(), More.class);
-//              startActivity(MainMenu);
+                Intent Learn = new Intent(getApplicationContext(), NewUI_Downloadable.class);
+                startActivity(Learn);
             }, 500);
         });
 

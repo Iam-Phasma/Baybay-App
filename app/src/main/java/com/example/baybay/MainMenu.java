@@ -151,7 +151,7 @@ public class MainMenu extends AppCompatActivity {
         //Guide button
         ImgbtnGuide = findViewById(R.id.imgbtn_guide);
         ImgbtnGuide.setOnClickListener(v -> {
-            disableMainMenuButtons();
+            //disableMainMenuButtons();
             ClickSoundEffect();
             animateButton(ImgbtnGuide);
             handler.postDelayed(this::GuideMenu, 500);
@@ -161,7 +161,7 @@ public class MainMenu extends AppCompatActivity {
         //Tool button
         ImgbtnTool = findViewById(R.id.imgbtn_tool);
         ImgbtnTool.setOnClickListener(v -> {
-            disableMainMenuButtons();
+            //disableMainMenuButtons();
             ClickSoundEffect();
             animateButton(ImgbtnTool);
             handler.postDelayed(() -> {
@@ -208,21 +208,21 @@ public class MainMenu extends AppCompatActivity {
         ImgbtnSettings.setOnClickListener(v -> {
 
             try {
-                disableMainMenuButtons();
-                ImgbtnSettings.setVisibility(View.INVISIBLE);
-                ImgbtnMainQuit.setVisibility(View.INVISIBLE);
+                //disableMainMenuButtons();
+//                ImgbtnSettings.setVisibility(View.INVISIBLE);
+//                ImgbtnMainQuit.setVisibility(View.INVISIBLE);
                 ClickSoundEffect();
                 ImgbtnSettings.setEnabled(false);
 
                 // Create a fade out animation
-                Animation fadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
-                fadeOutAnimation.setDuration(300); // Adjust the duration as needed
-                fadeOutAnimation.setFillAfter(true); // Keep the button invisible after the animation
-
-                ImgbtnGuide.startAnimation(fadeOutAnimation);
-                ImgbtnDrills.startAnimation(fadeOutAnimation);
-                ImgbtnTool.startAnimation(fadeOutAnimation);
-                ImgbtnChart.startAnimation(fadeOutAnimation);
+//                Animation fadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
+//                fadeOutAnimation.setDuration(300); // Adjust the duration as needed
+//                fadeOutAnimation.setFillAfter(true); // Keep the button invisible after the animation
+//
+//                ImgbtnGuide.startAnimation(fadeOutAnimation);
+//                ImgbtnDrills.startAnimation(fadeOutAnimation);
+//                ImgbtnTool.startAnimation(fadeOutAnimation);
+//                ImgbtnChart.startAnimation(fadeOutAnimation);
 
                 Dialog dlg;
                 dlg = new Dialog(MainMenu.this, R.style.PopupDialog);
@@ -231,7 +231,7 @@ public class MainMenu extends AppCompatActivity {
                 dlg.show();
 
                 View dialogWindowView = dlg.getWindow().getDecorView();
-                Z_Dialogs_Animation.applyBounceAnimation(dialogWindowView);
+                Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
                 // Access the button from the dialog's content view
                 ImageButton ImgBtnSoundBg = dlg.findViewById(R.id.cb_Background);
@@ -289,19 +289,20 @@ public class MainMenu extends AppCompatActivity {
                 });
 
                 ImgbtnSoundExit.setOnClickListener(v13 -> {
-                    enableMainMenuButtons();
+                    //enableMainMenuButtons();
                     ClickSoundEffect();
                     //ImgbtnSettings.setEnabled(true);
-                    dlg.dismiss();
-                    ImgbtnSettings.setEnabled(false);
-                    ImgbtnMainQuit.setEnabled(false);
-                    ImgbtnSettings.setVisibility(View.VISIBLE);
-                    ImgbtnMainQuit.setVisibility(View.VISIBLE);
+
+//                    ImgbtnSettings.setEnabled(false);
+//                    ImgbtnMainQuit.setEnabled(false);
+//                    ImgbtnSettings.setVisibility(View.VISIBLE);
+//                    ImgbtnMainQuit.setVisibility(View.VISIBLE);
                     handler.postDelayed(() -> {
                         ImgbtnSettings.setEnabled(true);
                         ImgbtnMainQuit.setEnabled(true);
                     }, 800);
                     ExitGuideMenu(); //for buttons animation
+                    dlg.dismiss();
                 });
 
                 //Prevents back press on sound dialog menu
@@ -326,8 +327,8 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void enableMainMenuButtons(){
-        ImgbtnDrills.setEnabled(true);
-        ImgbtnChart.setEnabled(true);
+//        ImgbtnDrills.setEnabled(true);
+//        ImgbtnChart.setEnabled(true);
         ImgbtnGuide.setEnabled(true);
         ImgbtnTool.setEnabled(true);
         ImgbtnMainQuit.setEnabled(true);
@@ -500,19 +501,19 @@ public class MainMenu extends AppCompatActivity {
     public void ExitGuideMenu() {
         // Start the button click animations one after the other with a delay
         try {
-            animateButtonSequentially(ImgbtnDrills, 0);
-            animateButtonSequentially(ImgbtnChart, 100);
+//            animateButtonSequentially(ImgbtnDrills, 0);
+//            animateButtonSequentially(ImgbtnChart, 100);
             animateButtonSequentially(ImgbtnGuide, 200);
             animateButtonSequentially(ImgbtnTool, 300);
 
             // Start the fade-in animations one after the other
-            animateFadeInSequentially(ImgbtnDrills, 0);
-            animateFadeInSequentially(ImgbtnChart, 100);
+//            animateFadeInSequentially(ImgbtnDrills, 0);
+//            animateFadeInSequentially(ImgbtnChart, 100);
             animateFadeInSequentially(ImgbtnGuide, 200);
             animateFadeInSequentially(ImgbtnTool, 300);
 
-            ImgbtnGuide.setEnabled(true);
-            ImgbtnDrills.setEnabled(true);
+//            ImgbtnGuide.setEnabled(true);
+//            ImgbtnDrills.setEnabled(true);
             ImgbtnTool.setEnabled(true);
             ImgbtnChart.setEnabled(true);
         } catch (Exception e) {

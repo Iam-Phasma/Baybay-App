@@ -108,21 +108,24 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
         noOfGameplay(this);
 
-        Quiz = findViewById(R.id.imgview_quiz);
+        Quiz = findViewById(R.id.imgview_dl_r1);
         Quiz.setOnClickListener(v -> {
             GametoPlay = 1;
+            ClickSoundEffect();
             openDialogGameSelection();
         });
 
-        Spelling = findViewById(R.id.imgview_spelling);
+        Spelling = findViewById(R.id.imgview_dl_r2);
         Spelling.setOnClickListener(v -> {
             GametoPlay = 2;
+            ClickSoundEffect();
             openDialogGameSelection();
         });
 
-        Matching = findViewById(R.id.imgview_matching);
+        Matching = findViewById(R.id.imgview_dl_r3);
         Matching.setOnClickListener(v -> {
             GametoPlay = 3;
+            ClickSoundEffect();
             openDialogGameSelection();
         });
 
@@ -133,7 +136,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         Dialog dlg;
         dlg = new Dialog(NewUI_Gamemodes.this, R.style.PopupDialog);
         dlg.setCanceledOnTouchOutside(false);  //disable dialog dismiss when touch outside
-        dlg.setContentView(R.layout.activity_newui_gamemodes);
+        dlg.setContentView(R.layout.activity_new_ui_gameselected_dialog);
         dlg.show();
 
         View dialogWindowView = dlg.getWindow().getDecorView();
@@ -142,12 +145,12 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         //Dismiss dialog when view is clicked
         ConstraintLayout ConstraintLayoutSnapshot = dlg.findViewById(R.id.constraintlayout_gamemodeselection);
         ConstraintLayoutSnapshot.setOnClickListener(v -> {
-            dlg.dismiss(); // Close the dialog
+            dlg.dismiss();
         });
 
         //Dismiss dialog when clicked outside the layout
         dialogWindowView.setOnClickListener(v -> {
-            dlg.dismiss(); // Close the dialog
+            dlg.dismiss();
         });
 
         ImgviewModeSlectedboard = dlg.findViewById(R.id.imgview_mode_selectedboard);
@@ -178,6 +181,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
         difficulty = 1;
         ImgbtnGamemodeClassic.setOnClickListener(v -> {
+            ClickSoundEffect();
             ImgbtnGamemodeClassic.setImageResource(R.drawable.newui_gm_classic_sel);
             ImgbtnGamemodeAdvanced.setImageResource(R.drawable.newui_gm_advanced_unsel);
             TvDifficultySelected.setText("Selected: Classic");
@@ -186,6 +190,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         });
 
         ImgbtnGamemodeAdvanced.setOnClickListener(v -> {
+            ClickSoundEffect();
             ImgbtnGamemodeClassic.setImageResource(R.drawable.newui_gm_classic_unsel);
             ImgbtnGamemodeAdvanced.setImageResource(R.drawable.newui_gm_advanced_sel);
             TvDifficultySelected.setText("Selected: Advanced");
@@ -195,26 +200,23 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
         ImgbtnSelectionstart = dlg.findViewById(R.id.imgbtn_gm_selectionstart);
         ImgbtnSelectionstart.setOnClickListener(v -> {
-            //Toast.makeText(NewUI_Gamemodes.this, String.valueOf(GametoPlay + " " + difficulty), Toast.LENGTH_SHORT).show();
+            ClickSoundEffect();
 
             if (GametoPlay == 1){
                 Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Quiz.class);
                 Gamemodes.putExtra("DIFFICULTY", difficulty);
                 startActivity(Gamemodes);
                 dlg.dismiss();
-                //finish();
             } else if (GametoPlay == 2) {
                 Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Spelling.class);
                 Gamemodes.putExtra("DIFFICULTY", difficulty);
                 startActivity(Gamemodes);
                 dlg.dismiss();
-                //finish();
             } else if (GametoPlay == 3) {
                 Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Matching.class);
                 Gamemodes.putExtra("DIFFICULTY", difficulty);
                 startActivity(Gamemodes);
                 dlg.dismiss();
-                //finish();
             }
 
         });
