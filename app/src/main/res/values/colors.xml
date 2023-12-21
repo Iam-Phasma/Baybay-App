@@ -12,7 +12,7 @@
     <color name="correct_color">#1AFF00</color>
     <color name="incorrect_color">#FF0000</color>
     <color name="incorrect_skipped">#FF03A9F4</color>
-
+    <color name="transparent">#00FFFFFF</color>
 
     <style name="PopupDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>

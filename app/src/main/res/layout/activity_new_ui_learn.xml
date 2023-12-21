@@ -72,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView3">
+        app:layout_constraintTop_toBottomOf="@+id/ncv_main">
 
         <ImageButton
             android:id="@+id/imgbtn_gameplayhistory_reset"
@@ -96,7 +96,7 @@
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView3"
+        android:id="@+id/ncv_main"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
