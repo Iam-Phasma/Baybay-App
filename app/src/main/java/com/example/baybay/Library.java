@@ -216,7 +216,7 @@ public class Library extends AppCompatActivity {
     private void ProceedPDFDownload(){
         Dialog dlg = new Dialog(Library.this, R.style.PopupDialog);
         dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
-        dlg.setContentView(R.layout.activity_more_pdf_download_confirmation);
+        dlg.setContentView(R.layout.activity_newui_download_link_prompt);
         dlg.show();
 
         View dialogWindowView = dlg.getWindow().getDecorView();

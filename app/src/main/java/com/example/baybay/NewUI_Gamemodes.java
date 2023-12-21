@@ -108,21 +108,21 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
         noOfGameplay(this);
 
-        Quiz = findViewById(R.id.imgview_dl_r1);
+        Quiz = findViewById(R.id.imgview_fb1_board);
         Quiz.setOnClickListener(v -> {
             GametoPlay = 1;
             ClickSoundEffect();
             openDialogGameSelection();
         });
 
-        Spelling = findViewById(R.id.imgview_dl_r2);
+        Spelling = findViewById(R.id.imgview_dl_r2_board);
         Spelling.setOnClickListener(v -> {
             GametoPlay = 2;
             ClickSoundEffect();
             openDialogGameSelection();
         });
 
-        Matching = findViewById(R.id.imgview_dl_r3);
+        Matching = findViewById(R.id.imgview_dl_r3_board);
         Matching.setOnClickListener(v -> {
             GametoPlay = 3;
             ClickSoundEffect();

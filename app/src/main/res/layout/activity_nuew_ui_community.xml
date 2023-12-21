@@ -93,12 +93,12 @@
                 android:textColor="#000000"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r1"
-                app:layout_constraintStart_toStartOf="@+id/imgview_dl_r1"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_fb1_board"
+                app:layout_constraintStart_toStartOf="@+id/imgview_fb1_board"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imgview_dl_r1"
+                android:id="@+id/imgview_fb1_board"
                 android:layout_width="300dp"
                 android:layout_height="140dp"
                 android:layout_marginTop="10dp"
@@ -110,26 +110,26 @@
                 tools:srcCompat="@drawable/newui_community_fb1" />
 
             <ImageView
-                android:id="@+id/imgview_dl_r"
+                android:id="@+id/imgview_fb2_board"
                 android:layout_width="300dp"
                 android:layout_height="140dp"
                 android:layout_marginTop="10dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r1"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_fb1_board"
                 app:srcCompat="@drawable/newui_community_fb2"
                 tools:srcCompat="@drawable/newui_community_fb2" />
 
             <ImageView
-                android:id="@+id/imgview_dl_r4"
+                android:id="@+id/imgview_fb3_board"
                 android:layout_width="300dp"
                 android:layout_height="140dp"
                 android:layout_marginTop="10dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_fb2_board"
                 app:srcCompat="@drawable/newui_community_fb3"
                 tools:srcCompat="@drawable/newui_community_fb3" />
 
@@ -145,12 +145,12 @@
                 android:textColor="#000000"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r5"
-                app:layout_constraintStart_toStartOf="@+id/imgview_dl_r5"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r4" />
+                app:layout_constraintEnd_toEndOf="@+id/imgview_reddit1_board"
+                app:layout_constraintStart_toStartOf="@+id/imgview_reddit1_board"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_fb3_board" />
 
             <ImageView
-                android:id="@+id/imgview_dl_r5"
+                android:id="@+id/imgview_reddit1_board"
                 android:layout_width="300dp"
                 android:layout_height="140dp"
                 android:layout_marginTop="10dp"
@@ -173,12 +173,12 @@
                 android:textColor="#000000"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r5"
-                app:layout_constraintStart_toStartOf="@+id/imgview_dl_r5"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r5" />
+                app:layout_constraintEnd_toEndOf="@+id/imgview_reddit1_board"
+                app:layout_constraintStart_toStartOf="@+id/imgview_reddit1_board"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_reddit1_board" />
 
             <ImageView
-                android:id="@+id/imgview_dl_r6"
+                android:id="@+id/imgview_workshop1_board"
                 android:layout_width="300dp"
                 android:layout_height="140dp"
                 android:layout_marginTop="10dp"
