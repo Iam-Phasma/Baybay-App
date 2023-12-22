@@ -70,18 +70,21 @@ public class NewUI_Community extends AppCompatActivity {
 
         FB1 = findViewById(R.id.imgview_fb1_board);
         FB1.setOnClickListener(v -> {
+            DisableNav();
             link = "https://www.facebook.com/groups/Baybayin.PhilippineNationalWritingSystem/";
             ProceedToLink();
         });
 
         FB2 = findViewById(R.id.imgview_fb2_board);
         FB2.setOnClickListener(v -> {
+            DisableNav();
             link = "https://www.facebook.com/groups/164170853782827/";
             ProceedToLink();
         });
 
         FB3 = findViewById(R.id.imgview_fb3_board);
         FB3.setOnClickListener(v -> {
+            DisableNav();
             link = "https://www.facebook.com/groups/647665382468293/";
             ProceedToLink();
         });
@@ -89,12 +92,14 @@ public class NewUI_Community extends AppCompatActivity {
 
         Reddit1 = findViewById(R.id.imgview_reddit1_board);
         Reddit1.setOnClickListener(v -> {
+            DisableNav();
             link = "https://www.reddit.com/r/baybayin_script/new/";
             ProceedToLink();
         });
 
         Workshop1 = findViewById(R.id.imgview_workshop1_board);
         Workshop1.setOnClickListener(v -> {
+            DisableNav();
             link = "https://www.baybayin.com/baybayin-live.html";
             ProceedToLink();
         });
@@ -127,6 +132,8 @@ public class NewUI_Community extends AppCompatActivity {
             dlg.dismiss();
             link = "";
         });
+
+        EnableNav();
     }
 
     //DIRECT TO LINKS (SHOPS AND VIDEOS)
@@ -137,6 +144,22 @@ public class NewUI_Community extends AppCompatActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
         }catch (Exception e){
         }
+    }
+
+    private void DisableNav(){
+        FB1.setEnabled(false);
+        FB2.setEnabled(false);
+        FB3.setEnabled(false);
+        Reddit1.setEnabled(false);
+        Workshop1.setEnabled(false);
+    }
+
+    private void EnableNav(){
+        FB1.setEnabled(true);
+        FB2.setEnabled(true);
+        FB3.setEnabled(true);
+        Reddit1.setEnabled(true);
+        Workshop1.setEnabled(true);
     }
 
     private void PauseBGMusic(){

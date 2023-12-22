@@ -78,9 +78,9 @@ public class NewUI_Learn extends AppCompatActivity {
         FullChart.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(FullChart);
-            FullChart.setEnabled(false);
+            DisableNav();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                FullChart.setEnabled(true);
+                EnableNav();
                 Intent Learn = new Intent(getApplicationContext(), NewUI_Chart_Letters.class);
                 startActivity(Learn);
             }, 500);
@@ -90,9 +90,9 @@ public class NewUI_Learn extends AppCompatActivity {
         Downloadable.setOnClickListener(v -> {
             ClickSoundEffect();
             animateButton(Downloadable);
-            Downloadable.setEnabled(false);
+            DisableNav();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                Downloadable.setEnabled(true);
+                EnableNav();
                 Intent Learn = new Intent(getApplicationContext(), NewUI_Downloadable.class);
                 startActivity(Learn);
             }, 500);
@@ -186,10 +186,10 @@ public class NewUI_Learn extends AppCompatActivity {
 
             if (isL5Clicked.get()) {
                 FlipRightSound();
-                Handwriting.setImageResource(R.drawable.newui_lesson4_sel);
+                Handwriting.setImageResource(R.drawable.newui_lesson5_sel);
             } else {
                 FlipLeftSound();
-                Handwriting.setImageResource(R.drawable.newui_lesson4_unsel);
+                Handwriting.setImageResource(R.drawable.newui_lesson5_unsel);
             }
 
             toggleVisibilityWithAnimation(hiddenButtons5Layout);
@@ -236,9 +236,6 @@ public class NewUI_Learn extends AppCompatActivity {
             goToBook();
         });
 
-
-
-
     }
 
     private void goToBook(){
@@ -246,6 +243,16 @@ public class NewUI_Learn extends AppCompatActivity {
         Intent intent = new Intent(NewUI_Learn.this, PdfViewerActivity.class);
         intent.putExtra("bookNumber", bookNumber);
         startActivity(intent);
+    }
+
+    private void DisableNav(){
+        Downloadable.setEnabled(false);
+        FullChart.setEnabled(false);
+    }
+
+    private void EnableNav(){
+        Downloadable.setEnabled(true);
+        FullChart.setEnabled(true);
     }
 
     private void toggleVisibilityWithAnimation(final LinearLayout layout) {

@@ -185,11 +185,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         ImgbtnLearn = findViewById(R.id.imgbtn_learn);
         ImgbtnLearn.setOnClickListener(v -> {
-            ImgbtnLearn.setEnabled(false);
+            DisableNav();
             ClickSoundEffect();
             animateButton(ImgbtnLearn);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                ImgbtnLearn.setEnabled(true);
+                EnableNav();
                 Intent Dashboard = new Intent(getApplicationContext(), NewUI_Learn.class);
                 startActivity(Dashboard);
             }, 500);
@@ -197,11 +197,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         PlayGames = findViewById(R.id.imgbtn_playgames);
         PlayGames.setOnClickListener(v -> {
-            PlayGames.setEnabled(false);
+            DisableNav();
             ClickSoundEffect();
             animateButton(PlayGames);
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                PlayGames.setEnabled(true);
+                EnableNav();
                 Intent Dashboard = new Intent(getApplicationContext(), NewUI_Gamemodes.class);
                 startActivity(Dashboard);
             }, 500);
@@ -209,11 +209,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         ArtsCrafts = findViewById(R.id.imgbtn_artcrafts);
         ArtsCrafts.setOnClickListener(v -> {
-            ArtsCrafts.setEnabled(false);
+            DisableNav();
             animateButton(ArtsCrafts);
             ClickSoundEffect();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                ArtsCrafts.setEnabled(true);
+                EnableNav();
                 Intent Dashboard = new Intent(getApplicationContext(), NewUI_ArtsCrafts.class);
                 startActivity(Dashboard);
             }, 500);
@@ -221,15 +221,29 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         Community = findViewById(R.id.imgbtn_community);
         Community.setOnClickListener(v -> {
-            Community.setEnabled(false);
+            DisableNav();
             animateButton(Community);
             ClickSoundEffect();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                Community.setEnabled(true);
+                EnableNav();
                 Intent Dashboard = new Intent(getApplicationContext(), NewUI_Community.class);
                 startActivity(Dashboard);
             }, 500);
         });
+    }
+
+    private void DisableNav(){
+        ImgbtnLearn.setEnabled(false);
+        PlayGames.setEnabled(false);
+        ArtsCrafts.setEnabled(false);
+        Community.setEnabled(false);
+    }
+
+    private void EnableNav(){
+        ImgbtnLearn.setEnabled(true);
+        PlayGames.setEnabled(true);
+        ArtsCrafts.setEnabled(true);
+        Community.setEnabled(true);
     }
 
     void BackgroundSound() {

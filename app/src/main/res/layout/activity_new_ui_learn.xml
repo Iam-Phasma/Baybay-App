@@ -316,8 +316,8 @@
                     android:layout_height="120dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/newui_lesson4_unsel"
-                    tools:src="@drawable/newui_lesson4_unsel" />
+                    android:src="@drawable/newui_lesson5_unsel"
+                    tools:src="@drawable/newui_lesson5_unsel" />
 
                 <LinearLayout
                     android:id="@+id/hiddenButtons5Layout"

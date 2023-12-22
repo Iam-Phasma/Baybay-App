@@ -90,6 +90,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         R1 = findViewById(R.id.imgbtn_dl_r1);
         R1.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             downloadPicker = "pdf_introducingbaybayin_characters_for_children.pdf";
             ProceedPDFDownload();
         });
@@ -97,6 +98,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         R2 = findViewById(R.id.imgbtn_dl_r2);
         R2.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             downloadPicker = "pdf_understanding_baybayin_and_its_rules.pdf";
             ProceedPDFDownload();
         });
@@ -104,6 +106,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         R3 = findViewById(R.id.imgbtn_dl_r3);
         R3.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             downloadPicker = "pdf_the_baybayin_script_chart.pdf";
             ProceedPDFDownload();
         });
@@ -111,6 +114,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         A1 = findViewById(R.id.imgbtn_a1_dlbutton);
         A1.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             downloadPicker = "pdf_1_practice_tracing.pdf";
             ProceedPDFDownload();
         });
@@ -118,6 +122,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         A2 = findViewById(R.id.imgbtn_a2_dlbutton);
         A2.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             downloadPicker = "pdf_2_matching_test.pdf";
             ProceedPDFDownload();
         });
@@ -125,6 +130,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         A3 = findViewById(R.id.imgbtn_a3_dlbutton);
         A3.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             downloadPicker = "pdf_3_draw_characters.pdf";
             ProceedPDFDownload();
         });
@@ -132,6 +138,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         A4 = findViewById(R.id.imgbtn_a4_dlbutton);
         A4.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             downloadPicker = "pdf_4_crossword_puzzle.pdf";
             ProceedPDFDownload();
         });
@@ -139,6 +146,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         A5 = findViewById(R.id.imgbtn_a5_dlbutton);
         A5.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             downloadPicker = "pdf_5_paragraph_translation.pdf";
             ProceedPDFDownload();
         });
@@ -147,6 +155,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         SR1 = findViewById(R.id.imgview_fb1_board);
         SR1.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             snapshotcount = "SR1";
             snapshot();
         });
@@ -154,6 +163,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         SR2 = findViewById(R.id.imgview_dl_r2_board);
         SR2.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             snapshotcount = "SR2";
             snapshot();
         });
@@ -161,6 +171,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         SR3 = findViewById(R.id.imgview_dl_r3_board);
         SR3.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             snapshotcount = "SR3";
             snapshot();
         });
@@ -169,6 +180,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         SA1 = findViewById(R.id.imgbtn_dl_a1_board);
         SA1.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             snapshotcount = "SA1";
             snapshot();
         });
@@ -176,6 +188,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         SA2 = findViewById(R.id.imgbtn_dl_a2_board);
         SA2.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             snapshotcount = "SA2";
             snapshot();
         });
@@ -183,6 +196,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         SA3 = findViewById(R.id.imgbtn_dl_a3_board);
         SA3.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             snapshotcount = "SA3";
             snapshot();
         });
@@ -190,6 +204,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         SA4 = findViewById(R.id.imgbtn_dl_a4_board);
         SA4.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             snapshotcount = "SA4";
             snapshot();
         });
@@ -197,6 +212,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
         SA5 = findViewById(R.id.imgbtn_dl_a5_board);
         SA5.setOnClickListener(v -> {
             ClickSoundEffect();
+            DisableNav();
             snapshotcount = "SA5";
             snapshot();
         });
@@ -231,6 +247,8 @@ public class NewUI_Downloadable extends AppCompatActivity {
             dlg.dismiss();
 //            Toasty.info(Library.this, "Task Dismissed.", Toasty.LENGTH_SHORT).show();
         });
+
+        EnableNav();
     }
 
     //DOWNLOAD PDF
@@ -307,10 +325,10 @@ public class NewUI_Downloadable extends AppCompatActivity {
                 Imgview_SnapshotHolder.setImageResource(R.drawable.snapshot2_activity1);
                 break;
             case "SA2":
-                Imgview_SnapshotHolder.setImageResource(R.drawable.snapshot2_activity2);
+                Imgview_SnapshotHolder.setImageResource(R.drawable.snapshot2_activity3);
                 break;
             case "SA3":
-                Imgview_SnapshotHolder.setImageResource(R.drawable.snapshot2_activity3);
+                Imgview_SnapshotHolder.setImageResource(R.drawable.snapshot2_activity2);
                 break;
             case "SA4":
                 Imgview_SnapshotHolder.setImageResource(R.drawable.snapshot2_activity4);
@@ -331,6 +349,48 @@ public class NewUI_Downloadable extends AppCompatActivity {
         dialogWindowView.setOnClickListener(v -> {
             dlg.dismiss(); // Close the dialog
         });
+
+        EnableNav();
+    }
+
+    private void DisableNav(){
+        R1.setEnabled(false);
+        R2.setEnabled(false);
+        R3.setEnabled(false);
+        A1.setEnabled(false);
+        A2.setEnabled(false);
+        A3.setEnabled(false);
+        A4.setEnabled(false);
+        A5.setEnabled(false);
+
+        SR1.setEnabled(false);
+        SR2.setEnabled(false);
+        SR3.setEnabled(false);
+        SA1.setEnabled(false);
+        SA2.setEnabled(false);
+        SA3.setEnabled(false);
+        SA4.setEnabled(false);
+        SA5.setEnabled(false);
+    }
+
+    private void EnableNav(){
+        R1.setEnabled(true);
+        R2.setEnabled(true);
+        R3.setEnabled(true);
+        A1.setEnabled(true);
+        A2.setEnabled(true);
+        A3.setEnabled(true);
+        A4.setEnabled(true);
+        A5.setEnabled(true);
+
+        SR1.setEnabled(true);
+        SR2.setEnabled(true);
+        SR3.setEnabled(true);
+        SA1.setEnabled(true);
+        SA2.setEnabled(true);
+        SA3.setEnabled(true);
+        SA4.setEnabled(true);
+        SA5.setEnabled(true);
     }
 
     // Method to animate the button click

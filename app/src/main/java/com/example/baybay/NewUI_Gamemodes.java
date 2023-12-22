@@ -85,9 +85,9 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         GameHistory.setOnClickListener(v -> {
             animateButton(GameHistory);
             ClickSoundEffect();
-            GameHistory.setEnabled(false);
+            DisableNav();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                GameHistory.setEnabled(true);
+                EnableNav();
                 Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Gameplay_History.class);
                 startActivity(Gamemodes);
             }, 500);
@@ -96,10 +96,10 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         Progress = findViewById(R.id.imgbtn_gm_advanced);
         Progress.setOnClickListener(v -> {
             animateButton(Progress);
-            animateButton(Progress);
             ClickSoundEffect();
+            DisableNav();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                Progress.setEnabled(true);
+                EnableNav();
                 Intent Gamemodes = new Intent(getApplicationContext(), NewUi_Progress_Chart.class);
                 startActivity(Gamemodes);
             }, 500);
@@ -111,6 +111,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         Quiz.setOnClickListener(v -> {
             GametoPlay = 1;
             ClickSoundEffect();
+            DisableNav();
             openDialogGameSelection();
         });
 
@@ -118,6 +119,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         Spelling.setOnClickListener(v -> {
             GametoPlay = 2;
             ClickSoundEffect();
+            DisableNav();
             openDialogGameSelection();
         });
 
@@ -125,6 +127,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         Matching.setOnClickListener(v -> {
             GametoPlay = 3;
             ClickSoundEffect();
+            DisableNav();
             openDialogGameSelection();
         });
     }
@@ -219,10 +222,27 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
         });
 
+        EnableNav();
     }
 
 
+    private void DisableNav(){
+        Quiz.setEnabled(false);
+        Spelling.setEnabled(false);
+        Matching.setEnabled(false);
 
+        GameHistory.setEnabled(false);
+        Progress.setEnabled(false);
+    }
+
+    private void EnableNav(){
+        Quiz.setEnabled(true);
+        Spelling.setEnabled(true);
+        Matching.setEnabled(true);
+
+        GameHistory.setEnabled(true);
+        Progress.setEnabled(true);
+    }
 
     private void PauseBGMusic(){
         //Z_SoundManager.setActivityMainMenuPaused(true);
