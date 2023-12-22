@@ -7,6 +7,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -42,6 +43,7 @@ public class NewUI_Downloadable extends AppCompatActivity {
     private String downloadPicker = "";
     private String snapshotcount = "SR1";
     private TextView DLLinkQuestion;
+    private SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +75,8 @@ public class NewUI_Downloadable extends AppCompatActivity {
 
         // Set the custom GradientDrawable as the window background
         getWindow().setBackgroundDrawable(gradientDrawable);
+
+
 
 
 
@@ -328,7 +332,6 @@ public class NewUI_Downloadable extends AppCompatActivity {
             dlg.dismiss(); // Close the dialog
         });
     }
-
 
     // Method to animate the button click
     private void animateButton(View view) {

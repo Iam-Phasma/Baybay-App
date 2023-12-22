@@ -260,7 +260,7 @@
                         android:backgroundTint="#00FFFFFF"
                         android:scaleType="fitCenter"
                         android:src="@drawable/newui_lesson1_sub3"
-                        tools:src="@drawable/newui_lesson1_sub1" />
+                        tools:src="@drawable/newui_lesson1_sub3" />
 
                     <ImageButton
                         android:id="@+id/hidden3Button2"
@@ -297,7 +297,7 @@
                         android:backgroundTint="#00FFFFFF"
                         android:scaleType="fitCenter"
                         android:src="@drawable/newui_lesson1_sub3"
-                        tools:src="@drawable/newui_lesson1_sub1" />
+                        tools:src="@drawable/newui_lesson1_sub3" />
 
                     <ImageButton
                         android:id="@+id/hidden4Button2"
@@ -308,6 +308,100 @@
                         android:scaleType="fitCenter"
                         android:src="@drawable/newui_lesson1_sub2"
                         tools:src="@drawable/newui_lesson1_sub2" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/mainButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_lesson4_unsel"
+                    tools:src="@drawable/newui_lesson4_unsel" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenButtons5Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/hidden5Button1"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson1_sub3"
+                        tools:src="@drawable/newui_lesson1_sub3" />
+
+                    <ImageButton
+                        android:id="@+id/hidden5Button2"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson1_sub2"
+                        tools:src="@drawable/newui_lesson1_sub2" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/mainButton6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/newui_lesson6_unsel"
+                    tools:src="@drawable/newui_lesson6_unsel" />
+
+                <LinearLayout
+                    android:id="@+id/hiddenButtons6Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ImageButton
+                        android:id="@+id/hidden6Button1"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson6_sub1"
+                        tools:src="@drawable/newui_lesson6_sub1" />
+
+                    <ImageButton
+                        android:id="@+id/hidden6Button2"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson6_sub2"
+                        tools:src="@drawable/newui_lesson6_sub2" />
+
+                    <ImageButton
+                        android:id="@+id/hidden6Button3"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson6_sub3"
+                        tools:src="@drawable/newui_lesson6_sub3" />
+
+                    <ImageButton
+                        android:id="@+id/hidden6Button4"
+                        android:layout_width="270dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:backgroundTint="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/newui_lesson6_sub4"
+                        tools:src="@drawable/newui_lesson6_sub4" />
                 </LinearLayout>
 
             </LinearLayout>

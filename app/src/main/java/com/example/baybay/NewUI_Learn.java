@@ -27,17 +27,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class NewUI_Learn extends AppCompatActivity {
 
     ImageButton ImgbtnLearExit;
-    private LinearLayout hiddenButtonsLayout;
-    private LinearLayout hiddenButtons2Layout;
-    private LinearLayout hiddenButtons3Layout;
-    private LinearLayout hiddenButtons4Layout;
-    private ImageButton Origin;
-    private ImageButton Introduction;
-    private ImageButton Characters;
-    private ImageButton Rules;
+    private LinearLayout hiddenButtonsLayout, hiddenButtons2Layout, hiddenButtons3Layout, hiddenButtons4Layout, hiddenButtons5Layout, hiddenButtons6Layout;
+    private ImageButton Origin, Introduction, Characters, Rules, Handwriting, Reading;
+    private ImageButton FullChart, Downloadable;
+    private int bookNumber;
 
-    private ImageButton FullChart;
-    private ImageButton Downloadable;
+    private ImageButton L6Sub1, L6Sub2, L6Sub3, L6Sub4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,15 +74,45 @@ public class NewUI_Learn extends AppCompatActivity {
             finish();
         });
 
+        FullChart = findViewById(R.id.imgbtn_gm_advanced);
+        FullChart.setOnClickListener(v -> {
+            ClickSoundEffect();
+            animateButton(FullChart);
+            FullChart.setEnabled(false);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                FullChart.setEnabled(true);
+                Intent Learn = new Intent(getApplicationContext(), NewUI_Chart_Letters.class);
+                startActivity(Learn);
+            }, 500);
+        });
+
+        Downloadable = findViewById(R.id.imgbtn_gameplayhistory_reset);
+        Downloadable.setOnClickListener(v -> {
+            ClickSoundEffect();
+            animateButton(Downloadable);
+            Downloadable.setEnabled(false);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                Downloadable.setEnabled(true);
+                Intent Learn = new Intent(getApplicationContext(), NewUI_Downloadable.class);
+                startActivity(Learn);
+            }, 500);
+        });
+
+
+
         hiddenButtonsLayout = findViewById(R.id.hiddenButtonsLayout);
         hiddenButtons2Layout = findViewById(R.id.hiddenButtons2Layout);
         hiddenButtons3Layout = findViewById(R.id.hiddenButtons3Layout);
         hiddenButtons4Layout = findViewById(R.id.hiddenButtons4Layout);
+        hiddenButtons5Layout = findViewById(R.id.hiddenButtons5Layout);
+        hiddenButtons6Layout = findViewById(R.id.hiddenButtons6Layout);
 
         Origin = findViewById(R.id.mainButton1);
         Introduction = findViewById(R.id.mainButton2);
         Characters = findViewById(R.id.mainButton3);
         Rules = findViewById(R.id.mainButton4);
+        Handwriting = findViewById(R.id.mainButton5);
+        Reading = findViewById(R.id.mainButton6);
 
         AtomicBoolean isL1Clicked = new AtomicBoolean(false);
         Origin.setOnClickListener(v -> {
@@ -154,33 +179,73 @@ public class NewUI_Learn extends AppCompatActivity {
             toggleVisibilityWithAnimation(hiddenButtons4Layout);
         });
 
+        AtomicBoolean isL5Clicked = new AtomicBoolean(false);
+        Handwriting.setOnClickListener(view -> {
+            animateButton(Handwriting);
+            isL5Clicked.set(!isL5Clicked.get());
 
+            if (isL5Clicked.get()) {
+                FlipRightSound();
+                Handwriting.setImageResource(R.drawable.newui_lesson4_sel);
+            } else {
+                FlipLeftSound();
+                Handwriting.setImageResource(R.drawable.newui_lesson4_unsel);
+            }
 
-
-        FullChart = findViewById(R.id.imgbtn_gm_advanced);
-        FullChart.setOnClickListener(v -> {
-            ClickSoundEffect();
-            animateButton(FullChart);
-            FullChart.setEnabled(false);
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                FullChart.setEnabled(true);
-                Intent Learn = new Intent(getApplicationContext(), NewUI_Chart_Letters.class);
-                startActivity(Learn);
-            }, 500);
+            toggleVisibilityWithAnimation(hiddenButtons5Layout);
         });
 
-        Downloadable = findViewById(R.id.imgbtn_gameplayhistory_reset);
-        Downloadable.setOnClickListener(v -> {
-            ClickSoundEffect();
-            animateButton(Downloadable);
-            Downloadable.setEnabled(false);
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                Downloadable.setEnabled(true);
-                Intent Learn = new Intent(getApplicationContext(), NewUI_Downloadable.class);
-                startActivity(Learn);
-            }, 500);
+        AtomicBoolean isL6Clicked = new AtomicBoolean(false);
+        Reading.setOnClickListener(view -> {
+            animateButton(Reading);
+            isL6Clicked.set(!isL6Clicked.get());
+
+            if (isL6Clicked.get()) {
+                FlipRightSound();
+                Reading.setImageResource(R.drawable.newui_lesson6_sel);
+            } else {
+                FlipLeftSound();
+                Reading.setImageResource(R.drawable.newui_lesson6_unsel);
+            }
+
+            toggleVisibilityWithAnimation(hiddenButtons6Layout);
         });
 
+        L6Sub1 = findViewById(R.id.hidden6Button1);
+        L6Sub1.setOnClickListener(v -> {
+            bookNumber = 1;
+            ClickSoundEffect();
+            goToBook();
+        });
+        L6Sub2 = findViewById(R.id.hidden6Button2);
+        L6Sub2.setOnClickListener(v -> {
+            bookNumber = 2;
+            ClickSoundEffect();
+            goToBook();
+        });
+        L6Sub3 = findViewById(R.id.hidden6Button3);
+        L6Sub3.setOnClickListener(v -> {
+            bookNumber = 3;
+            ClickSoundEffect();
+            goToBook();
+        });
+        L6Sub4 = findViewById(R.id.hidden6Button4);
+        L6Sub4.setOnClickListener(v -> {
+            bookNumber = 4;
+            ClickSoundEffect();
+            goToBook();
+        });
+
+
+
+
+    }
+
+    private void goToBook(){
+        PauseBGMusic();
+        Intent intent = new Intent(NewUI_Learn.this, PdfViewerActivity.class);
+        intent.putExtra("bookNumber", bookNumber);
+        startActivity(intent);
     }
 
     private void toggleVisibilityWithAnimation(final LinearLayout layout) {
@@ -222,6 +287,14 @@ public class NewUI_Learn extends AppCompatActivity {
         }
     }
 
+    private void PauseBGMusic(){
+        Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
+    }
+    @Override
+    protected void onResume() {
+        Z_SoundManager.setActivityMainMenuResumed(this);
+        super.onResume();
+    }
 
     // Method to animate the button click
     private void animateButton(View view) {

@@ -327,15 +327,16 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Z_SoundManager.setActivityRulesPaused(true);
-        Z_SoundManager.setActivityLessonsPaused(true);
+//        Z_SoundManager.setActivityRulesPaused(true);
+//        Z_SoundManager.setActivityLessonsPaused(true);
         saveGameplayList();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Z_SoundManager.setActivityRulesResumed(this);
+        Z_SoundManager.setActivityMainMenuResumed(this);
+//        Z_SoundManager.setActivityRulesResumed(this);
     }
 
     private void cancelToast() {

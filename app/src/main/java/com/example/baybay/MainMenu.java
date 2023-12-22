@@ -99,7 +99,7 @@ public class MainMenu extends AppCompatActivity {
         Z_SoundManager.isBgon[0] = preferences.getBoolean("isBgon", true);
         Z_SoundManager.isSoundFx[0] = preferences.getBoolean("isSFx", true);
 
-        BackgroundSound();
+        //BackgroundSound();
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         Z_LessonManager.lesson5isUnlock[0] = sharedPreferences.getBoolean("lesson5", false);
@@ -366,13 +366,13 @@ public class MainMenu extends AppCompatActivity {
 //        if (songMain != null && songMain.isPlaying()) {
 //            songMain.pause();
 //        }
-        Z_SoundManager.setActivityMainMenuPaused(true);
+        //Z_SoundManager.setActivityMainMenuPaused(true);--
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        BackgroundSound();
+        //BackgroundSound();--
     }
 
     void BackgroundSound() {

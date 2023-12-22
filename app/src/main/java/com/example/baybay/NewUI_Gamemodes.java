@@ -24,6 +24,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -31,9 +32,6 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
     int GametoPlay = 0;
     int difficulty = 0;
-
-
-
     private ImageButton GamemodesExit;
     private ImageButton GameHistory;
     private ImageButton Progress;
@@ -73,6 +71,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
         // Set the custom GradientDrawable as the window background
         getWindow().setBackgroundDrawable(gradientDrawable);
+
 
 
 
@@ -128,8 +127,6 @@ public class NewUI_Gamemodes extends AppCompatActivity {
             ClickSoundEffect();
             openDialogGameSelection();
         });
-
-
     }
 
     private void openDialogGameSelection(){
@@ -201,6 +198,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         ImgbtnSelectionstart = dlg.findViewById(R.id.imgbtn_gm_selectionstart);
         ImgbtnSelectionstart.setOnClickListener(v -> {
             ClickSoundEffect();
+            PauseBGMusic();
 
             if (GametoPlay == 1){
                 Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Quiz.class);
@@ -226,26 +224,16 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
 
 
+    private void PauseBGMusic(){
+        //Z_SoundManager.setActivityMainMenuPaused(true);
+        Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    protected void onResume() {
+        Z_SoundManager.setActivityMainMenuResumed(this);
+        super.onResume();
+    }
 
     private Animation createContinuousFadeInAnimation() {
         // Create a continuous fade-in animation

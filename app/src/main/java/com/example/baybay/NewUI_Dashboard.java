@@ -71,7 +71,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
         Z_SoundManager.isSoundFx[0] = preferences.getBoolean("isSFx", true);
         BackgroundSound();
 
-
         TvTrivia = findViewById(R.id.tv_trivia);
         ImgbtnTrivia_Refresh = findViewById(R.id.imgbtn_trivia_refresh);
 
@@ -228,8 +227,16 @@ public class NewUI_Dashboard extends AppCompatActivity {
     }
 
     void BackgroundSound() {
+        //Z_SoundManager.setActivityMainMenuResumed(this);
+//        Z_SoundManager.setActivityModesPaused(true);
+        //startService(new Intent(this, Z_MusicService.class));
+        onResume();
+    }
+
+    @Override
+    protected void onResume() {
         Z_SoundManager.setActivityMainMenuResumed(this);
-        Z_SoundManager.setActivityModesPaused(true);
+        super.onResume();
     }
 
     //Set random trivia

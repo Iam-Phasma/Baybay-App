@@ -131,11 +131,21 @@ public class NewUI_Community extends AppCompatActivity {
 
     //DIRECT TO LINKS (SHOPS AND VIDEOS)
     void gotoLink(String l){
+        PauseBGMusic();
         try{
             Uri uri = Uri.parse(l);
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
         }catch (Exception e){
         }
+    }
+
+    private void PauseBGMusic(){
+        Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
+    }
+    @Override
+    protected void onResume() {
+        Z_SoundManager.setActivityMainMenuResumed(this);
+        super.onResume();
     }
 
     void ClickSoundEffect() {
