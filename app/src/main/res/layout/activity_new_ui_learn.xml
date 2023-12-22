@@ -125,7 +125,7 @@
                 <ImageButton
                     android:id="@+id/mainButton1"
                     android:layout_width="wrap_content"
-                    android:layout_height="130dp"
+                    android:layout_height="120dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/newui_lesson1_unsel"
@@ -172,7 +172,7 @@
                 <ImageButton
                     android:id="@+id/mainButton2"
                     android:layout_width="wrap_content"
-                    android:layout_height="130dp"
+                    android:layout_height="120dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/newui_lesson2_unsel"
@@ -239,7 +239,7 @@
                 <ImageButton
                     android:id="@+id/mainButton3"
                     android:layout_width="wrap_content"
-                    android:layout_height="130dp"
+                    android:layout_height="120dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/newui_lesson3_unsel"
@@ -276,7 +276,7 @@
                 <ImageButton
                     android:id="@+id/mainButton4"
                     android:layout_width="wrap_content"
-                    android:layout_height="130dp"
+                    android:layout_height="120dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/newui_lesson4_unsel"
@@ -313,7 +313,7 @@
                 <ImageButton
                     android:id="@+id/mainButton5"
                     android:layout_width="wrap_content"
-                    android:layout_height="130dp"
+                    android:layout_height="120dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/newui_lesson4_unsel"
@@ -350,7 +350,7 @@
                 <ImageButton
                     android:id="@+id/mainButton6"
                     android:layout_width="wrap_content"
-                    android:layout_height="130dp"
+                    android:layout_height="120dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="fitCenter"
                     android:src="@drawable/newui_lesson6_unsel"
