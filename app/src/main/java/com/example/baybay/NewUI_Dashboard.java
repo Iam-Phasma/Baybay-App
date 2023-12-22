@@ -93,6 +93,12 @@ public class NewUI_Dashboard extends AppCompatActivity {
         });
 
         ImgbtnDashboardMenu = findViewById(R.id.imgbtn_dashboard_menu);
+        ImgbtnDashboardMenu.setOnLongClickListener(v -> {
+            Intent Dashboard = new Intent(getApplicationContext(), MainMenu.class);
+            startActivity(Dashboard);
+            return true;
+        });
+
         ImgbtnDashboardMenu.setOnClickListener(v -> {
             try {
                 ClickSoundEffect();

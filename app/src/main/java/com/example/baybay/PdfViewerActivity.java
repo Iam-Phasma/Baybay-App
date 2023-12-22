@@ -79,7 +79,7 @@ public class PdfViewerActivity extends AppCompatActivity {
 
         pdfView.fromAsset(pdfFileName)
                 .enableSwipe(true)
-                .scrollHandle(new DefaultScrollHandle(this))
+                //.scrollHandle(new DefaultScrollHandle(this))
                 .load();
 
 

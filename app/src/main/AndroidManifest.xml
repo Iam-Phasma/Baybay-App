@@ -41,8 +41,15 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".NewUI_Dashboard"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:exported="true"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".NewUI_Modes_Spelling"
             android:exported="false"
@@ -117,11 +124,7 @@
             android:exported="true"
             android:resizeableActivity="false"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
