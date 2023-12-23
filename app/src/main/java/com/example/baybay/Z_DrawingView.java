@@ -9,6 +9,7 @@ import android.graphics.DashPathEffect;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -99,8 +100,13 @@ public class Z_DrawingView extends View {
 
 
     public void clearDrawing() {
+//        if (canvas != null) {
+//            canvas.drawColor(Color.WHITE);
+//            invalidate();
+//        }
+
         if (canvas != null) {
-            canvas.drawColor(Color.WHITE);
+            canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             invalidate();
         }
     }

@@ -31,8 +31,10 @@ public class NewUI_Learn extends AppCompatActivity {
     private ImageButton Origin, Introduction, Characters, Rules, Handwriting, Reading;
     private ImageButton FullChart, Downloadable;
     private int bookNumber;
-
+    private ImageButton L3Sub1, L3Sub2;
+    private int CharSoundCount;
     private ImageButton L5Sub1, L5Sub2, L5Sub3;
+    private int WritingCount;
     private ImageButton L6Sub1, L6Sub2, L6Sub3, L6Sub4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +166,22 @@ public class NewUI_Learn extends AppCompatActivity {
             toggleVisibilityWithAnimation(hiddenButtons3Layout);
         });
 
+        L3Sub1 = findViewById(R.id.hidden3Button1);
+        L3Sub1.setOnClickListener(v -> {
+            CharSoundCount = 1;
+            Intent Learn = new Intent(getApplicationContext(), Lessons_CharSounds.class);
+            Learn.putExtra("progressbar-count", CharSoundCount);
+            startActivity(Learn);
+        });
+
+        L3Sub2 = findViewById(R.id.hidden3Button2);
+        L3Sub2.setOnClickListener(v -> {
+            CharSoundCount = 6;
+            Intent Learn = new Intent(getApplicationContext(), Lessons_CharSounds.class);
+            Learn.putExtra("progressbar-count", CharSoundCount);
+            startActivity(Learn);
+        });
+
         AtomicBoolean isL4Clicked = new AtomicBoolean(false);
         Rules.setOnClickListener(view -> {
             animateButton(Rules);
@@ -198,8 +216,19 @@ public class NewUI_Learn extends AppCompatActivity {
 
         L5Sub1 = findViewById(R.id.hidden5Button1);
         L5Sub1.setOnClickListener(v -> {
+            WritingCount = 1;
             ClickSoundEffect();
             Intent Learn = new Intent(getApplicationContext(), Lessons_Paint.class);
+            Learn.putExtra("writing-count", WritingCount);
+            startActivity(Learn);
+        });
+
+        L5Sub2 = findViewById(R.id.hidden5Button2);
+        L5Sub2.setOnClickListener(v -> {
+            WritingCount = 6;
+            ClickSoundEffect();
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Paint.class);
+            Learn.putExtra("writing-count", WritingCount);
             startActivity(Learn);
         });
 

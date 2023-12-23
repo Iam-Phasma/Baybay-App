@@ -5,6 +5,8 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -31,7 +33,7 @@ public class Lessons_Paint extends AppCompatActivity {
     public int currentGIFCount = 1;
     TextView TvDrawingGuideTittle, TvDrawingGuide;
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,7 @@ public class Lessons_Paint extends AppCompatActivity {
         //Do not sleep when the app is open
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        setContentView(R.layout.activity_paint);
+        setContentView(R.layout.activity_lessons_paint);
 
         //Fullscreen beyond punch hole camera
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -58,11 +60,20 @@ public class Lessons_Paint extends AppCompatActivity {
 
 
 
+
+
+        Intent intent = getIntent();
+        int setWritingCount = intent.getIntExtra("writing-count", 1);
+        currentGIFCount = setWritingCount;
+
         Toasty.info(Lessons_Paint.this, "Follow the strokes above. Use the empty space to draw.", Toasty.LENGTH_LONG).show();
         //GIF CONTROLLER
         setGIF();
 
         drawingView = findViewById(R.id.drawingView);
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable roundedCornersDrawable = getResources().getDrawable(R.drawable.rounded_corners);
+        drawingView.setBackground(roundedCornersDrawable);
+
         TextView TvGifCount = findViewById(R.id.tv_gifcount);
         TvGifCount.setText(currentGIFCount + " / 20");
 
@@ -73,11 +84,9 @@ public class Lessons_Paint extends AppCompatActivity {
             drawingView.clearDrawing();
         });
 
-        TextView BtnDrawInfo = findViewById(R.id.tv_draw_info);
+        ImageButton BtnDrawInfo = findViewById(R.id.imgbtn_draw_info);
         BtnDrawInfo.setOnClickListener(v -> {
-            //showPaintToast();
             openDrawingGuidePrompt();
-            animateButton(BtnDrawInfo);
         });
 
         ImageButton BtnDrawExit = findViewById(R.id.btn_draw_exit);
@@ -386,16 +395,16 @@ public class Lessons_Paint extends AppCompatActivity {
         // Create a scale animator to shrink the button
         ObjectAnimator shrinkAnimator = ObjectAnimator.ofPropertyValuesHolder(
                 view,
-                PropertyValuesHolder.ofFloat(View.SCALE_X, 1.0f, 0.7f),
-                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.0f, 0.7f)
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 1.0f, 0.9f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1.0f, 0.9f)
         );
         shrinkAnimator.setDuration(200); // Set the duration of the shrink animation
 
         // Create a scale animator to restore the button to its original size
         ObjectAnimator restoreAnimator = ObjectAnimator.ofPropertyValuesHolder(
                 view,
-                PropertyValuesHolder.ofFloat(View.SCALE_X, 0.7f, 1.0f),
-                PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.7f, 1.0f)
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 0.9f, 1.0f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.9f, 1.0f)
         );
         restoreAnimator.setDuration(300); // Set the duration of the restore animation
 

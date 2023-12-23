@@ -69,7 +69,7 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         NsvMain = findViewById(R.id.ncv_main);
 
         ImgviewPens = findViewById(R.id.imageViewPens);
-        ImgbtnTagPens = findViewById(R.id.imgbtn_artscrafts_tagpen);
+        ImgbtnTagPens = findViewById(R.id.imgbtn_char_mini_a);
         ImgbtnTagPens.setOnClickListener(v -> {
             NsvMain.smoothScrollTo(0, (int) ImgviewPens.getY(), 700);
         });

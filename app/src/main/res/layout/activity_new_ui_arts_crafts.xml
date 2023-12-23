@@ -109,7 +109,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageButton
-                    android:id="@+id/imgbtn_artscrafts_tagpen"
+                    android:id="@+id/imgbtn_char_mini_a"
                     android:layout_width="90dp"
                     android:layout_height="55dp"
                     android:backgroundTint="#00FFFFFF"

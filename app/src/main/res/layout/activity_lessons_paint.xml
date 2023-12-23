@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lessons_Paint">
+
+    <ImageButton
+        android:id="@+id/btn_draw_exit"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:text="Clear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/newui_back_button"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_back_button" />
+
+    <TextView
+        android:id="@+id/textView80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amasis_black"
+        android:text="Handwriting"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_draw_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_draw_exit" />
+
+    <com.example.baybay.Z_DrawingView
+        android:id="@+id/drawingView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_corners"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gif_latin" />
+
+    <ImageButton
+        android:id="@+id/btn_clear2"
+        android:layout_width="133dp"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:text="Clear"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/draw_note"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/btn_draw_left"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:rotation="180"
+        android:scaleType="fitCenter"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="@+id/imgview_draw_illustrattion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgview_draw_illustrattion"
+        app:layout_constraintVertical_bias="0.502"
+        app:srcCompat="@drawable/newui_chartletters_arrow"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_chartletters_arrow" />
+
+    <ImageButton
+        android:id="@+id/btn_draw_right"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_draw_left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_draw_left"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/newui_chartletters_arrow"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_chartletters_arrow" />
+
+    <TextView
+        android:id="@+id/tv_gifcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="0 / 20"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/imgview_draw_illustrattion"
+        app:layout_constraintStart_toStartOf="@+id/imgview_draw_illustrattion"
+        app:layout_constraintTop_toBottomOf="@+id/btn_draw_exit" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_draw_info"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/the_hand_bold"
+        android:scaleType="fitCenter"
+        android:src="@drawable/newui_info_icon"
+        android:text="( i )"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_draw_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_draw_exit"
+        tools:src="@drawable/newui_info_icon" />
+
+    <TextView
+        android:id="@+id/tv_gif_latin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:text="A"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imgview_draw_illustrattion"
+        app:layout_constraintStart_toStartOf="@+id/imgview_draw_illustrattion"
+        app:layout_constraintTop_toBottomOf="@+id/imgview_draw_illustrattion" />
+
+    <ImageView
+        android:id="@+id/imgview_draw_illustrattion"
+        android:layout_width="210dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/btn_draw_right"
+        app:layout_constraintStart_toEndOf="@+id/btn_draw_left"
+        app:layout_constraintTop_toBottomOf="@+id/tv_gifcount"
+        app:srcCompat="@drawable/draw_a" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_draw_characters"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitXY"
+            android:text="Clear"
+            app:srcCompat="@drawable/newui_writing_characters_button"
+            tools:ignore="MissingConstraints"
+            tools:srcCompat="@drawable/newui_writing_characters_button" />
+
+        <ImageButton
+            android:id="@+id/btn_draw_clear"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#00A82B2B"
+            android:foregroundTint="#00FFFFFF"
+            android:scaleType="fitXY"
+            android:text="Clear"
+            app:srcCompat="@drawable/newui_writing_erase_button"
+            tools:ignore="MissingConstraints"
+            tools:srcCompat="@drawable/newui_writing_erase_button" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
