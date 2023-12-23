@@ -75,7 +75,8 @@ public class Lessons_Paint extends AppCompatActivity {
 
         TextView BtnDrawInfo = findViewById(R.id.tv_draw_info);
         BtnDrawInfo.setOnClickListener(v -> {
-            showPaintToast();
+            //showPaintToast();
+            openDrawingGuidePrompt();
             animateButton(BtnDrawInfo);
         });
 
@@ -304,7 +305,7 @@ public class Lessons_Paint extends AppCompatActivity {
                 break;
             case 6:
                 TvDrawingGuideTittle.setText("Draw BA:");
-                TvDrawingGuide.setText("Draw a smooth inverted \"heart-\"like shape without sharp turns or corners.");
+                TvDrawingGuide.setText("Draw a smooth inverted \"heart-like\" shape without sharp turns or corners.");
                 break;
             case 7:
                 TvDrawingGuideTittle.setText("Draw KA:");
