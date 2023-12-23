@@ -32,6 +32,7 @@ public class NewUI_Learn extends AppCompatActivity {
     private ImageButton FullChart, Downloadable;
     private int bookNumber;
 
+    private ImageButton L5Sub1, L5Sub2, L5Sub3;
     private ImageButton L6Sub1, L6Sub2, L6Sub3, L6Sub4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,6 +194,13 @@ public class NewUI_Learn extends AppCompatActivity {
             }
 
             toggleVisibilityWithAnimation(hiddenButtons5Layout);
+        });
+
+        L5Sub1 = findViewById(R.id.hidden5Button1);
+        L5Sub1.setOnClickListener(v -> {
+            ClickSoundEffect();
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Paint.class);
+            startActivity(Learn);
         });
 
         AtomicBoolean isL6Clicked = new AtomicBoolean(false);

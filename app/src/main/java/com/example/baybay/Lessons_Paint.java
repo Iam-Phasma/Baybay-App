@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -29,8 +28,8 @@ public class Lessons_Paint extends AppCompatActivity {
 
     private Z_DrawingView drawingView;
     private ImageButton btnClear;
-    public int gifcount = 1;
-    boolean isAutoErase = false;
+    public int currentGIFCount = 1;
+    TextView TvDrawingGuideTittle, TvDrawingGuide;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -57,35 +56,21 @@ public class Lessons_Paint extends AppCompatActivity {
         // Set the background color to white
         rootView.setBackgroundColor(getResources().getColor(android.R.color.white));
 
-        Toasty.info(Lessons_Paint.this, "Follow the strokes above. Use the empty space to draw.", Toasty.LENGTH_LONG).show();
 
-        //showPaintToast();
+
+        Toasty.info(Lessons_Paint.this, "Follow the strokes above. Use the empty space to draw.", Toasty.LENGTH_LONG).show();
+        //GIF CONTROLLER
+        setGIF();
 
         drawingView = findViewById(R.id.drawingView);
         TextView TvGifCount = findViewById(R.id.tv_gifcount);
-        TvGifCount.setText(gifcount + " / 20");
+        TvGifCount.setText(currentGIFCount + " / 20");
 
         btnClear = findViewById(R.id.btn_draw_clear);
         btnClear.setOnClickListener(v -> {
             animateButton(btnClear);
             EraseSoundEffect();
             drawingView.clearDrawing();
-        });
-
-        //Long Press
-        btnClear.setOnLongClickListener(v -> {
-            eraseButtonRotate(btnClear);
-            if (isAutoErase) {
-                Toasty.info(Lessons_Paint.this, "Auto erase OFF", Toast.LENGTH_SHORT).show();
-                //btnClear.animate().rotation(1);
-                btnClear.setImageResource(R.drawable.draw_erasebutton);
-            } else {
-                Toasty.info(Lessons_Paint.this, "Auto erase ON", Toast.LENGTH_SHORT).show();
-                //btnClear.animate().rotation(4);
-                btnClear.setImageResource(R.drawable.draw_erasebutton_underline);
-            }
-            isAutoErase = !isAutoErase; // Toggle the value of isAutoErase
-            return true;
         });
 
         TextView BtnDrawInfo = findViewById(R.id.tv_draw_info);
@@ -96,46 +81,35 @@ public class Lessons_Paint extends AppCompatActivity {
 
         ImageButton BtnDrawExit = findViewById(R.id.btn_draw_exit);
         BtnDrawExit.setOnClickListener(v -> {
-            // Dismiss the Paint Toast if showing
             if (currentPaintToast != null) {
                 currentPaintToast.cancel();
             }
-            //BACKGROUND MUSIC
-            Z_SoundManager.setActivityLessonsPaused(false);
-
-            Intent Draw = new Intent(getApplicationContext(), Lessons.class);
-            startActivity(Draw);
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-            //Draw.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             finish();
         });
-
-        //GIF CONTROLLER
-        setGIF();
 
         ImageButton BtnLeft = findViewById(R.id.btn_draw_left);
         BtnLeft.setOnClickListener(v -> {
             animateButton(BtnLeft);
-            autoErase();
-            if(gifcount != 1){
-                gifcount--;
+            drawingView.clearDrawing();
+            if(currentGIFCount != 1){
+                currentGIFCount--;
             } else {
-                gifcount = 20;
+                currentGIFCount = 20;
             }
-            TvGifCount.setText(gifcount + " / 20");
+            TvGifCount.setText(currentGIFCount + " / 20");
             setGIF();
         });
 
         ImageButton BtnRight = findViewById(R.id.btn_draw_right);
         BtnRight.setOnClickListener(v -> {
             animateButton(BtnRight);
-            autoErase();
-            if(gifcount != 20){
-                gifcount++;
+            drawingView.clearDrawing();
+            if(currentGIFCount != 20){
+                currentGIFCount++;
             }else {
-                gifcount = 1;
+                currentGIFCount = 1;
             }
-            TvGifCount.setText(gifcount + " / 20");
+            TvGifCount.setText(currentGIFCount + " / 20");
             setGIF();
         });
 
@@ -148,112 +122,92 @@ public class Lessons_Paint extends AppCompatActivity {
     }
 
     public void showPaintToast(){
-        //Show Paint Toast
         paintToast();
-    }
-
-    //AUTO ERASE
-    public void autoErase(){
-        if (isAutoErase){
-            drawingView.clearDrawing();
-        }
-    }
-
-
-    private void eraseButtonRotate(View view) {
-        view.animate()
-                .scaleX(1.2f) // Example scale factor
-                .scaleY(1.2f) // Example scale factor
-                .setDuration(300) // Example duration in milliseconds
-                .withEndAction(() -> view.animate()
-                        .scaleX(1.0f)
-                        .scaleY(1.0f)
-                        .setDuration(300)
-                        .start())
-                .start();
     }
 
 
     //SET GIF ILLUSTRATION
     @SuppressLint("SetTextI18n")
     public void setGIF(){
+        openDrawingGuidePrompt();
+
         ImageView ImgviewDrawIllustration = findViewById(R.id.imgview_draw_illustrattion);
         TextView TvGifLatin = findViewById(R.id.tv_gif_latin);
 
         TextView TvGifCount = findViewById(R.id.tv_gifcount);
-        TvGifCount.setText(gifcount + " / 20");
-        switch(gifcount) {
+        TvGifCount.setText(currentGIFCount + " / 20");
+        switch(currentGIFCount) {
             case 1:
                 Glide.with(this).load(R.drawable.draw_a).into(ImgviewDrawIllustration);
                 TvGifLatin.setText("A");
                 break;
             case 2:
-                Glide.with(this).load(R.drawable.draw_b).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("BA");
-                break;
-            case 3:
-                Glide.with(this).load(R.drawable.draw_k).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("KA");
-                break;
-            case 4:
-                Glide.with(this).load(R.drawable.draw_d).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("DA");
-                break;
-            case 5:
                 Glide.with(this).load(R.drawable.draw_e).into(ImgviewDrawIllustration);
                 TvGifLatin.setText("E");
                 break;
-            case 6:
-                Glide.with(this).load(R.drawable.draw_g).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("GA");
-                break;
-            case 7:
-                Glide.with(this).load(R.drawable.draw_h).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("HA");
-                break;
-            case 8:
+            case 3:
                 Glide.with(this).load(R.drawable.draw_i).into(ImgviewDrawIllustration);
                 TvGifLatin.setText("I");
                 break;
-            case 9:
-                Glide.with(this).load(R.drawable.draw_l).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("LA");
-                break;
-            case 10:
-                Glide.with(this).load(R.drawable.draw_m).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("MA");
-                break;
-            case 11:
-                Glide.with(this).load(R.drawable.draw_n).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("NA");
-                break;
-            case 12:
-                Glide.with(this).load(R.drawable.draw_ng).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("NGA");
-                break;
-            case 13:
+            case 4:
                 Glide.with(this).load(R.drawable.draw_o).into(ImgviewDrawIllustration);
                 TvGifLatin.setText("O");
                 break;
+            case 5:
+                Glide.with(this).load(R.drawable.draw_u).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("U");
+                break;
+            case 6:
+                Glide.with(this).load(R.drawable.draw_b).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("BA");
+                break;
+            case 7:
+                Glide.with(this).load(R.drawable.draw_k).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("KA");
+                break;
+            case 8:
+                Glide.with(this).load(R.drawable.draw_d).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("DA");
+                break;
+            case 9:
+                Glide.with(this).load(R.drawable.draw_g).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("GA");
+                break;
+            case 10:
+                Glide.with(this).load(R.drawable.draw_h).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("HA");
+                break;
+            case 11:
+                Glide.with(this).load(R.drawable.draw_l).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("LA");
+                break;
+            case 12:
+                Glide.with(this).load(R.drawable.draw_m).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("MA");
+                break;
+            case 13:
+                Glide.with(this).load(R.drawable.draw_n).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("NA");
+                break;
             case 14:
+                Glide.with(this).load(R.drawable.draw_ng).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("NGA");
+                break;
+            case 15:
                 Glide.with(this).load(R.drawable.draw_p).into(ImgviewDrawIllustration);
                 TvGifLatin.setText("PA");
                 break;
-            case 15:
+            case 16:
                 Glide.with(this).load(R.drawable.draw_r).into(ImgviewDrawIllustration);
                 TvGifLatin.setText("RA");
                 break;
-            case 16:
+            case 17:
                 Glide.with(this).load(R.drawable.draw_s).into(ImgviewDrawIllustration);
                 TvGifLatin.setText("SA");
                 break;
-            case 17:
+            case 18:
                 Glide.with(this).load(R.drawable.draw_t).into(ImgviewDrawIllustration);
                 TvGifLatin.setText("TA");
-                break;
-            case 18:
-                Glide.with(this).load(R.drawable.draw_u).into(ImgviewDrawIllustration);
-                TvGifLatin.setText("U");
                 break;
             case 19:
                 Glide.with(this).load(R.drawable.draw_w).into(ImgviewDrawIllustration);
@@ -281,21 +235,20 @@ public class Lessons_Paint extends AppCompatActivity {
         dlg.setOnKeyListener((dialog, keyCode, event) -> keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP);
 
         int[] buttonIds = {
-                R.id.btn_draw_a, R.id.btn_draw_b, R.id.btn_draw_k, R.id.btn_draw_d,
-                R.id.btn_draw_e, R.id.btn_draw_g, R.id.btn_draw_h, R.id.btn_draw_i,
-                R.id.btn_draw_l, R.id.btn_draw_m, R.id.btn_draw_n, R.id.btn_draw_ng,
-                R.id.btn_draw_o, R.id.btn_draw_p, R.id.btn_draw_r, R.id.btn_draw_s,
-                R.id.btn_draw_t, R.id.btn_draw_u, R.id.btn_draw_w, R.id.btn_draw_y
+                R.id.btn_draw_a, R.id.btn_draw_e, R.id.btn_draw_i, R.id.btn_draw_o, R.id.btn_draw_u,
+                R.id.btn_draw_b, R.id.btn_draw_k, R.id.btn_draw_d, R.id.btn_draw_g, R.id.btn_draw_h,
+                R.id.btn_draw_l, R.id.btn_draw_m, R.id.btn_draw_n, R.id.btn_draw_ng, R.id.btn_draw_p,
+                R.id.btn_draw_r, R.id.btn_draw_s, R.id.btn_draw_t,  R.id.btn_draw_w, R.id.btn_draw_y
         };
 
         for (int i = 0; i < buttonIds.length; i++) {
             ImageButton button = dlg.findViewById(buttonIds[i]);
-            final int finalI = i + 1; // Adjust index to match gifcount
+            final int finalI = i + 1; // Adjust index to match gif count
             button.setOnClickListener(v -> {
                 ClickSoundEffect();
-                gifcount = finalI;
+                currentGIFCount = finalI;
                 setGIF();
-                autoErase();
+                drawingView.clearDrawing();
                 dlg.dismiss();
             });
         }
@@ -303,6 +256,117 @@ public class Lessons_Paint extends AppCompatActivity {
         ImageButton btnDrawCharExit = dlg.findViewById(R.id.btn_draw_char_exit);
         btnDrawCharExit.setOnClickListener(v -> dlg.dismiss());
     }
+
+
+    private void openDrawingGuidePrompt() {
+        Dialog dlg;
+        dlg = new Dialog(Lessons_Paint.this, R.style.PopupDialog);
+        dlg.setCanceledOnTouchOutside(false);  // disable dialog dismiss when touch outside
+        dlg.setContentView(R.layout.activity_newui_writing_guideprompt);
+        dlg.show();
+
+        View dialogWindowView = dlg.getWindow().getDecorView();
+        Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+
+        TvDrawingGuideTittle = dlg.findViewById(R.id.tv_drawinguidetittle);
+        TvDrawingGuide = dlg.findViewById(R.id.tv_drawinguideprompt);
+
+        setTitleAndGuide();
+
+        ImageButton ImgbtnWritingPromptOk = dlg.findViewById(R.id.imgbtn_writing_prompt_ok);
+        ImgbtnWritingPromptOk.setOnClickListener(v -> {
+            dlg.dismiss();
+        });
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setTitleAndGuide(){
+        switch (currentGIFCount) {
+            case 1:
+                TvDrawingGuideTittle.setText("Draw A:");
+                TvDrawingGuide.setText("Draw a smooth \"U\" shape-like line with both ends facing away each other. Then add two short lines in the middle crossing the first column of the shape.");
+                break;
+            case 2:
+                TvDrawingGuideTittle.setText("Draw E:");
+                TvDrawingGuide.setText("Draw two separate wavy lines. The top line should be a smooth, gentle wave while the bottom one had more pronounced peaks and troughs.");
+                break;
+            case 3:
+                TvDrawingGuideTittle.setText("Draw I:");
+                TvDrawingGuide.setText("Draw two separate wavy lines. The top line should be a smooth, gentle wave with a vertical line in the middle, while the bottom one had more pronounced peaks and troughs.");
+                break;
+            case 4:
+                TvDrawingGuideTittle.setText("Draw O:");
+                TvDrawingGuide.setText("Draw a smooth \"3\" shape-like line with the bottom one having a larger curve.");
+                break;
+            case 5:
+                TvDrawingGuideTittle.setText("Draw U:");
+                TvDrawingGuide.setText("Draw a smooth \"3\" shape-like line with the bottom one having a larger curve. Then draw a small vertical line next to the bigger curve following its curvature.");
+                break;
+            case 6:
+                TvDrawingGuideTittle.setText("Draw BA:");
+                TvDrawingGuide.setText("Draw a smooth inverted \"heart-\"like shape without sharp turns or corners.");
+                break;
+            case 7:
+                TvDrawingGuideTittle.setText("Draw KA:");
+                TvDrawingGuide.setText("Draw two separate wavy lines with top and bottom having the same structures. Draw a slightly slanted vertical line in the middle connecting the two wavy lines.");
+                break;
+            case 8:
+                TvDrawingGuideTittle.setText("Draw DA:");
+                TvDrawingGuide.setText("Draw two separate wavy lines. The top line should be a smooth, gentle wave. Then draw the second line starting from where the first line started going down then horizontal again following the structure of the first line.");
+                break;
+            case 9:
+                TvDrawingGuideTittle.setText("Draw GA:");
+                TvDrawingGuide.setText("Draw a smooth \"3\" shape-like line with the bottom one having a larger curve. Add a second line starting from the middle of the top curve going down resembling like a ponytail.");
+                break;
+            case 10:
+                TvDrawingGuideTittle.setText("Draw HA:");
+                TvDrawingGuide.setText("Draw a smooth wave line with a pronounced curves, and with both ends facing like its enclosing to itself.");
+                break;
+            case 11:
+                TvDrawingGuideTittle.setText("Draw LA:");
+                TvDrawingGuide.setText("Draw a smooth wave line horizontally. Then draw a second line vertically starting from the middle of the top line going down resembling the shape of number \"3\".");
+                break;
+            case 12:
+                TvDrawingGuideTittle.setText("Draw MA:");
+                TvDrawingGuide.setText("Draw a smooth \"U\" shape-like line with both ends facing away from each other. Then draw a second horizontal line connecting the two vertical lines in the middle.");
+                break;
+            case 13:
+                TvDrawingGuideTittle.setText("Draw NA:");
+                TvDrawingGuide.setText("Draw a smooth inverted \"U\" shape-like line. Then draw a second smooth wavy line in the middle of the shape starting from the top; touching the line, going down.");
+                break;
+            case 14:
+                TvDrawingGuideTittle.setText("Draw NGA:");
+                TvDrawingGuide.setText("Draw a smooth vertical \"U\" shape-like line with both ends facing away from each other. The open side should face the left. Then draw a second line from the middle right side of the first line forming a pronounced wave shaped tail.");
+                break;
+            case 15:
+                TvDrawingGuideTittle.setText("Draw PA:");
+                TvDrawingGuide.setText("Draw a smooth \"U\" shape-like line with both ends facing away from each other. Then add one short line in the middle crossing the second column of the shape.");
+                break;
+            case 16:
+                TvDrawingGuideTittle.setText("Draw RA:");
+                TvDrawingGuide.setText("Draw two separate wavy lines. The top line should be a smooth, gentle wave. Then draw a second line starting from where the first line started going down then horizontal again following the structure of the first line. After that, draw a short vertical strike in the middle of the second line.");
+                break;
+            case 17:
+                TvDrawingGuideTittle.setText("Draw SA:");
+                TvDrawingGuide.setText("Draw a smooth \"V\" shape-like line with a smooth bottom corner. Continue the line then draw a number \"3\" shape-like line beside the V line.");
+                break;
+            case 18:
+                TvDrawingGuideTittle.setText("Draw TA:");
+                TvDrawingGuide.setText("Draw a horizontal wavy line with a smooth, gentle wave. Then draw a second small line with a \"C\" shape-like line below the first curve of the wavy line.");
+                break;
+            case 19:
+                TvDrawingGuideTittle.setText("Draw WA:");
+                TvDrawingGuide.setText("Draw a smooth \"U\" shape-like line with both ends facing the left side.");
+                break;
+            case 20:
+                TvDrawingGuideTittle.setText("Draw YA:");
+                TvDrawingGuide.setText("Draw a smooth \"U\" shape-like line with both ends facing away each other.");
+                break;
+            default:
+                break;
+        }
+    }
+
 
 
     //Show Paint Toast. This is created so Toast immediately dismissed when activity is paused or destroyed
@@ -360,20 +424,20 @@ public class Lessons_Paint extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (currentPaintToast != null) {
-            currentPaintToast.cancel();
-        }
-        Z_SoundManager.setActivityPaintPaused(true);
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        if (currentPaintToast != null) {
+//            currentPaintToast.cancel();
+//        }
+//        Z_SoundManager.setActivityPaintPaused(true);
+//    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Z_SoundManager.setActivityPaintResumed(this);
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Z_SoundManager.setActivityPaintResumed(this);
+//    }
 
     @Override
     public void onBackPressed() {
