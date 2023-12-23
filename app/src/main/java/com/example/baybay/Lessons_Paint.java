@@ -342,7 +342,7 @@ public class Lessons_Paint extends AppCompatActivity {
                 break;
             case 13:
                 TvDrawingGuideTittle.setText("Draw NA:");
-                TvDrawingGuide.setText("Draw a smooth inverted \"U\" shape-like line. Then draw a second smooth wavy line in the middle of the shape starting from the top; touching the line, going down.");
+                TvDrawingGuide.setText("Draw a smooth inverted \"U\" shape-like line. Then draw a second wavy line in the middle of the shape starting from the top; touching the line, going down.");
                 break;
             case 14:
                 TvDrawingGuideTittle.setText("Draw NGA:");

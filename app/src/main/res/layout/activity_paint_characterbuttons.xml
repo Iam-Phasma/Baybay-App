@@ -12,7 +12,7 @@
         android:id="@+id/imageView23"
         android:layout_width="618dp"
         android:layout_height="645dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="400dp"
         android:background="@color/white"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,19 +23,21 @@
 
     <ImageButton
         android:id="@+id/btn_draw_char_exit"
-        android:layout_width="65dp"
-        android:layout_height="70dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
         android:backgroundTint="#00FFFFFF"
+        android:rotation="-90"
         android:scaleType="centerCrop"
         android:text="Clear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/draw_btn_char_exit"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_back_button"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_back_button" />
 
     <ImageButton
         android:id="@+id/btn_draw_s"
@@ -48,8 +50,9 @@
         android:text="Clear"
         app:layout_constraintEnd_toStartOf="@+id/btn_draw_t"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_t"
-        app:srcCompat="@drawable/draw_btn_s"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_sa"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_sa" />
 
     <ImageButton
         android:id="@+id/btn_draw_t"
@@ -57,15 +60,15 @@
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
         android:text="Clear"
-        app:layout_constraintBottom_toTopOf="@+id/btn_draw_char_exit"
+        app:layout_constraintBottom_toTopOf="@+id/btn_draw_xx"
         app:layout_constraintEnd_toEndOf="@+id/btn_draw_char_exit"
         app:layout_constraintStart_toStartOf="@+id/btn_draw_char_exit"
-        app:srcCompat="@drawable/draw_btn_t"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_ta"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_ta" />
 
     <ImageButton
         android:id="@+id/btn_draw_r"
@@ -78,8 +81,9 @@
         android:text="Clear"
         app:layout_constraintEnd_toStartOf="@+id/btn_draw_s"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_s"
-        app:srcCompat="@drawable/draw_btn_r"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_ra"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_ra" />
 
     <ImageButton
         android:id="@+id/btn_draw_a"
@@ -92,8 +96,9 @@
         android:text="Clear"
         app:layout_constraintEnd_toStartOf="@+id/btn_draw_e"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_e"
-        app:srcCompat="@drawable/draw_btn_a"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_a"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_a" />
 
     <ImageButton
         android:id="@+id/btn_draw_e"
@@ -106,8 +111,9 @@
         android:text="Clear"
         app:layout_constraintEnd_toStartOf="@+id/btn_draw_i"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_i"
-        app:srcCompat="@drawable/draw_btn_e"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_e"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_e" />
 
     <ImageButton
         android:id="@+id/btn_draw_i"
@@ -115,15 +121,15 @@
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
         android:text="Clear"
         app:layout_constraintBottom_toTopOf="@+id/btn_draw_d"
         app:layout_constraintEnd_toEndOf="@+id/btn_draw_d"
         app:layout_constraintStart_toStartOf="@+id/btn_draw_d"
-        app:srcCompat="@drawable/draw_btn_i"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_i"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_i" />
 
     <ImageButton
         android:id="@+id/btn_draw_o"
@@ -136,8 +142,9 @@
         android:text="Clear"
         app:layout_constraintStart_toEndOf="@+id/btn_draw_i"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_i"
-        app:srcCompat="@drawable/draw_btn_o"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_o"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_o" />
 
     <ImageButton
         android:id="@+id/btn_draw_u"
@@ -150,8 +157,9 @@
         android:text="Clear"
         app:layout_constraintStart_toEndOf="@+id/btn_draw_o"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_o"
-        app:srcCompat="@drawable/draw_btn_u"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_u"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_u" />
 
     <ImageButton
         android:id="@+id/btn_draw_h"
@@ -164,8 +172,9 @@
         android:text="Clear"
         app:layout_constraintStart_toEndOf="@+id/btn_draw_g"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_g"
-        app:srcCompat="@drawable/draw_btn_h"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_ha"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_ha" />
 
     <ImageButton
         android:id="@+id/btn_draw_g"
@@ -178,8 +187,9 @@
         android:text="Clear"
         app:layout_constraintStart_toEndOf="@+id/btn_draw_d"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_d"
-        app:srcCompat="@drawable/draw_btn_g"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_ga"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_ga" />
 
     <ImageButton
         android:id="@+id/btn_draw_d"
@@ -193,8 +203,9 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_draw_n"
         app:layout_constraintEnd_toEndOf="@+id/btn_draw_n"
         app:layout_constraintStart_toStartOf="@+id/btn_draw_n"
-        app:srcCompat="@drawable/draw_btn_d"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_da"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_da" />
 
     <ImageButton
         android:id="@+id/btn_draw_k"
@@ -207,8 +218,9 @@
         android:text="Clear"
         app:layout_constraintEnd_toStartOf="@+id/btn_draw_d"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_d"
-        app:srcCompat="@drawable/draw_btn_k"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_ka"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_ka" />
 
     <ImageButton
         android:id="@+id/btn_draw_b"
@@ -221,8 +233,9 @@
         android:text="Clear"
         app:layout_constraintEnd_toStartOf="@+id/btn_draw_k"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_k"
-        app:srcCompat="@drawable/draw_btn_b"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_ba"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_ba" />
 
     <ImageButton
         android:id="@+id/btn_draw_l"
@@ -236,8 +249,9 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_draw_r"
         app:layout_constraintEnd_toStartOf="@+id/btn_draw_m"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_m"
-        app:srcCompat="@drawable/draw_btn_l"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_la"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_la" />
 
     <ImageButton
         android:id="@+id/btn_draw_m"
@@ -251,8 +265,9 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_draw_s"
         app:layout_constraintEnd_toStartOf="@+id/btn_draw_n"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_n"
-        app:srcCompat="@drawable/draw_btn_m"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_ma"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_ma" />
 
     <ImageButton
         android:id="@+id/btn_draw_p"
@@ -265,8 +280,9 @@
         android:text="Clear"
         app:layout_constraintStart_toEndOf="@+id/btn_draw_ng"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_ng"
-        app:srcCompat="@drawable/draw_btn_p"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_pa"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_pa" />
 
     <ImageButton
         android:id="@+id/btn_draw_n"
@@ -280,8 +296,9 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_draw_t"
         app:layout_constraintEnd_toEndOf="@+id/btn_draw_t"
         app:layout_constraintStart_toStartOf="@+id/btn_draw_t"
-        app:srcCompat="@drawable/draw_btn_n"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_na"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_na" />
 
     <ImageButton
         android:id="@+id/btn_draw_ng"
@@ -294,8 +311,9 @@
         android:text="Clear"
         app:layout_constraintStart_toEndOf="@+id/btn_draw_n"
         app:layout_constraintTop_toBottomOf="@+id/btn_draw_d"
-        app:srcCompat="@drawable/draw_btn_ng"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_nga"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_nga" />
 
     <ImageButton
         android:id="@+id/btn_draw_w"
@@ -308,8 +326,9 @@
         android:text="Clear"
         app:layout_constraintStart_toEndOf="@+id/btn_draw_t"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_t"
-        app:srcCompat="@drawable/draw_btn_w"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_wa"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_wa" />
 
     <ImageButton
         android:id="@+id/btn_draw_y"
@@ -322,8 +341,91 @@
         android:text="Clear"
         app:layout_constraintStart_toEndOf="@+id/btn_draw_w"
         app:layout_constraintTop_toTopOf="@+id/btn_draw_w"
-        app:srcCompat="@drawable/draw_btn_y"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/newui_writing_short_ya"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_ya" />
+
+    <ImageButton
+        android:id="@+id/btn_draw_eo"
+        android:layout_width="65dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_draw_xx"
+        app:layout_constraintEnd_toStartOf="@+id/btn_draw_iu"
+        app:layout_constraintTop_toTopOf="@+id/btn_draw_xx"
+        app:srcCompat="@drawable/newui_writing_short_eo"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_eo" />
+
+    <ImageButton
+        android:id="@+id/btn_draw_iu"
+        android:layout_width="65dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_draw_xx"
+        app:layout_constraintEnd_toStartOf="@+id/btn_draw_xx"
+        app:layout_constraintTop_toTopOf="@+id/btn_draw_xx"
+        app:srcCompat="@drawable/newui_writing_short_iu"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_iu" />
+
+    <ImageButton
+        android:id="@+id/btn_draw_xx"
+        android:layout_width="65dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:text="Clear"
+        app:layout_constraintBottom_toTopOf="@+id/btn_draw_char_exit"
+        app:layout_constraintEnd_toEndOf="@+id/btn_draw_t"
+        app:layout_constraintStart_toEndOf="@+id/btn_draw_w"
+        app:layout_constraintStart_toStartOf="@+id/btn_draw_t"
+        app:srcCompat="@drawable/newui_writing_short_xx"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_xx" />
+
+    <ImageButton
+        android:id="@+id/btn_draw_period"
+        android:layout_width="65dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_draw_xx"
+        app:layout_constraintStart_toEndOf="@+id/btn_draw_xx"
+        app:layout_constraintTop_toTopOf="@+id/btn_draw_xx"
+        app:srcCompat="@drawable/newui_writing_short_period"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_period" />
+
+    <ImageButton
+        android:id="@+id/btn_draw_comma"
+        android:layout_width="65dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_draw_xx"
+        app:layout_constraintStart_toEndOf="@+id/btn_draw_period"
+        app:layout_constraintTop_toTopOf="@+id/btn_draw_xx"
+        app:srcCompat="@drawable/newui_writing_short_comma"
+        tools:ignore="MissingConstraints"
+        tools:srcCompat="@drawable/newui_writing_short_comma" />
 
     <ImageButton
         android:id="@+id/btn_draw_right23"
