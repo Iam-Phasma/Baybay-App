@@ -2,7 +2,7 @@
     <string name="app_name">Baybay</string>
 
     <string name="baybayin_introduction">
-        Baybayin, an ancient script in the Philippines predating Spanish colonization, is just one of several indigenous scripts, including Kapampangan Kulitan, Tagbanwa of Palawan, as well as the Hanunoo and Buhid scripts of Mindoro.
+        Baybayin script is an ancient writing system that was used by the Filipinos before and during the Spanish colonization. It is derived from the Brahmi script, which was also used in India and other parts of Asia. Baybayin script consists of symbols that represent consonants and vowels, and some diacritical marks that modify the sounds. Baybayin script was mainly used to write Tagalog, Kapampangan, Ilocano, and other languages spoken in Luzon and Visayas.
     </string>
 
     <string name="baybayin_introduction2">Understanding the Baybayin script is crucial for Filipinos as it represents an invaluable link to the country rich cultural and historical heritage.
@@ -11,12 +11,11 @@
         \n\nAdditionally, it encourages a deeper appreciation of diversity within the archipelago and emphasizes the importance of preserving and celebrating indigenous knowledge in the face of cultural globalization.
         In essence, familiarity with the Baybayin script contributes to a deeper understanding of its origins and cultural heritage, fostering a sense of unity and continuity across generations.
         \n\nThe video above showcases the contemporary iteration of the Baybayin script, specifically referred to as version B20+. Notably, this updated script incorporates several modifications compared to its predecessors. An important enhancement is the clear distinction between the characters \"Da\" and \"Ra\," a development aimed at reducing ambiguity during reading and consequently enhancing reading speed. Additionally, the vowels \"e and i,\" as well as \"o and u,\" now possess distinct characters, further refining the script clarity and usability.
-    \n\nBelow are the discussion of the previous Baybayin versions.
     </string>
 
     <string name="baybayin_version17">The B17 version comprises 17 characters. Notably, the characters for \"e\" and \"i\" are the same, as are those for \"o\" and \"u,\" as well as \"da\" and \"ra.\" In this version, the krus kudlit, a diacritic mark, has not been introduced yet, which means it is impossible to write independent letters. As an example, the word \"tatsulok\" would be written as \"tatasuloka.\"</string>
 
-    <string name="baybayin_version17plus">This version retains the same script characters as B17, but it introduces the implementation of the krus kudlit. This addition allows for the writing of standalone characters, making the script more versatile.</string>
+    <string name="baybayin_version17plus">This version retains the same script characters as B17, but it introduces the implementation of the krus kudlit. This addition allows for the writing of standalone characters, making the script more versatile.\n\n</string>
 
     <string name="baybayin_version18">In B18, there are notable changes. Specifically, the characters for \"da\" and \"ra\" are now separate, each with its own distinct character. This separation helps to eliminate any confusion between the two sounds.</string>
 

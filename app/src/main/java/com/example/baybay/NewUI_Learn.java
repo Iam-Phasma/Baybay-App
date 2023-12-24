@@ -33,7 +33,10 @@ public class NewUI_Learn extends AppCompatActivity {
     private int bookNumber;
     private int ChapterCount;
     private ImageButton L1Sub1, L1Sub2, L1Sub3;
+    private ImageButton L2Sub1, L2Sub2, L2Sub3, L2Sub4, L2Sub5;
     private ImageButton L3Sub1, L3Sub2;
+    private int IntroSlideTo;
+    private ImageButton L4Sub1, L4Sub2, L4Sub3;
     private int CharSoundCount;
     private ImageButton L5Sub1, L5Sub2, L5Sub3;
     private int WritingCount;
@@ -136,22 +139,6 @@ public class NewUI_Learn extends AppCompatActivity {
             toggleVisibilityWithAnimation(hiddenButtonsLayout);
         });
 
-        AtomicBoolean isL2Clicked = new AtomicBoolean(false);
-        Introduction.setOnClickListener(view -> {
-            animateButton(Introduction);
-            isL2Clicked.set(!isL2Clicked.get());
-
-            if (isL2Clicked.get()) {
-                FlipRightSound();
-                Introduction.setImageResource(R.drawable.newui_lesson2_sel);
-            } else {
-                FlipLeftSound();
-                Introduction.setImageResource(R.drawable.newui_lesson2_unsel);
-            }
-
-            toggleVisibilityWithAnimation(hiddenButtons2Layout);
-        });
-
         L1Sub1 = findViewById(R.id.hidden1Button1);
         L1Sub1.setOnClickListener(v -> {
             ChapterCount = 1;
@@ -173,6 +160,52 @@ public class NewUI_Learn extends AppCompatActivity {
             ChapterCount = 3;
             Intent Learn = new Intent(getApplicationContext(), History.class);
             Learn.putExtra("chapter-count", ChapterCount);
+            startActivity(Learn);
+        });
+
+        AtomicBoolean isL2Clicked = new AtomicBoolean(false);
+        Introduction.setOnClickListener(view -> {
+            animateButton(Introduction);
+            isL2Clicked.set(!isL2Clicked.get());
+
+            if (isL2Clicked.get()) {
+                FlipRightSound();
+                Introduction.setImageResource(R.drawable.newui_lesson2_sel);
+            } else {
+                FlipLeftSound();
+                Introduction.setImageResource(R.drawable.newui_lesson2_unsel);
+            }
+
+            toggleVisibilityWithAnimation(hiddenButtons2Layout);
+        });
+
+        L2Sub1 = findViewById(R.id.hidden2Button1);
+        L2Sub1.setOnClickListener(v -> {
+            Intent lessonsIntent = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            startActivity(lessonsIntent);
+        });
+
+        L2Sub2 = findViewById(R.id.hidden2Button2);
+        L2Sub2.setOnClickListener(v -> {
+            IntroSlideTo = 2;
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            Learn.putExtra("introduction", IntroSlideTo);
+            startActivity(Learn);
+        });
+
+        L2Sub3 = findViewById(R.id.hidden2Button3);
+        L2Sub3.setOnClickListener(v -> {
+            IntroSlideTo = 3;
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            Learn.putExtra("introduction", IntroSlideTo);
+            startActivity(Learn);
+        });
+
+        L2Sub4 = findViewById(R.id.hidden2Button4);
+        L2Sub4.setOnClickListener(v -> {
+            IntroSlideTo = 4;
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            Learn.putExtra("introduction", IntroSlideTo);
             startActivity(Learn);
         });
 
@@ -222,6 +255,12 @@ public class NewUI_Learn extends AppCompatActivity {
             }
 
             toggleVisibilityWithAnimation(hiddenButtons4Layout);
+        });
+
+        L4Sub1 = findViewById(R.id.hidden4Button1);
+        L4Sub1.setOnClickListener(v -> {
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Rules.class);
+            startActivity(Learn);
         });
 
         AtomicBoolean isL5Clicked = new AtomicBoolean(false);

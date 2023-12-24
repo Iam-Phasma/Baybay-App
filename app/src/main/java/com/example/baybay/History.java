@@ -19,6 +19,7 @@ public class History extends AppCompatActivity {
     TextView TvHistoryContent;
     NestedScrollView SvHistory;
     private int chapterSelected = 1;
+    ImageView ImgviewHistoryBoard;
     ImageButton ImgbtnHistoryC1, ImgbtnHistoryC2, ImgbtnHistoryC3;
 
     @Override
@@ -65,13 +66,11 @@ public class History extends AppCompatActivity {
         ImageButton HistoryExit = findViewById(R.id.imgbtn__history_exit);
         HistoryExit.setOnClickListener(v -> onBackPressed());
 
-        ImageView ImgviewHistoryBoard = findViewById(R.id.imgview_history_board);
+        ImgviewHistoryBoard = findViewById(R.id.imgview_history_board);
         ImgbtnHistoryC1 = findViewById(R.id.imgbtn_history_c1);
         ImgbtnHistoryC1.setOnClickListener(v -> {
             chapterSelected = 1;
             setChapter();
-            ImgviewHistoryBoard.setImageResource(R.drawable.newui_history_c1_board);
-
             ImgbtnHistoryC2.setImageResource(R.drawable.newui_history_c2_unsel);
             ImgbtnHistoryC3.setImageResource(R.drawable.newui_history_c3_unsel);
         });
@@ -80,8 +79,6 @@ public class History extends AppCompatActivity {
         ImgbtnHistoryC2.setOnClickListener(v -> {
             chapterSelected = 2;
             setChapter();
-            ImgviewHistoryBoard.setImageResource(R.drawable.newui_history_c2_board);
-
             ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_unsel);
             ImgbtnHistoryC3.setImageResource(R.drawable.newui_history_c3_unsel);
         });
@@ -90,8 +87,6 @@ public class History extends AppCompatActivity {
         ImgbtnHistoryC3.setOnClickListener(v -> {
             chapterSelected = 3;
             setChapter();
-            ImgviewHistoryBoard.setImageResource(R.drawable.newui_history_c3_board);
-
             ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_unsel);
             ImgbtnHistoryC2.setImageResource(R.drawable.newui_history_c2_unsel);
         });
@@ -103,12 +98,15 @@ public class History extends AppCompatActivity {
         TvHistoryContent = findViewById(R.id.tvHistoryContent);
 
         if (chapterSelected == 1){
+            ImgviewHistoryBoard.setImageResource(R.drawable.newui_history_c1_board);
             ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_sel);
             TvHistoryContent.setText(R.string.history_c1);
         } else if (chapterSelected == 2) {
+            ImgviewHistoryBoard.setImageResource(R.drawable.newui_history_c2_board);
             ImgbtnHistoryC2.setImageResource(R.drawable.newui_history_c2_sel);
             TvHistoryContent.setText(R.string.history_c2);
         } else if (chapterSelected == 3) {
+            ImgviewHistoryBoard.setImageResource(R.drawable.newui_history_c3_board);
             ImgbtnHistoryC3.setImageResource(R.drawable.newui_history_c3_sel);
             TvHistoryContent.setText(R.string.history_c3);
         }

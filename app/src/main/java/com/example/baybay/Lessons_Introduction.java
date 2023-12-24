@@ -5,10 +5,12 @@ import androidx.core.widget.NestedScrollView;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -16,13 +18,15 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 public class Lessons_Introduction extends AppCompatActivity {
     ImageButton ImgbtnPlayPause;
     ProgressBar progressBar;
     NestedScrollView NestedSvIntroduction;
-    Button BtnExitIntroduction;
+    ImageButton BtnExitIntroduction;
+    private int IntroSlideTo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,20 +45,35 @@ public class Lessons_Introduction extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
 
-        // Get the root view of the layout
-        View rootView = getWindow().getDecorView().getRootView();
+        // Set the gradient background color
+        int singleColor = Color.parseColor("#FCF4E7");
 
-        // Set the background color using a hexadecimal color value
-        rootView.setBackgroundColor(Color.parseColor("#F2F2F2"));
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
+
+
+
+
+
+
+        Intent intent = getIntent();
+        int getIntroSlideTo = intent.getIntExtra("introduction", 1);
+        IntroSlideTo = getIntroSlideTo;
+        slideToTextview();
 
         // Stop BG Music
         Z_SoundManager.StopLessonsBgMusic();
 
         BtnExitIntroduction = findViewById(R.id.btn_charsound_exit3);
         BtnExitIntroduction.setOnClickListener(view -> {
-            Intent Introduction = new Intent(getApplicationContext(), Lessons.class);
-            startActivity(Introduction);
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             finish();
         });
 
@@ -138,6 +157,7 @@ public class Lessons_Introduction extends AppCompatActivity {
 
                 ImgbtnPlayPause =findViewById(R.id.imgbtn_playpause2);
                 ImgbtnPlayPause.setOnClickListener(v -> {
+
                     if (videoViewAbakada.isPlaying()) {
                         // Pause the video and change the button icon to play
                         videoViewAbakada.pause();
@@ -151,44 +171,33 @@ public class Lessons_Introduction extends AppCompatActivity {
             }
         }
 
-        //AtomicBoolean buttonClicked = new AtomicBoolean(false);
-        //int screenHeight;
 
-        NestedSvIntroduction = findViewById(R.id.nestedsv_introduction);
-
-        // Get the screen height
-        //DisplayMetrics displayMetrics = new DisplayMetrics();
-        //getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        //screenHeight = displayMetrics.heightPixels;
-
-        /*
-        NestedSvIntroduction.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
-
-            int scrollThreshold = screenHeight / 2;
-
-            // Check if scrolled to the top
-            if (scrollY == 0) {
-                buttonClicked.set(false);
-                //ImgbtnPlayPause.performClick();
-            }
-
-            if (scrollY > scrollThreshold && !buttonClicked.get()) {
-                ImgbtnPlayPause.performClick();
-                buttonClicked.set(true);
-            }
-        });*/
-
-        progressBar = findViewById(R.id.progressBar_introduction);
-        NestedSvIntroduction.getViewTreeObserver().addOnScrollChangedListener(this::updateProgressBar);
     }
 
-    //Update progressbar status in-sync to scrollview
-    private void updateProgressBar() {
-        int maxScroll = NestedSvIntroduction.getChildAt(0).getHeight() - NestedSvIntroduction.getHeight();
-        int currentScroll = NestedSvIntroduction.getScrollY();
-        int progress = (int) ((currentScroll / (float) maxScroll) * 1000);
-        progressBar.setProgress(progress);
+    private void slideToTextview(){
+        NestedScrollView nsvMain = findViewById(R.id.nestedsv_introduction);
+        final TextView tvImportance = findViewById(R.id.tv_importance);
+        final TextView tvB20Plus = findViewById(R.id.tv_b20plus);
+        final TextView tvB18 = findViewById(R.id.tv_b18);
+
+        ViewTreeObserver vto = nsvMain.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                nsvMain.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                if (IntroSlideTo == 2){
+                    nsvMain.smoothScrollTo(0, (int) tvImportance.getY(), 1500);
+                } else if (IntroSlideTo == 3) {
+                    nsvMain.smoothScrollTo(0, (int) tvB20Plus.getY(), 2000);
+                } else if (IntroSlideTo == 4) {
+                    nsvMain.smoothScrollTo(5, (int) tvB18.getY(), 2500);
+                }
+            }
+        });
     }
+
+
 
     @Override
     public void onBackPressed() {

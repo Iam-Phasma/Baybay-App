@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -39,11 +40,24 @@ public class Lessons_Rules extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
 
-        // Get the root view of the layout
-        View rootView = getWindow().getDecorView().getRootView();
+        // Set the gradient background color
+        int singleColor = Color.parseColor("#FCF4E7");
 
-        // Set the background color
-        rootView.setBackgroundColor(Color.parseColor("#F2F2F2"));
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
+
+
+
+
+
 
         refreshRulesPb();
 
@@ -154,12 +168,7 @@ public class Lessons_Rules extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         //BACKGROUND MUSIC
-        Z_SoundManager.setActivityLessonsPaused(false);
-
-        Intent CharSounds = new Intent(getApplicationContext(), Lessons.class);
-        startActivity(CharSounds);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        //CharSounds.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        //Z_SoundManager.setActivityLessonsPaused(false);
         finish();
     }
 }
