@@ -6,80 +6,188 @@
     android:layout_height="match_parent"
     tools:context=".History">
 
+    <ImageButton
+        android:id="@+id/imgbtn__history_exit"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/newui_back_button"
+        tools:srcCompat="@drawable/newui_back_button" />
+
+    <TextView
+        android:id="@+id/textView81"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amasis_black"
+        android:text="History"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn__history_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn__history_exit" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollViewHistory"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:fadeScrollbars="false"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn__history_exit">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imgview_history_board"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/newui_history_c1_board" />
+
+            <TextView
+                android:id="@+id/textView82"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:maxLines="2"
+                android:text="Choose chapters"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_history_board" />
+
+            <TextView
+                android:id="@+id/textView83"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:maxLines="2"
+                android:text="You can read or play the media to listen instead"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView82"
+                app:layout_constraintTop_toBottomOf="@+id/textView82" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_history_c1"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#00FFFFFF"
+                android:paddingBottom="-10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/newui_history_c1_unsel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView83"
+                tools:src="@drawable/newui_history_c1_unsel" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_history_c2"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="-5dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitXY"
+                android:src="@drawable/newui_history_c2_unsel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_history_c1"
+                tools:src="@drawable/newui_history_c2_unsel" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_history_c3"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="-5dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitXY"
+                android:src="@drawable/newui_history_c3_unsel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_history_c2"
+                tools:src="@drawable/newui_history_c3_unsel" />
+
+            <ImageButton
+                android:id="@+id/imgbtn__history_exit2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_history_c1"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_history_c1"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_history_c1"
+                app:srcCompat="@drawable/newui_history_play_button"
+                tools:srcCompat="@drawable/newui_history_play_button" />
+
+            <ImageButton
+                android:id="@+id/imgbtn__history_exit3"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_history_c2"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn__history_exit2"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_history_c2"
+                app:srcCompat="@drawable/newui_history_play_button"
+                tools:srcCompat="@drawable/newui_history_play_button" />
+
+            <ImageButton
+                android:id="@+id/imgbtn__history_exit4"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_history_c3"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn__history_exit3"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_history_c3"
+                app:srcCompat="@drawable/newui_history_play_button"
+                tools:srcCompat="@drawable/newui_history_play_button" />
+
             <TextView
                 android:id="@+id/tvHistoryContent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:scrollbars="none"
-                android:text="@string/baybayin_overview"
+                android:text="@string/history_c1"
+                android:textAlignment="textStart"
+                android:textColor="#1B1B1B"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-            </TextView>
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_history_c3"></TextView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <ImageButton
-        android:id="@+id/imgbtn__history_theme"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/imgbtn__history_exit"
-        app:layout_constraintEnd_toStartOf="@+id/imgbtn__history_exit"
-        app:layout_constraintTop_toTopOf="@+id/imgbtn__history_exit"
-        app:srcCompat="@drawable/guide_history_darkicon" />
-
-    <ProgressBar
-        android:id="@+id/progressBar_history"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="0dp"
-        android:layout_height="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="20dp"
-        android:background="#00BF2F2F"
-        android:backgroundTint="#00B13636"
-        android:max="1000"
-        android:progress="0"
-        android:progressBackgroundTint="#252196F3"
-        android:progressTint="#FE9866"
-        app:layout_constraintBottom_toBottomOf="@+id/imgbtn__history_theme"
-        app:layout_constraintEnd_toStartOf="@+id/imgbtn__history_theme"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgbtn__history_theme" />
-
-    <ImageButton
-        android:id="@+id/imgbtn__history_exit"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/guide_history_exit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

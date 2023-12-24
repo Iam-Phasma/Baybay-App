@@ -2,13 +2,13 @@ package com.example.baybay;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +17,9 @@ import androidx.core.widget.NestedScrollView;
 public class History extends AppCompatActivity {
 
     TextView TvHistoryContent;
-    ProgressBar PbHistory;
     NestedScrollView SvHistory;
+    private int chapterSelected = 1;
+    ImageButton ImgbtnHistoryC1, ImgbtnHistoryC2, ImgbtnHistoryC3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,67 +39,96 @@ public class History extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
 
-        //Setting String Content to Textview
-        TvHistoryContent = findViewById(R.id.tvHistoryContent);
-        TvHistoryContent.setText(R.string.baybayin_overview);
+        // Set the gradient background color
+        int singleColor = Color.parseColor("#FCF4E7");
 
-        //Syncing Progressbar to Scrollview
-        PbHistory = findViewById(R.id.progressBar_history);
-        SvHistory = findViewById(R.id.scrollViewHistory);
-        SvHistory.getViewTreeObserver().addOnScrollChangedListener(this::updateProgressBar);
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
 
-        // Set the initial background and text color
-        getWindow().setBackgroundDrawableResource(R.drawable.history_light_bg);
-        TvHistoryContent.setTextColor(Color.parseColor("#484B53"));
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
 
-        //Set initial custom font of Textview
-        Typeface mFont = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            mFont = getResources().getFont(R.font.times_new_roman);
-        }
-        TvHistoryContent.setTypeface(mFont);
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
 
-        // Set line spacing of Textview
-        float lineSpacingMultiplier = 1.5f;
-        TvHistoryContent.setLineSpacing(0, lineSpacingMultiplier);
 
-        final boolean[] isDark = {false};
-        ImageButton Themebtn = findViewById(R.id.imgbtn__history_theme);
-        Themebtn.setImageResource(R.drawable.guide_history_lighticon);
-        Themebtn.setOnClickListener(v -> {
-            if (!isDark[0]){
-                getWindow().setBackgroundDrawableResource(R.drawable.history_dark_bg);
-                TvHistoryContent.setTextColor(Color.parseColor("#F2F2F2"));
-                Themebtn.setImageResource(R.drawable.guide_history_darkicon);
-                isDark[0] = true;
-            }else {
-                getWindow().setBackgroundDrawableResource(R.drawable.history_light_bg);
-                TvHistoryContent.setTextColor(Color.parseColor("#484B53"));
-                Themebtn.setImageResource(R.drawable.guide_history_lighticon);
-                isDark[0] = false;
-            }
-        });
+
+
+
+
+        Intent intent = getIntent();
+        int setChapter = intent.getIntExtra("chapter-count", 1);
+        chapterSelected = setChapter;
 
         ImageButton HistoryExit = findViewById(R.id.imgbtn__history_exit);
         HistoryExit.setOnClickListener(v -> onBackPressed());
+
+        ImageView ImgviewHistoryBoard = findViewById(R.id.imgview_history_board);
+        ImgbtnHistoryC1 = findViewById(R.id.imgbtn_history_c1);
+        ImgbtnHistoryC1.setOnClickListener(v -> {
+            chapterSelected = 1;
+            setChapter();
+            ImgviewHistoryBoard.setImageResource(R.drawable.newui_history_c1_board);
+
+            ImgbtnHistoryC2.setImageResource(R.drawable.newui_history_c2_unsel);
+            ImgbtnHistoryC3.setImageResource(R.drawable.newui_history_c3_unsel);
+        });
+
+        ImgbtnHistoryC2 = findViewById(R.id.imgbtn_history_c2);
+        ImgbtnHistoryC2.setOnClickListener(v -> {
+            chapterSelected = 2;
+            setChapter();
+            ImgviewHistoryBoard.setImageResource(R.drawable.newui_history_c2_board);
+
+            ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_unsel);
+            ImgbtnHistoryC3.setImageResource(R.drawable.newui_history_c3_unsel);
+        });
+
+        ImgbtnHistoryC3 = findViewById(R.id.imgbtn_history_c3);
+        ImgbtnHistoryC3.setOnClickListener(v -> {
+            chapterSelected = 3;
+            setChapter();
+            ImgviewHistoryBoard.setImageResource(R.drawable.newui_history_c3_board);
+
+            ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_unsel);
+            ImgbtnHistoryC2.setImageResource(R.drawable.newui_history_c2_unsel);
+        });
+
+        setChapter();
     }
 
-    //Update progressbar status in-sync to scrollview
-    private void updateProgressBar() {
-        int maxScroll = SvHistory.getChildAt(0).getHeight() - SvHistory.getHeight();
-        int currentScroll = SvHistory.getScrollY();
-        int progress = (int) ((currentScroll / (float) maxScroll) * 1000);
-        PbHistory.setProgress(progress);
+    private void setChapter(){
+        TvHistoryContent = findViewById(R.id.tvHistoryContent);
+
+        if (chapterSelected == 1){
+            ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_sel);
+            TvHistoryContent.setText(R.string.history_c1);
+        } else if (chapterSelected == 2) {
+            ImgbtnHistoryC2.setImageResource(R.drawable.newui_history_c2_sel);
+            TvHistoryContent.setText(R.string.history_c2);
+        } else if (chapterSelected == 3) {
+            ImgbtnHistoryC3.setImageResource(R.drawable.newui_history_c3_sel);
+            TvHistoryContent.setText(R.string.history_c3);
+        }
+
+        //Set font of Textview
+//        Typeface mFont = null;
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+//            mFont = getResources().getFont(R.font.times_new_roman);
+//        }
+//        TvHistoryContent.setTypeface(mFont);
+
+        //line spacing
+        float lineSpacingMultiplier = 1.5f;
+        TvHistoryContent.setLineSpacing(0, lineSpacingMultiplier);
     }
+
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
-        Intent Mainmenu = new Intent(getApplicationContext(), MainMenu.class);
-        startActivity(Mainmenu);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        Mainmenu.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         finish();
     }
 }

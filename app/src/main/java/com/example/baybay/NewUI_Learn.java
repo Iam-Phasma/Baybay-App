@@ -31,6 +31,8 @@ public class NewUI_Learn extends AppCompatActivity {
     private ImageButton Origin, Introduction, Characters, Rules, Handwriting, Reading;
     private ImageButton FullChart, Downloadable;
     private int bookNumber;
+    private int ChapterCount;
+    private ImageButton L1Sub1, L1Sub2, L1Sub3;
     private ImageButton L3Sub1, L3Sub2;
     private int CharSoundCount;
     private ImageButton L5Sub1, L5Sub2, L5Sub3;
@@ -148,6 +150,30 @@ public class NewUI_Learn extends AppCompatActivity {
             }
 
             toggleVisibilityWithAnimation(hiddenButtons2Layout);
+        });
+
+        L1Sub1 = findViewById(R.id.hidden1Button1);
+        L1Sub1.setOnClickListener(v -> {
+            ChapterCount = 1;
+            Intent Learn = new Intent(getApplicationContext(), History.class);
+            Learn.putExtra("chapter-count", ChapterCount);
+            startActivity(Learn);
+        });
+
+        L1Sub2 = findViewById(R.id.hidden1Button2);
+        L1Sub2.setOnClickListener(v -> {
+            ChapterCount = 2;
+            Intent Learn = new Intent(getApplicationContext(), History.class);
+            Learn.putExtra("chapter-count", ChapterCount);
+            startActivity(Learn);
+        });
+
+        L1Sub3 = findViewById(R.id.hidden1Button3);
+        L1Sub3.setOnClickListener(v -> {
+            ChapterCount = 3;
+            Intent Learn = new Intent(getApplicationContext(), History.class);
+            Learn.putExtra("chapter-count", ChapterCount);
+            startActivity(Learn);
         });
 
         AtomicBoolean isL3Clicked = new AtomicBoolean(false);

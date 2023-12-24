@@ -22,7 +22,7 @@
 
     <string name="baybayin_version20plus">The B20+ version brings significant improvements to the Baybayin script. Here, the characters for \"e\" and \"i,\" as well as \"o\" and \"u,\" have been given their own distinct characters, enhancing the script readability. These changes make it easier to distinguish and read the individual vowels, making the script more user friendly.\n </string>
 
-    <string name="baybayin_overview">
+    <string name="history_c1">
         \n
         <big><big><b>Chapter 1</b></big></big>
         \n
@@ -40,8 +40,11 @@
         \n\nPriests and babaylan, the indigenous spiritual leaders or shamans, played a significant role in utilizing Baybayin to write sacred texts, perform important rituals, and document traditional practices, thus reinforcing its role in the spiritual and cultural life of the communities.
         \n\nHistorical records indicate that the early usage of Baybayin included recording business transactions, folk tales, poetry, songs, and other literary compositions. Additionally, it was used to write poetry, incantations, and letters, showcasing its versatility in various contexts.
         \n\nThroughout the 16th and 17th centuries, Baybayin enjoyed widespread use in Luzon and other regions of the Philippines.
-        \n\n\n
+        \n\n
+    </string>
 
+    <string name="history_c2">
+        \n
         <big><big><b>Chapter 3</b></big></big>
         \n
         <i>Adaptation and Influence</i>
@@ -70,8 +73,11 @@
         \n\nThe impact of these measures was profound, leading to the gradual decline of Baybayin in common usage and posing a serious risk of extinction. The Spanish language introduced new sounds and words that Baybayin could not accurately represent, contributing to its limitations in adapting to the evolving linguistic landscape. Moreover, the rapid acquisition of literacy in the Latin script offered social and material benefits to the native population, incentivizing them to abandon Baybayin.
         \n\nTraditional family activities, such as parents or elders teaching Baybayin to their children, were disrupted, contributing to the decline of intergenerational knowledge transmission. The Spanish friars, viewing Baybayin writings as works of the devil, engaged in its suppression and destruction, further erasing its presence in society.
         \n\nDespite these challenges, some indigenous groups, including the Tagbanwa, Buhid, Hanunuo, and Palawan, preserved their versions of Baybayin, demonstrating resilience and cultural continuity. Today, Baybayin retains significance in modern Filipino culture, symbolizing national identity and heritage. Advocates call for its revival and promotion as a national writing system to preserve this important aspect of the Philippine history.
-        \n\n\n
+        \n\n
+    </string>
 
+    <string name="history_c3">
+        \n
         <big><big><b>Chapter 6</b></big></big>
         \n
         <i>Rediscovery and Revival</i>
@@ -94,7 +100,7 @@
         \n\nBeyond aesthetics, Baybayin has taken on multiple roles in the modern world. It becomes a tool for education, with schools and organizations actively teaching Baybayin to students and enthusiasts keen to delve into their cultural heritage and history. This educational aspect fosters an appreciation for the script significance and preserves it for future generations.
         \n\nMoreover, Baybayin has become a catalyst for advocacy and activism, with impassioned individuals championing it as a national writing system and a symbol of the Filipino identity. Proposals have surfaced, suggesting bills to declare Baybayin as the official script of the Philippines and to mandate its use in public signs and documents. This movement aims to revitalize the script relevance and foster a deeper connection to Filipino culture.
         \n\nThroughout its existence, Baybayin has not merely endured but evolved, representing the rich and diverse history and culture of the Philippines. Its versatility and adaptability enable its continued relevance and meaningfulness in the modern world. As a script that has weathered the tests of time, Baybayin stands as a testament to the enduring spirit of Filipino heritage, cherished and celebrated by the present generation and poised to inspire generations to come.
-        \n
+        \n\n
     </string>
 
     <string name="alamat_description">Embark on a timeless voyage through the rich tapestry of human imagination with this captivating collection of legends and myths. Within these pages, ancient tales come to life, weaving together the mystical and the mundane to create a world where gods, heroes, and mythical creatures walk among mortals. Discover the origin stories of civilizations, the epic adventures of legendary heroes, and the enchanting folklore that has shaped cultures for centuries. These narratives, passed down through generations, offer glimpses into the beliefs, values, and traditions of diverse societies around the world.

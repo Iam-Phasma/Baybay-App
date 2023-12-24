@@ -139,7 +139,7 @@
                     android:visibility="gone">
 
                     <ImageButton
-                        android:id="@+id/hiddenButton1"
+                        android:id="@+id/hidden1Button1"
                         android:layout_width="270dp"
                         android:layout_height="60dp"
                         android:layout_gravity="right"
@@ -149,7 +149,7 @@
                         tools:src="@drawable/newui_lesson1_sub1" />
 
                     <ImageButton
-                        android:id="@+id/hiddenButton2"
+                        android:id="@+id/hidden1Button2"
                         android:layout_width="270dp"
                         android:layout_height="60dp"
                         android:layout_gravity="right"
@@ -159,7 +159,7 @@
                         tools:src="@drawable/newui_lesson1_sub2" />
 
                     <ImageButton
-                        android:id="@+id/hiddenButton3"
+                        android:id="@+id/hidden1Button3"
                         android:layout_width="270dp"
                         android:layout_height="60dp"
                         android:layout_gravity="right"
