@@ -155,13 +155,13 @@ public class Lessons_Rules extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Z_SoundManager.setActivityRulesPaused(true);
+        //Z_SoundManager.setActivityRulesPaused(true);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Z_SoundManager.setActivityRulesResumed(this);
+        //Z_SoundManager.setActivityRulesResumed(this);
     }
 
     @Override

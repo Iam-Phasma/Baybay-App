@@ -142,6 +142,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L1Sub1 = findViewById(R.id.hidden1Button1);
         L1Sub1.setOnClickListener(v -> {
             ChapterCount = 1;
+            PauseBGMusic();
             Intent Learn = new Intent(getApplicationContext(), History.class);
             Learn.putExtra("chapter-count", ChapterCount);
             startActivity(Learn);
@@ -150,6 +151,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L1Sub2 = findViewById(R.id.hidden1Button2);
         L1Sub2.setOnClickListener(v -> {
             ChapterCount = 2;
+            PauseBGMusic();
             Intent Learn = new Intent(getApplicationContext(), History.class);
             Learn.putExtra("chapter-count", ChapterCount);
             startActivity(Learn);
@@ -158,6 +160,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L1Sub3 = findViewById(R.id.hidden1Button3);
         L1Sub3.setOnClickListener(v -> {
             ChapterCount = 3;
+            PauseBGMusic();
             Intent Learn = new Intent(getApplicationContext(), History.class);
             Learn.putExtra("chapter-count", ChapterCount);
             startActivity(Learn);
@@ -181,6 +184,7 @@ public class NewUI_Learn extends AppCompatActivity {
 
         L2Sub1 = findViewById(R.id.hidden2Button1);
         L2Sub1.setOnClickListener(v -> {
+            PauseBGMusic();
             Intent lessonsIntent = new Intent(getApplicationContext(), Lessons_Introduction.class);
             startActivity(lessonsIntent);
         });
@@ -188,6 +192,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L2Sub2 = findViewById(R.id.hidden2Button2);
         L2Sub2.setOnClickListener(v -> {
             IntroSlideTo = 2;
+            PauseBGMusic();
             Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
             Learn.putExtra("introduction", IntroSlideTo);
             startActivity(Learn);
@@ -196,6 +201,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L2Sub3 = findViewById(R.id.hidden2Button3);
         L2Sub3.setOnClickListener(v -> {
             IntroSlideTo = 3;
+            PauseBGMusic();
             Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
             Learn.putExtra("introduction", IntroSlideTo);
             startActivity(Learn);
@@ -204,6 +210,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L2Sub4 = findViewById(R.id.hidden2Button4);
         L2Sub4.setOnClickListener(v -> {
             IntroSlideTo = 4;
+            PauseBGMusic();
             Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
             Learn.putExtra("introduction", IntroSlideTo);
             startActivity(Learn);
