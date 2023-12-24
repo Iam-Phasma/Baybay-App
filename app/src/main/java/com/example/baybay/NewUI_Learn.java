@@ -304,6 +304,15 @@ public class NewUI_Learn extends AppCompatActivity {
             startActivity(Learn);
         });
 
+        L5Sub3 = findViewById(R.id.hidden5Button3);
+        L5Sub3.setOnClickListener(v -> {
+            WritingCount = 21;
+            ClickSoundEffect();
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Paint.class);
+            Learn.putExtra("writing-count", WritingCount);
+            startActivity(Learn);
+        });
+
         AtomicBoolean isL6Clicked = new AtomicBoolean(false);
         Reading.setOnClickListener(view -> {
             animateButton(Reading);

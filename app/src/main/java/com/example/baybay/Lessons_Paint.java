@@ -75,7 +75,7 @@ public class Lessons_Paint extends AppCompatActivity {
         drawingView.setBackground(roundedCornersDrawable);
 
         TextView TvGifCount = findViewById(R.id.tv_gifcount);
-        TvGifCount.setText(currentGIFCount + " / 20");
+        TvGifCount.setText(currentGIFCount + " / 25");
 
         btnClear = findViewById(R.id.btn_draw_clear);
         btnClear.setOnClickListener(v -> {
@@ -104,9 +104,9 @@ public class Lessons_Paint extends AppCompatActivity {
             if(currentGIFCount != 1){
                 currentGIFCount--;
             } else {
-                currentGIFCount = 20;
+                currentGIFCount = 25;
             }
-            TvGifCount.setText(currentGIFCount + " / 20");
+            TvGifCount.setText(currentGIFCount + " / 25");
             setGIF();
         });
 
@@ -114,12 +114,12 @@ public class Lessons_Paint extends AppCompatActivity {
         BtnRight.setOnClickListener(v -> {
             animateButton(BtnRight);
             drawingView.clearDrawing();
-            if(currentGIFCount != 20){
+            if(currentGIFCount != 25){
                 currentGIFCount++;
             }else {
                 currentGIFCount = 1;
             }
-            TvGifCount.setText(currentGIFCount + " / 20");
+            TvGifCount.setText(currentGIFCount + " / 25");
             setGIF();
         });
 
@@ -145,7 +145,7 @@ public class Lessons_Paint extends AppCompatActivity {
         TextView TvGifLatin = findViewById(R.id.tv_gif_latin);
 
         TextView TvGifCount = findViewById(R.id.tv_gifcount);
-        TvGifCount.setText(currentGIFCount + " / 20");
+        TvGifCount.setText(currentGIFCount + " / 25");
         switch(currentGIFCount) {
             case 1:
                 Glide.with(this).load(R.drawable.draw_a).into(ImgviewDrawIllustration);
@@ -227,6 +227,26 @@ public class Lessons_Paint extends AppCompatActivity {
                 Glide.with(this).load(R.drawable.draw_y).into(ImgviewDrawIllustration);
                 TvGifLatin.setText("YA");
                 break;
+            case 21:
+                Glide.with(this).load(R.drawable.draw_eo).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("E/O SOUND");
+                break;
+            case 22:
+                Glide.with(this).load(R.drawable.draw_iu).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("I/U SOUND");
+                break;
+            case 23:
+                Glide.with(this).load(R.drawable.draw_pamudpod).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("X-MARK");
+                break;
+            case 24:
+                Glide.with(this).load(R.drawable.draw_period).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("PERIOD");
+                break;
+            case 25:
+                Glide.with(this).load(R.drawable.draw_comma).into(ImgviewDrawIllustration);
+                TvGifLatin.setText("COMMA");
+                break;
             default:
                 // code block
         }
@@ -248,7 +268,8 @@ public class Lessons_Paint extends AppCompatActivity {
                 R.id.btn_draw_a, R.id.btn_draw_e, R.id.btn_draw_i, R.id.btn_draw_o, R.id.btn_draw_u,
                 R.id.btn_draw_b, R.id.btn_draw_k, R.id.btn_draw_d, R.id.btn_draw_g, R.id.btn_draw_h,
                 R.id.btn_draw_l, R.id.btn_draw_m, R.id.btn_draw_n, R.id.btn_draw_ng, R.id.btn_draw_p,
-                R.id.btn_draw_r, R.id.btn_draw_s, R.id.btn_draw_t,  R.id.btn_draw_w, R.id.btn_draw_y
+                R.id.btn_draw_r, R.id.btn_draw_s, R.id.btn_draw_t,  R.id.btn_draw_w, R.id.btn_draw_y,
+                R.id.btn_draw_eo, R.id.btn_draw_iu, R.id.btn_draw_xx,  R.id.btn_draw_period, R.id.btn_draw_comma
         };
 
         for (int i = 0; i < buttonIds.length; i++) {
@@ -371,6 +392,26 @@ public class Lessons_Paint extends AppCompatActivity {
             case 20:
                 TvDrawingGuideTittle.setText("Draw YA:");
                 TvDrawingGuide.setText("Draw a smooth \"U\" shape-like line with both ends facing away each other.");
+                break;
+            case 21:
+                TvDrawingGuideTittle.setText("Draw E/O SOUND:");
+                TvDrawingGuide.setText("Draw a small hollow circle above or below a character.");
+                break;
+            case 22:
+                TvDrawingGuideTittle.setText("Draw I/U SOUND:");
+                TvDrawingGuide.setText("Draw a small filled circle above or below a character.");
+                break;
+            case 23:
+                TvDrawingGuideTittle.setText("Draw X-MARK:");
+                TvDrawingGuide.setText("Draw an x mark below a character.");
+                break;
+            case 24:
+                TvDrawingGuideTittle.setText("Draw PERIOD:");
+                TvDrawingGuide.setText("Draw double slashes after a character or word.");
+                break;
+            case 25:
+                TvDrawingGuideTittle.setText("Draw COMMA:");
+                TvDrawingGuide.setText("Draw a single slash after a character or word.");
                 break;
             default:
                 break;
