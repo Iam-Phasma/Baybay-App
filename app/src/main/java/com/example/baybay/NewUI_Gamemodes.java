@@ -78,8 +78,10 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
         SwipeRefreshLayout swipeContainer = findViewById(R.id.gamemodes_swiperefresh);
         swipeContainer.setOnRefreshListener(() -> {
-            swipeContainer.setRefreshing(false);
-            recreate();
+            new Handler().postDelayed(() -> {
+                swipeContainer.setRefreshing(false);
+                recreate();
+            }, 700);
         });
 
         GamemodesExit = findViewById(R.id.imgbtn_gamemodes_exit);
