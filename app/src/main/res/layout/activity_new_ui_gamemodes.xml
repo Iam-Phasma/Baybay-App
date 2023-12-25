@@ -61,14 +61,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView52" />
 
     <LinearLayout
+        android:id="@+id/linearLayout14"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="70dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView5">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/imgbtn_gameplayhistory_reset"
@@ -91,218 +91,227 @@
             tools:src="@drawable/newui_gm_progress_button" />
     </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView5"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/gamemodes_swiperefresh"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView53">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="80dp">
 
-            <ImageView
-                android:id="@+id/imgview_fb1_board"
-                android:layout_width="300dp"
-                android:layout_height="225dp"
-                android:layout_marginTop="10dp"
-                android:rotation="-1"
-                android:scaleType="fitCenter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/newui_gm_g1_button"
-                tools:srcCompat="@drawable/newui_gm_g1_button" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_gm_quiz_numberofgame"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:rotation="-1"
-                android:text="0"
-                android:textColor="#050505"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imgview_fb1_board"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_fb1_board"
-                app:layout_constraintHorizontal_bias="0.301"
-                app:layout_constraintStart_toStartOf="@+id/imgview_fb1_board"
-                app:layout_constraintTop_toTopOf="@+id/imgview_fb1_board"
-                app:layout_constraintVertical_bias="0.82" />
+                <ImageView
+                    android:id="@+id/imgview_fb1_board"
+                    android:layout_width="300dp"
+                    android:layout_height="225dp"
+                    android:layout_marginTop="10dp"
+                    android:rotation="-1"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/newui_gm_g1_button"
+                    tools:srcCompat="@drawable/newui_gm_g1_button" />
 
-            <TextView
-                android:id="@+id/tv_item_game1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:rotation="-1"
-                android:text="20"
-                android:textColor="#050505"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imgview_fb1_board"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_fb1_board"
-                app:layout_constraintHorizontal_bias="0.714"
-                app:layout_constraintStart_toStartOf="@+id/imgview_fb1_board"
-                app:layout_constraintTop_toTopOf="@+id/imgview_fb1_board"
-                app:layout_constraintVertical_bias="0.82" />
+                <TextView
+                    android:id="@+id/tv_gm_quiz_numberofgame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="-1"
+                    android:text="0"
+                    android:textColor="#050505"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgview_fb1_board"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_fb1_board"
+                    app:layout_constraintHorizontal_bias="0.301"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_fb1_board"
+                    app:layout_constraintTop_toTopOf="@+id/imgview_fb1_board"
+                    app:layout_constraintVertical_bias="0.82" />
 
-            <ImageView
-                android:id="@+id/imgview_dl_r2_board"
-                android:layout_width="300dp"
-                android:layout_height="225dp"
-                android:layout_marginTop="30dp"
-                android:rotation="2"
-                android:scaleType="fitCenter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_fb1_board"
-                app:srcCompat="@drawable/newui_gm_g2_button"
-                tools:srcCompat="@drawable/newui_gm_g2_button" />
+                <TextView
+                    android:id="@+id/tv_item_game1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="-1"
+                    android:text="20"
+                    android:textColor="#050505"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgview_fb1_board"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_fb1_board"
+                    app:layout_constraintHorizontal_bias="0.714"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_fb1_board"
+                    app:layout_constraintTop_toTopOf="@+id/imgview_fb1_board"
+                    app:layout_constraintVertical_bias="0.82" />
 
-            <TextView
-                android:id="@+id/tv_gm_spelling_numberofgame"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:rotation="2"
-                android:text="0"
-                android:textColor="#050505"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintHorizontal_bias="0.301"
-                app:layout_constraintStart_toStartOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintTop_toTopOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintVertical_bias="0.8" />
+                <ImageView
+                    android:id="@+id/imgview_dl_r2_board"
+                    android:layout_width="300dp"
+                    android:layout_height="225dp"
+                    android:layout_marginTop="30dp"
+                    android:rotation="2"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgview_fb1_board"
+                    app:srcCompat="@drawable/newui_gm_g2_button"
+                    tools:srcCompat="@drawable/newui_gm_g2_button" />
 
-            <TextView
-                android:id="@+id/tv_item_game"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:rotation="2"
-                android:text="10"
-                android:textColor="#050505"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintHorizontal_bias="0.714"
-                app:layout_constraintStart_toStartOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintTop_toTopOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintVertical_bias="0.83" />
+                <TextView
+                    android:id="@+id/tv_gm_spelling_numberofgame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="2"
+                    android:text="0"
+                    android:textColor="#050505"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintHorizontal_bias="0.301"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintTop_toTopOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintVertical_bias="0.8" />
 
-            <ImageView
-                android:id="@+id/imgview_dl_r3_board"
-                android:layout_width="300dp"
-                android:layout_height="225dp"
-                android:layout_marginTop="30dp"
-                android:rotation="-2"
-                android:scaleType="fitCenter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r2_board"
-                app:srcCompat="@drawable/newui_gm_g3_button"
-                tools:srcCompat="@drawable/newui_gm_g3_button" />
+                <TextView
+                    android:id="@+id/tv_item_game"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="2"
+                    android:text="10"
+                    android:textColor="#050505"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintHorizontal_bias="0.714"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintTop_toTopOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintVertical_bias="0.83" />
 
-            <TextView
-                android:id="@+id/tv_gm_match_numberofgame"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:rotation="-2"
-                android:text="0"
-                android:textColor="#050505"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintHorizontal_bias="0.301"
-                app:layout_constraintStart_toStartOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintTop_toTopOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintVertical_bias="0.83" />
+                <ImageView
+                    android:id="@+id/imgview_dl_r3_board"
+                    android:layout_width="300dp"
+                    android:layout_height="225dp"
+                    android:layout_marginTop="30dp"
+                    android:rotation="-2"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r2_board"
+                    app:srcCompat="@drawable/newui_gm_g3_button"
+                    tools:srcCompat="@drawable/newui_gm_g3_button" />
 
-            <TextView
-                android:id="@+id/tv_item_game2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:rotation="-2"
-                android:text="20"
-                android:textColor="#050505"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintHorizontal_bias="0.742"
-                app:layout_constraintStart_toStartOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintTop_toTopOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintVertical_bias="0.81" />
+                <TextView
+                    android:id="@+id/tv_gm_match_numberofgame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="-2"
+                    android:text="0"
+                    android:textColor="#050505"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintHorizontal_bias="0.301"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintTop_toTopOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintVertical_bias="0.83" />
 
-            <ImageView
-                android:id="@+id/imageView58"
-                android:layout_width="21dp"
-                android:layout_height="76dp"
-                android:rotation="5"
-                app:layout_constraintBottom_toTopOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_fb1_board"
-                app:layout_constraintHorizontal_bias="0.534"
-                app:layout_constraintStart_toStartOf="@+id/imgview_fb1_board"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_fb1_board"
-                app:layout_constraintVertical_bias="0.478"
-                app:srcCompat="@drawable/newui_gm_ribbon_button"
-                tools:srcCompat="@drawable/newui_gm_ribbon_button" />
+                <TextView
+                    android:id="@+id/tv_item_game2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="-2"
+                    android:text="20"
+                    android:textColor="#050505"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintHorizontal_bias="0.742"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintTop_toTopOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintVertical_bias="0.81" />
 
-            <ImageView
-                android:id="@+id/imageView61"
-                android:layout_width="21dp"
-                android:layout_height="76dp"
-                android:rotation="50"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="@+id/imgview_fb1_board"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_fb1_board"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.37"
-                app:srcCompat="@drawable/newui_gm_ribbon_button"
-                tools:srcCompat="@drawable/newui_gm_ribbon_button" />
+                <ImageView
+                    android:id="@+id/imageView58"
+                    android:layout_width="21dp"
+                    android:layout_height="76dp"
+                    android:rotation="5"
+                    app:layout_constraintBottom_toTopOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_fb1_board"
+                    app:layout_constraintHorizontal_bias="0.534"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_fb1_board"
+                    app:layout_constraintTop_toBottomOf="@+id/imgview_fb1_board"
+                    app:layout_constraintVertical_bias="0.478"
+                    app:srcCompat="@drawable/newui_gm_ribbon_button"
+                    tools:srcCompat="@drawable/newui_gm_ribbon_button" />
 
-            <ImageView
-                android:id="@+id/imageView62"
-                android:layout_width="21dp"
-                android:layout_height="76dp"
-                android:rotation="-40"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="@+id/imgview_fb1_board"
-                app:layout_constraintStart_toStartOf="@+id/imgview_fb1_board"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/newui_gm_ribbon_button"
-                tools:srcCompat="@drawable/newui_gm_ribbon_button" />
+                <ImageView
+                    android:id="@+id/imageView61"
+                    android:layout_width="21dp"
+                    android:layout_height="76dp"
+                    android:rotation="50"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toTopOf="@+id/imgview_fb1_board"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_fb1_board"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.37"
+                    app:srcCompat="@drawable/newui_gm_ribbon_button"
+                    tools:srcCompat="@drawable/newui_gm_ribbon_button" />
 
-            <ImageView
-                android:id="@+id/imageView59"
-                android:layout_width="21dp"
-                android:layout_height="76dp"
-                android:rotation="-7"
-                app:layout_constraintBottom_toTopOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintHorizontal_bias="0.534"
-                app:layout_constraintStart_toStartOf="@+id/imgview_dl_r2_board"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r2_board"
-                app:srcCompat="@drawable/newui_gm_ribbon_button"
-                tools:srcCompat="@drawable/newui_gm_ribbon_button" />
+                <ImageView
+                    android:id="@+id/imageView62"
+                    android:layout_width="21dp"
+                    android:layout_height="76dp"
+                    android:rotation="-40"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toTopOf="@+id/imgview_fb1_board"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_fb1_board"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/newui_gm_ribbon_button"
+                    tools:srcCompat="@drawable/newui_gm_ribbon_button" />
 
-            <ImageView
-                android:id="@+id/imageView60"
-                android:layout_width="21dp"
-                android:layout_height="76dp"
-                android:layout_marginTop="-50dp"
-                android:rotation="-7"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintHorizontal_bias="0.534"
-                app:layout_constraintStart_toStartOf="@+id/imgview_dl_r3_board"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r3_board"
-                app:srcCompat="@drawable/newui_gm_ribbon_button"
-                tools:srcCompat="@drawable/newui_gm_ribbon_button" />
+                <ImageView
+                    android:id="@+id/imageView59"
+                    android:layout_width="21dp"
+                    android:layout_height="76dp"
+                    android:rotation="-7"
+                    app:layout_constraintBottom_toTopOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintHorizontal_bias="0.534"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_dl_r2_board"
+                    app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r2_board"
+                    app:srcCompat="@drawable/newui_gm_ribbon_button"
+                    tools:srcCompat="@drawable/newui_gm_ribbon_button" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+                <ImageView
+                    android:id="@+id/imageView60"
+                    android:layout_width="21dp"
+                    android:layout_height="76dp"
+                    android:layout_marginTop="-50dp"
+                    android:rotation="-7"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintHorizontal_bias="0.534"
+                    app:layout_constraintStart_toStartOf="@+id/imgview_dl_r3_board"
+                    app:layout_constraintTop_toBottomOf="@+id/imgview_dl_r3_board"
+                    app:srcCompat="@drawable/newui_gm_ribbon_button"
+                    tools:srcCompat="@drawable/newui_gm_ribbon_button" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

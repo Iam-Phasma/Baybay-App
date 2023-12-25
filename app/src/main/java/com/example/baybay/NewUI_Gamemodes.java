@@ -2,6 +2,7 @@ package com.example.baybay;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -74,6 +75,12 @@ public class NewUI_Gamemodes extends AppCompatActivity {
 
 
 
+
+        SwipeRefreshLayout swipeContainer = findViewById(R.id.gamemodes_swiperefresh);
+        swipeContainer.setOnRefreshListener(() -> {
+            swipeContainer.setRefreshing(false);
+            recreate();
+        });
 
         GamemodesExit = findViewById(R.id.imgbtn_gamemodes_exit);
         GamemodesExit.setOnClickListener(v -> {
