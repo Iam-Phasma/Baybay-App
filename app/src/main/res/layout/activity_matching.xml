@@ -67,7 +67,7 @@
                 android:id="@+id/gridLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 app:columnCount="4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -77,218 +77,239 @@
                 <ImageButton
                     android:id="@+id/imgbtnMatch1"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch2"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch3"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch4"
                     android:layout_width="72dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch5"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch6"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch7"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch8"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch9"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch10"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch11"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch12"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch13"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch14"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch15"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch16"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch17"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch18"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch19"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
 
                 <ImageButton
                     android:id="@+id/imgbtnMatch20"
                     android:layout_width="70dp"
-                    android:layout_height="100dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp"
                     android:backgroundTint="#00FFFFFF"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/match_unknown" />
+                    app:srcCompat="@drawable/match_script_clicked"
+                    tools:srcCompat="@drawable/match_script_clicked" />
             </androidx.gridlayout.widget.GridLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
     <ImageButton
         android:id="@+id/imageButton9"
-        android:layout_width="251dp"
-        android:layout_height="112dp"
+        android:layout_width="240dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="20dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitXY"
@@ -300,7 +321,7 @@
         android:id="@+id/imgbtn_pass"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="30dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton9"
@@ -315,7 +336,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:text="NGA"
-        android:textColor="#FFC107"
+        android:textColor="#49B0AA"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton9"
         app:layout_constraintEnd_toEndOf="@+id/imageButton9"
@@ -327,13 +348,13 @@
         android:id="@+id/tv_match_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="55dp"
+        android:layout_marginStart="10dp"
         android:fontFamily="sans-serif-black"
         android:text="ba"
-        android:textColor="#CFCFCF"
+        android:textColor="#2C2C2C"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_match_current"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton9"
+        app:layout_constraintStart_toEndOf="@+id/tv_match_current"
         app:layout_constraintTop_toTopOf="@+id/tv_match_current"
         app:layout_constraintVertical_bias="0.55" />
 
@@ -341,13 +362,13 @@
         android:id="@+id/tv_match_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="sans-serif-black"
         android:text="ba"
-        android:textColor="#CFCFCF"
+        android:textColor="#FF2C2C2C"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_match_current"
-        app:layout_constraintStart_toStartOf="@+id/imageButton9"
+        app:layout_constraintEnd_toStartOf="@+id/tv_match_current"
         app:layout_constraintTop_toTopOf="@+id/tv_match_current"
         app:layout_constraintVertical_bias="0.55" />
 
@@ -355,8 +376,7 @@
         android:id="@+id/tv_result_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-black"
         android:text="Result"
         android:textColor="#171717"

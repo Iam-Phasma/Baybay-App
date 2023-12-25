@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Bluegreen">#00627A</color>
 
-    <color name="correct_color">#1AFF00</color>
+    <color name="correct_color">#28B518</color>
     <color name="incorrect_color">#FF0000</color>
     <color name="incorrect_skipped">#FF03A9F4</color>
     <color name="transparent">#00FFFFFF</color>

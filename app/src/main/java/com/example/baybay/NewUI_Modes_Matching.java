@@ -451,7 +451,7 @@ public class NewUI_Modes_Matching extends AppCompatActivity {
 
     private void MatchQuestionCounter(){
         TvMatchCounter = findViewById(R.id.tv_MatchQuestionCounter);
-        TvMatchCounter.setText(String.valueOf(MatchQuestionCounter));
+        TvMatchCounter.setText(String.valueOf(MatchQuestionCounter) + "/20");
     }
 
 
