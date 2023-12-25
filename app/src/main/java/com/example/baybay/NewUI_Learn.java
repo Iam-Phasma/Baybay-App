@@ -217,6 +217,15 @@ public class NewUI_Learn extends AppCompatActivity {
             startActivity(Learn);
         });
 
+        L2Sub5 = findViewById(R.id.hidden2Button5);
+        L2Sub5.setOnClickListener(v -> {
+            IntroSlideTo = 5;
+            PauseBGMusic();
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            Learn.putExtra("introduction", IntroSlideTo);
+            startActivity(Learn);
+        });
+
         AtomicBoolean isL3Clicked = new AtomicBoolean(false);
         Characters.setOnClickListener(view -> {
             animateButton(Characters);

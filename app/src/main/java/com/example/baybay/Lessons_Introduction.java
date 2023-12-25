@@ -179,6 +179,7 @@ public class Lessons_Introduction extends AppCompatActivity {
         final TextView tvImportance = findViewById(R.id.tv_importance);
         final TextView tvB20Plus = findViewById(R.id.tv_b20plus);
         final TextView tvB18 = findViewById(R.id.tv_b18);
+        final TextView tvB17 = findViewById(R.id.tv_brief_B17);
 
         ViewTreeObserver vto = nsvMain.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -192,6 +193,8 @@ public class Lessons_Introduction extends AppCompatActivity {
                     nsvMain.smoothScrollTo(0, (int) tvB20Plus.getY(), 2000);
                 } else if (IntroSlideTo == 4) {
                     nsvMain.smoothScrollTo(5, (int) tvB18.getY(), 2500);
+                }else if (IntroSlideTo == 5) {
+                    nsvMain.smoothScrollTo(5, (int) tvB17.getY(), 2800);
                 }
             }
         });

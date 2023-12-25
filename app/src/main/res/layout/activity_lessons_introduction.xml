@@ -172,7 +172,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_importance" />
 
             <TextView
-                android:id="@+id/tv_brief_introduction3"
+                android:id="@+id/tv_brief_B17"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -249,7 +249,7 @@
                 android:src="@drawable/version_b17"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction3" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_B17" />
 
             <ImageView
                 android:id="@+id/imageView37"
