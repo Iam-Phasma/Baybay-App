@@ -110,6 +110,7 @@ public class Lessons_Rules extends AppCompatActivity {
                 PracticeQuestion();
             }else {
                 Toasty.info(Lessons_Rules.this, "You answered them all, great job!", Toast.LENGTH_SHORT).show();
+                BtnSubmitPractice.setEnabled(false);
             }
         });
     }
