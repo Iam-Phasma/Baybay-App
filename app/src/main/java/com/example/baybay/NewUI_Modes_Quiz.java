@@ -10,6 +10,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -55,7 +57,7 @@ public class NewUI_Modes_Quiz extends AppCompatActivity {
     MediaPlayer songQuiz;
     TextView Tv_QuizQuestionCounter;
     int questionItems = 20;  //number of items
-    int QuizQuestionCounter = questionItems;
+    int QuizQuestionCounter = 1;
     SharedPreferences sharedPreferences;
 
 //    private static class Question {
@@ -102,8 +104,26 @@ public class NewUI_Modes_Quiz extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
 
-        // Set the background to a drawable resource
-        getWindow().setBackgroundDrawableResource(R.drawable.bg_quiz3);
+        // Set the gradient background color
+        int singleColor = Color.parseColor("#FCF4E7");
+
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
+
+
+
+
+
+
+
 
         Intent intent = getIntent();
         difficulty = intent.getIntExtra("DIFFICULTY", 1);
@@ -184,7 +204,7 @@ public class NewUI_Modes_Quiz extends AppCompatActivity {
                 disablePauseMenuButtons();
                 new Handler().postDelayed(this::QuizResumeVoice, 200);
 
-                if(QuizQuestionCounter != -1){
+                if(QuizQuestionCounter != 21){
                     resumeTimer();
                 }
 
@@ -303,14 +323,16 @@ public class NewUI_Modes_Quiz extends AppCompatActivity {
     private void displayQuestion() {
         //Establish question counter
         Tv_QuizQuestionCounter = findViewById(R.id.tv_quizQuestionCounter);
-        Tv_QuizQuestionCounter.setText(String.valueOf(QuizQuestionCounter));
-        QuizQuestionCounter --;
+        Tv_QuizQuestionCounter.setText(String.valueOf(QuizQuestionCounter) + "/20");
+
+        if(QuizQuestionCounter != 20){
+            QuizQuestionCounter ++;
+        }
 
         if (questionsAnswered == questionItems) {
             pauseTimer();
             choiceDisable();
             ScoreboardMethod();
-            return;
         }else{
             // Shuffle the questionList before selecting the current question
             //Collections.shuffle(questionList);
@@ -540,45 +562,45 @@ public class NewUI_Modes_Quiz extends AppCompatActivity {
             QuizResultVoice1();
 
             // Earn +3 trophies
-            int earnedTrophies = 3;
-            int currentTrophies = Z_TrophyManager.getTrophies();
-            if(Z_TrophyManager.getTrophies() <= 996){
-                cancelToast();
-                globalToast = Toasty.info(this, "Earned + 3 trophies!", Toast.LENGTH_LONG);
-                globalToast.show();
-                int newTrophies = currentTrophies + earnedTrophies;
-                Z_TrophyManager.setTrophies(newTrophies);
-            }
+            //int earnedTrophies = 3;
+            //int currentTrophies = Z_TrophyManager.getTrophies();
+//            if(Z_TrophyManager.getTrophies() <= 996){
+//                cancelToast();
+//                globalToast = Toasty.info(this, "Earned + 3 trophies!", Toast.LENGTH_LONG);
+//                globalToast.show();
+//                //int newTrophies = currentTrophies + earnedTrophies;
+//                //Z_TrophyManager.setTrophies(newTrophies);
+//            }
         } else if (correctAnswer <= 15) {
-            ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_2stars);
+            //ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_2stars);
             StarCollected = "2";
             QuizResultVoice2();
 
             // Earn +4 trophies
-            int earnedTrophies = 4;
-            int currentTrophies = Z_TrophyManager.getTrophies();
-            if(Z_TrophyManager.getTrophies() <= 995){
-                cancelToast();
-                globalToast = Toasty.info(this, "Earned + 4 trophies!", Toast.LENGTH_LONG);
-                globalToast.show();
-                int newTrophies = currentTrophies + earnedTrophies;
-                Z_TrophyManager.setTrophies(newTrophies);
-            }
+//            int earnedTrophies = 4;
+//            int currentTrophies = Z_TrophyManager.getTrophies();
+//            if(Z_TrophyManager.getTrophies() <= 995){
+//                cancelToast();
+//                globalToast = Toasty.info(this, "Earned + 4 trophies!", Toast.LENGTH_LONG);
+//                globalToast.show();
+//                int newTrophies = currentTrophies + earnedTrophies;
+//                Z_TrophyManager.setTrophies(newTrophies);
+//            }
         } else if (correctAnswer <= 20) {
-            ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_3stars);
+            //ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_3stars);
             StarCollected = "3";
-            QuizResultVoice3();
-
-            // Earn +5 trophies
-            int earnedTrophies = 5;
-            int currentTrophies = Z_TrophyManager.getTrophies();
-            if(Z_TrophyManager.getTrophies() <= 994){
-                cancelToast();
-                globalToast = Toasty.info(this, "Earned + 5 trophies!", Toast.LENGTH_LONG);
-                globalToast.show();
-                int newTrophies = currentTrophies + earnedTrophies;
-                Z_TrophyManager.setTrophies(newTrophies);
-            }
+//            QuizResultVoice3();
+//
+//            // Earn +5 trophies
+//            int earnedTrophies = 5;
+//            int currentTrophies = Z_TrophyManager.getTrophies();
+//            if(Z_TrophyManager.getTrophies() <= 994){
+//                cancelToast();
+//                globalToast = Toasty.info(this, "Earned + 5 trophies!", Toast.LENGTH_LONG);
+//                globalToast.show();
+//                int newTrophies = currentTrophies + earnedTrophies;
+//                Z_TrophyManager.setTrophies(newTrophies);
+//            }
         } else {
             showToast();
         }

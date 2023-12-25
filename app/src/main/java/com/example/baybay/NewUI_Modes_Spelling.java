@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -54,7 +55,7 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
     ImageButton ImgbtnResultAgain, ImgbtnResultQuit;
     ImageButton SpellPauseBtn;
     int questionItems = 10;  //number of items
-    int QuizQuestionCounter = questionItems;
+    int QuizQuestionCounter = 10;
 
     private TextView randomNumberTextView;
     private TextView remainingAttemptsTextView;
@@ -87,8 +88,25 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
 
-        // Set the background to a drawable resource
-        getWindow().setBackgroundDrawableResource(R.drawable.bg_spell);
+        // Set the gradient background color
+        int singleColor = Color.parseColor("#FCF4E7");
+
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
+
+
+
+
+
+
 
         InitializeTimer();
 
@@ -236,8 +254,8 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
 
 
 
-        initalItems = 10;
-        randomNumberTextView.setText(String.valueOf(initalItems));
+        initalItems = 1;
+        randomNumberTextView.setText(String.valueOf(initalItems + "/10"));
 
     }
 
@@ -262,7 +280,7 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
         // Remove the strike-through style
         TvSpellQuestion = findViewById(R.id.tv_spell_question);
         TvSpellQuestion.setPaintFlags(TvSpellQuestion.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
-        int tvSpellQuestionDefaultColor = Color.parseColor("#502F8A");
+        int tvSpellQuestionDefaultColor = Color.parseColor("#FFFFFF");
         TvSpellQuestion.setTextColor(tvSpellQuestionDefaultColor);
 
         if (questionItems != questionLimit){
@@ -293,9 +311,9 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
                 endGameSpell();
             }
 
-            initalItems --;
+            initalItems ++;
             questionItems --;
-            randomNumberTextView.setText(String.valueOf(initalItems));
+            randomNumberTextView.setText(String.valueOf(initalItems + "/10"));
 
         }else{
             //Toasty.info(Modes_Spell.this, "question is equal to -1 TWO", Toast.LENGTH_LONG).show();
@@ -491,45 +509,45 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
             QuizResultVoice1();
 
             // Earn +3 trophies
-            int earnedTrophies = 3;
-            int currentTrophies = Z_TrophyManager.getTrophies();
-            if (currentTrophies <= 996) {
-                cancelToast();
-                globalToast = Toasty.info(this, "Earned + " + earnedTrophies + " trophies!", Toast.LENGTH_LONG);
-                globalToast.show();
-                int newTrophies = currentTrophies + earnedTrophies;
-                Z_TrophyManager.setTrophies(newTrophies);
-            }
+//            int earnedTrophies = 3;
+//            int currentTrophies = Z_TrophyManager.getTrophies();
+//            if (currentTrophies <= 996) {
+//                cancelToast();
+//                globalToast = Toasty.info(this, "Earned + " + earnedTrophies + " trophies!", Toast.LENGTH_LONG);
+//                globalToast.show();
+//                int newTrophies = currentTrophies + earnedTrophies;
+//                Z_TrophyManager.setTrophies(newTrophies);
+//            }
         } else if (correctAnswer <= 15) {
             ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_2stars);
             StarCollected = "2";
             QuizResultVoice2();
 
             // Earn +4 trophies
-            int earnedTrophies = 4;
-            int currentTrophies = Z_TrophyManager.getTrophies();
-            if (currentTrophies <= 995) {
-                cancelToast();
-                globalToast = Toasty.info(this, "Earned + " + earnedTrophies + " trophies!", Toast.LENGTH_LONG);
-                globalToast.show();
-                int newTrophies = currentTrophies + earnedTrophies;
-                Z_TrophyManager.setTrophies(newTrophies);
-            }
+//            int earnedTrophies = 4;
+//            int currentTrophies = Z_TrophyManager.getTrophies();
+//            if (currentTrophies <= 995) {
+//                cancelToast();
+//                globalToast = Toasty.info(this, "Earned + " + earnedTrophies + " trophies!", Toast.LENGTH_LONG);
+//                globalToast.show();
+//                int newTrophies = currentTrophies + earnedTrophies;
+//                Z_TrophyManager.setTrophies(newTrophies);
+//            }
         } else if (correctAnswer <= 25) {
             ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_3stars);
             StarCollected = "3";
             QuizResultVoice3();
 
             // Earn +5 trophies
-            int earnedTrophies = 5;
-            int currentTrophies = Z_TrophyManager.getTrophies();
-            if (currentTrophies <= 994) {
-                cancelToast();
-                globalToast = Toasty.info(this, "Earned + " + earnedTrophies + " trophies!", Toast.LENGTH_LONG);
-                globalToast.show();
-                int newTrophies = currentTrophies + earnedTrophies;
-                Z_TrophyManager.setTrophies(newTrophies);
-            }
+//            int earnedTrophies = 5;
+//            int currentTrophies = Z_TrophyManager.getTrophies();
+//            if (currentTrophies <= 994) {
+//                cancelToast();
+//                globalToast = Toasty.info(this, "Earned + " + earnedTrophies + " trophies!", Toast.LENGTH_LONG);
+//                globalToast.show();
+//                int newTrophies = currentTrophies + earnedTrophies;
+//                Z_TrophyManager.setTrophies(newTrophies);
+//            }
         } else {
             cancelToast();
             globalToast = Toasty.error(this, "Score not in range", Toast.LENGTH_LONG);

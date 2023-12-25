@@ -7,28 +7,15 @@
     tools:context=".NewUI_Modes_Quiz">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="59dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/quiz_remaining" />
-
-    <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="309dp"
-        android:layout_height="279dp"
-        android:layout_marginTop="-10dp"
+        android:layout_width="280dp"
+        android:layout_height="240dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/imgbtnChoice1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_quizpause"
         app:srcCompat="@drawable/quiz_board_bamboo" />
 
     <ImageButton
@@ -84,36 +71,24 @@
 
     <ImageButton
         android:id="@+id/imgbtn_quizpause"
-        android:layout_width="59dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/quiz_menubutton" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="141dp"
-        android:layout_height="47dp"
-        android:background="#00FFFFFF"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/imgbtn_quizpause"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/quiz_time" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/newui_dashboard_menu"
+        tools:srcCompat="@drawable/newui_dashboard_menu" />
 
     <TextView
         android:id="@+id/tvChoice1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/amasis_black"
+        android:fontFamily="sans-serif-black"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imgbtnChoice1"
         app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice1"
@@ -124,10 +99,9 @@
         android:id="@+id/tvChoice2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/amasis_black"
+        android:fontFamily="sans-serif-black"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imgbtnChoice2"
         app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice2"
@@ -138,10 +112,9 @@
         android:id="@+id/tvChoice3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/amasis_black"
+        android:fontFamily="sans-serif-black"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imgbtnChoice3"
         app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice3"
@@ -152,10 +125,9 @@
         android:id="@+id/tvChoice4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/amasis_black"
+        android:fontFamily="sans-serif-black"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imgbtnChoice4"
         app:layout_constraintEnd_toEndOf="@+id/imgbtnChoice4"
@@ -181,26 +153,27 @@
         android:id="@+id/tv_quizTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/sans_serif_demibold"
+        android:fontFamily="sans-serif"
         android:text="00:00"
-        android:textColor="#FFEB3B"
+        android:textColor="#000000"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn_quizpause"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_quizpause" />
 
     <TextView
         android:id="@+id/tv_quizQuestionCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/sans_serif_demibold"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="sans-serif"
         android:text="0"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_quizTimer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_quizTimer" />
 </androidx.constraintlayout.widget.ConstraintLayout>
