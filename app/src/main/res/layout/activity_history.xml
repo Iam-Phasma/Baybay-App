@@ -133,7 +133,7 @@
                 tools:src="@drawable/newui_history_c3_unsel" />
 
             <ImageButton
-                android:id="@+id/imgbtn__history_exit2"
+                android:id="@+id/imgbtn_history_playc1"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
@@ -152,7 +152,7 @@
                 android:backgroundTint="#00FFFFFF"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="@+id/imgbtn_history_c2"
-                app:layout_constraintStart_toStartOf="@+id/imgbtn__history_exit2"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_history_playc1"
                 app:layout_constraintTop_toTopOf="@+id/imgbtn_history_c2"
                 app:srcCompat="@drawable/newui_history_play_button"
                 tools:srcCompat="@drawable/newui_history_play_button" />

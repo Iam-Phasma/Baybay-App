@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class History extends AppCompatActivity {
 
     TextView TvHistoryContent;
@@ -21,6 +23,7 @@ public class History extends AppCompatActivity {
     private int chapterSelected = 1;
     ImageView ImgviewHistoryBoard;
     ImageButton ImgbtnHistoryC1, ImgbtnHistoryC2, ImgbtnHistoryC3;
+    ImageButton ImgbtnPlayC1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +78,22 @@ public class History extends AppCompatActivity {
             ImgbtnHistoryC3.setImageResource(R.drawable.newui_history_c3_unsel);
         });
 
+        AtomicBoolean isPlayC1Clicked = new AtomicBoolean(false);
+        ImgbtnPlayC1 = findViewById(R.id.imgbtn_history_playc1);
+        ImgbtnPlayC1.setOnClickListener(v -> {
+            ImgbtnHistoryC1.performClick();
+            isPlayC1Clicked.set(!isPlayC1Clicked.get());
+
+            if (isPlayC1Clicked.get()) {
+                ImgbtnPlayC1.setImageResource(R.drawable.newui_history_stop_button);
+            } else {
+                ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
+            }
+        });
+
         ImgbtnHistoryC2 = findViewById(R.id.imgbtn_history_c2);
         ImgbtnHistoryC2.setOnClickListener(v -> {
+            ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
             chapterSelected = 2;
             setChapter();
             ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_unsel);
@@ -85,6 +102,7 @@ public class History extends AppCompatActivity {
 
         ImgbtnHistoryC3 = findViewById(R.id.imgbtn_history_c3);
         ImgbtnHistoryC3.setOnClickListener(v -> {
+            ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
             chapterSelected = 3;
             setChapter();
             ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_unsel);

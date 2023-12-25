@@ -60,4 +60,7 @@ dependencies {
 
     //refresh
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+    //PlainText
+    implementation 'com.google.android.material:material:1.4.8'
 }

@@ -8,19 +8,33 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 public class Lessons_Rules extends AppCompatActivity {
 
     int progressbarRulesCount = 1;
+    private List<Integer> PracticeQuestionCount;
+    ImageView ImgviewPracticeQuestion;
+    EditText EdittextPractice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +72,10 @@ public class Lessons_Rules extends AppCompatActivity {
 
 
 
+        Intent intent = getIntent();
+        int getrulesCount = intent.getIntExtra("rules-count", 1);
+        progressbarRulesCount = getrulesCount;
 
-        refreshRulesPb();
 
         Button btnPrevious = findViewById(R.id.btn_rules_previous);
         btnPrevious.setOnClickListener(v -> {
@@ -67,7 +83,6 @@ public class Lessons_Rules extends AppCompatActivity {
             animateButton(btnPrevious);
             progressbarRulesCount = (progressbarRulesCount == 1) ? 8 : progressbarRulesCount - 1;
             setRulesBoard();
-            refreshRulesPb();
         });
 
         Button btnNext = findViewById(R.id.btn_rules_next);
@@ -76,13 +91,188 @@ public class Lessons_Rules extends AppCompatActivity {
             animateButton(btnNext);
             progressbarRulesCount = (progressbarRulesCount == 8) ? 1 : progressbarRulesCount + 1;
             setRulesBoard();
-            refreshRulesPb();
         });
 
-
-        Button btnExit = findViewById(R.id.btn_rules_exit);
+        ImageButton btnExit = findViewById(R.id.btn_rules_exit);
         btnExit.setOnClickListener(v -> onBackPressed());
+
+        setRulesBoard();
+
+
+
+        PracticeQuestionCount = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
+        Collections.shuffle(PracticeQuestionCount);
+        RefreshPracticeQuestion();
+
+        Button BtnSubmitPractice = findViewById(R.id.btn_rules_practice_submit);
+        BtnSubmitPractice.setOnClickListener(v -> {
+            if (!PracticeQuestionCount.isEmpty()) {
+                PracticeQuestion();
+            }else {
+                Toasty.info(Lessons_Rules.this, "You answered them all, great job!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
+
+    private void RefreshPracticeQuestion(){
+        ImgviewPracticeQuestion = findViewById(R.id.imgview_practice_question);
+        EdittextPractice = findViewById(R.id.edittext_practiceanswer);
+
+        if (!PracticeQuestionCount.isEmpty()) {
+            int currentQuestion = PracticeQuestionCount.get(0);
+            switch (currentQuestion) {
+                case 1:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_araw);
+                    break;
+                case 2:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_gamot);
+                    break;
+                case 3:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_nabasa);
+                    break;
+                case 4:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_saging);
+                    break;
+                case 5:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_bata);
+                    break;
+                case 6:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_hanap);
+                    break;
+                case 7:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_ngayon);
+                    break;
+                case 8:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_tasa);
+                    break;
+                case 9:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_kapote);
+                    break;
+                case 10:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_ilaw);
+                    break;
+                case 11:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_oras);
+                    break;
+                case 12:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_ulam);
+                    break;
+                case 13:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_dagat);
+                    break;
+                case 14:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_lamok);
+                    break;
+                case 15:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_pako);
+                    break;
+                case 16:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_wasto);
+                    break;
+                case 17:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_elesi);
+                    break;
+                case 18:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_manok);
+                    break;
+                case 19:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_rason);
+                    break;
+                case 20:
+                    ImgviewPracticeQuestion.setImageResource(R.drawable.newui_tr_yaman);
+                    break;
+            }
+        }
+    }
+    private void PracticeQuestion() {
+        if (!PracticeQuestionCount.isEmpty()) {
+            int currentQuestion = PracticeQuestionCount.get(0);
+            String userAnswer = EdittextPractice.getText().toString().trim();
+
+            switch (currentQuestion) {
+                case 1:
+                    handleQuestionAnswer(userAnswer, "Araw", "Correct!", "Try again.");
+                    break;
+                case 2:
+                    handleQuestionAnswer(userAnswer, "Gamot", "Correct!", "Try again.");
+                    break;
+                case 3:
+                    handleQuestionAnswer(userAnswer, "Nabasa", "Correct!", "Try again.");
+                    break;
+                case 4:
+                    handleQuestionAnswer(userAnswer, "Saging", "Correct!", "Try again.");
+                    break;
+                case 5:
+                    handleQuestionAnswer(userAnswer, "Bata", "Correct!", "Try again.");
+                    break;
+                case 6:
+                    handleQuestionAnswer(userAnswer, "Hanap", "Correct!", "Try again.");
+                    break;
+                case 7:
+                    handleQuestionAnswer(userAnswer, "Ngayon", "Correct!", "Try again.");
+                    break;
+                case 8:
+                    handleQuestionAnswer(userAnswer, "Tasa", "Correct!", "Try again.");
+                    break;
+                case 9:
+                    handleQuestionAnswer(userAnswer, "Kapote", "Correct!", "Try again.");
+                    break;
+                case 10:
+                    handleQuestionAnswer(userAnswer, "Ilaw", "Correct!", "Try again.");
+                    break;
+                case 11:
+                    handleQuestionAnswer(userAnswer, "Oras", "Correct!", "Try again.");
+                    break;
+                case 12:
+                    handleQuestionAnswer(userAnswer, "Ulam", "Correct!", "Try again.");
+                    break;
+                case 13:
+                    handleQuestionAnswer(userAnswer, "Dagat", "Correct!", "Try again.");
+                    break;
+                case 14:
+                    handleQuestionAnswer(userAnswer, "Lamok", "Correct!", "Try again.");
+                    break;
+                case 15:
+                    handleQuestionAnswer(userAnswer, "Pako", "Correct!", "Try again.");
+                    break;
+                case 16:
+                    handleQuestionAnswer(userAnswer, "Wasto", "Correct!", "Try again.");
+                    break;
+                case 17:
+                    handleQuestionAnswer(userAnswer, "Elesi", "Correct!", "Try again.");
+                    break;
+                case 18:
+                    handleQuestionAnswer(userAnswer, "Manok", "Correct!", "Try again.");
+                    break;
+                case 19:
+                    handleQuestionAnswer(userAnswer, "Rason", "Correct!", "Try again.");
+                    break;
+                case 20:
+                    handleQuestionAnswer(userAnswer, "Yaman", "Correct!", "Try again.");
+                    break;
+            }
+        }
+    }
+
+    private void handleQuestionAnswer(String userAnswer, String correctAnswer, String correctMessage, String wrongMessage) {
+        if (userAnswer.equalsIgnoreCase(correctAnswer)) {
+            Toasty.success(Lessons_Rules.this, correctMessage, Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(() -> {
+                CorrectSound();
+                PracticeQuestionCount.remove(0);
+                RefreshPracticeQuestion();
+                EdittextPractice.setText("");
+            }, 1000);
+        } else {
+            Toasty.error(Lessons_Rules.this, wrongMessage, Toast.LENGTH_SHORT).show();
+            EdittextPractice.setText("");
+            WrongSound();
+        }
+    }
+
 
 
     //Set Rules Board Image
@@ -107,12 +297,6 @@ public class Lessons_Rules extends AppCompatActivity {
         }
 
 
-    }
-
-
-    public void refreshRulesPb(){
-        ProgressBar pbRules = findViewById(R.id.progressBar_rules);
-        pbRules.setProgress(progressbarRulesCount);
     }
 
 
@@ -152,16 +336,19 @@ public class Lessons_Rules extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //Z_SoundManager.setActivityRulesPaused(true);
+    void CorrectSound(){
+        boolean[] sfxPass = Z_SoundManager.isSoundFx;
+        if (sfxPass.length > 0 && sfxPass[0]) {
+            Z_SoundManager soundManager = new Z_SoundManager();
+            soundManager.GameCorrectSound(this);
+        }
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //Z_SoundManager.setActivityRulesResumed(this);
+    void WrongSound(){
+        boolean[] sfxPass = Z_SoundManager.isSoundFx;
+        if (sfxPass.length > 0 && sfxPass[0]) {
+            Z_SoundManager soundManager = new Z_SoundManager();
+            soundManager.GameWrongSound(this);
+        }
     }
 
     @Override

@@ -30,16 +30,17 @@ public class NewUI_Learn extends AppCompatActivity {
     private LinearLayout hiddenButtonsLayout, hiddenButtons2Layout, hiddenButtons3Layout, hiddenButtons4Layout, hiddenButtons5Layout, hiddenButtons6Layout;
     private ImageButton Origin, Introduction, Characters, Rules, Handwriting, Reading;
     private ImageButton FullChart, Downloadable;
-    private int bookNumber;
     private int ChapterCount;
     private ImageButton L1Sub1, L1Sub2, L1Sub3;
-    private ImageButton L2Sub1, L2Sub2, L2Sub3, L2Sub4, L2Sub5;
-    private ImageButton L3Sub1, L3Sub2;
     private int IntroSlideTo;
-    private ImageButton L4Sub1, L4Sub2, L4Sub3;
+    private ImageButton L2Sub1, L2Sub2, L2Sub3, L2Sub4, L2Sub5;
     private int CharSoundCount;
-    private ImageButton L5Sub1, L5Sub2, L5Sub3;
+    private ImageButton L3Sub1, L3Sub2;
+    private int RulesCount;
+    private ImageButton L4Sub1, L4Sub2, L4Sub3;
     private int WritingCount;
+    private ImageButton L5Sub1, L5Sub2, L5Sub3;
+    private int bookNumber;
     private ImageButton L6Sub1, L6Sub2, L6Sub3, L6Sub4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -266,7 +267,25 @@ public class NewUI_Learn extends AppCompatActivity {
 
         L4Sub1 = findViewById(R.id.hidden4Button1);
         L4Sub1.setOnClickListener(v -> {
+            RulesCount = 1;
             Intent Learn = new Intent(getApplicationContext(), Lessons_Rules.class);
+            Learn.putExtra("rules-count", RulesCount);
+            startActivity(Learn);
+        });
+
+        L4Sub2 = findViewById(R.id.hidden4Button2);
+        L4Sub2.setOnClickListener(v -> {
+            RulesCount = 3;
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Rules.class);
+            Learn.putExtra("rules-count", RulesCount);
+            startActivity(Learn);
+        });
+
+        L4Sub3 = findViewById(R.id.hidden4Button3);
+        L4Sub3.setOnClickListener(v -> {
+            RulesCount = 5;
+            Intent Learn = new Intent(getApplicationContext(), Lessons_Rules.class);
+            Learn.putExtra("rules-count", RulesCount);
             startActivity(Learn);
         });
 
