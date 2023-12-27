@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -37,6 +41,25 @@ import java.util.concurrent.atomic.AtomicInteger;
 import es.dmoral.toasty.Toasty;
 
 public class NewUi_Progress_Chart extends AppCompatActivity {
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
     private Toast globalToast;
     ImageButton imgbtnGrapghExit;
     ImageView ImgviewGraph_pb;
@@ -78,13 +101,7 @@ public class NewUi_Progress_Chart extends AppCompatActivity {
 
 
 
-        //View rootView = getWindow().getDecorView().getRootView();
 
-
-        //rootView.setBackgroundColor(Color.parseColor("#0F182B"));
-
-        // Stop BG Music
-        //Z_SoundManager.StopLessonsBgMusic();
 
         imgbtnGrapghExit = findViewById(R.id.imgbtn_grapgh_exit);
         imgbtnGrapghExit.setOnClickListener(view -> {
@@ -443,24 +460,43 @@ public class NewUi_Progress_Chart extends AppCompatActivity {
         animatorSet.start();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-//        Z_SoundManager.setActivityRulesPaused(true);
-        cancelToast();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Z_SoundManager.setActivityMainMenuResumed(this);
-//        Z_SoundManager.setActivityRulesResumed(this);
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        cancelToast();
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Z_SoundManager.setActivityMainMenuResumed(this);
+//    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         cancelToast();
         imgbtnGrapghExit.performClick();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
+        }
     }
 }

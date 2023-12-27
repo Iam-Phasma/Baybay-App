@@ -9,19 +9,16 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
-public class Lessons_Introduction extends AppCompatActivity {
+public class NewUI_L2_Introduction extends AppCompatActivity {
     ImageButton ImgbtnPlayPause;
     ProgressBar progressBar;
     NestedScrollView NestedSvIntroduction;
@@ -68,9 +65,6 @@ public class Lessons_Introduction extends AppCompatActivity {
         int getIntroSlideTo = intent.getIntExtra("introduction", 1);
         IntroSlideTo = getIntroSlideTo;
         slideToTextview();
-
-        // Stop BG Music
-        Z_SoundManager.StopLessonsBgMusic();
 
         BtnExitIntroduction = findViewById(R.id.btn_charsound_exit3);
         BtnExitIntroduction.setOnClickListener(view -> {

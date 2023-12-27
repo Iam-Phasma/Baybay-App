@@ -5,10 +5,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.DashPathEffect;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.Shader;
 import android.util.AttributeSet;
@@ -17,9 +15,9 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class Z_DrawingView extends View {
+public class Z_Paint_Manager extends View {
 
-    public Z_DrawingView(Context context, AttributeSet attrs) {
+    public Z_Paint_Manager(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
         // Initialize the soundManager

@@ -5,13 +5,17 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -33,6 +37,25 @@ import java.util.Set;
 import es.dmoral.toasty.Toasty;
 
 public class NewUI_Gameplay_History extends AppCompatActivity {
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
     ImageButton ImgbtnGameplayExit, ImgbtnGameplayChangeViewMode, ImgbtnGameplayHistoryReset;
     TextView TvGamelayChangeViewMode, TvprogressionChart;
     private Toast globalToast;
@@ -102,7 +125,6 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
         ImgbtnGameplayExit.setOnClickListener(v -> {
             //BACKGROUND MUSIC
             cancelToast();
-            Z_SoundManager.setActivityRulesPaused(true);
             finish();
         });
 
@@ -324,20 +346,17 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
 
 
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-//        Z_SoundManager.setActivityRulesPaused(true);
-//        Z_SoundManager.setActivityLessonsPaused(true);
-        saveGameplayList();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Z_SoundManager.setActivityMainMenuResumed(this);
-//        Z_SoundManager.setActivityRulesResumed(this);
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        saveGameplayList();
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Z_SoundManager.setActivityMainMenuResumed(this);
+//    }
 
     private void cancelToast() {
 //        if (globalToast != null && globalToast.getView() != null && globalToast.getView().isShown()) {
@@ -355,6 +374,27 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
         super.onBackPressed();
         ImgbtnGameplayExit.performClick();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
+        }
     }
 
 

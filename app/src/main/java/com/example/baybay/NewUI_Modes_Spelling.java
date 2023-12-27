@@ -476,7 +476,7 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
         dlg.show();
 
         View dialogWindowView = dlg.getWindow().getDecorView();
-        Z_Dialogs_Animation.applyBounceAnimation(dialogWindowView);
+        Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
         // Prevents back press on dialog menu
         dlg.setOnKeyListener((dialog, keyCode, event) -> {
@@ -501,59 +501,25 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
             assert imgview_confettiGIF != null;
             imgview_confettiGIF.setVisibility(View.INVISIBLE);
             ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_0star);
-            QuizResultVoice0();
+            SpellResultVoice0();
             StarCollected = "0";
         } else if (correctAnswer <= 10) {
             ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_1star);
             StarCollected = "1";
-            QuizResultVoice1();
-
-            // Earn +3 trophies
-//            int earnedTrophies = 3;
-//            int currentTrophies = Z_TrophyManager.getTrophies();
-//            if (currentTrophies <= 996) {
-//                cancelToast();
-//                globalToast = Toasty.info(this, "Earned + " + earnedTrophies + " trophies!", Toast.LENGTH_LONG);
-//                globalToast.show();
-//                int newTrophies = currentTrophies + earnedTrophies;
-//                Z_TrophyManager.setTrophies(newTrophies);
-//            }
+            SpellResultVoice1();
         } else if (correctAnswer <= 15) {
             ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_2stars);
             StarCollected = "2";
-            QuizResultVoice2();
-
-            // Earn +4 trophies
-//            int earnedTrophies = 4;
-//            int currentTrophies = Z_TrophyManager.getTrophies();
-//            if (currentTrophies <= 995) {
-//                cancelToast();
-//                globalToast = Toasty.info(this, "Earned + " + earnedTrophies + " trophies!", Toast.LENGTH_LONG);
-//                globalToast.show();
-//                int newTrophies = currentTrophies + earnedTrophies;
-//                Z_TrophyManager.setTrophies(newTrophies);
-//            }
+            SpellResultVoice2();
         } else if (correctAnswer <= 25) {
             ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_3stars);
             StarCollected = "3";
-            QuizResultVoice3();
-
-            // Earn +5 trophies
-//            int earnedTrophies = 5;
-//            int currentTrophies = Z_TrophyManager.getTrophies();
-//            if (currentTrophies <= 994) {
-//                cancelToast();
-//                globalToast = Toasty.info(this, "Earned + " + earnedTrophies + " trophies!", Toast.LENGTH_LONG);
-//                globalToast.show();
-//                int newTrophies = currentTrophies + earnedTrophies;
-//                Z_TrophyManager.setTrophies(newTrophies);
-//            }
+            SpellResultVoice3();
         } else {
             cancelToast();
             globalToast = Toasty.error(this, "Score not in range", Toast.LENGTH_LONG);
             globalToast.show();
         }
-
 
         saveGameHistory();
 
@@ -574,22 +540,15 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
             ClickSoundEffect();
             animateButton(ImgbtnResultQuit);
             new Handler().postDelayed(() -> {
-                //Stop BG Music
                 Z_SoundManager soundManager = new Z_SoundManager();
                 soundManager.StopGamesBackgroundMusic();
-
                 dlg.dismiss();
-//                Intent Quiz = new Intent(getApplicationContext(), Modes.class);
-//                startActivity(Quiz);
-                //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                //Quiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
             }, 500);
         });
     }
 
     public void saveGameHistory() {
-
         String gamemode = "";
         if(difficulty == 1){
             gamemode = "CLS";
@@ -692,27 +651,6 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
                 exitSpellActivity();
             }, 500);
         });
-
-//        ImgbtnHome = dlg.findViewById(R.id.imgbtnHome);
-//        ImgbtnHome.setOnClickListener(v14 -> {
-//            disablePauseMenuButtons();
-//            stopTimer();
-//            ClickSoundEffect();
-//            animateButton(ImgbtnHome);
-//            new Handler().postDelayed(() -> {
-//                //Stop BG Music
-//                Z_SoundManager soundManager = new Z_SoundManager();
-//                soundManager.StopGamesBackgroundMusic();
-//
-//                dlg.dismiss();
-//                Intent Quiz = new Intent(getApplicationContext(), MainMenu.class);
-//                startActivity(Quiz);
-//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//                //Quiz.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-//                //Quiz.setFlags((Intent.FLAG_ACTIVITY_CLEAR_TOP));
-//                finish();
-//            }, 500);
-//        });
     }
 
     // Important
@@ -747,7 +685,7 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
         }
     }
 
-    void QuizResultVoice0() {
+    void SpellResultVoice0() {
         new Handler().postDelayed(() -> {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
@@ -757,7 +695,7 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
         }, 200);
     }
 
-    void QuizResultVoice1() {
+    void SpellResultVoice1() {
         new Handler().postDelayed(() -> {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
@@ -767,7 +705,7 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
         }, 200);
     }
 
-    void QuizResultVoice2() {
+    void SpellResultVoice2() {
         new Handler().postDelayed(() -> {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
@@ -777,7 +715,7 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
         }, 200);
     }
 
-    void QuizResultVoice3() {
+    void SpellResultVoice3() {
         new Handler().postDelayed(() -> {
             boolean[] sfxPass = Z_SoundManager.isSoundFx;
             if (sfxPass.length > 0 && sfxPass[0]) {
@@ -965,7 +903,6 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         resumeTimer();
-        Z_SoundManager.setActivityModesPaused(true);
 
         Z_SoundManager soundManager = new Z_SoundManager();
         soundManager.GamesBackgroundMusic(getApplicationContext());

@@ -5,10 +5,14 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -18,7 +22,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,9 +29,29 @@ import com.bumptech.glide.Glide;
 
 import es.dmoral.toasty.Toasty;
 
-public class Lessons_Paint extends AppCompatActivity {
+public class NewUI_L5_Handwriting extends AppCompatActivity {
 
-    private Z_DrawingView drawingView;
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
+
+    private Z_Paint_Manager drawingView;
     private ImageButton btnClear;
     public int currentGIFCount = 1;
     TextView TvDrawingGuideTittle, TvDrawingGuide;
@@ -66,8 +89,8 @@ public class Lessons_Paint extends AppCompatActivity {
         int setWritingCount = intent.getIntExtra("writing-count", 1);
         currentGIFCount = setWritingCount;
 
-        Toasty.info(Lessons_Paint.this, "Follow the strokes above. Use the empty space to draw.", Toasty.LENGTH_LONG).show();
-        //GIF CONTROLLER
+        Toasty.info(NewUI_L5_Handwriting.this, "Follow the strokes above. Use the empty space to draw.", Toasty.LENGTH_LONG).show();
+
         setGIF();
 
         drawingView = findViewById(R.id.drawingView);
@@ -91,9 +114,6 @@ public class Lessons_Paint extends AppCompatActivity {
 
         ImageButton BtnDrawExit = findViewById(R.id.btn_draw_exit);
         BtnDrawExit.setOnClickListener(v -> {
-            if (currentPaintToast != null) {
-                currentPaintToast.cancel();
-            }
             finish();
         });
 
@@ -131,12 +151,7 @@ public class Lessons_Paint extends AppCompatActivity {
         });
     }
 
-    public void showPaintToast(){
-        paintToast();
-    }
-
-
-    //SET GIF ILLUSTRATION
+    //SET GIF
     @SuppressLint("SetTextI18n")
     public void setGIF(){
         openDrawingGuidePrompt();
@@ -252,9 +267,8 @@ public class Lessons_Paint extends AppCompatActivity {
         }
     }
 
-
     public void CharactersButtons(){
-        Dialog dlg = new Dialog(Lessons_Paint.this, R.style.PopupDialog);
+        Dialog dlg = new Dialog(NewUI_L5_Handwriting.this, R.style.PopupDialog);
         dlg.setCanceledOnTouchOutside(false);
         dlg.setContentView(R.layout.activity_paint_characterbuttons);
         dlg.show();
@@ -288,10 +302,9 @@ public class Lessons_Paint extends AppCompatActivity {
         btnDrawCharExit.setOnClickListener(v -> dlg.dismiss());
     }
 
-
     private void openDrawingGuidePrompt() {
         Dialog dlg;
-        dlg = new Dialog(Lessons_Paint.this, R.style.PopupDialog);
+        dlg = new Dialog(NewUI_L5_Handwriting.this, R.style.PopupDialog);
         dlg.setCanceledOnTouchOutside(false);  // disable dialog dismiss when touch outside
         dlg.setContentView(R.layout.activity_newui_writing_guideprompt);
         dlg.show();
@@ -418,19 +431,6 @@ public class Lessons_Paint extends AppCompatActivity {
         }
     }
 
-
-
-    //Show Paint Toast. This is created so Toast immediately dismissed when activity is paused or destroyed
-    private Toast currentPaintToast;
-    private void paintToast() {
-        if (currentPaintToast != null) {
-            currentPaintToast.cancel(); // Cancel any existing Toast
-        }
-        currentPaintToast = Toasty.info(Lessons_Paint.this, "Long Press Erase Ink button to enable auto erase.", Toast.LENGTH_LONG);
-        currentPaintToast.show();
-    }
-
-
     // Method to animate the button click
     private void animateButton(View view) {
         // Create a scale animator to shrink the button
@@ -475,23 +475,29 @@ public class Lessons_Paint extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        if (currentPaintToast != null) {
-//            currentPaintToast.cancel();
-//        }
-//        Z_SoundManager.setActivityPaintPaused(true);
-//    }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Z_SoundManager.setActivityPaintResumed(this);
-//    }
-
     @Override
     public void onBackPressed() {
-        Toasty.info(Lessons_Paint.this, "Use the dedicated back button.", Toasty.LENGTH_SHORT).show();
+        Toasty.info(NewUI_L5_Handwriting.this, "Use the dedicated back button.", Toasty.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
+        }
     }
 }

@@ -184,26 +184,6 @@ public class NewUI_Modes_Matching extends AppCompatActivity {
                     exitMatchingActivity();
                 }, 500);
             });
-
-//            ImgbtnHome = dlg.findViewById(R.id.imgbtnHome);
-//            ImgbtnHome.setOnClickListener(v14 -> {
-//                disablePauseMenuButtons();
-//                stopTimer();
-//                ClickSoundEffect();
-//                animateButton(ImgbtnHome);
-//                new Handler().postDelayed(() -> {
-//                    //Stop BG Music
-//                    Z_SoundManager soundManager = new Z_SoundManager();
-//                    soundManager.StopGamesBackgroundMusic();
-//
-//                    dlg.dismiss();
-//                    Intent Quiz = new Intent(getApplicationContext(), MainMenu.class);
-//                    startActivity(Quiz);
-//                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//                    //Quiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    finish();
-//                }, 500);
-//            });
         });
 
 
@@ -258,7 +238,7 @@ public class NewUI_Modes_Matching extends AppCompatActivity {
 
                     disableAllButtons();
 
-                    new Handler().postDelayed(this::enableAllButtons, 500);
+                    new Handler().postDelayed(this::enableAllButtons, 1000);
                 }
             });
         }
@@ -603,7 +583,7 @@ public class NewUI_Modes_Matching extends AppCompatActivity {
         dlg.show();
 
         View dialogWindowView = dlg.getWindow().getDecorView();
-        Z_Dialogs_Animation.applyBounceAnimation(dialogWindowView);
+        Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
         // Prevents back press on dialog menu
         dlg.setOnKeyListener((dialog, keyCode, event) -> {
@@ -634,47 +614,14 @@ public class NewUI_Modes_Matching extends AppCompatActivity {
             ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_1star);
             StarCollected = "1";
             MatchResultVoice1();
-
-            // Earn +3 trophies
-//            int earnedTrophies = 3;
-//            int currentTrophies = Z_TrophyManager.getTrophies();
-//            if(Z_TrophyManager.getTrophies() <= 996){
-//                cancelToast();
-//                globalToast = Toasty.info(this, "Earned + 3 Keys!", Toast.LENGTH_LONG);
-//                globalToast.show();
-//                int newTrophies = currentTrophies + earnedTrophies;
-//                Z_TrophyManager.setTrophies(newTrophies);
-//            }
         } else if (MatchScore <= 15) {
             ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_2stars);
             StarCollected = "2";
             QuizResultVoice2();
-
-            // Earn +4 trophies
-//            int earnedTrophies = 4;
-//            int currentTrophies = Z_TrophyManager.getTrophies();
-//            if(Z_TrophyManager.getTrophies() <= 995){
-//                cancelToast();
-//                globalToast = Toasty.info(this, "Earned + 4 Keys!", Toast.LENGTH_LONG);
-//                globalToast.show();
-//                int newTrophies = currentTrophies + earnedTrophies;
-//                Z_TrophyManager.setTrophies(newTrophies);
-//            }
         } else if (MatchScore <= 20) {
             ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_3stars);
             StarCollected = "3";
             MatchResultVoice3();
-
-            // Earn +5 trophies
-//            int earnedTrophies = 5;
-//            int currentTrophies = Z_TrophyManager.getTrophies();
-//            if(Z_TrophyManager.getTrophies() <= 994){
-//                cancelToast();
-//                globalToast = Toasty.info(this, "Earned + 5 Keys!", Toast.LENGTH_LONG);
-//                globalToast.show();
-//                int newTrophies = currentTrophies + earnedTrophies;
-//                Z_TrophyManager.setTrophies(newTrophies);
-//            }
         } else {
             showToast();
         }
@@ -698,15 +645,9 @@ public class NewUI_Modes_Matching extends AppCompatActivity {
             ClickSoundEffect();
             animateButton(ImgbtnResultQuit);
             new Handler().postDelayed(() -> {
-                //Stop BG Music
                 Z_SoundManager soundManager = new Z_SoundManager();
                 soundManager.StopGamesBackgroundMusic();
-
                 dlg.dismiss();
-//                Intent Quiz = new Intent(getApplicationContext(), Modes.class);
-//                startActivity(Quiz);
-//                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                //Quiz.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 finish();
             }, 500);
         });
@@ -916,8 +857,6 @@ public class NewUI_Modes_Matching extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         resumeTimer();
-
-        Z_SoundManager.setActivityModesPaused(true);
 
         Z_SoundManager soundManager = new Z_SoundManager();
         soundManager.GamesBackgroundMusic(getApplicationContext());

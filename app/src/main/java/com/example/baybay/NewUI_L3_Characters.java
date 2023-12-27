@@ -3,13 +3,17 @@ package com.example.baybay;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,7 +24,27 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Lessons_CharSounds extends AppCompatActivity {
+public class NewUI_L3_Characters extends AppCompatActivity {
+
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
 
     ImageButton BtnPrevious, BtnNext;
     int progressBarCount = 1;
@@ -161,7 +185,6 @@ public class Lessons_CharSounds extends AppCompatActivity {
 
             });
         }
-
     }
 
     public void scriptSound() {
@@ -215,12 +238,9 @@ public class Lessons_CharSounds extends AppCompatActivity {
 
                 mediaPlayer.start();
                 mediaPlayer.setOnCompletionListener(MediaPlayer::release);
-
             }
         }, 200);
     }
-
-
 
     //Set CharSound Bord Image
     public void setCharSoundBoard(){
@@ -291,11 +311,6 @@ public class Lessons_CharSounds extends AppCompatActivity {
         }
     }
 
-
-
-
-
-
     //Fde in - out animation
     public void fadeAnimation(){
         //fade-out animation
@@ -317,13 +332,11 @@ public class Lessons_CharSounds extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
                 imgview_charsoundboard.startAnimation(fadeIn);
             }
-
             @Override
             public void onAnimationRepeat(Animation animation) {}
         });
         imgview_charsoundboard.startAnimation(fadeOut);
     }
-
 
     private void animateButton(View view) {
         // Create a scale animator to shrink the button
@@ -350,7 +363,6 @@ public class Lessons_CharSounds extends AppCompatActivity {
         animatorSet.start();
     }
 
-
     void ClickSoundEffect() {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
@@ -360,28 +372,30 @@ public class Lessons_CharSounds extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        //Z_SoundManager.setActivityCharactersPaused(true);
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        //Z_SoundManager.setActivityCharactersResumed(this);
+    protected void onStart() {
+        super.onStart();
+        callMusic();
         scriptSound();
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        //BACKGROUND MUSIC
-        //Z_SoundManager.setActivityLessonsPaused(false);
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
 
-//        Intent CharSounds = new Intent(getApplicationContext(), Lessons.class);
-//        startActivity(CharSounds);
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        //CharSounds.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        finish();
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
+        }
     }
 }

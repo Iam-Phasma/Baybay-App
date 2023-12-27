@@ -129,61 +129,61 @@ public class Z_SoundManager {
 
     //MAIN MENU AND MODES
     //static MediaPlayer MainMenu_Modes;
-    public static void PlayMainMenu_ModesBackgroundMusic(Context context) {
+//    public static void PlayMainMenu_ModesBackgroundMusic(Context context) {
+//
+//        if (Z_SoundManager.isBgon[0]) {
+//            // Play background music if it's not playing or has been released
+//            if (MainMenu.songMain == null) {
+//                // Initialize the MediaPlayer and start the music
+//                MainMenu.songMain = MediaPlayer.create(context, R.raw.main_woodlandfantacy);
+//                MainMenu.songMain.setLooping(true);
+//                MainMenu.songMain.start();
+//            } else if (!MainMenu.songMain.isPlaying()) {
+//                // If the MediaPlayer exists but is not playing, start it again
+//                MainMenu.songMain.start();
+//            }
+//        } else {
+//            // Stop and release the MediaPlayer if isBgon[0] is false
+//            if (MainMenu.songMain != null && MainMenu.songMain.isPlaying()) {
+//                MainMenu.songMain.stop();
+//            }
+//            if (MainMenu.songMain != null) {
+//                MainMenu.songMain.release();
+//                MainMenu.songMain = null;
+//            }
+//        }
+//    }
+//    public static void StopMainMenu_ModesBackgroundMusic() {
+//        if (MainMenu.songMain != null && MainMenu.songMain.isPlaying()) {
+//            //MainMenu.songMain.pause();
+//            MainMenu.songMain.stop();
+//            MainMenu.songMain.release();
+//            MainMenu.songMain = null;
+//        }
+//    }
+//    private static boolean activityMainMenuPaused = false;
+//    private static boolean activityModesPaused = false;
 
-        if (Z_SoundManager.isBgon[0]) {
-            // Play background music if it's not playing or has been released
-            if (MainMenu.songMain == null) {
-                // Initialize the MediaPlayer and start the music
-                MainMenu.songMain = MediaPlayer.create(context, R.raw.main_woodlandfantacy);
-                MainMenu.songMain.setLooping(true);
-                MainMenu.songMain.start();
-            } else if (!MainMenu.songMain.isPlaying()) {
-                // If the MediaPlayer exists but is not playing, start it again
-                MainMenu.songMain.start();
-            }
-        } else {
-            // Stop and release the MediaPlayer if isBgon[0] is false
-            if (MainMenu.songMain != null && MainMenu.songMain.isPlaying()) {
-                MainMenu.songMain.stop();
-            }
-            if (MainMenu.songMain != null) {
-                MainMenu.songMain.release();
-                MainMenu.songMain = null;
-            }
-        }
-    }
-    public static void StopMainMenu_ModesBackgroundMusic() {
-        if (MainMenu.songMain != null && MainMenu.songMain.isPlaying()) {
-            //MainMenu.songMain.pause();
-            MainMenu.songMain.stop();
-            MainMenu.songMain.release();
-            MainMenu.songMain = null;
-        }
-    }
-    private static boolean activityMainMenuPaused = false;
-    private static boolean activityModesPaused = false;
-
-    public static void setActivityMainMenuPaused(boolean paused) {
-        activityMainMenuPaused = paused;
-        if (activityMainMenuPaused && activityModesPaused) {
-            Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
-        }
-    }
-    public static void setActivityMainMenuResumed(Context context) {
-        activityMainMenuPaused = false;
-        Z_SoundManager.PlayMainMenu_ModesBackgroundMusic(context);
-    }
-    public static void setActivityModesPaused(boolean paused) {
-        activityModesPaused = paused;
-        if (activityMainMenuPaused && activityModesPaused) {
-            Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
-        }
-    }
-    public static void setActivityModesResumed(Context context) {
-        activityModesPaused = false;
-        Z_SoundManager.PlayMainMenu_ModesBackgroundMusic(context);
-    }
+//    public static void setActivityMainMenuPaused(boolean paused) {
+//        activityMainMenuPaused = paused;
+//        if (activityMainMenuPaused && activityModesPaused) {
+//            Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
+//        }
+//    }
+//    public static void setActivityMainMenuResumed(Context context) {
+//        activityMainMenuPaused = false;
+//        Z_SoundManager.PlayMainMenu_ModesBackgroundMusic(context);
+//    }
+//    public static void setActivityModesPaused(boolean paused) {
+//        activityModesPaused = paused;
+//        if (activityMainMenuPaused && activityModesPaused) {
+//            Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
+//        }
+//    }
+//    public static void setActivityModesResumed(Context context) {
+//        activityModesPaused = false;
+//        Z_SoundManager.PlayMainMenu_ModesBackgroundMusic(context);
+//    }
 
 
 
@@ -215,32 +215,32 @@ public class Z_SoundManager {
     }
 
 
-    //MODES AND MORE BACKGROUND MUSIC
-    static MediaPlayer More;
-    public static void PlayMoreMusic(Context context) {
-        boolean[] bgPass = Z_SoundManager.isBgon;
-
-        if (bgPass.length > 0 && bgPass[0]) {
-            if (More == null) {
-                // Initialize the MediaPlayer with the audio resource
-                More = MediaPlayer.create(context, R.raw.modes_trem);
-                More.setLooping(true);
-            }
-
-            if (More != null && !More.isPlaying()) {
-                // Start the background music if it's not already playing
-                More.start();
-            }
-        }
-    }
-    public static void StopMoreMusic() {
-        if (More != null && More.isPlaying()) {
-            // Stop the background music if it's playing
-            More.stop();
-            More.release();
-            More = null;
-        }
-    }
+//    //MODES AND MORE BACKGROUND MUSIC
+//    static MediaPlayer More;
+//    public static void PlayMoreMusic(Context context) {
+//        boolean[] bgPass = Z_SoundManager.isBgon;
+//
+//        if (bgPass.length > 0 && bgPass[0]) {
+//            if (More == null) {
+//                // Initialize the MediaPlayer with the audio resource
+//                More = MediaPlayer.create(context, R.raw.modes_trem);
+//                More.setLooping(true);
+//            }
+//
+//            if (More != null && !More.isPlaying()) {
+//                // Start the background music if it's not already playing
+//                More.start();
+//            }
+//        }
+//    }
+//    public static void StopMoreMusic() {
+//        if (More != null && More.isPlaying()) {
+//            // Stop the background music if it's playing
+//            More.stop();
+//            More.release();
+//            More = null;
+//        }
+//    }
 
 
 
@@ -296,79 +296,79 @@ public class Z_SoundManager {
 
 
     //LESSONS BACKGROUND MUSIC
-    static MediaPlayer Lessons;
-    public static void PlayLessonsBgMusic(Context context) {
-        boolean[] bgPass = Z_SoundManager.isBgon;
+//    static MediaPlayer Lessons;
+//    public static void PlayLessonsBgMusic(Context context) {
+//        boolean[] bgPass = Z_SoundManager.isBgon;
+//
+//        if (bgPass.length > 0 && bgPass[0]) {
+//            if (Lessons == null) {
+//                // Initialize the MediaPlayer with the audio resource
+//                Lessons = MediaPlayer.create(context, R.raw.lessons_happy_holiday); //lessons_jump_and_run
+//                Lessons.setLooping(true);
+//            }
+//
+//            if (Lessons != null && !Lessons.isPlaying()) {
+//                // Start the background music if it's not already playing
+//                Lessons.start();
+//            }
+//        }
+//    }
+//    public static void StopLessonsBgMusic() {
+//        if (Lessons != null && Lessons.isPlaying()) {
+//            // Stop the background music if it's playing
+//            Lessons.stop();
+//            Lessons.release();
+//            Lessons = null;
+//            //Lessons.pause();
+//        }
+//    }
+//    private static boolean activityLessonsPaused = false;
+//    private static boolean activityCharactersPaused = false;
+//    private static boolean activityRulesPaused = false;
+//    private static boolean activityPaintPaused = false;
 
-        if (bgPass.length > 0 && bgPass[0]) {
-            if (Lessons == null) {
-                // Initialize the MediaPlayer with the audio resource
-                Lessons = MediaPlayer.create(context, R.raw.lessons_happy_holiday); //lessons_jump_and_run
-                Lessons.setLooping(true);
-            }
-
-            if (Lessons != null && !Lessons.isPlaying()) {
-                // Start the background music if it's not already playing
-                Lessons.start();
-            }
-        }
-    }
-    public static void StopLessonsBgMusic() {
-        if (Lessons != null && Lessons.isPlaying()) {
-            // Stop the background music if it's playing
-            Lessons.stop();
-            Lessons.release();
-            Lessons = null;
-            //Lessons.pause();
-        }
-    }
-    private static boolean activityLessonsPaused = false;
-    private static boolean activityCharactersPaused = false;
-    private static boolean activityRulesPaused = false;
-    private static boolean activityPaintPaused = false;
-
-    public static void setActivityLessonsPaused(boolean paused) {
-        activityLessonsPaused = paused;
-        if (activityLessonsPaused && activityCharactersPaused && activityRulesPaused && activityPaintPaused) {
-            Z_SoundManager.StopLessonsBgMusic();
-        }
-    }
-
-    public static void setActivityLessonsResumed(Context context) {
-        activityLessonsPaused = false;
-        Z_SoundManager.PlayLessonsBgMusic(context);
-
-    }
-    public static void setActivityCharactersPaused(boolean paused) {
-        activityCharactersPaused = paused;
-        if (activityCharactersPaused && activityLessonsPaused) {
-            Z_SoundManager.StopLessonsBgMusic();
-        }
-    }
-    public static void setActivityCharactersResumed(Context context) {
-        activityCharactersPaused = false;
-        Z_SoundManager.PlayLessonsBgMusic(context);
-    }
-    public static void setActivityRulesPaused(boolean paused) {
-        activityRulesPaused = paused;
-        if (activityRulesPaused && activityLessonsPaused) {
-            Z_SoundManager.StopLessonsBgMusic();
-        }
-    }
-    public static void setActivityRulesResumed(Context context) {
-        activityRulesPaused = false;
-        Z_SoundManager.PlayLessonsBgMusic(context);
-    }
-    public static void setActivityPaintPaused(boolean paused) {
-        activityPaintPaused = paused;
-        if (activityPaintPaused && activityLessonsPaused) {
-            Z_SoundManager.StopLessonsBgMusic();
-        }
-    }
-    public static void setActivityPaintResumed(Context context) {
-        activityPaintPaused = false;
-        Z_SoundManager.PlayLessonsBgMusic(context);
-    }
+//    public static void setActivityLessonsPaused(boolean paused) {
+//        activityLessonsPaused = paused;
+//        if (activityLessonsPaused && activityCharactersPaused && activityRulesPaused && activityPaintPaused) {
+//            Z_SoundManager.StopLessonsBgMusic();
+//        }
+//    }
+//
+//    public static void setActivityLessonsResumed(Context context) {
+//        activityLessonsPaused = false;
+//        Z_SoundManager.PlayLessonsBgMusic(context);
+//
+//    }
+//    public static void setActivityCharactersPaused(boolean paused) {
+//        activityCharactersPaused = paused;
+//        if (activityCharactersPaused && activityLessonsPaused) {
+//            Z_SoundManager.StopLessonsBgMusic();
+//        }
+//    }
+//    public static void setActivityCharactersResumed(Context context) {
+//        activityCharactersPaused = false;
+//        Z_SoundManager.PlayLessonsBgMusic(context);
+//    }
+//    public static void setActivityRulesPaused(boolean paused) {
+//        activityRulesPaused = paused;
+//        if (activityRulesPaused && activityLessonsPaused) {
+//            Z_SoundManager.StopLessonsBgMusic();
+//        }
+//    }
+//    public static void setActivityRulesResumed(Context context) {
+//        activityRulesPaused = false;
+//        Z_SoundManager.PlayLessonsBgMusic(context);
+//    }
+//    public static void setActivityPaintPaused(boolean paused) {
+//        activityPaintPaused = paused;
+//        if (activityPaintPaused && activityLessonsPaused) {
+//            Z_SoundManager.StopLessonsBgMusic();
+//        }
+//    }
+//    public static void setActivityPaintResumed(Context context) {
+//        activityPaintPaused = false;
+//        Z_SoundManager.PlayLessonsBgMusic(context);
+//    }
 
 
     //LESSONS DRAWING SOUND EFFECTS

@@ -3,21 +3,23 @@ package com.example.baybay;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +31,27 @@ import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
-public class Lessons_Rules extends AppCompatActivity {
+public class NewUI_L4_Rules extends AppCompatActivity {
+
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
 
     int progressbarRulesCount = 1;
     private List<Integer> PracticeQuestionCount;
@@ -109,13 +131,11 @@ public class Lessons_Rules extends AppCompatActivity {
             if (!PracticeQuestionCount.isEmpty()) {
                 PracticeQuestion();
             }else {
-                Toasty.info(Lessons_Rules.this, "You answered them all, great job!", Toast.LENGTH_SHORT).show();
+                Toasty.info(NewUI_L4_Rules.this, "You answered them all, great job!", Toast.LENGTH_SHORT).show();
                 BtnSubmitPractice.setEnabled(false);
             }
         });
     }
-
-
 
     private void RefreshPracticeQuestion(){
         ImgviewPracticeQuestion = findViewById(R.id.imgview_practice_question);
@@ -253,13 +273,15 @@ public class Lessons_Rules extends AppCompatActivity {
                 case 20:
                     handleQuestionAnswer(userAnswer, "Yaman", "Correct!", "Try again.");
                     break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + currentQuestion);
             }
         }
     }
 
     private void handleQuestionAnswer(String userAnswer, String correctAnswer, String correctMessage, String wrongMessage) {
         if (userAnswer.equalsIgnoreCase(correctAnswer)) {
-            Toasty.success(Lessons_Rules.this, correctMessage, Toast.LENGTH_SHORT).show();
+            Toasty.success(NewUI_L4_Rules.this, correctMessage, Toast.LENGTH_SHORT).show();
 
             new Handler().postDelayed(() -> {
                 CorrectSound();
@@ -268,13 +290,11 @@ public class Lessons_Rules extends AppCompatActivity {
                 EdittextPractice.setText("");
             }, 1000);
         } else {
-            Toasty.error(Lessons_Rules.this, wrongMessage, Toast.LENGTH_SHORT).show();
+            Toasty.error(NewUI_L4_Rules.this, wrongMessage, Toast.LENGTH_SHORT).show();
             EdittextPractice.setText("");
             WrongSound();
         }
     }
-
-
 
     //Set Rules Board Image
     public void setRulesBoard(){
@@ -296,10 +316,7 @@ public class Lessons_Rules extends AppCompatActivity {
         }else if (progressbarRulesCount == 8) {
             ImgviewRulesBoard.setImageResource(R.drawable.rules_howtos_b);
         }
-
-
     }
-
 
     // Method to animate the button click
     private void animateButton(View view) {
@@ -326,7 +343,6 @@ public class Lessons_Rules extends AppCompatActivity {
         // Start the button click animation
         animatorSet.start();
     }
-
 
     // Call the RegButtonClickSound method from Z_SoundManager
     void ClickSoundEffect() {
@@ -355,8 +371,27 @@ public class Lessons_Rules extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        //BACKGROUND MUSIC
-        //Z_SoundManager.setActivityLessonsPaused(false);
         finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
+        }
     }
 }

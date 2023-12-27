@@ -3,10 +3,15 @@ package com.example.baybay;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
@@ -19,6 +24,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewUI_ArtsCrafts extends AppCompatActivity {
+
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
 
     private ImageButton ImgbtnArtsCratsExit;
     private NestedScrollView NsvMain;
@@ -225,8 +250,6 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/37568704_259738964612139_2111720928499990528_n.png?_nc_cat=109&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeHETWfNUiAivI8r4pg4_ko3Yh7ZhbyQYb9iHtmFvJBhv8Q9OdzbTU70JDb-qoFqnUoJj0I6VP9hxmX1yhEY7vwA&_nc_ohc=4J-Ey8nx8wwAX-5__WW&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfAxaDtyztA6jXB6u3MPLYPy-jku3143uzJYk5UATcQwpg&oe=65AB5FF7"));
         ImgSliderSignsBrands.setImageList(slideModelsSignsBrands,true);
 
-//        ImgSliderPen.startSliding(3000); // with new period
-//        ImgSliderPen.stopSliding();
 
     }
 
@@ -238,5 +261,25 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
+        }
+    }
 
 }

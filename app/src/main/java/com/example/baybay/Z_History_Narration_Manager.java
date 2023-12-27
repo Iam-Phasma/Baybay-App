@@ -5,7 +5,7 @@ import android.media.MediaPlayer;
 
 import es.dmoral.toasty.Toasty;
 
-public class Z_Music_Manager {
+public class Z_History_Narration_Manager {
 
     private static MediaPlayer ChapterA, ChapterB, ChapterC;
 

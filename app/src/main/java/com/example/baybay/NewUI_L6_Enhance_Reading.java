@@ -18,11 +18,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.barteksc.pdfviewer.PDFView;
-import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class PdfViewerActivity extends AppCompatActivity {
+public class NewUI_L6_Enhance_Reading extends AppCompatActivity {
 
     ImageButton Imgbtn_pdfview_exit;
     TextView TvReadingTitle;

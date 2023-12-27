@@ -6,13 +6,17 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.View;
@@ -25,6 +29,26 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class NewUI_Dashboard extends AppCompatActivity {
+
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
 
     ImageButton ImgbtnDashboardMenu, ImgbtnTrivia_Refresh, ImgbtnLearn, PlayGames, Community, ArtsCrafts;
     TextView TvTrivia;
@@ -69,7 +93,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
         preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         Z_SoundManager.isBgon[0] = preferences.getBoolean("isBgon", true);
         Z_SoundManager.isSoundFx[0] = preferences.getBoolean("isSFx", true);
-        BackgroundSound();
 
         TvTrivia = findViewById(R.id.tv_trivia);
         ImgbtnTrivia_Refresh = findViewById(R.id.imgbtn_trivia_refresh);
@@ -93,12 +116,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
         });
 
         ImgbtnDashboardMenu = findViewById(R.id.imgbtn_dashboard_menu);
-        ImgbtnDashboardMenu.setOnLongClickListener(v -> {
-            Intent Dashboard = new Intent(getApplicationContext(), MainMenu.class);
-            startActivity(Dashboard);
-            return true;
-        });
-
         ImgbtnDashboardMenu.setOnClickListener(v -> {
             try {
                 ClickSoundEffect();
@@ -135,8 +152,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
                     ClickSoundEffect();
                     Z_SoundManager.isBgon[0] = !Z_SoundManager.isBgon[0];  // Toggle the value of isBgon
 
-                    // Set the background music based on isBgon
-                    BackgroundSound();
+                    onStop();
 
                     // Save Background Music state
                     SharedPreferences.Editor editorBg = preferences.edit();
@@ -149,6 +165,8 @@ public class NewUI_Dashboard extends AppCompatActivity {
                     } else {
                         ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
                     }
+
+                    callMusic();
                 });
 
                 ImgBtnSoundFx.setOnClickListener(v12 -> {
@@ -246,19 +264,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
         Community.setEnabled(true);
     }
 
-    void BackgroundSound() {
-        //Z_SoundManager.setActivityMainMenuResumed(this);
-//        Z_SoundManager.setActivityModesPaused(true);
-        //startService(new Intent(this, Z_MusicService.class));
-        onResume();
-    }
-
-    @Override
-    protected void onResume() {
-        Z_SoundManager.setActivityMainMenuResumed(this);
-        super.onResume();
-    }
-
     //Set random trivia
     private void setRandomTextWithAnimation(final TextView textView) {
         String[] stringArray = getResources().getStringArray(R.array.baybayin_trivia);
@@ -284,7 +289,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
         fadeIn.setDuration(200); // Adjust the duration as needed
         textView.setAnimation(fadeIn);
     }
-
 
     // Method to animate refresh trivia
     private void animateButtonTrivia(View view) {
@@ -348,6 +352,27 @@ public class NewUI_Dashboard extends AppCompatActivity {
         if (sfxPass.length > 0 && sfxPass[0]) {
             Z_SoundManager soundManager = new Z_SoundManager();
             soundManager.RegButtonClickSound(this);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
         }
     }
 

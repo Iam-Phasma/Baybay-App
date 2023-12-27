@@ -3,13 +3,17 @@ package com.example.baybay;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,6 +26,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import es.dmoral.toasty.Toasty;
 
 public class NewUI_Chart_Letters extends AppCompatActivity {
+
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
 
     ImageButton ImgbtnSeeAll, ImgbtnPrevious, ImgbtnNext, ImgbtnExitChartLetters;
     int cycle = 0;
@@ -63,7 +87,7 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
 
 
 
-        // Retrieve the value of cycleselect from the previous activity
+        // Retrieve the value from the previous activity
         cycle = getIntent().getIntExtra("cycle", 0);
 
         ImgbtnSeeAll = findViewById(R.id.imgbtn_seeall);
@@ -71,17 +95,13 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
             ClickSoundEffect();
             animateButton(ImgbtnSeeAll);
             ImgbtnSeeAll.setEnabled(false);
-            //BACKGROUND MUSIC
-            //=======Z_SoundManager.setActivityChapterPaused(false);
             new Handler().postDelayed(() -> {
                 ImgbtnSeeAll.setEnabled(true);
                 Intent SeeAll = new Intent(getApplicationContext(), NewUI_Chart_Chapters.class);
                 startActivity(SeeAll);
-//                overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
                 finish();
             }, 500);
         });
-
 
         ImgbtnPrevious = findViewById(R.id.imgbtn_previous);
         ImgbtnPrevious.setOnClickListener(v -> {
@@ -105,7 +125,6 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
                 }
             }, 250);
         });
-
 
         ImgbtnNext = findViewById(R.id.imgbtn_next);
         ImgbtnNext.setOnClickListener(v -> {
@@ -135,17 +154,10 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         ImgbtnExitChartLetters.setOnClickListener(v -> {
             ClickSoundEffect();
             cancelToast();
-            //stop music
-            //=======Z_SoundManager.StopChartBgMusic();
-
-//            Intent ChartLetters = new Intent(getApplicationContext(), MainMenu.class);
-//            startActivity(ChartLetters);
-//            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             finish();
         });
 
         ChartDeafult();
-
     }
 
     public void disableNavigation(){
@@ -240,8 +252,6 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         }
     }
 
-
-
     public void ChartDeafult() {
         ImgviewChart = findViewById(R.id.imgviewChart_empty);
 
@@ -290,23 +300,6 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         }
     }
 
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //=======Z_SoundManager.setActivityLetterPaused(true);
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //=======Z_SoundManager.setActivityLetterResumed(this);
-    }
-
-
-
-
     // Method to animate the button click
     private void animateButton(View view) {
         // Create a scale animator to shrink the button
@@ -333,7 +326,6 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         animatorSet.start();
     }
 
-
     // Call the RegButtonClickSound method from Z_SoundManager
     void ClickSoundEffect() {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
@@ -342,7 +334,6 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
             soundManager.RegButtonClickSound(this);
         }
     }
-
 
     void FlipLeftSound() {
         MediaPlayer mediaPlayer;
@@ -353,7 +344,6 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
         }
     }
-
 
     void FlipRightSound() {
         MediaPlayer mediaPlayer;
@@ -373,17 +363,34 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         if (globalToast != null) {
             globalToast.cancel();
         }
-
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         cancelToast();
-//        Intent ChartLetters = new Intent(getApplicationContext(), Chart_Chapters.class);
-//        startActivity(ChartLetters);
-//        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
         finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
+        }
     }
 
 }

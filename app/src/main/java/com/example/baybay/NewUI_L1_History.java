@@ -16,7 +16,7 @@ import androidx.core.widget.NestedScrollView;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class History extends AppCompatActivity {
+public class NewUI_L1_History extends AppCompatActivity {
 
     TextView TvHistoryContent;
     NestedScrollView SvHistory;
@@ -86,15 +86,15 @@ public class History extends AppCompatActivity {
 
             if (isPlayC1Clicked.get()) {
                 ImgbtnPlayC1.setImageResource(R.drawable.newui_history_stop_button);
-                Z_Music_Manager.stopChapterB();
-                Z_Music_Manager.stopChapterC();
+                Z_History_Narration_Manager.stopChapterB();
+                Z_History_Narration_Manager.stopChapterC();
                 ImgbtnPlayC2.setImageResource(R.drawable.newui_history_play_button);
                 ImgbtnPlayC3.setImageResource(R.drawable.newui_history_play_button);
 
-                Z_Music_Manager.playChapterA(this);
+                Z_History_Narration_Manager.playChapterA(this);
             } else {
                 ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
-                Z_Music_Manager.stopChapterA();
+                Z_History_Narration_Manager.stopChapterA();
             }
         });
 
@@ -115,15 +115,15 @@ public class History extends AppCompatActivity {
 
             if (isPlayC2Clicked.get()) {
                 ImgbtnPlayC2.setImageResource(R.drawable.newui_history_stop_button);
-                Z_Music_Manager.stopChapterA();
-                Z_Music_Manager.stopChapterC();
+                Z_History_Narration_Manager.stopChapterA();
+                Z_History_Narration_Manager.stopChapterC();
                 ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
                 ImgbtnPlayC3.setImageResource(R.drawable.newui_history_play_button);
 
-                Z_Music_Manager.playChapterB(this);
+                Z_History_Narration_Manager.playChapterB(this);
             } else {
                 ImgbtnPlayC2.setImageResource(R.drawable.newui_history_play_button);
-                Z_Music_Manager.stopChapterB();
+                Z_History_Narration_Manager.stopChapterB();
             }
         });
 
@@ -144,15 +144,15 @@ public class History extends AppCompatActivity {
 
             if (isPlayC3Clicked.get()) {
                 ImgbtnPlayC3.setImageResource(R.drawable.newui_history_stop_button);
-                Z_Music_Manager.stopChapterA();
-                Z_Music_Manager.stopChapterB();
+                Z_History_Narration_Manager.stopChapterA();
+                Z_History_Narration_Manager.stopChapterB();
                 ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
                 ImgbtnPlayC2.setImageResource(R.drawable.newui_history_play_button);
 
-                Z_Music_Manager.playChapterC(this);
+                Z_History_Narration_Manager.playChapterC(this);
             } else {
                 ImgbtnPlayC3.setImageResource(R.drawable.newui_history_play_button);
-                Z_Music_Manager.stopChapterC();
+                Z_History_Narration_Manager.stopChapterC();
             }
         });
 
@@ -182,9 +182,9 @@ public class History extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        Z_Music_Manager.stopChapterA();
-        Z_Music_Manager.stopChapterB();
-        Z_Music_Manager.stopChapterC();
+        Z_History_Narration_Manager.stopChapterA();
+        Z_History_Narration_Manager.stopChapterB();
+        Z_History_Narration_Manager.stopChapterC();
 
         ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
         ImgbtnPlayC2.setImageResource(R.drawable.newui_history_play_button);
@@ -194,9 +194,9 @@ public class History extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Z_Music_Manager.stopChapterA();
-        Z_Music_Manager.stopChapterB();
-        Z_Music_Manager.stopChapterC();
+        Z_History_Narration_Manager.stopChapterA();
+        Z_History_Narration_Manager.stopChapterB();
+        Z_History_Narration_Manager.stopChapterC();
 
         super.onBackPressed();
         finish();

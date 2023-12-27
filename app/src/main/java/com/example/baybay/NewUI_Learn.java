@@ -7,13 +7,17 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Looper;
 import android.view.View;
 import android.view.Window;
@@ -25,6 +29,26 @@ import android.widget.LinearLayout;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NewUI_Learn extends AppCompatActivity {
+
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
 
     ImageButton ImgbtnLearExit;
     private LinearLayout hiddenButtonsLayout, hiddenButtons2Layout, hiddenButtons3Layout, hiddenButtons4Layout, hiddenButtons5Layout, hiddenButtons6Layout;
@@ -107,8 +131,6 @@ public class NewUI_Learn extends AppCompatActivity {
             }, 500);
         });
 
-
-
         hiddenButtonsLayout = findViewById(R.id.hiddenButtonsLayout);
         hiddenButtons2Layout = findViewById(R.id.hiddenButtons2Layout);
         hiddenButtons3Layout = findViewById(R.id.hiddenButtons3Layout);
@@ -143,8 +165,8 @@ public class NewUI_Learn extends AppCompatActivity {
         L1Sub1 = findViewById(R.id.hidden1Button1);
         L1Sub1.setOnClickListener(v -> {
             ChapterCount = 1;
-            PauseBGMusic();
-            Intent Learn = new Intent(getApplicationContext(), History.class);
+            onStop();
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L1_History.class);
             Learn.putExtra("chapter-count", ChapterCount);
             startActivity(Learn);
         });
@@ -152,8 +174,8 @@ public class NewUI_Learn extends AppCompatActivity {
         L1Sub2 = findViewById(R.id.hidden1Button2);
         L1Sub2.setOnClickListener(v -> {
             ChapterCount = 2;
-            PauseBGMusic();
-            Intent Learn = new Intent(getApplicationContext(), History.class);
+            onStop();
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L1_History.class);
             Learn.putExtra("chapter-count", ChapterCount);
             startActivity(Learn);
         });
@@ -161,8 +183,8 @@ public class NewUI_Learn extends AppCompatActivity {
         L1Sub3 = findViewById(R.id.hidden1Button3);
         L1Sub3.setOnClickListener(v -> {
             ChapterCount = 3;
-            PauseBGMusic();
-            Intent Learn = new Intent(getApplicationContext(), History.class);
+            onStop();
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L1_History.class);
             Learn.putExtra("chapter-count", ChapterCount);
             startActivity(Learn);
         });
@@ -185,16 +207,16 @@ public class NewUI_Learn extends AppCompatActivity {
 
         L2Sub1 = findViewById(R.id.hidden2Button1);
         L2Sub1.setOnClickListener(v -> {
-            PauseBGMusic();
-            Intent lessonsIntent = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            onStop();
+            Intent lessonsIntent = new Intent(getApplicationContext(), NewUI_L2_Introduction.class);
             startActivity(lessonsIntent);
         });
 
         L2Sub2 = findViewById(R.id.hidden2Button2);
         L2Sub2.setOnClickListener(v -> {
             IntroSlideTo = 2;
-            PauseBGMusic();
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            onStop();
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L2_Introduction.class);
             Learn.putExtra("introduction", IntroSlideTo);
             startActivity(Learn);
         });
@@ -202,8 +224,8 @@ public class NewUI_Learn extends AppCompatActivity {
         L2Sub3 = findViewById(R.id.hidden2Button3);
         L2Sub3.setOnClickListener(v -> {
             IntroSlideTo = 3;
-            PauseBGMusic();
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            onStop();
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L2_Introduction.class);
             Learn.putExtra("introduction", IntroSlideTo);
             startActivity(Learn);
         });
@@ -211,8 +233,9 @@ public class NewUI_Learn extends AppCompatActivity {
         L2Sub4 = findViewById(R.id.hidden2Button4);
         L2Sub4.setOnClickListener(v -> {
             IntroSlideTo = 4;
-            PauseBGMusic();
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            //PauseBGMusic();
+            onStop();
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L2_Introduction.class);
             Learn.putExtra("introduction", IntroSlideTo);
             startActivity(Learn);
         });
@@ -220,8 +243,9 @@ public class NewUI_Learn extends AppCompatActivity {
         L2Sub5 = findViewById(R.id.hidden2Button5);
         L2Sub5.setOnClickListener(v -> {
             IntroSlideTo = 5;
-            PauseBGMusic();
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Introduction.class);
+            //PauseBGMusic();
+            onStop();
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L2_Introduction.class);
             Learn.putExtra("introduction", IntroSlideTo);
             startActivity(Learn);
         });
@@ -245,7 +269,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L3Sub1 = findViewById(R.id.hidden3Button1);
         L3Sub1.setOnClickListener(v -> {
             CharSoundCount = 1;
-            Intent Learn = new Intent(getApplicationContext(), Lessons_CharSounds.class);
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L3_Characters.class);
             Learn.putExtra("progressbar-count", CharSoundCount);
             startActivity(Learn);
         });
@@ -253,7 +277,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L3Sub2 = findViewById(R.id.hidden3Button2);
         L3Sub2.setOnClickListener(v -> {
             CharSoundCount = 6;
-            Intent Learn = new Intent(getApplicationContext(), Lessons_CharSounds.class);
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L3_Characters.class);
             Learn.putExtra("progressbar-count", CharSoundCount);
             startActivity(Learn);
         });
@@ -277,7 +301,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L4Sub1 = findViewById(R.id.hidden4Button1);
         L4Sub1.setOnClickListener(v -> {
             RulesCount = 1;
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Rules.class);
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L4_Rules.class);
             Learn.putExtra("rules-count", RulesCount);
             startActivity(Learn);
         });
@@ -285,7 +309,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L4Sub2 = findViewById(R.id.hidden4Button2);
         L4Sub2.setOnClickListener(v -> {
             RulesCount = 3;
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Rules.class);
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L4_Rules.class);
             Learn.putExtra("rules-count", RulesCount);
             startActivity(Learn);
         });
@@ -293,7 +317,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L4Sub3 = findViewById(R.id.hidden4Button3);
         L4Sub3.setOnClickListener(v -> {
             RulesCount = 5;
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Rules.class);
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L4_Rules.class);
             Learn.putExtra("rules-count", RulesCount);
             startActivity(Learn);
         });
@@ -318,7 +342,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L5Sub1.setOnClickListener(v -> {
             WritingCount = 1;
             ClickSoundEffect();
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Paint.class);
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L5_Handwriting.class);
             Learn.putExtra("writing-count", WritingCount);
             startActivity(Learn);
         });
@@ -327,7 +351,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L5Sub2.setOnClickListener(v -> {
             WritingCount = 6;
             ClickSoundEffect();
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Paint.class);
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L5_Handwriting.class);
             Learn.putExtra("writing-count", WritingCount);
             startActivity(Learn);
         });
@@ -336,7 +360,7 @@ public class NewUI_Learn extends AppCompatActivity {
         L5Sub3.setOnClickListener(v -> {
             WritingCount = 21;
             ClickSoundEffect();
-            Intent Learn = new Intent(getApplicationContext(), Lessons_Paint.class);
+            Intent Learn = new Intent(getApplicationContext(), NewUI_L5_Handwriting.class);
             Learn.putExtra("writing-count", WritingCount);
             startActivity(Learn);
         });
@@ -385,8 +409,8 @@ public class NewUI_Learn extends AppCompatActivity {
     }
 
     private void goToBook(){
-        PauseBGMusic();
-        Intent intent = new Intent(NewUI_Learn.this, PdfViewerActivity.class);
+        onStop();
+        Intent intent = new Intent(NewUI_Learn.this, NewUI_L6_Enhance_Reading.class);
         intent.putExtra("bookNumber", bookNumber);
         startActivity(intent);
     }
@@ -440,15 +464,6 @@ public class NewUI_Learn extends AppCompatActivity {
         }
     }
 
-    private void PauseBGMusic(){
-        Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
-    }
-    @Override
-    protected void onResume() {
-        Z_SoundManager.setActivityMainMenuResumed(this);
-        super.onResume();
-    }
-
     // Method to animate the button click
     private void animateButton(View view) {
         // Create a scale animator to shrink the button
@@ -493,7 +508,6 @@ public class NewUI_Learn extends AppCompatActivity {
         }
     }
 
-
     void FlipRightSound() {
         MediaPlayer mediaPlayer;
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
@@ -501,6 +515,27 @@ public class NewUI_Learn extends AppCompatActivity {
             mediaPlayer = MediaPlayer.create(NewUI_Learn.this, R.raw.pag_flip_right);
             mediaPlayer.start();
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
         }
     }
 

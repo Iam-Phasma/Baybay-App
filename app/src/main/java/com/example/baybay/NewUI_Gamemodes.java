@@ -8,13 +8,16 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Looper;
 import android.view.View;
 import android.view.Window;
@@ -25,12 +28,29 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 public class NewUI_Gamemodes extends AppCompatActivity {
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
 
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
     int GametoPlay = 0;
     int difficulty = 0;
     private ImageButton GamemodesExit;
@@ -181,7 +201,6 @@ public class NewUI_Gamemodes extends AppCompatActivity {
             TvSelectionBackreminder.setVisibility(View.VISIBLE);
         }, 1000);
 
-
         //Textview difficulty reminder
         TextView TvDifficultySelected = dlg.findViewById(R.id.tv_difficulty_selected);
 
@@ -210,7 +229,7 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         ImgbtnSelectionstart = dlg.findViewById(R.id.imgbtn_gm_selectionstart);
         ImgbtnSelectionstart.setOnClickListener(v -> {
             ClickSoundEffect();
-            PauseBGMusic();
+            onStop();
 
             if (GametoPlay == 1){
                 Intent Gamemodes = new Intent(getApplicationContext(), NewUI_Modes_Quiz.class);
@@ -253,16 +272,15 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         Progress.setEnabled(true);
     }
 
-    private void PauseBGMusic(){
-        //Z_SoundManager.setActivityMainMenuPaused(true);
-        Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
-    }
-
-    @Override
-    protected void onResume() {
-        Z_SoundManager.setActivityMainMenuResumed(this);
-        super.onResume();
-    }
+//    private void PauseBGMusic(){
+//        Z_SoundManager.StopMainMenu_ModesBackgroundMusic();
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        Z_SoundManager.setActivityMainMenuResumed(this);
+//        super.onResume();
+//    }
 
     private Animation createContinuousFadeInAnimation() {
         // Create a continuous fade-in animation
@@ -324,6 +342,27 @@ public class NewUI_Gamemodes extends AppCompatActivity {
         if (sfxPass.length > 0 && sfxPass[0]) {
             Z_SoundManager soundManager = new Z_SoundManager();
             soundManager.RegButtonClickSound(this);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
         }
     }
 }

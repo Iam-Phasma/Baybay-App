@@ -3,11 +3,11 @@ package com.example.baybay;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Z_QuizWord_QuestionManager {
+public class Z_QuizAdvanced_QuestionManager {
 
     private final List<Question> quizword_questionList;
 
-    public Z_QuizWord_QuestionManager() {
+    public Z_QuizAdvanced_QuestionManager() {
         quizword_questionList = new ArrayList<>();
         initializeQuestions();
     }

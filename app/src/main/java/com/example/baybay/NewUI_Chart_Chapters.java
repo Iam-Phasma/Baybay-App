@@ -3,12 +3,16 @@ package com.example.baybay;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,6 +21,26 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NewUI_Chart_Chapters extends AppCompatActivity {
+
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
 
     ImageButton ImgbtnExitChart;
     ImageButton Imgkudlit, ImgA, ImgB, ImgK, ImgD, ImgE, ImgG, ImgH, ImgI, ImgL, ImgM, ImgN, ImgNG, ImgO, ImgP, ImgR, ImgS, ImgT, ImgU, ImgW, ImgY;
@@ -113,11 +137,6 @@ public class NewUI_Chart_Chapters extends AppCompatActivity {
 //                overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_up);
                 finish();
             }, 500);
-
-
-
-            // BACKGROUND MUSIC
-            //======Z_SoundManager.setActivityLetterPaused(false);
         };
 
         // Set the OnClickListener for all buttons except ImgbtnExitChart
@@ -142,38 +161,12 @@ public class NewUI_Chart_Chapters extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        //=======Z_SoundManager.setActivityChapterPaused(true);
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        BackgroundSound();
-    }
-
-
-    void BackgroundSound() {
-        //=======Z_SoundManager.setActivityChapterResumed(this);
-        //=======Z_SoundManager.setActivityLetterPaused(true);
-    }
-
-
-    @Override
     public void onBackPressed() {
         super.onBackPressed();
-
-        //Stop BG Music
-        //=======Z_SoundManager.StopChartBgMusic();
-
         Intent Chart = new Intent(getApplicationContext(), NewUI_Chart_Letters.class);
         startActivity(Chart);
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
     }
-
 
     // Method to animate the button click
     private void animateButton(View view) {
@@ -201,13 +194,33 @@ public class NewUI_Chart_Chapters extends AppCompatActivity {
         animatorSet.start();
     }
 
-
     // Call the RegButtonClickSound method from Z_SoundManager
     void ClickSoundEffect() {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
             Z_SoundManager soundManager = new Z_SoundManager();
             soundManager.RegButtonClickSound(this);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
         }
     }
 }

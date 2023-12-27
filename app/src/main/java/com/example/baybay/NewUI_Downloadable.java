@@ -7,6 +7,10 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -14,6 +18,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.IBinder;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -34,6 +39,26 @@ import java.util.Locale;
 import es.dmoral.toasty.Toasty;
 
 public class NewUI_Downloadable extends AppCompatActivity {
+
+    // NEW BGMUSIC MANAGER
+    private Z_BackgroundMusicService musicService;
+    private boolean isBound = false;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
+            musicService = binder.getService();
+            musicService.startMusic();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicService.stopMusic();
+            musicService = null;
+        }
+    };
+    // -------
 
     private ImageButton ImgbtnDownloadableExit;
     private ImageButton R1, R2, R3;
@@ -252,7 +277,6 @@ public class NewUI_Downloadable extends AppCompatActivity {
     }
 
     //DOWNLOAD PDF
-
     private void savePdfToDownloadFolder() {
         try {
             if (downloadPicker.isEmpty()) {
@@ -424,6 +448,27 @@ public class NewUI_Downloadable extends AppCompatActivity {
         if (sfxPass.length > 0 && sfxPass[0]) {
             Z_SoundManager soundManager = new Z_SoundManager();
             soundManager.RegButtonClickSound(this);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        callMusic();
+    }
+
+    private void callMusic(){
+        Intent intent = new Intent(this, Z_BackgroundMusicService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        isBound = true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isBound) {
+            unbindService(connection);
+            isBound = false;
         }
     }
 }

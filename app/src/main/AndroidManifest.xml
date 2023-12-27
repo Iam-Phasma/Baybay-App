@@ -19,6 +19,8 @@
         android:theme="@style/Theme.Baybay"
         tools:targetApi="31">
 
+        <service android:name=".Z_BackgroundMusicService" />
+
         <activity
             android:name=".NewUI_ArtsCrafts"
             android:exported="false"
@@ -59,7 +61,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Lessons_Introduction"
+            android:name=".NewUI_L2_Introduction"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -67,38 +69,25 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PdfViewerActivity"
+            android:name=".NewUI_L6_Enhance_Reading"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Library"
+            android:name=".NewUI_L1_History"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".History"
+            android:name=".NewUI_L4_Rules"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Lessons_Rules"
+            android:name=".NewUI_L3_Characters"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Lessons_CharSounds"
+            android:name=".NewUI_L5_Handwriting"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".Lessons_Paint"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Lessons"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".More"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/MoreActivityTheme" />
         <activity
             android:name=".NewUI_Modes_Matching"
             android:exported="false"
@@ -115,17 +104,6 @@
             android:name=".NewUI_Chart_Chapters"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".Modes"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MainMenu"
-            android:exported="true"
-            android:resizeableActivity="false"
-            android:screenOrientation="portrait">
-
-        </activity>
     </application>
 
 </manifest>
