@@ -134,8 +134,8 @@
 
             <ImageButton
                 android:id="@+id/imgbtn_history_playc1"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="20dp"
                 android:backgroundTint="#00FFFFFF"
                 android:scaleType="centerCrop"
@@ -146,9 +146,9 @@
                 tools:srcCompat="@drawable/newui_history_play_button" />
 
             <ImageButton
-                android:id="@+id/imgbtn__history_exit3"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:id="@+id/imgbtn_history_playc2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:backgroundTint="#00FFFFFF"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="@+id/imgbtn_history_c2"
@@ -158,13 +158,13 @@
                 tools:srcCompat="@drawable/newui_history_play_button" />
 
             <ImageButton
-                android:id="@+id/imgbtn__history_exit4"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:id="@+id/imgbtn_history_playc3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:backgroundTint="#00FFFFFF"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="@+id/imgbtn_history_c3"
-                app:layout_constraintStart_toStartOf="@+id/imgbtn__history_exit3"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_history_playc2"
                 app:layout_constraintTop_toTopOf="@+id/imgbtn_history_c3"
                 app:srcCompat="@drawable/newui_history_play_button"
                 tools:srcCompat="@drawable/newui_history_play_button" />

@@ -23,7 +23,7 @@ public class History extends AppCompatActivity {
     private int chapterSelected = 1;
     ImageView ImgviewHistoryBoard;
     ImageButton ImgbtnHistoryC1, ImgbtnHistoryC2, ImgbtnHistoryC3;
-    ImageButton ImgbtnPlayC1;
+    ImageButton ImgbtnPlayC1, ImgbtnPlayC2, ImgbtnPlayC3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +86,15 @@ public class History extends AppCompatActivity {
 
             if (isPlayC1Clicked.get()) {
                 ImgbtnPlayC1.setImageResource(R.drawable.newui_history_stop_button);
+                Z_Music_Manager.stopChapterB();
+                Z_Music_Manager.stopChapterC();
+                ImgbtnPlayC2.setImageResource(R.drawable.newui_history_play_button);
+                ImgbtnPlayC3.setImageResource(R.drawable.newui_history_play_button);
+
+                Z_Music_Manager.playChapterA(this);
             } else {
                 ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
+                Z_Music_Manager.stopChapterA();
             }
         });
 
@@ -100,6 +107,26 @@ public class History extends AppCompatActivity {
             ImgbtnHistoryC3.setImageResource(R.drawable.newui_history_c3_unsel);
         });
 
+        AtomicBoolean isPlayC2Clicked = new AtomicBoolean(false);
+        ImgbtnPlayC2 = findViewById(R.id.imgbtn_history_playc2);
+        ImgbtnPlayC2.setOnClickListener(v -> {
+            ImgbtnHistoryC2.performClick();
+            isPlayC2Clicked.set(!isPlayC2Clicked.get());
+
+            if (isPlayC2Clicked.get()) {
+                ImgbtnPlayC2.setImageResource(R.drawable.newui_history_stop_button);
+                Z_Music_Manager.stopChapterA();
+                Z_Music_Manager.stopChapterC();
+                ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
+                ImgbtnPlayC3.setImageResource(R.drawable.newui_history_play_button);
+
+                Z_Music_Manager.playChapterB(this);
+            } else {
+                ImgbtnPlayC2.setImageResource(R.drawable.newui_history_play_button);
+                Z_Music_Manager.stopChapterB();
+            }
+        });
+
         ImgbtnHistoryC3 = findViewById(R.id.imgbtn_history_c3);
         ImgbtnHistoryC3.setOnClickListener(v -> {
             ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
@@ -107,6 +134,26 @@ public class History extends AppCompatActivity {
             setChapter();
             ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_unsel);
             ImgbtnHistoryC2.setImageResource(R.drawable.newui_history_c2_unsel);
+        });
+
+        AtomicBoolean isPlayC3Clicked = new AtomicBoolean(false);
+        ImgbtnPlayC3 = findViewById(R.id.imgbtn_history_playc3);
+        ImgbtnPlayC3.setOnClickListener(v -> {
+            ImgbtnHistoryC3.performClick();
+            isPlayC3Clicked.set(!isPlayC3Clicked.get());
+
+            if (isPlayC3Clicked.get()) {
+                ImgbtnPlayC3.setImageResource(R.drawable.newui_history_stop_button);
+                Z_Music_Manager.stopChapterA();
+                Z_Music_Manager.stopChapterB();
+                ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
+                ImgbtnPlayC2.setImageResource(R.drawable.newui_history_play_button);
+
+                Z_Music_Manager.playChapterC(this);
+            } else {
+                ImgbtnPlayC3.setImageResource(R.drawable.newui_history_play_button);
+                Z_Music_Manager.stopChapterC();
+            }
         });
 
         setChapter();
@@ -129,21 +176,28 @@ public class History extends AppCompatActivity {
             TvHistoryContent.setText(R.string.history_c3);
         }
 
-        //Set font of Textview
-//        Typeface mFont = null;
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-//            mFont = getResources().getFont(R.font.times_new_roman);
-//        }
-//        TvHistoryContent.setTypeface(mFont);
-
-        //line spacing
         float lineSpacingMultiplier = 1.5f;
         TvHistoryContent.setLineSpacing(0, lineSpacingMultiplier);
     }
 
+    @Override
+    protected void onPause() {
+        Z_Music_Manager.stopChapterA();
+        Z_Music_Manager.stopChapterB();
+        Z_Music_Manager.stopChapterC();
+
+        ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
+        ImgbtnPlayC2.setImageResource(R.drawable.newui_history_play_button);
+        ImgbtnPlayC3.setImageResource(R.drawable.newui_history_play_button);
+        super.onPause();
+    }
 
     @Override
     public void onBackPressed() {
+        Z_Music_Manager.stopChapterA();
+        Z_Music_Manager.stopChapterB();
+        Z_Music_Manager.stopChapterC();
+
         super.onBackPressed();
         finish();
     }
