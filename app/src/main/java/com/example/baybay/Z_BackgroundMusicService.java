@@ -25,7 +25,7 @@ public class Z_BackgroundMusicService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        mediaPlayer = MediaPlayer.create(this, R.raw.main_woodlandfantacy);
+        mediaPlayer = MediaPlayer.create(this, R.raw.background_music_woodland_fantacy);
         mediaPlayer.setLooping(true);
     }
 

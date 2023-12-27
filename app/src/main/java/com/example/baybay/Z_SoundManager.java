@@ -195,7 +195,7 @@ public class Z_SoundManager {
         if (bgPass.length > 0 && bgPass[0]) {
             if (Games == null) {
                 // Initialize the MediaPlayer with the audio resource
-                Games = MediaPlayer.create(context, R.raw.quiz_pleasant_creek);
+                Games = MediaPlayer.create(context, R.raw.gameplay_music_pleasant_creek);
                 Games.setLooping(true);
             }
 
