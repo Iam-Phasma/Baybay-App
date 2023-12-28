@@ -194,7 +194,11 @@ public class NewUI_L2_Introduction extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    protected void onPause() {
+        ImgbtnPlayPause.setImageResource(R.drawable.video_pause_icon);
+        super.onPause();
+    }
 
     @Override
     public void onBackPressed() {

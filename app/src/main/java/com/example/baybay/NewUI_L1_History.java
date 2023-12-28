@@ -100,7 +100,6 @@ public class NewUI_L1_History extends AppCompatActivity {
 
         ImgbtnHistoryC2 = findViewById(R.id.imgbtn_history_c2);
         ImgbtnHistoryC2.setOnClickListener(v -> {
-            ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
             chapterSelected = 2;
             setChapter();
             ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_unsel);
@@ -129,7 +128,6 @@ public class NewUI_L1_History extends AppCompatActivity {
 
         ImgbtnHistoryC3 = findViewById(R.id.imgbtn_history_c3);
         ImgbtnHistoryC3.setOnClickListener(v -> {
-            ImgbtnPlayC1.setImageResource(R.drawable.newui_history_play_button);
             chapterSelected = 3;
             setChapter();
             ImgbtnHistoryC1.setImageResource(R.drawable.newui_history_c1_unsel);

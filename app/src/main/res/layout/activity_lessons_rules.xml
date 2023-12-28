@@ -159,18 +159,17 @@
                 app:hintTextColor="#000000"
                 app:layout_constraintEnd_toEndOf="@+id/imgview_rulesboard"
                 app:layout_constraintStart_toStartOf="@+id/textView89"
-                app:layout_constraintTop_toBottomOf="@+id/textView89">
+                app:layout_constraintTop_toBottomOf="@+id/textView89"
+                android:hint="Answer">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edittext_practiceanswer"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="Answer"
                     android:inputType="text|textCapWords"
                     android:maxLength="10"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

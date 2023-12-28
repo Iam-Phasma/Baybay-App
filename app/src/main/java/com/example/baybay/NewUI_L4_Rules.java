@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
@@ -23,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -140,6 +143,10 @@ public class NewUI_L4_Rules extends AppCompatActivity {
     private void RefreshPracticeQuestion(){
         ImgviewPracticeQuestion = findViewById(R.id.imgview_practice_question);
         EdittextPractice = findViewById(R.id.edittext_practiceanswer);
+
+        TextInputLayout textInputLayout = findViewById(R.id.textInputLayout);
+        ColorStateList blackColor = ColorStateList.valueOf(Color.BLACK);
+        textInputLayout.setDefaultHintTextColor(blackColor);
 
         if (!PracticeQuestionCount.isEmpty()) {
             int currentQuestion = PracticeQuestionCount.get(0);
