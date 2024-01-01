@@ -512,7 +512,7 @@ public class NewUI_Learn extends AppCompatActivity {
         MediaPlayer mediaPlayer;
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            mediaPlayer = MediaPlayer.create(NewUI_Learn.this, R.raw.pag_flip_right);
+            mediaPlayer = MediaPlayer.create(NewUI_Learn.this, R.raw.page_flip_right);
             mediaPlayer.start();
             mediaPlayer.setOnCompletionListener(MediaPlayer::release);
         }

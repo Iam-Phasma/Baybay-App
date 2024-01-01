@@ -411,8 +411,8 @@ public class NewUi_Progress_Chart extends AppCompatActivity {
         tvGraphMatchArrayCount = findViewById(R.id.tv_graph_matchCount);
 
         tvGraphQuizArrayCount.setText("Quiz : " + String.valueOf(quizScoreList.size()));
-        tvGraphSpellArrayCount.setText("Spell : " + String.valueOf(spellScoreList.size()));
-        tvGraphMatchArrayCount.setText("Match : " + String.valueOf(matchScoreList.size()));
+        tvGraphSpellArrayCount.setText("Spelling : " + String.valueOf(spellScoreList.size()));
+        tvGraphMatchArrayCount.setText("Matching : " + String.valueOf(matchScoreList.size()));
     }
 
     private void cancelToast() {

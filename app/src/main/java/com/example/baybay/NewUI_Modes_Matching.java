@@ -147,7 +147,6 @@ public class NewUI_Modes_Matching extends AppCompatActivity {
                 resumeTimer();
 
                 disablePauseMenuButtons();
-                new Handler().postDelayed(this::QuizResumeVoice, 200);
 
                 if(MatchQuestionCounter != 21){
                     resumeTimer();
@@ -715,14 +714,6 @@ public class NewUI_Modes_Matching extends AppCompatActivity {
         if (sfxPass.length > 0 && sfxPass[0]) {
             Z_SoundManager soundManager = new Z_SoundManager();
             soundManager.QuizVoicePause(this);
-        }
-    }
-
-    void QuizResumeVoice() {
-        boolean[] sfxPass = Z_SoundManager.isSoundFx;
-        if (sfxPass.length > 0 && sfxPass[0]) {
-            Z_SoundManager soundManager = new Z_SoundManager();
-            soundManager.QuizVoiceResume(this);
         }
     }
 

@@ -41,7 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,9 +53,9 @@
             <ImageView
                 android:id="@+id/imgview_rulesboard"
                 android:layout_width="0dp"
-                android:layout_height="470dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_height="485dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginEnd="17dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,17 +69,20 @@
                 android:layout_marginStart="20dp"
                 android:backgroundTint="#57CD5C"
                 android:fontFamily="@font/sans_serif_bold"
-                android:text="PREVIOUS"
+                android:text="PREV"
                 android:textColor="#FFFFFF"
                 app:cornerRadius="8dp"
                 app:layout_constraintStart_toStartOf="@+id/imgview_rulesboard"
                 app:layout_constraintTop_toBottomOf="@+id/imgview_rulesboard"
-                app:rippleColor="#6BFFFFFF" />
+                app:rippleColor="#6BFFFFFF"
+                app:strokeColor="#000000"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/btn_rules_next"
                 android:layout_width="120dp"
                 android:layout_height="0dp"
+                android:layout_marginEnd="20dp"
                 android:backgroundTint="#57CD5C"
                 android:fontFamily="@font/sans_serif_bold"
                 android:text="NEXT"
@@ -88,13 +90,15 @@
                 app:cornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/imgview_rulesboard"
                 app:layout_constraintTop_toBottomOf="@+id/imgview_rulesboard"
-                app:rippleColor="#6BFFFFFF" />
+                app:rippleColor="#6BFFFFFF"
+                app:strokeColor="#000000"
+                app:strokeWidth="2dp" />
 
             <TextView
                 android:id="@+id/textView87"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="50dp"
                 android:fontFamily="sans-serif"
                 android:maxLines="2"
@@ -148,6 +152,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Answer"
                 android:paddingBottom="10dp"
                 app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -159,8 +165,7 @@
                 app:hintTextColor="#000000"
                 app:layout_constraintEnd_toEndOf="@+id/imgview_rulesboard"
                 app:layout_constraintStart_toStartOf="@+id/textView89"
-                app:layout_constraintTop_toBottomOf="@+id/textView89"
-                android:hint="Answer">
+                app:layout_constraintTop_toBottomOf="@+id/textView89">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edittext_practiceanswer"
@@ -174,8 +179,9 @@
 
             <Button
                 android:id="@+id/btn_rules_practice_submit"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="50dp"
                 android:backgroundTint="#00BCD4"
                 android:fontFamily="@font/sans_serif_bold"
@@ -186,7 +192,9 @@
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-                app:rippleColor="#6BFFFFFF" />
+                app:rippleColor="#6BFFFFFF"
+                app:strokeColor="#000000"
+                app:strokeWidth="2dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

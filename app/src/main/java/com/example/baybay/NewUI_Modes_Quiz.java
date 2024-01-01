@@ -202,7 +202,6 @@ public class NewUI_Modes_Quiz extends AppCompatActivity {
             ImgbtnResume = dlg.findViewById(R.id.imgbtnResume);
             ImgbtnResume.setOnClickListener(v1 -> {
                 disablePauseMenuButtons();
-                new Handler().postDelayed(this::QuizResumeVoice, 200);
 
                 if(QuizQuestionCounter != 21){
                     resumeTimer();
@@ -526,11 +525,11 @@ public class NewUI_Modes_Quiz extends AppCompatActivity {
             StarCollected = "1";
             QuizResultVoice1();
         } else if (correctAnswer <= 15) {
-            //ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_2stars);
+            ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_2stars);
             StarCollected = "2";
             QuizResultVoice2();
         } else if (correctAnswer <= 20) {
-            //ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_3stars);
+            ImgResultScoreBoard.setImageResource(R.drawable.quizresult_scoreboard_3stars);
             StarCollected = "3";
             QuizResultVoice3();
         } else {
@@ -725,14 +724,6 @@ public class NewUI_Modes_Quiz extends AppCompatActivity {
         if (sfxPass.length > 0 && sfxPass[0]) {
             Z_SoundManager soundManager = new Z_SoundManager();
             soundManager.QuizVoicePause(this);
-        }
-    }
-
-    void QuizResumeVoice() {
-        boolean[] sfxPass = Z_SoundManager.isSoundFx;
-        if (sfxPass.length > 0 && sfxPass[0]) {
-            Z_SoundManager soundManager = new Z_SoundManager();
-            soundManager.QuizVoiceResume(this);
         }
     }
 

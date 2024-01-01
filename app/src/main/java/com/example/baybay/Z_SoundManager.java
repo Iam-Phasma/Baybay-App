@@ -22,43 +22,43 @@ public class Z_SoundManager {
     }
 
     //Quiz Voice SFX
-    static MediaPlayer quizVoice0;
+    static MediaPlayer starVoice0;
     public void QuizVoice0(Context context) {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            quizVoice0 = MediaPlayer.create(context, R.raw.uno_no_way_0star);
-            quizVoice0.start();
-            quizVoice0.setOnCompletionListener(MediaPlayer::release);
+            starVoice0 = MediaPlayer.create(context, R.raw.score0star);
+            starVoice0.start();
+            starVoice0.setOnCompletionListener(MediaPlayer::release);
         }
     }
 
-    static MediaPlayer quizVoice1;
+    static MediaPlayer starVoice1;
     public void QuizVoice1(Context context) {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            quizVoice1 = MediaPlayer.create(context, R.raw.uno_its_not_over_yet_1star);
-            quizVoice1.start();
-            quizVoice1.setOnCompletionListener(MediaPlayer::release);
+            starVoice1 = MediaPlayer.create(context, R.raw.score1star);
+            starVoice1.start();
+            starVoice1.setOnCompletionListener(MediaPlayer::release);
         }
     }
 
-    static MediaPlayer quizVoice2;
+    static MediaPlayer starVoice2;
     public void QuizVoice2(Context context) {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            quizVoice2 = MediaPlayer.create(context, R.raw.uno_wow_2stars);
-            quizVoice2.start();
-            quizVoice2.setOnCompletionListener(MediaPlayer::release);
+            starVoice2 = MediaPlayer.create(context, R.raw.score2stars);
+            starVoice2.start();
+            starVoice2.setOnCompletionListener(MediaPlayer::release);
         }
     }
 
-    static MediaPlayer quizVoice3;
+    static MediaPlayer starVoice3;
     public void QuizVoice3(Context context) {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            quizVoice3 = MediaPlayer.create(context, R.raw.uno_super_dupper_3stars);
-            quizVoice3.start();
-            quizVoice3.setOnCompletionListener(MediaPlayer::release);
+            starVoice3 = MediaPlayer.create(context, R.raw.score3stars);
+            starVoice3.start();
+            starVoice3.setOnCompletionListener(MediaPlayer::release);
         }
     }
 
@@ -66,21 +66,21 @@ public class Z_SoundManager {
     public void QuizVoicePause(Context context) {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            quizVoicePause = MediaPlayer.create(context, R.raw.uno_dont_stop_now_exit);
+            quizVoicePause = MediaPlayer.create(context, R.raw.game_paused);
             quizVoicePause.start();
             quizVoicePause.setOnCompletionListener(MediaPlayer::release);
         }
     }
 
-    static MediaPlayer quizVoiceResume;
-    public void QuizVoiceResume(Context context) {
-        boolean[] sfxPass = Z_SoundManager.isSoundFx;
-        if (sfxPass.length > 0 && sfxPass[0]) {
-            quizVoiceResume = MediaPlayer.create(context, R.raw.uno_thank_you_resume);
-            quizVoiceResume.start();
-            quizVoiceResume.setOnCompletionListener(MediaPlayer::release);
-        }
-    }
+//    static MediaPlayer quizVoiceResume;
+//    public void QuizVoiceResume(Context context) {
+//        boolean[] sfxPass = Z_SoundManager.isSoundFx;
+//        if (sfxPass.length > 0 && sfxPass[0]) {
+//            quizVoiceResume = MediaPlayer.create(context, R.raw.uno_thank_you_resume);
+//            quizVoiceResume.start();
+//            quizVoiceResume.setOnCompletionListener(MediaPlayer::release);
+//        }
+//    }
 
 
 
@@ -89,7 +89,7 @@ public class Z_SoundManager {
     public void GameCorrectSound(Context context) {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            correctSound = MediaPlayer.create(context, R.raw.correct_high);
+            correctSound = MediaPlayer.create(context, R.raw.game_correct);
             correctSound.start();
             correctSound.setOnCompletionListener(MediaPlayer::release);
         }
@@ -99,7 +99,7 @@ public class Z_SoundManager {
     public void GameWrongSound(Context context) {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            WrongSound = MediaPlayer.create(context, R.raw.incorrect);
+            WrongSound = MediaPlayer.create(context, R.raw.game_incorrect);
             WrongSound.start();
             WrongSound.setOnCompletionListener(MediaPlayer::release);
         }
@@ -110,7 +110,7 @@ public class Z_SoundManager {
     public void buttonSkipSound(Context context) {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            buttonSkipSound = MediaPlayer.create(context, R.raw.uno_skip);
+            buttonSkipSound = MediaPlayer.create(context, R.raw.character_skipped);
             buttonSkipSound.start();
             buttonSkipSound.setOnCompletionListener(MediaPlayer::release);
         }
@@ -378,7 +378,7 @@ public class Z_SoundManager {
         if (sfxPass.length > 0 && sfxPass[0]) {
             if (Drawing == null) {
                 // Initialize the MediaPlayer with the audio resource
-                Drawing = MediaPlayer.create(context, R.raw.paint_pencil_write_trim); //lessons_jump_and_run
+                Drawing = MediaPlayer.create(context, R.raw.draw_writing); //lessons_jump_and_run
                 Drawing.setLooping(true);
             }
 
@@ -403,7 +403,7 @@ public class Z_SoundManager {
     public void PaintEraseSound(Context context) {
         boolean[] sfxPass = Z_SoundManager.isSoundFx;
         if (sfxPass.length > 0 && sfxPass[0]) {
-            paintEraseSound = MediaPlayer.create(context, R.raw.paint_pencil_erase_trim);
+            paintEraseSound = MediaPlayer.create(context, R.raw.draw_erase);
             paintEraseSound.start();
             paintEraseSound.setOnCompletionListener(MediaPlayer::release);
         }

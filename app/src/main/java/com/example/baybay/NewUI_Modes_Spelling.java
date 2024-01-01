@@ -615,7 +615,6 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
         ImgbtnResume = dlg.findViewById(R.id.imgbtnResume);
         ImgbtnResume.setOnClickListener(v1 -> {
             disablePauseMenuButtons();
-            new Handler().postDelayed(this::QuizResumeVoice, 200);
 
             if(QuizQuestionCounter != -1){
                 resumeTimer();
@@ -666,14 +665,6 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
         if (sfxPass.length > 0 && sfxPass[0]) {
             Z_SoundManager soundManager = new Z_SoundManager();
             soundManager.QuizVoicePause(this);
-        }
-    }
-
-    void QuizResumeVoice() {
-        boolean[] sfxPass = Z_SoundManager.isSoundFx;
-        if (sfxPass.length > 0 && sfxPass[0]) {
-            Z_SoundManager soundManager = new Z_SoundManager();
-            soundManager.QuizVoiceResume(this);
         }
     }
 
