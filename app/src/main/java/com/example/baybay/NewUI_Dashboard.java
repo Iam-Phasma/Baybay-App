@@ -11,8 +11,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -54,6 +57,8 @@ public class NewUI_Dashboard extends AppCompatActivity {
     TextView TvTrivia;
     private String currentText = "";
     SharedPreferences preferences;
+    String versionName;
+    String link;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -196,6 +201,19 @@ public class NewUI_Dashboard extends AppCompatActivity {
                 dlg.setOnKeyListener((dialog, keyCode, event) -> {
                     return keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP; // Consume the back button press event
                 });
+
+                //Set app version
+                TextView TvAppVersion = dlg.findViewById(R.id.tv_appversion);
+                versionName = getAppVersionName();
+                TvAppVersion.setText("Version: " + versionName);
+
+                TextView TvCheckUpdate = dlg.findViewById(R.id.tv_checkupdate);
+                TvCheckUpdate.setOnClickListener(v1 -> {
+                    link = "https://baybay-release-web-app.pages.dev/";
+                    gotoLink(link);
+                });
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -281,6 +299,25 @@ public class NewUI_Dashboard extends AppCompatActivity {
                 textView.setText(currentText);
                 applyFadeInAnimation(textView);
             }, i * duration);
+        }
+    }
+
+    private String getAppVersionName() {
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return "Unknown";
+        }
+    }
+
+    void gotoLink(String l){
+        onStop();
+        try{
+            Uri uri = Uri.parse(l);
+            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+        }catch (Exception e){
         }
     }
 
