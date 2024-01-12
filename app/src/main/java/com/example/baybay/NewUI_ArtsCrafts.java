@@ -275,7 +275,6 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             if (isConnected()) {
             } else {
-                Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show();
                 connectionPrompt();
             }
         }, 1400);
