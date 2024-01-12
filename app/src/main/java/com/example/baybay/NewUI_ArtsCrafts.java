@@ -96,55 +96,55 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         ImgviewPens = findViewById(R.id.imageViewPens);
         ImgbtnTagPens = findViewById(R.id.imgbtn_char_mini_a);
         ImgbtnTagPens.setOnClickListener(v -> {
-            NsvMain.smoothScrollTo(0, (int) ImgviewPens.getY(), 700);
+            NsvMain.smoothScrollTo(0, (int) ImgviewPens.getY(), 1000);
         });
 
         ImgviewShirtsPants = findViewById(R.id.imageViewShirtsPants);
         ImgbtnTagShirtsPants = findViewById(R.id.imgbtn_artscrafts_tagshirtspants);
         ImgbtnTagShirtsPants.setOnClickListener(v -> {
-            NsvMain.smoothScrollTo(0, (int) ImgviewShirtsPants.getY(), 700);
+            NsvMain.smoothScrollTo(0, (int) ImgviewShirtsPants.getY(), 1000);
         });
 
         ImgviewBags = findViewById(R.id.imageViewBags);
         ImgbtnTagBags = findViewById(R.id.imgbtn_artscrafts_tagbags);
         ImgbtnTagBags.setOnClickListener(v -> {
-            NsvMain.smoothScrollTo(0, (int) ImgviewBags.getY(), 700);
+            NsvMain.smoothScrollTo(0, (int) ImgviewBags.getY(), 1000);
         });
 
         ImgviewStickers = findViewById(R.id.imageViewStickers);
         ImgbtnTagStickers = findViewById(R.id.imgbtn_artscrafts_tagstickers);
         ImgbtnTagStickers.setOnClickListener(v -> {
-            NsvMain.smoothScrollTo(0, (int) ImgviewStickers.getY(), 700);
+            NsvMain.smoothScrollTo(0, (int) ImgviewStickers.getY(), 1000);
         });
 
         ImgviewAccessories = findViewById(R.id.imageViewAccessories);
         ImgbtnTagAccessories = findViewById(R.id.imgbtn_artscrafts_tagaccessories);
         ImgbtnTagAccessories.setOnClickListener(v -> {
-            NsvMain.smoothScrollTo(0, (int) ImgviewAccessories.getY(), 700);
+            NsvMain.smoothScrollTo(0, (int) ImgviewAccessories.getY(), 1000);
         });
 
         ImgviewCalligraphy = findViewById(R.id.imageViewCalligraphy);
         ImgbtnTagCalligraphy = findViewById(R.id.imgbtn_artscrafts_tagcalligraphy);
         ImgbtnTagCalligraphy.setOnClickListener(v -> {
-            NsvMain.smoothScrollTo(0, (int) ImgviewCalligraphy.getY(), 700);
+            NsvMain.smoothScrollTo(0, (int) ImgviewCalligraphy.getY(), 1000);
         });
 
         ImgviewTattoos = findViewById(R.id.imageViewTattoos);
         ImgbtnTagTattoos = findViewById(R.id.imgbtn_artscrafts_tagtattoos);
         ImgbtnTagTattoos.setOnClickListener(v -> {
-            NsvMain.smoothScrollTo(0, (int) ImgviewTattoos.getY(), 700);
+            NsvMain.smoothScrollTo(0, (int) ImgviewTattoos.getY(), 1000);
         });
 
         ImgviewEngraving = findViewById(R.id.imageViewEngraving);
         ImgbtnTagEngraving = findViewById(R.id.imgbtn_artscrafts_tagengraving);
         ImgbtnTagEngraving.setOnClickListener(v -> {
-            NsvMain.smoothScrollTo(0, (int) ImgviewEngraving.getY(), 700);
+            NsvMain.smoothScrollTo(0, (int) ImgviewEngraving.getY(), 1000);
         });
 
         ImgviewSignsBrands = findViewById(R.id.imageViewSignsBrands);
         ImgbtnTagSignsBrands = findViewById(R.id.imgbtn_artscrafts_tagsignbrands);
         ImgbtnTagSignsBrands.setOnClickListener(v -> {
-            NsvMain.smoothScrollTo(0, (int) ImgviewSignsBrands.getY(), 700);
+            NsvMain.smoothScrollTo(0, (int) ImgviewSignsBrands.getY(), 1000);
         });
 
 
@@ -155,17 +155,18 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         slideModelsPen.add(new SlideModel("https://scontent.fmnl4-6.fna.fbcdn.net/v/t1.6435-9/152870297_452379642840143_6168932033046385146_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=dd63ad&_nc_eui2=AeH3xy6H2w5nMahjeAWp3mo2yeehT7zoKI_J56FPvOgojyj0HcMa7CpYtLY_-Qro-KnI4svoKZOPAckwaskWTOeI&_nc_ohc=-u-duVFFfIEAX_56BmV&_nc_ht=scontent.fmnl4-6.fna&oh=00_AfDHM8l9SjGgGBUgFpvNuywJH-0ChN93zpoi0AiHjhK2-g&oe=65AB5EE4"));
         slideModelsPen.add(new SlideModel("https://media.karousell.com/media/photos/products/2023/4/30/baybayin_ballpen_1682819470_1b877956.jpg"));
         ImgSliderPen.setImageList(slideModelsPen,true);
+        ImgSliderPen.startSliding(5000);
 
         ImageSlider ImgSliderShirtsPants = findViewById(R.id.slider_shirts);
         List<SlideModel> slideModelsShirtsPants = new ArrayList<>();
         //slideModelsShirtsPants.add(new SlideModel(R.drawable.newui_trivia_board));
         slideModelsShirtsPants.add(new SlideModel("https://down-ph.img.susercontent.com/file/ph-11134207-7r990-llz7t1tmy3n59f"));
         slideModelsShirtsPants.add(new SlideModel("https://cdn.shopify.com/s/files/1/0038/2382/9090/files/BLACKCREWNECK2.jpg?v=1700714272&width=533"));
-        slideModelsShirtsPants.add(new SlideModel("https://scontent.fmnl9-4.fna.fbcdn.net/v/t39.30808-6/380416426_175107105620867_4320911451690217036_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=c42490&_nc_eui2=AeEetQt7zYTttnTMRTrNoDDo_up6INdHt-j-6nog10e36J1Kngb5Cpbmj3MA_dpty0kvHM2gu5eZXV8BKrY4ARWl&_nc_ohc=Iu9cbNKsUkoAX8uC1Id&_nc_ht=scontent.fmnl9-4.fna&oh=00_AfADeP-JvYZPTPUJaCB06AWWr_KcRVWVg-T2U6oMYwSbuA&oe=658A1F4C"));
         slideModelsShirtsPants.add(new SlideModel("https://scontent.fmnl8-3.fna.fbcdn.net/v/t1.6435-9/76728939_2666399476769697_7376293180519481344_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=dd63ad&_nc_eui2=AeGJzrWbH3uP-hP1HCeZ0aP2urvlqXprKpK6u-WpemsqkntrMRJrWKFYaqHBO67Ri2UtIdAREYDqNnqJvhRqZQyb&_nc_ohc=oQvfGmMR2jcAX_UvZQQ&_nc_ht=scontent.fmnl8-3.fna&oh=00_AfDIhIArcRYEmwwcz7AcBZqkwWRWnDwh-62fHHzGSlFZWw&oe=65AB6A82"));
         slideModelsShirtsPants.add(new SlideModel("https://down-ph.img.susercontent.com/file/612ad46cee0d14ef45acce17c27fb55d"));
         slideModelsShirtsPants.add(new SlideModel("https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/77265463_2666399333436378_4880344662402924544_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=dd63ad&_nc_eui2=AeEZCV3vImj-SedkPt5emmsuJhM_p50mxDomEz-nnSbEOkfZAYYqGrCC9qYG7XOOX_ab9uRmehZB7z7JsInO_V_o&_nc_ohc=H8WDLtfgYvMAX-Y5mUF&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfCeKPGcDyHLEp2lbZcYrWlVLUVMmWifisKu0aKnUEKx6w&oe=65AB65C6"));
         ImgSliderShirtsPants.setImageList(slideModelsShirtsPants,true);
+        ImgSliderShirtsPants.startSliding(7000);
 
         ImageSlider ImgSliderBags = findViewById(R.id.slider_bags);
         List<SlideModel> slideModelsBags = new ArrayList<>();
@@ -176,37 +177,41 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         slideModelsBags.add(new SlideModel("https://www.wearlegazy.com/cdn/shop/files/Bayong2.0-Karamelo_1.jpg?crop=center&height=533&v=1696313154&width=800"));
         slideModelsBags.add(new SlideModel("https://www.merchiful.com/cdn/shop/products/1_d94fa8c0-442b-44c1-bfb4-8435240c6d23.jpg?v=1661933105"));
         ImgSliderBags.setImageList(slideModelsBags,true);
+        ImgSliderBags.startSliding(8000);
 
         ImageSlider ImgSliderStickers = findViewById(R.id.slider_stickers);
         List<SlideModel> slideModelsStickers = new ArrayList<>();
         //slideModelsStickers.add(new SlideModel(R.drawable.newui_trivia_board));
-
         slideModelsStickers.add(new SlideModel("https://down-ph.img.susercontent.com/file/bfec2b0f6e373b3bd356c68c1d48efe0"));
         slideModelsStickers.add(new SlideModel("https://down-ph.img.susercontent.com/file/020910927d8eb7cb52f70d5f73b5e328"));
         slideModelsStickers.add(new SlideModel("https://down-ph.img.susercontent.com/file/ph-11134201-7qul2-lkj1abovtfeme9"));
         slideModelsStickers.add(new SlideModel("https://down-ph.img.susercontent.com/file/e6a400fe257a5e90cb1856c83027b5b1"));
         slideModelsStickers.add(new SlideModel("https://www.sarapnow.com/cdn/shop/products/mie-makes-art-collectibles-mie-makes-mahal-kita-baybayin-sticker-i-love-you-sticker-tagalog-baybayin-alibata-filipino-philippines-laptop-sticker-hydroflask-waterbottle-30020876533847.jpg?v=1675678739&width=2000"));
         ImgSliderStickers.setImageList(slideModelsStickers,true);
+        ImgSliderStickers.startSliding(6000);
 
         ImageSlider ImgSliderAccessories = findViewById(R.id.slider_accessories);
         List<SlideModel> slideModelsAccessories = new ArrayList<>();
         //slideModelsAccessories.add(new SlideModel(R.drawable.newui_trivia_board));
         slideModelsAccessories.add(new SlideModel("https://down-ph.img.susercontent.com/file/e9868c68965addfc6a9e2a9e42345c59"));
         slideModelsAccessories.add(new SlideModel("https://down-ph.img.susercontent.com/file/503d1df3f6d4cb350d350edd1ea59015"));
-        slideModelsAccessories.add(new SlideModel("https://scontent.fmnl9-4.fna.fbcdn.net/v/t39.30808-6/405914925_816984583776706_9156451093184867159_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=c42490&_nc_eui2=AeFguJBiH1vDX6u3dA5sJAgIEEv2YTQfRwYQS_ZhNB9HBpeniqDLQBz0i3X9vgKWhAsQc-dMu672z4Klx2GRElSV&_nc_ohc=jNbjI4dPYVgAX8BN4N5&_nc_ht=scontent.fmnl9-4.fna&oh=00_AfC1IYXgXpwY5fdUrDHDIVQZSu9Am6T8slVKXTHaE8TObA&oe=6589BAC4"));
         slideModelsAccessories.add(new SlideModel("https://down-ph.img.susercontent.com/file/1d89367552fb1bc9a449c32da43f18da"));
         slideModelsAccessories.add(new SlideModel("https://down-ph.img.susercontent.com/file/d45d084929e07d19963943f437c84170"));
         slideModelsAccessories.add(new SlideModel("https://down-ph.img.susercontent.com/file/ph-11134201-7r98o-lkwd4mbvl6ps33"));
         ImgSliderAccessories.setImageList(slideModelsAccessories,true);
+        ImgSliderAccessories.startSliding(8000);
 
         ImageSlider ImgSliderCalligraphy = findViewById(R.id.slider_calligraphy);
         List<SlideModel> slideModelsCalligraphy = new ArrayList<>();
         //slideModelsCalligraphy.add(new SlideModel(R.drawable.newui_trivia_board));
         slideModelsCalligraphy.add(new SlideModel("https://imagevars.gulfnews.com/2019/07/31/190731-baybayin_16c46bc5266_large.jpg"));
+        slideModelsCalligraphy.add(new SlideModel("https://drive.google.com/uc?id=1qm7AsXolvilst4zROJ1h9s6q0UCFKx7V"));
         slideModelsCalligraphy.add(new SlideModel("https://images.sbs.com.au/dims4/default/de6145e/2147483647/strip/true/crop/3264x1836+0+38/resize/1280x720!/quality/90/?url=http%3A%2F%2Fsbs-au-brightspot.s3.amazonaws.com%2Fdrupal%2Fyourlanguage%2Fpublic%2Fbaybayin1_1.jpg"));
         slideModelsCalligraphy.add(new SlideModel("https://www.baybayin.com/uploads/3/1/2/8/3128279/3903701_orig.jpg"));
+        slideModelsCalligraphy.add(new SlideModel("https://drive.google.com/uc?id=1TH9305yAJtlLEThLrTDkOOL2owL32vr1"));
         slideModelsCalligraphy.add(new SlideModel("https://64.media.tumblr.com/9b9455dd3f32c902eaf8fe11b9b0c570/tumblr_mlsn29B75H1qzeh9bo1_640.jpg"));
         ImgSliderCalligraphy.setImageList(slideModelsCalligraphy,true);
+        ImgSliderCalligraphy.startSliding(5000);
 
         ImageSlider ImgSliderTattos = findViewById(R.id.slider_tattoos);
         List<SlideModel> slideModelsTattoos = new ArrayList<>();
@@ -217,38 +222,40 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         slideModelsTattoos.add(new SlideModel("https://sa.kapamilya.com/absnews/abscbnnews/media/ancx/style/2021/02/3roel.jpg"));
         slideModelsTattoos.add(new SlideModel("https://images.summitmedia-digital.com/preview/images/2022/04/25/140774981_850965592413618_2387209040066158877_n-(1).jpg"));
         ImgSliderTattos.setImageList(slideModelsTattoos,true);
+        ImgSliderTattos.startSliding(7000);
 
         ImageSlider ImgSliderEngraving = findViewById(R.id.slider_engraving);
         List<SlideModel> slideModelsEngraving = new ArrayList<>();
         //slideModelsEngraving.add(new SlideModel(R.drawable.newui_trivia_board));
         slideModelsEngraving.add(new SlideModel("https://i.etsystatic.com/40106744/r/il/493daf/4539009521/il_300x300.4539009521_fqxc.jpg"));
         slideModelsEngraving.add(new SlideModel("https://i.etsystatic.com/16232105/r/il/6a8eb1/4415865742/il_570xN.4415865742_1oq6.jpg"));
-        slideModelsEngraving.add(new SlideModel("https://scontent.fmnl9-4.fna.fbcdn.net/v/t39.30808-6/411872572_1062332465014614_8064892058797209073_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=c42490&_nc_eui2=AeHoYw_4R1A7MEF53SE5lQVcBy63GFZtTCEHLrcYVm1MIeiebaT2dfcIjnVy3Nrq8DhfxVJDR-Jj2rAK2N92jmU6&_nc_ohc=cyp9_gOC7c8AX98jL7R&_nc_oc=AQnWBaPhtB6qW4ND4mFniDCsFxmUyHb8I7QQuf0_6t59nf41Wb5nszVW8jTGTgj30ulx4mvZtg8hujFcBUyHo50a&_nc_ht=scontent.fmnl9-4.fna&oh=00_AfCKUi5bsGGaRtLlby9xGgfJHPNGeC2rjAqi9sn7B-6b2A&oe=6589B1BF"));
         slideModelsEngraving.add(new SlideModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGDTCyT4k-lYtbU6NE9zIHza4uxZC_V_T34g&usqp=CAU"));
         slideModelsEngraving.add(new SlideModel("https://obs.line-scdn.net/0hlDtP8A1aM2tJKRsBLUlMPHN_MAR6RSBoLR9idBZHbV8wGCE6fU16XmUhZQxsGnQ1Jx90D2ktKFo3HHw1dEx6/w644"));
         slideModelsEngraving.add(new SlideModel("https://64.media.tumblr.com/8f5e914da42439cf484edf70ab083df4/tumblr_n6iix9pIWm1s6239co1_640.jpg"));
         ImgSliderEngraving.setImageList(slideModelsEngraving,true);
+        ImgSliderEngraving.startSliding(9000);
 
         ImageSlider ImgSliderSignsBrands = findViewById(R.id.slider_signsbrands);
         List<SlideModel> slideModelsSignsBrands = new ArrayList<>();
         //slideModelsSignsBrands.add(new SlideModel(R.drawable.newui_trivia_board));
-        slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-2.fna.fbcdn.net/v/t39.30808-6/307123911_391146399889370_701788119659488263_n.png?_nc_cat=107&ccb=1-7&_nc_sid=783fdb&_nc_eui2=AeGoIY4OnVIM4j1e33cq7uK2HPdy82Lbq4Ec93LzYturgftjE2MYSH3wgLJ_vYYrQKfmxTNfVTj9xlnOpcX2imFX&_nc_ohc=cbOuws64CPcAX-ZCBPV&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfA-xDgwcdtrUfPRBiIQfTPkbHhqWJjFqjoWlFhlgdJ8-A&oe=6588E072"));
+        slideModelsSignsBrands.add(new SlideModel("https://drive.google.com/uc?id=19KNzP-sNj2uWmJzmMli51lAmQO7cXb7d"));
         slideModelsSignsBrands.add(new SlideModel("https://images.summitmedia-digital.com/esquiremagph/images/2018/04/27/BAYBAYIN-LOGOS_cover_APR2018.jpg"));
-        slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl9-3.fna.fbcdn.net/v/t39.30808-6/411476393_10161025042199378_8819786373874244382_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=c42490&_nc_eui2=AeGV_Td9fzGcHD-BPTcra0G_CmOzvLq1IqwKY7O8urUirF2HU0frJ5wq-7suFIRW_DHHfwxy0cHAb1U2KF65xreP&_nc_ohc=a7_axazZmosAX_z4yQI&_nc_ht=scontent.fmnl9-3.fna&oh=00_AfC3nBopkjCEDfEXutL0-RY2LdxR2frONKr_gXoWJIgMSA&oe=6589CDE6"));
-        slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl9-2.fna.fbcdn.net/v/t39.30808-6/412085999_24539392449010081_7835668453867189107_n.jpg?stp=cp6_dst-jpg&_nc_cat=103&ccb=1-7&_nc_sid=c42490&_nc_eui2=AeEVghld-0-DwkVcx8jso6fHPihv0GZsCkM-KG_QZmwKQy0vZnjkUc_IobZwBWI4cIE1LBCwXm5FxpcrKwh7PIGS&_nc_ohc=_-KjqpRqclgAX-iaa-d&_nc_oc=AQk26VgQwcnBqXJV-w4lpl8v0ixYGbJglBX_L1jZrpx3hk_fTmCEXNy2Tl9yiCnPDpjAh9wg33Cn53uopnHVj9Mq&_nc_ht=scontent.fmnl9-2.fna&oh=00_AfBQJjpzHiJbAtmn0FZfb2QStRkdp7kBG5jWYHCpQNBH4w&oe=658AC773"));
-        slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl9-1.fna.fbcdn.net/v/t39.30808-6/382802563_6863566853664149_8104842467372011823_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=c42490&_nc_eui2=AeH9Cq4JGuURAaVdiaXzpyZ7Iow-aaUYuhYijD5ppRi6FgQcfF7r_X2SousrhYsO0_dNuOuzT9ZdfGdl-k9hJWAx&_nc_ohc=zxc7_KXH1yYAX9oZGCI&_nc_ht=scontent.fmnl9-1.fna&oh=00_AfDRavR3Twdr1DV6gEods8GJUyGSrGrZUQgU9W3qvuU1pw&oe=65897E05"));
+        slideModelsSignsBrands.add(new SlideModel("https://drive.google.com/uc?id=1YkraMhHg4DGRZhlMHrMLKPIvzW9LBJ0Y"));
+        slideModelsSignsBrands.add(new SlideModel("https://drive.google.com/uc?id=1yvV5jcUtoFJBQSpFKpu-5OGdjPfd15Tl"));
+        slideModelsSignsBrands.add(new SlideModel("https://drive.google.com/uc?id=1NsilIeyBRhW3ujZnYKNLAA7xWNntPf9D"));
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/139730593_793319777920719_8822489586794100063_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeGupsxSmR-63zNClPK81T-q6G5Va_2Z8r3oblVr_ZnyveUmr-gIicw3CUJ1B81EXV_D7j_FAY84RA_IfyYUvbkd&_nc_ohc=I3G1uG11gWEAX_DnhuK&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfAGcoGWANDT77wk_sYp0vjzZX9qGUulOg32Pumtpl6tKg&oe=65AB5B8F"));
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/139354249_792617861324244_2801931658923800392_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeE4t812RMZAfG9uvh_1xdJj4X_Nxm_BNfLhf83Gb8E18pNYx0OkWBrkJtTxi4pEkM_9qq-XBnA_-1wk5SQY9dIl&_nc_ohc=ORqacaSIpAYAX8e2xbx&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfC6EXyki4-EEcTicTv1usevDq6-sH5TBkaqqbenZFkhWw&oe=65AB7266"));
-        slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl9-4.fna.fbcdn.net/v/t39.30808-6/412096228_24539392165676776_7486066917428416565_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=c42490&_nc_eui2=AeHzeu_Cn4JRR98Ouw4ehDcUVoSknx7eJCZWhKSfHt4kJjuQ8tUMIYkSfurNMC7ShWxyjkSdbt5tiqgbP6jEhaWd&_nc_ohc=Vua9zWjaTiQAX9r-AA0&_nc_oc=AQnFwQLkM4pA0m4CmAU1zaUS-MdW3KtVO1qcdXAaCwr2jSJ75AneMkaGwmK--Jpl50oaQBQPyR8rqSP4-KMkAzxS&_nc_ht=scontent.fmnl9-4.fna&oh=00_AfDBuANn5HYqU_vLpcGkiXFk_qN1X4b3KI71b_M2pEk1zg&oe=6589B821"));
+        slideModelsSignsBrands.add(new SlideModel("https://drive.google.com/uc?id=1PNHVHr0A4g8gMHH2ajdZgxF4qQ4YCnKi"));
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-3.fna.fbcdn.net/v/t1.6435-9/101007634_636670963585602_1686671375541993472_n.png?_nc_cat=104&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeH3kga--6TMsHrvgTbD2Y96YF8SyJoK-yhgXxLImgr7KO1ivrzdeZn7BubKqfx73uSKW0a3T2fInzuN-W9tG0RP&_nc_ohc=J4v1_B5hr-wAX8wiUov&_nc_ht=scontent.fmnl8-3.fna&oh=00_AfCzlj2PPjassJgVi-Yg2-A-WrMOShzZxpjRfF6RydjetA&oe=65AB4334"));
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-1.fna.fbcdn.net/v/t1.6435-9/89316375_586388408613858_6043951057799741440_n.png?_nc_cat=108&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeHXxZ2SXPS51p-KBUCSYGpRSDFn6wSlO2ZIMWfrBKU7ZmB8XACUp2zDuj4gkRsiHgzJjOQwia0jXiJLQ1LnCoyQ&_nc_ohc=LoBpo-euRicAX8OVCHX&_nc_ht=scontent.fmnl8-1.fna&oh=00_AfAp6dyAuYBZexeXkh_sDkgPWZ2kqD6PRZv8umE4Fp9bBw&oe=65AB6035"));
-        slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl9-4.fna.fbcdn.net/v/t39.30808-6/411436082_24539392155676777_8975551428659653381_n.jpg?stp=cp6_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=c42490&_nc_eui2=AeF9CInGLQJf9BzhsOq6NEnrneY7dcQTma6d5jt1xBOZruqd_Bv8IZGzxeqVvCMPqwNcgjhILKaGwNo_qPXNKEED&_nc_ohc=YbHEhUyM3wUAX9XcjpA&_nc_ht=scontent.fmnl9-4.fna&oh=00_AfCdmp3WXRyMyY4BED14VyPFofDINyRGcUb08EuPqukZiA&oe=658B2340"));
+        slideModelsSignsBrands.add(new SlideModel("https://drive.google.com/uc?id=11rwyGpGXtGDzOmzUB8NDeb2j8jYsaTmO"));
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-3.fna.fbcdn.net/v/t1.6435-9/55849440_378574346061933_1030878041795985408_n.png?_nc_cat=102&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeEtqavk0q9yWN-rk0A7dC8ufJZ3M7tu-ol8lnczu276ieQz2Htwee37J714voLs08pkZGsEVKAwH6jVcFP_68Me&_nc_ohc=gogpeVCMuBUAX_1ryv4&_nc_ht=scontent.fmnl8-3.fna&oh=00_AfAq7cM1jl2u7O9FPH0nQFWv7GZ0gzP7KbuXf11Q6zC8LQ&oe=65AB435C"));
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-1.fna.fbcdn.net/v/t1.6435-9/51794298_358801374705897_6375106294885384192_n.png?_nc_cat=108&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeElrxzKkoi3mzwmdEBLRoqYuRn89Xkd1m25Gfz1eR3WbbWqW8v3zx9O2uadqTGa8ZEVA_QC1BXw75d-nwu1__Ro&_nc_ohc=G-3SXCn8JDwAX-4GChG&_nc_ht=scontent.fmnl8-1.fna&oh=00_AfC0QrsMaNXo2oDINEes0FVivsEGKK2qkgtnw9nEWlSbXg&oe=65AB52E4"));
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-1.fna.fbcdn.net/v/t1.6435-9/50282465_349042802348421_7232460820335034368_n.png?_nc_cat=100&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeHfJx0gc_lVscf9PYB_HCqxNU9Hq2dVjiM1T0erZ1WOI0j_M-45gPj0kqjZ7uKZdstQSLouQCbp7twk9jx5AvTS&_nc_ohc=434ASQeGXG4AX9GF5GX&_nc_ht=scontent.fmnl8-1.fna&oh=00_AfCIU33yR9-IHSvRwhrHmPF2zEfns92ts-F7jvP0jA3_kw&oe=65AB6134"));
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-1.fna.fbcdn.net/v/t1.6435-9/49612671_344780042774697_2430893846779920384_n.png?_nc_cat=110&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeE9gXsDLflH7S999vgVWq4BHDstJHXvh50cOy0kde-HnXWFh7hrGlUzVCLssgdlJbtsIQEvpkYjs1FrNaXfuOOi&_nc_ohc=k9us1iG9uP4AX-_ELtj&_nc_ht=scontent.fmnl8-1.fna&oh=00_AfB8ckqdQnCXa_MRLiPY8cQBiANNHmQ-r039jlreYSufrg&oe=65AB4221"));
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/37568704_259738964612139_2111720928499990528_n.png?_nc_cat=109&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeHETWfNUiAivI8r4pg4_ko3Yh7ZhbyQYb9iHtmFvJBhv8Q9OdzbTU70JDb-qoFqnUoJj0I6VP9hxmX1yhEY7vwA&_nc_ohc=4J-Ey8nx8wwAX-5__WW&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfAxaDtyztA6jXB6u3MPLYPy-jku3143uzJYk5UATcQwpg&oe=65AB5FF7"));
         ImgSliderSignsBrands.setImageList(slideModelsSignsBrands,true);
+        ImgSliderSignsBrands.startSliding(7000);
 
 
     }
