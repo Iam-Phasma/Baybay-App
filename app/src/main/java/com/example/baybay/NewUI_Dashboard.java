@@ -59,6 +59,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
     SharedPreferences preferences;
     String versionName;
     String link;
+    private TextView DLLinkQuestion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -413,4 +414,29 @@ public class NewUI_Dashboard extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        Dialog dlg = new Dialog(NewUI_Dashboard.this, R.style.PopupDialog);
+        dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
+        dlg.setContentView(R.layout.activity_newui_download_link_prompt);
+        dlg.show();
+
+        View dialogWindowView = dlg.getWindow().getDecorView();
+        Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+
+        DLLinkQuestion = dlg.findViewById(R.id.tv_dl_link_question);
+        DLLinkQuestion.setText("Are you sure you want to exit the application?");
+        DLLinkQuestion.setTextSize(19);
+
+        ImageButton BtnYesExit = dlg.findViewById(R.id.imgbtn_yes_exit);
+        BtnYesExit.setOnClickListener(v -> {
+            dlg.dismiss();
+            finish();
+        });
+
+        ImageButton BtnNoExit = dlg.findViewById(R.id.imgbtn_no_exit);
+        BtnNoExit.setOnClickListener(v -> {
+            dlg.dismiss();
+        });
+    }
 }
