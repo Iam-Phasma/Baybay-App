@@ -3,19 +3,27 @@ package com.example.baybay;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -49,6 +57,7 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
     private NestedScrollView NsvMain;
     private ImageView ImgviewPens, ImgviewShirtsPants, ImgviewBags, ImgviewStickers, ImgviewAccessories, ImgviewCalligraphy, ImgviewTattoos, ImgviewEngraving, ImgviewSignsBrands;
     private ImageButton ImgbtnTagPens, ImgbtnTagShirtsPants, ImgbtnTagBags, ImgbtnTagStickers, ImgbtnTagAccessories, ImgbtnTagCalligraphy, ImgbtnTagTattoos, ImgbtnTagEngraving, ImgbtnTagSignsBrands;
+    private TextView DLLinkQuestion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,12 +93,16 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
 
 
 
+
+
+
+        CheckInternet();
+
         ImgbtnArtsCratsExit = findViewById(R.id.imgbtn_artscrafts_exit);
         ImgbtnArtsCratsExit.setOnClickListener(v -> {
             ClickSoundEffect();
             finish();
         });
-
 
         NsvMain = findViewById(R.id.ncv_main);
 
@@ -256,8 +269,53 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/37568704_259738964612139_2111720928499990528_n.png?_nc_cat=109&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeHETWfNUiAivI8r4pg4_ko3Yh7ZhbyQYb9iHtmFvJBhv8Q9OdzbTU70JDb-qoFqnUoJj0I6VP9hxmX1yhEY7vwA&_nc_ohc=4J-Ey8nx8wwAX-5__WW&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfAxaDtyztA6jXB6u3MPLYPy-jku3143uzJYk5UATcQwpg&oe=65AB5FF7"));
         ImgSliderSignsBrands.setImageList(slideModelsSignsBrands,true);
         ImgSliderSignsBrands.startSliding(7000);
+    }
 
+    private void CheckInternet(){
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            if (isConnected()) {
+            } else {
+                Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show();
+                connectionPrompt();
+            }
+        }, 1400);
+    }
+    private void connectionPrompt(){
+        Dialog dlg = new Dialog(NewUI_ArtsCrafts.this, R.style.PopupDialog);
+        dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
+        dlg.setContentView(R.layout.activity_newui_download_link_prompt);
+        dlg.show();
 
+        View dialogWindowView = dlg.getWindow().getDecorView();
+        Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+
+        DLLinkQuestion = dlg.findViewById(R.id.tv_dl_link_question);
+        DLLinkQuestion.setText("Oops! The internet is not available. Some images may not load as expected. Proceed anyway?");
+        DLLinkQuestion.setTextSize(15);
+
+        ImageButton BtnYesExit = dlg.findViewById(R.id.imgbtn_yes_exit);
+        BtnYesExit.setOnClickListener(v -> {
+            dlg.dismiss();
+            ClickSoundEffect();
+        });
+
+        ImageButton BtnNoExit = dlg.findViewById(R.id.imgbtn_no_exit);
+        BtnNoExit.setOnClickListener(v -> {
+            dlg.dismiss();
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                ImgbtnArtsCratsExit.performClick();
+            }, 500);
+        });
+
+    }
+
+    private boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+            return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        }
+        return false;
     }
 
     void ClickSoundEffect() {
