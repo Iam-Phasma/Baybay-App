@@ -1,6 +1,7 @@
 package com.example.baybay;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -14,6 +15,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -21,11 +24,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -55,6 +61,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
     ImageButton ImgbtnDashboardMenu, ImgbtnTrivia_Refresh, ImgbtnLearn, PlayGames, Community, ArtsCrafts;
     TextView TvTrivia;
+    TextView TvTextDashboard;
     private String currentText = "";
     SharedPreferences preferences;
     String versionName;
@@ -110,7 +117,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         setRandomTextWithAnimation(TvTrivia);
 
-
         ImgbtnTrivia_Refresh.setOnClickListener(v -> {
             animateButtonTrivia(ImgbtnTrivia_Refresh);
             setRandomTextWithAnimation(TvTrivia);
@@ -126,93 +132,100 @@ public class NewUI_Dashboard extends AppCompatActivity {
             try {
                 ClickSoundEffect();
                 ImgbtnDashboardMenu.setEnabled(false);
+                openNewDialogSettings();
 
-                Dialog dlg;
-                dlg = new Dialog(NewUI_Dashboard.this, R.style.PopupDialog);
-                dlg.setCanceledOnTouchOutside(false);  //disable dialog dismiss when touch outside
-                dlg.setContentView(R.layout.activity_new_ui_sound);
-                dlg.show();
-
-                View dialogWindowView = dlg.getWindow().getDecorView();
-                Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
-
-                // Access the button from the dialog's content view
-                ImageButton ImgBtnSoundBg = dlg.findViewById(R.id.cb_Background);
-                ImageButton ImgBtnSoundFx = dlg.findViewById(R.id.cb_SEffects);
-                ImageButton ImgbtnSoundExit = dlg.findViewById(R.id.imgbtn_sound_exit);
-
-                //Initialize buttons icon when dialog is opened
-                if (Z_SoundManager.isBgon[0]) {
-                    ImgBtnSoundBg.setImageResource(R.drawable.cb_soundon);
-                } else {
-                    ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
-                }
-
-                if (Z_SoundManager.isSoundFx[0]) {
-                    ImgBtnSoundFx.setImageResource(R.drawable.cb_soundon);
-                } else {
-                    ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
-                }
-
-                ImgBtnSoundBg.setOnClickListener(v1 -> {
-                    ClickSoundEffect();
-                    Z_SoundManager.isBgon[0] = !Z_SoundManager.isBgon[0];  // Toggle the value of isBgon
-
-                    onStop();
-
-                    // Save Background Music state
-                    SharedPreferences.Editor editorBg = preferences.edit();
-                    editorBg.putBoolean("isBgon", Z_SoundManager.isBgon[0]);
-                    editorBg.apply();
-
-                    // Initialize the background music toggle button drawable
-                    if (Z_SoundManager.isBgon[0]) {
-                        ImgBtnSoundBg.setImageResource(R.drawable.cb_soundon);
-                    } else {
-                        ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
-                    }
-
-                    callMusic();
-                });
-
-                ImgBtnSoundFx.setOnClickListener(v12 -> {
-                    ClickSoundEffect();
-                    Z_SoundManager.isSoundFx[0] = !Z_SoundManager.isSoundFx[0];  // Toggle the value of isSFx
-
-                    // Save Background Music state
-                    SharedPreferences.Editor editorSFXicon = preferences.edit();
-                    editorSFXicon.putBoolean("isSFx", Z_SoundManager.isSoundFx[0]);
-                    editorSFXicon.apply();
-
-                    // Initialize the background music toggle button drawable
-                    if (Z_SoundManager.isSoundFx[0]) {
-                        ImgBtnSoundFx.setImageResource(R.drawable.cb_soundon);
-                    } else {
-                        ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
-                    }
-                });
-
-                ImgbtnSoundExit.setOnClickListener(v13 -> {
-                    ClickSoundEffect();
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
                     ImgbtnDashboardMenu.setEnabled(true);
-                    dlg.dismiss();
-                });
+                }, 1000);
 
-                //Prevents back press on sound dialog menu
-                dlg.setOnKeyListener((dialog, keyCode, event) -> {
-                    return keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP; // Consume the back button press event
-                });
-
-                //Set app version
-                TextView TvAppVersion = dlg.findViewById(R.id.tv_appversion);
-                versionName = getAppVersionName();
-                TvAppVersion.setText("Version: " + versionName);
-
-                TextView TvCheckUpdate = dlg.findViewById(R.id.tv_checkupdate);
-                TvCheckUpdate.setOnClickListener(v1 -> {
-                    link = "https://baybay-release-web-app.pages.dev/";
-                    gotoLink(link);
-                });
+//                ImgbtnDashboardMenu.setEnabled(false);
+//
+//                Dialog dlg;
+//                dlg = new Dialog(NewUI_Dashboard.this, R.style.PopupDialog);
+//                dlg.setCanceledOnTouchOutside(false);  //disable dialog dismiss when touch outside
+//                dlg.setContentView(R.layout.activity_new_ui_sound);
+//                dlg.show();
+//
+//                View dialogWindowView = dlg.getWindow().getDecorView();
+//                Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+//
+//                // Access the button from the dialog's content view
+//                ImageButton ImgBtnSoundBg = dlg.findViewById(R.id.cb_Background);
+//                ImageButton ImgBtnSoundFx = dlg.findViewById(R.id.cb_SEffects);
+//                ImageButton ImgbtnSoundExit = dlg.findViewById(R.id.imgbtn_sound_exit);
+//
+//                //Initialize buttons icon when dialog is opened
+//                if (Z_SoundManager.isBgon[0]) {
+//                    ImgBtnSoundBg.setImageResource(R.drawable.cb_soundon);
+//                } else {
+//                    ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
+//                }
+//
+//                if (Z_SoundManager.isSoundFx[0]) {
+//                    ImgBtnSoundFx.setImageResource(R.drawable.cb_soundon);
+//                } else {
+//                    ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
+//                }
+//
+//                ImgBtnSoundBg.setOnClickListener(v1 -> {
+//                    ClickSoundEffect();
+//                    Z_SoundManager.isBgon[0] = !Z_SoundManager.isBgon[0];  // Toggle the value of isBgon
+//
+//                    onStop();
+//
+//                    // Save Background Music state
+//                    SharedPreferences.Editor editorBg = preferences.edit();
+//                    editorBg.putBoolean("isBgon", Z_SoundManager.isBgon[0]);
+//                    editorBg.apply();
+//
+//                    // Initialize the background music toggle button drawable
+//                    if (Z_SoundManager.isBgon[0]) {
+//                        ImgBtnSoundBg.setImageResource(R.drawable.cb_soundon);
+//                    } else {
+//                        ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
+//                    }
+//
+//                    callMusic();
+//                });
+//
+//                ImgBtnSoundFx.setOnClickListener(v12 -> {
+//                    ClickSoundEffect();
+//                    Z_SoundManager.isSoundFx[0] = !Z_SoundManager.isSoundFx[0];  // Toggle the value of isSFx
+//
+//                    // Save Background Music state
+//                    SharedPreferences.Editor editorSFXicon = preferences.edit();
+//                    editorSFXicon.putBoolean("isSFx", Z_SoundManager.isSoundFx[0]);
+//                    editorSFXicon.apply();
+//
+//                    // Initialize the background music toggle button drawable
+//                    if (Z_SoundManager.isSoundFx[0]) {
+//                        ImgBtnSoundFx.setImageResource(R.drawable.cb_soundon);
+//                    } else {
+//                        ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
+//                    }
+//                });
+//
+//                ImgbtnSoundExit.setOnClickListener(v13 -> {
+//                    ClickSoundEffect();
+//                    ImgbtnDashboardMenu.setEnabled(true);
+//                    dlg.dismiss();
+//                });
+//
+//                //Prevents back press on sound dialog menu
+//                dlg.setOnKeyListener((dialog, keyCode, event) -> {
+//                    return keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP; // Consume the back button press event
+//                });
+//
+//                //Set app version
+//                TextView TvAppVersion = dlg.findViewById(R.id.tv_appversion);
+//                versionName = getAppVersionName();
+//                TvAppVersion.setText("Version: " + versionName);
+//
+//                TextView TvCheckUpdate = dlg.findViewById(R.id.tv_checkupdate);
+//                TvCheckUpdate.setOnClickListener(v1 -> {
+//                    link = "https://baybay-release-web-app.pages.dev/";
+//                    gotoLink(link);
+//                });
 
 
             } catch (Exception e) {
@@ -412,6 +425,106 @@ public class NewUI_Dashboard extends AppCompatActivity {
             unbindService(connection);
             isBound = false;
         }
+    }
+
+    public void openNewDialogSettings(){
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottomsheetlayout);
+
+        // Access the button from the dialog's content view
+        ImageButton ImgBtnSoundBg = dialog.findViewById(R.id.cb_BackgroundNew);
+        ImageButton ImgBtnSoundFx = dialog.findViewById(R.id.cb_SEffectsNew);
+
+        //Initialize buttons icon when dialog is opened
+        if (Z_SoundManager.isBgon[0]) {
+            ImgBtnSoundBg.setImageResource(R.drawable.cb_soundon);
+        } else {
+            ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
+        }
+
+        if (Z_SoundManager.isSoundFx[0]) {
+            ImgBtnSoundFx.setImageResource(R.drawable.cb_soundon);
+        } else {
+            ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
+        }
+
+        ImgBtnSoundBg.setOnClickListener(v1 -> {
+            ClickSoundEffect();
+            Z_SoundManager.isBgon[0] = !Z_SoundManager.isBgon[0];  // Toggle the value of isBgon
+
+            onStop();
+
+            // Save Background Music state
+            SharedPreferences.Editor editorBg = preferences.edit();
+            editorBg.putBoolean("isBgon", Z_SoundManager.isBgon[0]);
+            editorBg.apply();
+
+            // Initialize the background music toggle button drawable
+            if (Z_SoundManager.isBgon[0]) {
+                ImgBtnSoundBg.setImageResource(R.drawable.cb_soundon);
+            } else {
+                ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
+            }
+
+            callMusic();
+        });
+
+        ImgBtnSoundFx.setOnClickListener(v12 -> {
+            ClickSoundEffect();
+            Z_SoundManager.isSoundFx[0] = !Z_SoundManager.isSoundFx[0];  // Toggle the value of isSFx
+
+            // Save Background Music state
+            SharedPreferences.Editor editorSFXicon = preferences.edit();
+            editorSFXicon.putBoolean("isSFx", Z_SoundManager.isSoundFx[0]);
+            editorSFXicon.apply();
+
+            // Initialize the background music toggle button drawable
+            if (Z_SoundManager.isSoundFx[0]) {
+                ImgBtnSoundFx.setImageResource(R.drawable.cb_soundon);
+            } else {
+                ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
+            }
+        });
+
+        //Set app version
+        TextView TvAppVersion = dialog.findViewById(R.id.tv_appversion2);
+        versionName = getAppVersionName();
+        TvAppVersion.setText("App Version: " + versionName);
+
+        ImageButton BtnCheckUpdate = dialog.findViewById(R.id.btn_checkupdate);
+        BtnCheckUpdate.setOnClickListener(v -> {
+            link = "https://baybay-release-web-app.pages.dev/";
+            gotoLink(link);
+        });
+
+        //Prevents back press on sound dialog menu
+        dialog.setOnKeyListener((dialogInterface, keyCode, event) -> {
+            //return keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP; // Consume the back button press event
+            dialog.dismiss();
+            ImgbtnDashboardMenu.setEnabled(true);
+            return true;
+        });
+
+        //Dismiss dialog when view is clicked
+        ConstraintLayout ConstraintLayoutSettings = dialog.findViewById(R.id.constarintlayout_newsettings);
+        ConstraintLayoutSettings.setOnClickListener(v -> {
+            dialog.dismiss();
+            ImgbtnDashboardMenu.setEnabled(true);
+        });
+
+        //Strikes
+        TextView TvCuriousCritters = dialog.findViewById(R.id.tv_curiouscritters);
+        TvCuriousCritters.setPaintFlags(TvCuriousCritters.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+        TextView TvAlice = dialog.findViewById(R.id.tv_alice);
+        TvAlice.setPaintFlags(TvAlice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
     @Override

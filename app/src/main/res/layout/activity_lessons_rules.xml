@@ -139,12 +139,13 @@
 
             <ImageView
                 android:id="@+id/imgview_practice_question"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="@+id/textView89"
                 app:layout_constraintStart_toEndOf="@+id/textView89"
                 app:layout_constraintTop_toTopOf="@+id/textView89"
-                app:srcCompat="@drawable/newui_tr_araw" />
+                app:srcCompat="@drawable/newui_tr_bata" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"

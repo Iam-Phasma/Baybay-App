@@ -254,7 +254,7 @@ public class NewUI_L4_Rules extends AppCompatActivity {
                     handleQuestionAnswer(userAnswer, "Oras", "Correct!", "Try again.");
                     break;
                 case 12:
-                    handleQuestionAnswer(userAnswer, "Ulam", "Correct!", "Try again.");
+                    handleQuestionAnswer(userAnswer, "Ulan", "Correct!", "Try again.");
                     break;
                 case 13:
                     handleQuestionAnswer(userAnswer, "Dagat", "Correct!", "Try again.");

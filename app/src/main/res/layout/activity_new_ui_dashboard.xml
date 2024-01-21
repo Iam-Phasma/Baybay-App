@@ -20,7 +20,7 @@
         tools:src="@drawable/newui_dashboard_menu" />
 
     <TextView
-        android:id="@+id/textView40"
+        android:id="@+id/tv_textdashboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/amasis_black"
