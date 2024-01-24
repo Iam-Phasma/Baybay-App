@@ -258,7 +258,6 @@
             android:id="@+id/btn_checkupdate"
             android:layout_width="140dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="5dp"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/newui_settings_updatecheck" />
@@ -267,7 +266,6 @@
             android:id="@+id/btn_checkupdate2"
             android:layout_width="140dp"
             android:layout_height="40dp"
-            android:layout_marginStart="5dp"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/newui_settings_attribution" />
