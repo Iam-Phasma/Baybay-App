@@ -263,7 +263,7 @@
             app:srcCompat="@drawable/newui_settings_updatecheck" />
 
         <ImageButton
-            android:id="@+id/btn_checkupdate2"
+            android:id="@+id/btn_attribution"
             android:layout_width="140dp"
             android:layout_height="40dp"
             android:backgroundTint="#00FFFFFF"

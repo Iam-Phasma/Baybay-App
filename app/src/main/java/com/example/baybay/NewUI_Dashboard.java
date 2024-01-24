@@ -35,6 +35,8 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+import es.dmoral.toasty.Toasty;
+
 public class NewUI_Dashboard extends AppCompatActivity {
 
     // NEW BGMUSIC MANAGER
@@ -597,6 +599,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
             Theme_Color.init(this);
             setBackgroundColor();
+        });
+
+        ImageButton BtnAttribution = dialog.findViewById(R.id.btn_attribution);
+        BtnAttribution.setOnClickListener(v -> {
+            Toasty.info(NewUI_Dashboard.this, "Will be added soon. You can view attributes on 'Update site' for now.", Toasty.LENGTH_LONG).show();
         });
 
         ImageButton BtnFeedback = dialog.findViewById(R.id.btn_feedback);
