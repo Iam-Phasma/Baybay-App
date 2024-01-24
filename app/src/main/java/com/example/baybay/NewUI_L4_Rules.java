@@ -80,18 +80,9 @@ public class NewUI_L4_Rules extends AppCompatActivity {
         }
 
         // Set the gradient background color
-        int singleColor = Color.parseColor("#FCF4E7");
-
-        // Create the custom GradientDrawable
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
-
-        // Set the gradient heights
-        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-        gradientDrawable.setGradientCenter(0, 0);
-        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
-
-        // Set the custom GradientDrawable as the window background
-        getWindow().setBackgroundDrawable(gradientDrawable);
+        //int singleColor = Color.parseColor("#FCF4E7");
+        Theme_Color.init(this);
+        setBackgroundColor();
 
 
 
@@ -138,6 +129,21 @@ public class NewUI_L4_Rules extends AppCompatActivity {
                 BtnSubmitPractice.setEnabled(false);
             }
         });
+    }
+
+    private void setBackgroundColor(){
+        int singleColor = Color.parseColor(Theme_Color.getDefaultColor());
+
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
     }
 
     private void RefreshPracticeQuestion(){

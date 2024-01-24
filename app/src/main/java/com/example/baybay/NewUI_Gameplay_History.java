@@ -87,18 +87,9 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
         }
 
         // Set the gradient background color
-        int singleColor = Color.parseColor("#FCF4E7");
-
-        // Create the custom GradientDrawable
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
-
-        // Set the gradient heights
-        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-        gradientDrawable.setGradientCenter(0, 0);
-        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
-
-        // Set the custom GradientDrawable as the window background
-        getWindow().setBackgroundDrawable(gradientDrawable);
+        //int singleColor = Color.parseColor("#FCF4E7");
+        Theme_Color.init(this);
+        setBackgroundColor();
 
 
 
@@ -249,6 +240,21 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
             globalToast = Toasty.info(NewUI_Gameplay_History.this, "It's empty, play some games!", Toast.LENGTH_SHORT);
             globalToast.show();
         }
+    }
+
+    private void setBackgroundColor(){
+        int singleColor = Color.parseColor(Theme_Color.getDefaultColor());
+
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
     }
 
     public static void loadGameplayList(SharedPreferences sharedPreferences) {

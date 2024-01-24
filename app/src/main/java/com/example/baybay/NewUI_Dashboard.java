@@ -25,13 +25,11 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -86,19 +84,9 @@ public class NewUI_Dashboard extends AppCompatActivity {
         }
 
         // Set the gradient background color
-        int singleColor = Color.parseColor("#FCF4E7");
-
-        // Create the custom GradientDrawable
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
-
-        // Set the gradient heights
-        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-        gradientDrawable.setGradientCenter(0, 0);
-        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
-
-        // Set the custom GradientDrawable as the window background
-        getWindow().setBackgroundDrawable(gradientDrawable);
-
+        //int singleColor = Color.parseColor("#FCF4E7");
+        Theme_Color.init(this);
+        setBackgroundColor();
 
 
 
@@ -106,6 +94,8 @@ public class NewUI_Dashboard extends AppCompatActivity {
         preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         Z_SoundManager.isBgon[0] = preferences.getBoolean("isBgon", true);
         Z_SoundManager.isSoundFx[0] = preferences.getBoolean("isSFx", true);
+        //Z_BackgroundMusicService.toPlay = preferences.getString("TO_PLAY_KEY", "Woodland");
+
 
         TvTrivia = findViewById(R.id.tv_trivia);
         ImgbtnTrivia_Refresh = findViewById(R.id.imgbtn_trivia_refresh);
@@ -282,6 +272,21 @@ public class NewUI_Dashboard extends AppCompatActivity {
         });
     }
 
+    private void setBackgroundColor(){
+        int singleColor = Color.parseColor(Theme_Color.getDefaultColor());
+
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
+    }
+
     private void DisableNav(){
         ImgbtnLearn.setEnabled(false);
         PlayGames.setEnabled(false);
@@ -435,6 +440,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
         // Access the button from the dialog's content view
         ImageButton ImgBtnSoundBg = dialog.findViewById(R.id.cb_BackgroundNew);
         ImageButton ImgBtnSoundFx = dialog.findViewById(R.id.cb_SEffectsNew);
+        ImageButton Rb_Woodland = dialog.findViewById(R.id.rb_woodland_fantacy);
+        TextView TvWoodland = dialog.findViewById(R.id.tv_woodlandfantasy);
+        ImageButton Rb_Curious = dialog.findViewById(R.id.rb_curious_critters);
+        TextView TvCurious = dialog.findViewById(R.id.tv_curiouscritters);
+
 
         //Initialize buttons icon when dialog is opened
         if (Z_SoundManager.isBgon[0]) {
@@ -487,6 +497,110 @@ public class NewUI_Dashboard extends AppCompatActivity {
             }
         });
 
+        //Get toPlay Value
+        String currentToPlay = Z_BackgroundMusicService.getToPlay();
+        if ("Woodland".equals(currentToPlay)){
+            Rb_Woodland.setImageResource(R.drawable.newui_settings_radiobutton_on);
+            Rb_Curious.setImageResource(R.drawable.newui_settings_radiobutton_off);
+            Rb_Woodland.setEnabled(true);
+        } else if ("Curious".equals(currentToPlay)) {
+            Rb_Woodland.setImageResource(R.drawable.newui_settings_radiobutton_off);
+            Rb_Curious.setImageResource(R.drawable.newui_settings_radiobutton_on);
+            Rb_Curious.setEnabled(true);
+        }
+
+        Rb_Woodland.setOnClickListener(v -> {
+            Rb_Woodland.setEnabled(false);
+            Rb_Curious.setEnabled(true);
+
+                Rb_Woodland.setImageResource(R.drawable.newui_settings_radiobutton_on);
+                Rb_Curious.setImageResource(R.drawable.newui_settings_radiobutton_off);
+
+                Z_BackgroundMusicService.toPlay = "Woodland";
+                getSharedPreferences("MyPreferences", MODE_PRIVATE)
+                        .edit()
+                        .putString("TO_PLAY_KEY", Z_BackgroundMusicService.toPlay)
+                        .apply();
+
+                if (isBound) {
+                    unbindService(connection);
+                    isBound = false;
+                }
+                callMusic();
+        });
+        TvWoodland.setOnClickListener(v -> {
+            if (Rb_Woodland.isEnabled()){
+                Rb_Woodland.performClick();
+            }
+        });
+
+        Rb_Curious.setOnClickListener(v -> {
+            Rb_Woodland.setEnabled(true);
+            Rb_Curious.setEnabled(false);
+
+                Rb_Woodland.setImageResource(R.drawable.newui_settings_radiobutton_off);
+                Rb_Curious.setImageResource(R.drawable.newui_settings_radiobutton_on);
+
+                Z_BackgroundMusicService.toPlay = "Curious";
+                getSharedPreferences("MyPreferences", MODE_PRIVATE)
+                        .edit()
+                        .putString("TO_PLAY_KEY", Z_BackgroundMusicService.toPlay)
+                        .apply();
+
+                if (isBound) {
+                    unbindService(connection);
+                    isBound = false;
+                }
+                callMusic();
+        });
+        TvCurious.setOnClickListener(v -> {
+            if (Rb_Curious.isEnabled()){
+                Rb_Curious.performClick();
+            }
+        });
+
+        ImageButton RbLatte = dialog.findViewById(R.id.rb_latte);
+        ImageButton RbAlice = dialog.findViewById(R.id.rb_alice);
+
+        String currentThemeColor = Theme_Color.getColorPick();
+        if ("Latte".equals(currentThemeColor)){
+            RbLatte.setImageResource(R.drawable.newui_settings_radiobutton_on);
+            RbAlice.setImageResource(R.drawable.newui_settings_radiobutton_off);
+        } else if ("Alice".equals(currentThemeColor)) {
+            RbLatte.setImageResource(R.drawable.newui_settings_radiobutton_off);
+            RbAlice.setImageResource(R.drawable.newui_settings_radiobutton_on);
+        }
+
+        RbLatte.setOnClickListener(v -> {
+            RbAlice.setImageResource(R.drawable.newui_settings_radiobutton_off);
+            RbLatte.setImageResource(R.drawable.newui_settings_radiobutton_on);
+
+            Theme_Color.colorPick = "Latte";
+            getSharedPreferences("MyPreferences", MODE_PRIVATE)
+                    .edit()
+                    .putString("COLOR_PICK_KEY", Theme_Color.colorPick)
+                    .apply();
+
+            Theme_Color.init(this);
+            setBackgroundColor();
+        });
+
+        RbAlice.setOnClickListener(v -> {
+            RbLatte.setImageResource(R.drawable.newui_settings_radiobutton_off);
+            RbAlice.setImageResource(R.drawable.newui_settings_radiobutton_on);
+
+            Theme_Color.colorPick = "Alice";
+            getSharedPreferences("MyPreferences", MODE_PRIVATE)
+                    .edit()
+                    .putString("COLOR_PICK_KEY", Theme_Color.colorPick)
+                    .apply();
+
+            Theme_Color.init(this);
+            setBackgroundColor();
+        });
+
+
+
         //Set app version
         TextView TvAppVersion = dialog.findViewById(R.id.tv_appversion2);
         versionName = getAppVersionName();
@@ -512,13 +626,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
             dialog.dismiss();
             ImgbtnDashboardMenu.setEnabled(true);
         });
-
-        //Strikes
-        TextView TvCuriousCritters = dialog.findViewById(R.id.tv_curiouscritters);
-        TvCuriousCritters.setPaintFlags(TvCuriousCritters.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-
-        TextView TvAlice = dialog.findViewById(R.id.tv_alice);
-        TvAlice.setPaintFlags(TvAlice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);

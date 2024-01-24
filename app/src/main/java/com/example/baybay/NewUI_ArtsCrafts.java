@@ -77,18 +77,9 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         }
 
         // Set the gradient background color
-        int singleColor = Color.parseColor("#FCF4E7");
-
-        // Create the custom GradientDrawable
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
-
-        // Set the gradient heights
-        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-        gradientDrawable.setGradientCenter(0, 0);
-        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
-
-        // Set the custom GradientDrawable as the window background
-        getWindow().setBackgroundDrawable(gradientDrawable);
+        //int singleColor = Color.parseColor("#FCF4E7");
+        Theme_Color.init(this);
+        setBackgroundColor();
 
 
 
@@ -269,6 +260,21 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         slideModelsSignsBrands.add(new SlideModel("https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/37568704_259738964612139_2111720928499990528_n.png?_nc_cat=109&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeHETWfNUiAivI8r4pg4_ko3Yh7ZhbyQYb9iHtmFvJBhv8Q9OdzbTU70JDb-qoFqnUoJj0I6VP9hxmX1yhEY7vwA&_nc_ohc=4J-Ey8nx8wwAX-5__WW&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfAxaDtyztA6jXB6u3MPLYPy-jku3143uzJYk5UATcQwpg&oe=65AB5FF7"));
         ImgSliderSignsBrands.setImageList(slideModelsSignsBrands,true);
         ImgSliderSignsBrands.startSliding(7000);
+    }
+
+    private void setBackgroundColor(){
+        int singleColor = Color.parseColor(Theme_Color.getDefaultColor());
+
+        // Create the custom GradientDrawable
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{singleColor, singleColor});
+
+        // Set the gradient heights
+        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        gradientDrawable.setGradientCenter(0, 0);
+        gradientDrawable.setBounds(0, 0, getWindow().getDecorView().getWidth(), getWindow().getDecorView().getHeight());
+
+        // Set the custom GradientDrawable as the window background
+        getWindow().setBackgroundDrawable(gradientDrawable);
     }
 
     private void CheckInternet(){
