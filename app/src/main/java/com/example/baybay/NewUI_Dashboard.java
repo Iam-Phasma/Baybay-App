@@ -599,6 +599,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
             setBackgroundColor();
         });
 
+        ImageButton BtnFeedback = dialog.findViewById(R.id.btn_feedback);
+        BtnFeedback.setOnClickListener(v -> {
+            link = "https://forms.gle/ZYJzm5hEwdbUuafs9";
+            gotoLink(link);
+        });
 
 
         //Set app version
