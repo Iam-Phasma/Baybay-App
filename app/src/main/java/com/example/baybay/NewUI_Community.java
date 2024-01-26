@@ -1,6 +1,7 @@
 package com.example.baybay;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Dialog;
 import android.content.ComponentName;
@@ -8,7 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -140,6 +143,17 @@ public class NewUI_Community extends AppCompatActivity {
 
         View dialogWindowView = dlg.getWindow().getDecorView();
         Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+
+        ConstraintLayout Constlayout_download_link = dlg.findViewById(R.id.constlayout_download_link);
+        Drawable background = Constlayout_download_link.getBackground();
+
+        if (background instanceof ShapeDrawable) {
+            ShapeDrawable shapeDrawable = (ShapeDrawable) background;
+            shapeDrawable.getPaint().setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        } else if (background instanceof GradientDrawable) {
+            GradientDrawable gradientDrawable = (GradientDrawable) background;
+            gradientDrawable.setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        }
 
         DLLinkQuestion = dlg.findViewById(R.id.tv_dl_link_question);
         DLLinkQuestion.setText("Do you want to proceed to the link address?");

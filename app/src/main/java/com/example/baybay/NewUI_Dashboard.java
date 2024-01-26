@@ -15,9 +15,10 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -434,10 +435,14 @@ public class NewUI_Dashboard extends AppCompatActivity {
         }
     }
 
+    ConstraintLayout ConstNewSettings;
     public void openNewDialogSettings(){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheetlayout);
+
+        ConstNewSettings = dialog.findViewById(R.id.constarintlayout_newsettings);
+        setSettingsColor();
 
         // Access the button from the dialog's content view
         ImageButton ImgBtnSoundBg = dialog.findViewById(R.id.cb_BackgroundNew);
@@ -585,6 +590,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
             Theme_Color.init(this);
             setBackgroundColor();
+            setSettingsColor();
+        });
+        TextView TvLatte = dialog.findViewById(R.id.tv_latte);
+        TvLatte.setOnClickListener(v -> {
+            RbLatte.performClick();
         });
 
         RbAlice.setOnClickListener(v -> {
@@ -599,6 +609,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
             Theme_Color.init(this);
             setBackgroundColor();
+            setSettingsColor();
+        });
+        TextView TvAlice = dialog.findViewById(R.id.tv_alice);
+        TvAlice.setOnClickListener(v -> {
+            RbAlice.performClick();
         });
 
         ImageButton BtnAttribution = dialog.findViewById(R.id.btn_attribution);
@@ -646,6 +661,18 @@ public class NewUI_Dashboard extends AppCompatActivity {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 
+    private void setSettingsColor(){
+        Drawable background = ConstNewSettings.getBackground();
+
+        if (background instanceof ShapeDrawable) {
+            ShapeDrawable shapeDrawable = (ShapeDrawable) background;
+            shapeDrawable.getPaint().setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        } else if (background instanceof GradientDrawable) {
+            GradientDrawable gradientDrawable = (GradientDrawable) background;
+            gradientDrawable.setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        }
+    }
+
     @Override
     public void onBackPressed() {
         Dialog dlg = new Dialog(NewUI_Dashboard.this, R.style.PopupDialog);
@@ -655,6 +682,17 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         View dialogWindowView = dlg.getWindow().getDecorView();
         Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+
+        ConstraintLayout Constlayout_download_link = dlg.findViewById(R.id.constlayout_download_link);
+        Drawable background = Constlayout_download_link.getBackground();
+
+        if (background instanceof ShapeDrawable) {
+            ShapeDrawable shapeDrawable = (ShapeDrawable) background;
+            shapeDrawable.getPaint().setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        } else if (background instanceof GradientDrawable) {
+            GradientDrawable gradientDrawable = (GradientDrawable) background;
+            gradientDrawable.setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        }
 
         DLLinkQuestion = dlg.findViewById(R.id.tv_dl_link_question);
         DLLinkQuestion.setText("Are you sure you want to exit the application?");

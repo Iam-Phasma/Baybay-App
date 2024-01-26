@@ -172,12 +172,12 @@
             app:srcCompat="@drawable/newui_settings_radiobutton_on" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/tv_latte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:lineSpacingExtra="0dp"
-            android:text="Latte"
+            android:text="Warm"
             android:textColor="#323232"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -197,7 +197,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:lineSpacingExtra="0dp"
-            android:text="Alice"
+            android:text="Cool"
             android:textColor="#323232"
             android:textSize="14sp"
             android:textStyle="bold" />

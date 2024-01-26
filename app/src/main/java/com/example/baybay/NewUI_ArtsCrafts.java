@@ -1,6 +1,7 @@
 package com.example.baybay;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 
 import android.app.Dialog;
@@ -9,7 +10,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -294,9 +297,20 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         View dialogWindowView = dlg.getWindow().getDecorView();
         Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
+        ConstraintLayout Constlayout_download_link = dlg.findViewById(R.id.constlayout_download_link);
+        Drawable background = Constlayout_download_link.getBackground();
+
+        if (background instanceof ShapeDrawable) {
+            ShapeDrawable shapeDrawable = (ShapeDrawable) background;
+            shapeDrawable.getPaint().setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        } else if (background instanceof GradientDrawable) {
+            GradientDrawable gradientDrawable = (GradientDrawable) background;
+            gradientDrawable.setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        }
+
         DLLinkQuestion = dlg.findViewById(R.id.tv_dl_link_question);
         DLLinkQuestion.setText("Oops! The internet is not available. Some images may not load as expected. Proceed anyway?");
-        DLLinkQuestion.setTextSize(15);
+        DLLinkQuestion.setTextSize(16);
 
         ImageButton BtnYesExit = dlg.findViewById(R.id.imgbtn_yes_exit);
         BtnYesExit.setOnClickListener(v -> {
