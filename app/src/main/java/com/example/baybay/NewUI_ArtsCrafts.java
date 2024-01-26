@@ -289,43 +289,44 @@ public class NewUI_ArtsCrafts extends AppCompatActivity {
         }, 1400);
     }
     private void connectionPrompt(){
-        Dialog dlg = new Dialog(NewUI_ArtsCrafts.this, R.style.PopupDialog);
-        dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
-        dlg.setContentView(R.layout.activity_newui_download_link_prompt);
-        dlg.show();
+        if (!isFinishing()) {
+            Dialog dlg = new Dialog(NewUI_ArtsCrafts.this, R.style.PopupDialog);
+            dlg.setCanceledOnTouchOutside(false);  // Disable dialog dismiss when touch outside
+            dlg.setContentView(R.layout.activity_newui_download_link_prompt);
+            dlg.show();
 
-        View dialogWindowView = dlg.getWindow().getDecorView();
-        Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+            View dialogWindowView = dlg.getWindow().getDecorView();
+            Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
-        ConstraintLayout Constlayout_download_link = dlg.findViewById(R.id.constlayout_download_link);
-        Drawable background = Constlayout_download_link.getBackground();
+            ConstraintLayout Constlayout_download_link = dlg.findViewById(R.id.constlayout_download_link);
+            Drawable background = Constlayout_download_link.getBackground();
 
-        if (background instanceof ShapeDrawable) {
-            ShapeDrawable shapeDrawable = (ShapeDrawable) background;
-            shapeDrawable.getPaint().setColor(Color.parseColor(Theme_Color.getDefaultColor()));
-        } else if (background instanceof GradientDrawable) {
-            GradientDrawable gradientDrawable = (GradientDrawable) background;
-            gradientDrawable.setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+            if (background instanceof ShapeDrawable) {
+                ShapeDrawable shapeDrawable = (ShapeDrawable) background;
+                shapeDrawable.getPaint().setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+            } else if (background instanceof GradientDrawable) {
+                GradientDrawable gradientDrawable = (GradientDrawable) background;
+                gradientDrawable.setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+            }
+
+            DLLinkQuestion = dlg.findViewById(R.id.tv_dl_link_question);
+            DLLinkQuestion.setText("Oops! The internet is not available. Some images may not load as expected. Proceed anyway?");
+            DLLinkQuestion.setTextSize(16);
+
+            ImageButton BtnYesExit = dlg.findViewById(R.id.imgbtn_yes_exit);
+            BtnYesExit.setOnClickListener(v -> {
+                dlg.dismiss();
+                ClickSoundEffect();
+            });
+
+            ImageButton BtnNoExit = dlg.findViewById(R.id.imgbtn_no_exit);
+            BtnNoExit.setOnClickListener(v -> {
+                dlg.dismiss();
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    ImgbtnArtsCratsExit.performClick();
+                }, 500);
+            });
         }
-
-        DLLinkQuestion = dlg.findViewById(R.id.tv_dl_link_question);
-        DLLinkQuestion.setText("Oops! The internet is not available. Some images may not load as expected. Proceed anyway?");
-        DLLinkQuestion.setTextSize(16);
-
-        ImageButton BtnYesExit = dlg.findViewById(R.id.imgbtn_yes_exit);
-        BtnYesExit.setOnClickListener(v -> {
-            dlg.dismiss();
-            ClickSoundEffect();
-        });
-
-        ImageButton BtnNoExit = dlg.findViewById(R.id.imgbtn_no_exit);
-        BtnNoExit.setOnClickListener(v -> {
-            dlg.dismiss();
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                ImgbtnArtsCratsExit.performClick();
-            }, 500);
-        });
-
     }
 
     private boolean isConnected() {
