@@ -268,7 +268,7 @@
             android:layout_height="40dp"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/newui_settings_attribution" />
+            app:srcCompat="@drawable/newui_settings_aboutapp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

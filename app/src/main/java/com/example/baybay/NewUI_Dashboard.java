@@ -635,7 +635,15 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         ImageButton BtnAttribution = dialog.findViewById(R.id.btn_attribution);
         BtnAttribution.setOnClickListener(v -> {
-            Toasty.info(NewUI_Dashboard.this, "Will be added soon. You can view attributes on 'Update site' for now.", Toasty.LENGTH_LONG).show();
+            //Toasty.info(NewUI_Dashboard.this, "Will be added soon. You can view attributes on 'Update site' for now.", Toasty.LENGTH_LONG).show();
+            DisableNav();
+            dialog.dismiss();
+            ClickSoundEffect();
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                EnableNav();
+                Intent Dashboard = new Intent(getApplicationContext(), NewUI_AboutApp.class);
+                startActivity(Dashboard);
+            }, 500);
         });
 
         ImageButton BtnFeedback = dialog.findViewById(R.id.btn_feedback);

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewUI_AboutApp">
+
+    <ImageButton
+        android:id="@+id/imgbtn_aboutapp_exit"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        android:src="@drawable/newui_back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/newui_back_button" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:text="Click the face to reveal the hidden text."
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="sans-serif-black"
+        android:maxLines="2"
+        android:text="Baybay: Modern Baybayin Learning App for Android"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_aboutapp_exit" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
+
+            <ImageView
+                android:id="@+id/imgview_purpose"
+                android:layout_width="304dp"
+                android:layout_height="304dp"
+                android:layout_marginTop="10dp"
+                android:rotation="2"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/newui_aboutapp_purpose_face" />
+
+            <ImageView
+                android:id="@+id/imgview_aboutapp"
+                android:layout_width="304dp"
+                android:layout_height="304dp"
+                android:layout_marginTop="20dp"
+                android:rotation="-2"
+                android:scaleType="fitCenter"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_purpose"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imgview_purpose"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction18"
+                app:srcCompat="@drawable/newui_aboutapp_about_face" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Music Attribution"
+                android:textColor="#1B1B1B"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_purpose" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Sound Effects Attribution"
+                android:textColor="#1B1B1B"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction6" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Graphics Attribution"
+                android:textColor="#1B1B1B"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction7" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Other Software Used"
+                android:textColor="#1B1B1B"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction12" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Text Material Used"
+                android:textColor="#1B1B1B"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction14" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Other"
+                android:textColor="#1B1B1B"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction16" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Woodland Fantasy and Pleasant Creek Licensed under CC-BY 3.0 by Mattew Pablo. \nAbakada song by robie317 Licensed: Fair Use."
+                android:textColor="#1B1B1B"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_purpose"
+                app:layout_constraintStart_toStartOf="@+id/tv_brief_introduction3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction3" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="This app incorporates audio excerpts (under Introduction module) from a YouTube video for educational purposes. The use of this content is believed to be a fair use under copyright law, as it is utilized for non-commercial, educational purposes, and the amount and nature of the material used are appropriate for educational commentary."
+                android:textColor="#1B1B1B"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction4"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_brief_introduction3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction4" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Menu Selection Sound Effect by Sound-effect-source. \n Tap Notification by lucadialessandro Licensed under Pixabay Content License. \nLevel Up Power-Up coin Get 13 Sounds by Wobbleboxx Licensed under CCO. \nCard Game Sounds by HaelDB Licensed under CCO."
+                android:textColor="#1B1B1B"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction6"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_brief_introduction3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction8" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Images and graphics created using Canva. \n Icons from icons8.com. \n Image by upklyak on Freepik Licensed under Free Licence."
+                android:textColor="#1B1B1B"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction7"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_brief_introduction3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction9" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Audio (under Baybayin script origin) generated by the text-to-speech reader website TTSReader. For more information, please visit https://ttsreader.com/player/. \nNarakeet Text to Speech Online."
+                android:textColor="#1B1B1B"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction12"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_brief_introduction3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction13" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Mga Kwentong Bayan. \nPhilippine News."
+                android:textColor="#1B1B1B"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction12"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_brief_introduction3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction15" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="Design inspiration from Dribble and Pinterest."
+                android:textColor="#1B1B1B"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction12"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_brief_introduction3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction17" />
+
+            <TextView
+                android:id="@+id/tv_brief_introduction12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="This app includes images (under Arts and Crafts module) sourced from public Facebook groups and online searches for educational purposes. We believe this usage constitutes fair use under copyright law, as the images are employed for non-commercial, educational purposes, and the amount and nature of the material used are suitable for educational commentary."
+                android:textColor="#1B1B1B"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction10"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_brief_introduction3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction10" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

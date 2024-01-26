@@ -19,29 +19,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Baybay"
         tools:targetApi="31">
+        <activity
+            android:name=".NewUI_AboutApp"
+            android:exported="false" />
 
         <service android:name=".Z_BackgroundMusicService" />
 
         <activity
             android:name=".NewUI_ArtsCrafts"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NewUI_Community"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NewUI_Downloadable"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NewUI_Gamemodes"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NewUI_Learn"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NewUI_Dashboard"
             android:exported="true"
@@ -49,10 +52,10 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".NewUI_Modes_Spelling"
             android:exported="false"
