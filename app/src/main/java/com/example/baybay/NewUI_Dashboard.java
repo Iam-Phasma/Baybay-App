@@ -68,6 +68,9 @@ public class NewUI_Dashboard extends AppCompatActivity {
     String versionName;
     String link;
     private TextView DLLinkQuestion;
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private Runnable runnable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,22 +106,30 @@ public class NewUI_Dashboard extends AppCompatActivity {
         TvTrivia = findViewById(R.id.tv_trivia);
         ImgbtnTrivia_Refresh = findViewById(R.id.imgbtn_trivia_refresh);
 
-        ImgbtnTrivia_Refresh.setEnabled(false);
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            ImgbtnTrivia_Refresh.setEnabled(true);
-        }, 2000);
+//        ImgbtnTrivia_Refresh.setEnabled(false);
+//        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+//            ImgbtnTrivia_Refresh.setEnabled(true);
+//        }, 2000);
 
-        setRandomTextWithAnimation(TvTrivia);
+//        setRandomTextWithAnimation(TvTrivia);
 
-        ImgbtnTrivia_Refresh.setOnClickListener(v -> {
-            animateButtonTrivia(ImgbtnTrivia_Refresh);
-            setRandomTextWithAnimation(TvTrivia);
-            ClickSoundEffect();
-            ImgbtnTrivia_Refresh.setEnabled(false);
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                ImgbtnTrivia_Refresh.setEnabled(true);
-            }, 2000);
-        });
+//        ImgbtnTrivia_Refresh.setOnClickListener(v -> {
+//            animateButtonTrivia(ImgbtnTrivia_Refresh);
+//            setRandomTextWithAnimation(TvTrivia);
+//            ClickSoundEffect();
+//            ImgbtnTrivia_Refresh.setEnabled(false);
+//            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+//                ImgbtnTrivia_Refresh.setEnabled(true);
+//            }, 2000);
+//        });
+
+        handler.postDelayed(runnable = new Runnable() {
+            @Override
+            public void run() {
+                setRandomTextWithAnimation(TvTrivia);
+                handler.postDelayed(this, 12000);
+            }
+        }, 0);
 
         ImgbtnDashboardMenu = findViewById(R.id.imgbtn_dashboard_menu);
         ImgbtnDashboardMenu.setOnClickListener(v -> {
@@ -361,7 +372,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         //Rotate
         ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(view, View.ROTATION, 0f, 360f);
-        rotateAnimator.setDuration(500); // Set the duration of the rotation animation
+        rotateAnimator.setDuration(1500); // Set the duration of the rotation animation
 
         //Scale restore
         ObjectAnimator restoreAnimator = ObjectAnimator.ofPropertyValuesHolder(
@@ -433,6 +444,12 @@ public class NewUI_Dashboard extends AppCompatActivity {
             unbindService(connection);
             isBound = false;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
     }
 
     ConstraintLayout ConstNewSettings;
