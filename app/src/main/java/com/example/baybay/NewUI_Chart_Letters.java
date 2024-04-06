@@ -418,17 +418,15 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         }
     }
 
-    public class Swipelistener implements View.OnTouchListener{
 
-        //variable initialization
+    public class Swipelistener implements View.OnTouchListener{
         GestureDetector gestureDetector;
-        //constructor
+        boolean isSwipeEnabled = true;
+
         Swipelistener(View view){
-            //threshold value initialization
             int threshold = 100;
-            //velocity
             int velocity_threshold = 100;
-            //simple swipe gesture
+
             GestureDetector.SimpleOnGestureListener simpleOnGestureListener = new
                     GestureDetector.SimpleOnGestureListener(){
 
@@ -439,30 +437,28 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
 
                         @Override
                         public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
-
-                            //get x diff
                             float xDiff = e2.getX()-e1.getX();
-                            //get y diff
                             float yDiff = e2.getY()-e1.getY();
 
                             try {
-                                if (Math.abs(xDiff)>Math.abs(yDiff)){
+                                if (isSwipeEnabled && Math.abs(xDiff) > Math.abs(yDiff)) {
                                     if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
-                                        if (xDiff>0){
+                                        if (xDiff > 0) {
                                             ImgbtnPrevious.performClick();
-                                        }else {
+                                        } else {
                                             ImgbtnNext.performClick();
                                         }
+                                        // Disable swipe temporarily
+                                        isSwipeEnabled = false;
+                                        new Handler().postDelayed(() -> isSwipeEnabled = true, 1000);
                                         return true;
-
                                     }
                                 }
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
                             return false;
-                            //return super.onFling(e1, e2, velocityX, velocityY);
                         }
                     };
             gestureDetector = new GestureDetector(simpleOnGestureListener);

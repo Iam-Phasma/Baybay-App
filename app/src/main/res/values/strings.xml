@@ -13,13 +13,13 @@
         \n\nThe video above showcases the contemporary iteration of the Baybayin script, specifically referred to as version B20+. Notably, this updated script incorporates several modifications compared to its predecessors. An important enhancement is the clear distinction between the characters \"Da\" and \"Ra\," a development aimed at reducing ambiguity during reading and consequently enhancing reading speed. Additionally, the vowels \"e and i,\" as well as \"o and u,\" now possess distinct characters, further refining the script clarity and usability.
     </string>
 
-    <string name="baybayin_version17">The B17 version comprises 17 characters. Notably, the characters for \"e\" and \"i\" are the same, as are those for \"o\" and \"u,\" as well as \"da\" and \"ra.\" In this version, the krus kudlit, a diacritic mark, has not been introduced yet, which means it is impossible to write independent letters. As an example, the word \"tatsulok\" would be written as \"tatasuloka.\"</string>
+    <string name="baybayin_version17">The B17 version comprises 17 characters. Notably, the characters for \"e\" and \"i\" are the same, as are those for \"o\" and \"u,\" as well as \"da\" and \"ra.\" In this version, the krus kudlit (x), a diacritic mark (J), has not been introduced yet, which means it is impossible to write independent letters. As an example, the word \"tatsulok\" would be written as \"tatasuloka.\"</string>
 
-    <string name="baybayin_version17plus">This version retains the same script characters as B17, but it introduces the implementation of the krus kudlit. This addition allows for the writing of standalone characters, making the script more versatile.\n\n</string>
+    <string name="baybayin_version17plus">This version retains the same script characters as B17, but it introduces the implementation of the krus kudlit. This addition allows for the writing of standalone characters, making the script more versatile.</string>
 
     <string name="baybayin_version18">In B18, there are notable changes. Specifically, the characters for \"da\" and \"ra\" are now separate, each with its own distinct character. This separation helps to eliminate any confusion between the two sounds.</string>
 
-    <string name="baybayin_version20plus">The B20+ version brings significant improvements to the Baybayin script. Here, the characters for \"e\" and \"i,\" as well as \"o\" and \"u,\" have been given their own distinct characters, enhancing the script readability. These changes make it easier to distinguish and read the individual vowels, making the script more user friendly.\n </string>
+    <string name="baybayin_version20plus">The B20+ version brings significant improvements to the Baybayin script. Here, the characters for \"e\" and \"i,\" as well as \"o\" and \"u,\" have been given their own distinct characters, enhancing the script readability. These changes make it easier to distinguish and read the individual vowels, making the script more user friendly. \n\n </string>
 
     <string name="history_c1">
         \n
@@ -152,7 +152,6 @@
         <item>The script was widely used before the arrival of the Spanish, appearing on various artifacts and documents.</item>
         <item>Baybayin was officially declared a national script of the Philippines in 2019.</item>
         <item>Modern efforts aim to revive and promote the use of Baybayin in contemporary Filipino society.</item>
-        <item>Despite its historical significance, Baybayin is not widely taught in schools in the Philippines.</item>
         <item>There are ongoing debates and discussions about the standardization of Baybayin characters.</item>
         <item>The script has symbols for special characters like the cross, which may have been influenced by the Spanish colonial era.</item>
         <item>Baybayin was used for various purposes, including poetry, legal documents, and communication among indigenous communities.</item>

@@ -156,6 +156,23 @@
                 app:layout_constraintTop_toBottomOf="@+id/imgbtn_playpause2" />
 
             <TextView
+                android:id="@+id/tv_importance2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="80dp"
+                android:fontFamily="sans-serif"
+                android:maxLines="2"
+                android:text="History of Script Characters"
+                android:textColor="#1F2029"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction2" />
+
+            <TextView
                 android:id="@+id/tv_brief_introduction2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -175,18 +192,18 @@
                 android:id="@+id/tv_brief_B17"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif"
                 android:letterSpacing="0"
                 android:lineSpacingExtra="2sp"
-                android:text="B17 version"
+                android:text="B17 version (Original)"
                 android:textColor="#FF313345"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_introduction_v18" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_importance2" />
 
             <TextView
                 android:id="@+id/tv_brief_introduction5"
@@ -196,9 +213,9 @@
                 android:fontFamily="sans-serif"
                 android:letterSpacing="0"
                 android:lineSpacingExtra="2sp"
-                android:text="B17 plus version"
+                android:text="B17+ (Traditional)"
                 android:textColor="#FF313345"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -213,14 +230,14 @@
                 android:fontFamily="sans-serif"
                 android:letterSpacing="0"
                 android:lineSpacingExtra="2sp"
-                android:text="B18 version"
+                android:text="B18 version (Modified - Ra)"
                 android:textColor="#FF313345"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_introduction_v20plus" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_introduction_v17plus" />
 
             <TextView
                 android:id="@+id/tv_b20plus"
@@ -230,14 +247,14 @@
                 android:fontFamily="sans-serif"
                 android:letterSpacing="0"
                 android:lineSpacingExtra="2sp"
-                android:text="B20 plus version"
+                android:text="B20 plus version (Modern)"
                 android:textColor="#FF313345"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/seekBar_video2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/videoView_abakada2"
-                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction2" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_introduction_v18" />
 
             <ImageView
                 android:id="@+id/imageView35"
