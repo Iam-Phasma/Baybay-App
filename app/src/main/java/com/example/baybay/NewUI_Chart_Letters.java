@@ -14,6 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import es.dmoral.toasty.Toasty;
@@ -52,6 +55,8 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
     private Toast globalToast;
     ImageView ImgviewChart;
 
+    Swipelistener swipelistener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,9 +82,17 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
 
 
 
+        //Swipe gesture
+        ImgviewChart = findViewById(R.id.imgviewChart_empty);
+        swipelistener = new Swipelistener(ImgviewChart);
+
 
         // Retrieve the value from the previous activity
-        cycle = getIntent().getIntExtra("cycle", 0);
+        cycle = getIntent().getIntExtra("cycle", -1);
+        if(cycle == -1){
+            globalToast = Toasty.info(NewUI_Chart_Letters.this, "You can perform swipe gestures. Simply swipe the card to the left or right.", Toasty.LENGTH_LONG);
+            globalToast.show();
+        }
 
         ImgbtnSeeAll = findViewById(R.id.imgbtn_seeall);
         ImgbtnSeeAll.setOnClickListener(v -> {
@@ -97,14 +110,17 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         ImgbtnPrevious = findViewById(R.id.imgbtn_previous);
         ImgbtnPrevious.setOnClickListener(v -> {
             disableNavigation();
-            chartRotateLeft(ImgviewChart);
-            FlipLeftSound();
             animateButton(ImgbtnPrevious);
             Handler handler = new Handler();
             handler.postDelayed(() -> {
                 if (cycle > 0) {
+                    FlipLeftSound();
+                    chartRotateLeft(ImgviewChart);
                     cycle = cycle - 1;
-                    ChartDeafult();
+                    handler.postDelayed(() -> {
+                        ChartDeafult();
+                    },275);
+
                 }else{
                     ImgbtnPrevious.setEnabled(false);
                     cancelToast();
@@ -125,10 +141,13 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
             animateButton(ImgbtnNext);
             Handler handler = new Handler();
             handler.postDelayed(() -> {
-                if (cycle < 20){
+                if ((cycle == -1) && (cycle < 20)) {
+                    cycle = cycle + 2;
+                    ChartDeafult();
+                } else if (cycle < 20){
                     cycle = cycle + 1;
                     ChartDeafult();
-                }else{
+                } else{
                     ImgbtnNext.setEnabled(false);
                     cancelToast();
                     globalToast = Toasty.info(NewUI_Chart_Letters.this, "Your are on the last page.", Toast.LENGTH_SHORT);
@@ -184,8 +203,8 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
 
     }
 
-    private void chartRotateRight(View view) {
-        if(cycle != 20){
+    private void chartRotateLeft(View view) {
+        if(cycle != 0){
             AnimatorSet animatorSet = new AnimatorSet();
 
             // Define the scale animation
@@ -221,8 +240,8 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         }
     }
 
-    private void chartRotateLeft(View view) {
-        if(cycle != 0){
+    private void chartRotateRight(View view) {
+        if(cycle != 20){
             AnimatorSet animatorSet = new AnimatorSet();
 
             // Define the scale animation
@@ -261,7 +280,7 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
     public void ChartDeafult() {
         ImgviewChart = findViewById(R.id.imgviewChart_empty);
 
-        if (cycle == 0) {
+        if ((cycle == 0) || (cycle == -1)) {
             ImgviewChart.setImageResource(R.drawable.chart_kudlit);
         } else if (cycle == 1) {
             ImgviewChart.setImageResource(R.drawable.chart_a);
@@ -396,6 +415,62 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         if (isBound) {
             unbindService(connection);
             isBound = false;
+        }
+    }
+
+    public class Swipelistener implements View.OnTouchListener{
+
+        //variable initialization
+        GestureDetector gestureDetector;
+        //constructor
+        Swipelistener(View view){
+            //threshold value initialization
+            int threshold = 100;
+            //velocity
+            int velocity_threshold = 100;
+            //simple swipe gesture
+            GestureDetector.SimpleOnGestureListener simpleOnGestureListener = new
+                    GestureDetector.SimpleOnGestureListener(){
+
+                        @Override
+                        public boolean onDown(@NonNull MotionEvent e) {
+                            return true;
+                        }
+
+                        @Override
+                        public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
+
+                            //get x diff
+                            float xDiff = e2.getX()-e1.getX();
+                            //get y diff
+                            float yDiff = e2.getY()-e1.getY();
+
+                            try {
+                                if (Math.abs(xDiff)>Math.abs(yDiff)){
+                                    if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
+                                        if (xDiff>0){
+                                            ImgbtnPrevious.performClick();
+                                        }else {
+                                            ImgbtnNext.performClick();
+                                        }
+                                        return true;
+
+                                    }
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+                            return false;
+                            //return super.onFling(e1, e2, velocityX, velocityY);
+                        }
+                    };
+            gestureDetector = new GestureDetector(simpleOnGestureListener);
+            view.setOnTouchListener(this);
+        }
+
+        public boolean onTouch(View v, MotionEvent event){
+            return gestureDetector.onTouchEvent(event);
         }
     }
 

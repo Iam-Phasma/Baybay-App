@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,6 +61,8 @@ public class NewUI_L4_Rules extends AppCompatActivity {
     private List<Integer> PracticeQuestionCount;
     ImageView ImgviewPracticeQuestion;
     EditText EdittextPractice;
+
+    ProgressBar Rules_Progressbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -312,22 +315,31 @@ public class NewUI_L4_Rules extends AppCompatActivity {
     //Set Rules Board Image
     public void setRulesBoard(){
         ImageView ImgviewRulesBoard = findViewById(R.id.imgview_rulesboard);
+        Rules_Progressbar = findViewById(R.id.rules_progressbar);
         if (progressbarRulesCount == 1){
             ImgviewRulesBoard.setImageResource(R.drawable.rules_kudlit_2a);
+            Rules_Progressbar.setProgress(1);
         } else if (progressbarRulesCount == 2) {
             ImgviewRulesBoard.setImageResource(R.drawable.rules_kudlit_2b);
+            Rules_Progressbar.setProgress(2);
         } else if (progressbarRulesCount == 3) {
             ImgviewRulesBoard.setImageResource(R.drawable.rules_pamudpod_2a);
+            Rules_Progressbar.setProgress(3);
         }else if (progressbarRulesCount == 4) {
             ImgviewRulesBoard.setImageResource(R.drawable.rules_pamudpod_2b);
+            Rules_Progressbar.setProgress(4);
         }else if (progressbarRulesCount == 5) {
             ImgviewRulesBoard.setImageResource(R.drawable.rules_tuldok2);
+            Rules_Progressbar.setProgress(5);
         }else if (progressbarRulesCount == 6) {
             ImgviewRulesBoard.setImageResource(R.drawable.rules_kudlit_2c);
+            Rules_Progressbar.setProgress(6);
         }else if (progressbarRulesCount == 7) {
             ImgviewRulesBoard.setImageResource(R.drawable.rules_howtos_a);
+            Rules_Progressbar.setProgress(7);
         }else if (progressbarRulesCount == 8) {
             ImgviewRulesBoard.setImageResource(R.drawable.rules_howtos_b);
+            Rules_Progressbar.setProgress(8);
         }
     }
 

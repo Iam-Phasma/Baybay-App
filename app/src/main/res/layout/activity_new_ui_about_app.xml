@@ -63,7 +63,7 @@
             <ImageView
                 android:id="@+id/imgview_purpose"
                 android:layout_width="304dp"
-                android:layout_height="304dp"
+                android:layout_height="285dp"
                 android:layout_marginTop="10dp"
                 android:rotation="2"
                 android:scaleType="fitCenter"
@@ -100,7 +100,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgview_purpose" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction11" />
 
             <TextView
                 android:id="@+id/tv_brief_introduction8"
@@ -199,6 +199,23 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_brief_introduction3" />
 
             <TextView
+                android:id="@+id/tv_brief_introduction11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="sans-serif"
+                android:letterSpacing="0"
+                android:lineSpacingExtra="2sp"
+                android:text="*Developed for Capstone Project Only"
+                android:textAlignment="center"
+                android:textColor="#1B1B1B"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/imgview_purpose"
+                app:layout_constraintStart_toStartOf="@+id/tv_brief_introduction3"
+                app:layout_constraintTop_toBottomOf="@+id/imgview_purpose" />
+
+            <TextView
                 android:id="@+id/tv_brief_introduction6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -222,7 +239,7 @@
                 android:fontFamily="sans-serif"
                 android:letterSpacing="0"
                 android:lineSpacingExtra="2sp"
-                android:text="Menu Selection Sound Effect by Sound-effect-source. \n Tap Notification by lucadialessandro Licensed under Pixabay Content License. \nLevel Up Power-Up coin Get 13 Sounds by Wobbleboxx Licensed under CCO. \nCard Game Sounds by HaelDB Licensed under CCO."
+                android:text="Menu Selection Sound Effect by Sound-effect-source. \nTap Notification by lucadialessandro Licensed under Pixabay Content License. \nLevel Up Power-Up coin Get 13 Sounds by Wobbleboxx Licensed under CCO. \nCard Game Sounds by HaelDB Licensed under CCO."
                 android:textColor="#1B1B1B"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction6"
@@ -238,7 +255,7 @@
                 android:fontFamily="sans-serif"
                 android:letterSpacing="0"
                 android:lineSpacingExtra="2sp"
-                android:text="Images and graphics created using Canva. \n Icons from icons8.com. \n Image by upklyak on Freepik Licensed under Free Licence."
+                android:text="Images and graphics created using Canva. \nIcons from icons8.com. \nImage by upklyak on Freepik Licensed under Free Licence."
                 android:textColor="#1B1B1B"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction7"

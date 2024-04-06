@@ -138,6 +138,12 @@ public class NewUI_Learn extends AppCompatActivity {
 
         AtomicBoolean isL1Clicked = new AtomicBoolean(false);
         Origin.setOnClickListener(v -> {
+            Origin.setEnabled(false);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                Origin.setEnabled(true);
+            },500);
+
             animateButton(Origin);
 
             isL1Clicked.set(!isL1Clicked.get());
@@ -182,6 +188,12 @@ public class NewUI_Learn extends AppCompatActivity {
 
         AtomicBoolean isL2Clicked = new AtomicBoolean(false);
         Introduction.setOnClickListener(view -> {
+            Introduction.setEnabled(false);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                Introduction.setEnabled(true);
+            },500);
+
             animateButton(Introduction);
             isL2Clicked.set(!isL2Clicked.get());
 
@@ -243,6 +255,12 @@ public class NewUI_Learn extends AppCompatActivity {
 
         AtomicBoolean isL3Clicked = new AtomicBoolean(false);
         Characters.setOnClickListener(view -> {
+            Characters.setEnabled(false);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                Characters.setEnabled(true);
+            },500);
+
             animateButton(Characters);
             isL3Clicked.set(!isL3Clicked.get());
 
@@ -275,6 +293,12 @@ public class NewUI_Learn extends AppCompatActivity {
 
         AtomicBoolean isL4Clicked = new AtomicBoolean(false);
         Rules.setOnClickListener(view -> {
+            Rules.setEnabled(false);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                Rules.setEnabled(true);
+            },500);
+
             animateButton(Rules);
             isL4Clicked.set(!isL4Clicked.get());
 
@@ -315,6 +339,12 @@ public class NewUI_Learn extends AppCompatActivity {
 
         AtomicBoolean isL5Clicked = new AtomicBoolean(false);
         Handwriting.setOnClickListener(view -> {
+            Handwriting.setEnabled(false);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                Handwriting.setEnabled(true);
+            },500);
+
             animateButton(Handwriting);
             isL5Clicked.set(!isL5Clicked.get());
 
@@ -358,6 +388,12 @@ public class NewUI_Learn extends AppCompatActivity {
 
         AtomicBoolean isL6Clicked = new AtomicBoolean(false);
         Reading.setOnClickListener(view -> {
+            Reading.setEnabled(false);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                Reading.setEnabled(true);
+            },500);
+
             animateButton(Reading);
             isL6Clicked.set(!isL6Clicked.get());
 
