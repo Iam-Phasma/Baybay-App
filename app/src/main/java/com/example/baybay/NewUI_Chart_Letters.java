@@ -136,17 +136,23 @@ public class NewUI_Chart_Letters extends AppCompatActivity {
         ImgbtnNext = findViewById(R.id.imgbtn_next);
         ImgbtnNext.setOnClickListener(v -> {
             disableNavigation();
-            chartRotateRight(ImgviewChart);
-            FlipRightSound();
             animateButton(ImgbtnNext);
             Handler handler = new Handler();
             handler.postDelayed(() -> {
                 if ((cycle == -1) && (cycle < 20)) {
+                    chartRotateRight(ImgviewChart);
+                    FlipRightSound();
                     cycle = cycle + 2;
-                    ChartDeafult();
+                    handler.postDelayed(() -> {
+                        ChartDeafult();
+                    },275);
                 } else if (cycle < 20){
+                    chartRotateRight(ImgviewChart);
+                    FlipRightSound();
                     cycle = cycle + 1;
-                    ChartDeafult();
+                    handler.postDelayed(() -> {
+                        ChartDeafult();
+                    },275);
                 } else{
                     ImgbtnNext.setEnabled(false);
                     cancelToast();

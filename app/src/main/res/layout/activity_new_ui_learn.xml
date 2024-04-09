@@ -206,14 +206,14 @@
                         tools:src="@drawable/newui_lesson2_sub2" />
 
                     <ImageButton
-                        android:id="@+id/hidden2Button3"
+                        android:id="@+id/hidden2Button5"
                         android:layout_width="270dp"
                         android:layout_height="60dp"
                         android:layout_gravity="right"
                         android:backgroundTint="#00FFFFFF"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/newui_lesson2_sub3"
-                        tools:src="@drawable/newui_lesson2_sub3" />
+                        android:src="@drawable/newui_lesson2_sub5"
+                        tools:src="@drawable/newui_lesson2_sub5" />
 
                     <ImageButton
                         android:id="@+id/hidden2Button4"
@@ -226,14 +226,16 @@
                         tools:src="@drawable/newui_lesson2_sub4" />
 
                     <ImageButton
-                        android:id="@+id/hidden2Button5"
+                        android:id="@+id/hidden2Button3"
                         android:layout_width="270dp"
                         android:layout_height="60dp"
                         android:layout_gravity="right"
                         android:backgroundTint="#00FFFFFF"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/newui_lesson2_sub5"
-                        tools:src="@drawable/newui_lesson2_sub5" />
+                        android:src="@drawable/newui_lesson2_sub3"
+                        tools:src="@drawable/newui_lesson2_sub3" />
+
+
                 </LinearLayout>
 
                 <ImageButton

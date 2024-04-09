@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "406678511697",
+    "project_id": "baybay-b0281",
+    "storage_bucket": "baybay-b0281.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406678511697:android:62d5ccb233c75995e41870",
+        "android_client_info": {
+          "package_name": "com.example.baybay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAektWf61Tfqo8jTmmFwjaIDr6H7Azaebs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
