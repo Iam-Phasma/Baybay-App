@@ -34,6 +34,12 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
@@ -94,6 +100,17 @@ public class NewUI_Dashboard extends AppCompatActivity {
         Theme_Color.init(this);
         setBackgroundColor();
 
+
+
+        //Notification
+        FirebaseMessaging.getInstance().subscribeToTopic("News")
+                .addOnCompleteListener(task -> {
+                    String msg = "Done";
+                    if (!task.isSuccessful()) {
+                        msg = "Failed";
+                    }
+
+                });
 
 
         //Initialize Music and SFx
