@@ -19,6 +19,19 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/newui_dashboard_menu" />
 
+    <ImageButton
+        android:id="@+id/imgbtn_dashboard_newsletter"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:src="@drawable/newui_news_letter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/newui_news_letter" />
+
     <TextView
         android:id="@+id/tv_textdashboard"
         android:layout_width="wrap_content"
@@ -169,15 +182,56 @@
                 android:id="@+id/imgbtn_community"
                 android:layout_width="wrap_content"
                 android:layout_height="105dp"
-                android:layout_marginBottom="25dp"
                 android:backgroundTint="#00FFFFFF"
                 android:scaleType="fitCenter"
                 android:src="@drawable/newui_join_community"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/imgbtn_playgames"
                 app:layout_constraintStart_toStartOf="@+id/imgbtn_playgames"
                 app:layout_constraintTop_toBottomOf="@+id/imgbtn_artcrafts"
                 tools:src="@drawable/newui_join_community" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_transcript"
+                android:layout_width="wrap_content"
+                android:layout_height="105dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/newui_transcirpt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_playgames"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_playgames"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                tools:src="@drawable/newui_transcirpt" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_dashboard_transcript_info"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="-10dp"
+                android:layout_marginEnd="32dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@drawable/newui_card_info_red"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_transcript"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_transcript"
+                app:layout_constraintVertical_bias="0.0"
+                tools:src="@drawable/newui_card_info_red" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/amasis_black"
+                android:text="Tools for you!"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/imageView53"
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_community" />
 
             <TextView
                 android:id="@+id/tv_trivia"

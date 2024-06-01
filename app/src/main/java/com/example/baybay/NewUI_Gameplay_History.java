@@ -61,7 +61,7 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
     private Toast globalToast;
     public static ArrayList<Gameplay> gameplaysList;
     public RecyclerView recyclerView;
-    public recyclerAdapter adapter;
+    public Gameplay_History_Recycler_Adapter adapter;
     static SharedPreferences sharedPreferences;
     private boolean isFilterApplied = true;
     int viewModeCount = 1;
@@ -104,17 +104,17 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
             //adapter = new recyclerAdapter(gameplaysList);
         }
 
-
         recyclerView = findViewById(R.id.recyclerview_gameplayhistory);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new recyclerAdapter(gameplaysList);
+        adapter = new Gameplay_History_Recycler_Adapter(gameplaysList);
         recyclerView.setAdapter(adapter);
 
 
         ImgbtnGameplayExit = findViewById(R.id.btn_gameplay_exit);
         ImgbtnGameplayExit.setOnClickListener(v -> {
             //BACKGROUND MUSIC
+            ClickSoundEffect();
             cancelToast();
             finish();
         });
@@ -229,11 +229,8 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
             ImageButton ImgbtnResetBack = dlg.findViewById(R.id.imgbtn_reset_back);
             ImgbtnResetBack.setOnClickListener(v13 -> dlg.dismiss());
 
-
-
             return false;
         });
-
 
         if (gameplaysList.size() == 0) {
             cancelToast();
@@ -305,7 +302,7 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
         }
 
         // Update the adapter with the filtered data
-        adapter = new recyclerAdapter(filteredList);
+        adapter = new Gameplay_History_Recycler_Adapter(filteredList);
         recyclerView.setAdapter(adapter);
 
         // Show a toast message if the filtered list is empty
@@ -392,6 +389,14 @@ public class NewUI_Gameplay_History extends AppCompatActivity {
         Intent intent = new Intent(this, Z_BackgroundMusicService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
         isBound = true;
+    }
+
+    void ClickSoundEffect() {
+        boolean[] sfxPass = Z_SoundManager.isSoundFx;
+        if (sfxPass.length > 0 && sfxPass[0]) {
+            Z_SoundManager soundManager = new Z_SoundManager();
+            soundManager.RegButtonClickSound(this);
+        }
     }
 
     @Override

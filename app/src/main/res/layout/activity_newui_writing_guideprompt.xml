@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraint_drawinguideprompt"
+    android:id="@+id/constraint_transcript_prompt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
@@ -11,7 +11,7 @@
     android:backgroundTintMode="screen" >
 
     <LinearLayout
-        android:id="@+id/linearlayout_drawinguideprompt"
+        android:id="@+id/linearlayout_transcript_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corners"
@@ -39,7 +39,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_drawinguideprompt"
+            android:id="@+id/tv_trascript_prompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -54,16 +54,16 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/imgbtn_writing_prompt_ok"
+        android:id="@+id/imgbtn_transcript_prompt_ok"
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitXY"
         android:layout_marginTop="30dp"
         android:src="@drawable/newui_dl_link_promt_ok"
-        app:layout_constraintEnd_toEndOf="@+id/linearlayout_drawinguideprompt"
-        app:layout_constraintStart_toStartOf="@+id/linearlayout_drawinguideprompt"
-        app:layout_constraintTop_toBottomOf="@+id/linearlayout_drawinguideprompt"
+        app:layout_constraintEnd_toEndOf="@+id/linearlayout_transcript_prompt"
+        app:layout_constraintStart_toStartOf="@+id/linearlayout_transcript_prompt"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout_transcript_prompt"
         tools:src="@drawable/newui_dl_link_promt_ok" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

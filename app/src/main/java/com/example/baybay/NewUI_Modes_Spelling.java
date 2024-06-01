@@ -567,7 +567,7 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             currentDate = LocalDate.now();
-            formatter = DateTimeFormatter.ofPattern("dd-MMM");
+            formatter = DateTimeFormatter.ofPattern("dd-MMM-yy");
             formattedDate = currentDate.format(formatter);
         }
 
@@ -576,9 +576,9 @@ public class NewUI_Modes_Spelling extends AppCompatActivity {
             loadGameplayList(sharedPreferences);
         }
 
-        NewUI_Gameplay_History.gameplaysList.add(0, new Gameplay("SPELL       " + String.format("%02d", correctAnswer) + "       " + gamemode + "       "+ TimeTaken + "       " + formattedDate));
+        NewUI_Gameplay_History.gameplaysList.add(0, new Gameplay("SPELL  :  " + String.format("%02d", correctAnswer) + "  :  " + gamemode + "  :  "+ TimeTaken + "  :  " + formattedDate));
 
-        if (NewUI_Gameplay_History.gameplaysList.size() > 50) {
+        if (NewUI_Gameplay_History.gameplaysList.size() > 100) {
             NewUI_Gameplay_History.gameplaysList.remove(NewUI_Gameplay_History.gameplaysList.size() - 1);
         }
 

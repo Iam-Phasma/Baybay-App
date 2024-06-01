@@ -3,8 +3,6 @@ package com.example.baybay;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.baybay.Gameplay;
-import com.example.baybay.recyclerAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -13,7 +11,7 @@ import java.util.ArrayList;
 
 public class UserListManager {
     private static ArrayList<Gameplay> usersList;
-    private static recyclerAdapter adapter;
+    private static Gameplay_History_Recycler_Adapter adapter;
 
     public static ArrayList<Gameplay> getUserList(Context context) {
         if (usersList == null) {
@@ -52,7 +50,7 @@ public class UserListManager {
         return gson.fromJson(userListJson, type);
     }
 
-    public static void setAdapter(recyclerAdapter adapter) {
+    public static void setAdapter(Gameplay_History_Recycler_Adapter adapter) {
         UserListManager.adapter = adapter;
     }
 

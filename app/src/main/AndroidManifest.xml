@@ -20,6 +20,9 @@
         android:theme="@style/Theme.Baybay"
         tools:targetApi="31">
         <activity
+            android:name=".NewUI_Transliterate"
+            android:exported="false" />
+        <activity
             android:name=".NewUI_AboutApp"
             android:exported="false" />
 
@@ -57,14 +60,13 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".FirebaseService"
+        <service
+            android:name=".FirebaseService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-
 
         <activity
             android:name=".NewUI_Modes_Spelling"
@@ -118,6 +120,10 @@
             android:name=".NewUI_Chart_Chapters"
             android:exported="false"
             android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

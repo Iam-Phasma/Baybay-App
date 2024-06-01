@@ -28,7 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 
@@ -317,7 +316,7 @@ public class NewUI_L5_Handwriting extends AppCompatActivity {
         View dialogWindowView = dlg.getWindow().getDecorView();
         Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
-        LinearLayout Linearlayout_drawinguideprompt = dlg.findViewById(R.id.linearlayout_drawinguideprompt);
+        LinearLayout Linearlayout_drawinguideprompt = dlg.findViewById(R.id.linearlayout_transcript_prompt);
         Drawable background = Linearlayout_drawinguideprompt.getBackground();
 
         if (background instanceof ShapeDrawable) {
@@ -329,11 +328,11 @@ public class NewUI_L5_Handwriting extends AppCompatActivity {
         }
 
         TvDrawingGuideTittle = dlg.findViewById(R.id.tv_drawinguidetittle);
-        TvDrawingGuide = dlg.findViewById(R.id.tv_drawinguideprompt);
+        TvDrawingGuide = dlg.findViewById(R.id.tv_trascript_prompt);
 
         setTitleAndGuide();
 
-        ImageButton ImgbtnWritingPromptOk = dlg.findViewById(R.id.imgbtn_writing_prompt_ok);
+        ImageButton ImgbtnWritingPromptOk = dlg.findViewById(R.id.imgbtn_transcript_prompt_ok);
         ImgbtnWritingPromptOk.setOnClickListener(v -> {
             dlg.dismiss();
         });

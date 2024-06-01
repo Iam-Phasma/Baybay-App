@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Baybay</string>
 
+    <string name="what_is_new">
+        Feature: Tagalog to Baybayin Transliteration. \nChanges: Adjusted gameplay history cap, and separator format changes.
+    </string>
+
+    <string name="transcript">When writing from Tagalog to Baybayin, it\’s <font color="red"><b>NOT</b></font> technically considered a \"translation\". Translation is the process of converting the meaning of words or phrases from one language to another. \n\nYou are essentially <b><i>\"transliterating\"</i></b> the sounds or letters of the Abakada into the corresponding Baybayin character, or converting the Tagalog text into Baybayin, which represent the same sounds and meaning.
+    </string>
+
+    <string name="transcript_limitation">
+        Apology in advance, but due to the technical limitations of available font variables, we are unable to offer transcription into the B20 plus version of the Baybayin script. The current feature only supports the B18 version, which is the traditional form that uses dots for kudlit and is modified with ‘Ra’. \n\nThere are also no limitations on what you can input, so expect some characters with no equivalent transliteration <font color="red"><u>such as but not limited to: all symbols apart from comma and perion, <i>mga hiram na salita</i> (C, F, J, Q, V, X, Z), or emojis,</u></font> will remain unchanged.\n\nYou can copy or share the converted text on the TextView and paste it into any software or site that has a text-input field, provided that said destination also supports Baybayin character fonts.
+    </string>
+
     <string name="baybayin_introduction">
         Baybayin script is an ancient writing system that was used by the Filipinos before and during the Spanish colonization. It is derived from the Brahmi script, which was also used in India and other parts of Asia. Baybayin script consists of symbols that represent consonants and vowels, and some diacritical marks that modify the sounds. Baybayin script was mainly used to write Tagalog, Kapampangan, Ilocano, and other languages spoken in Luzon and Visayas.
     </string>

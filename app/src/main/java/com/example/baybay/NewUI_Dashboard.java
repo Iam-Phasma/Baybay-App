@@ -3,6 +3,8 @@ package com.example.baybay;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -19,6 +21,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,18 +34,14 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 import java.util.Random;
-
-import es.dmoral.toasty.Toasty;
 
 public class NewUI_Dashboard extends AppCompatActivity {
 
@@ -66,8 +65,8 @@ public class NewUI_Dashboard extends AppCompatActivity {
     };
     // -------
 
-    ImageButton ImgbtnDashboardMenu, ImgbtnTrivia_Refresh, ImgbtnLearn, PlayGames, Community, ArtsCrafts;
-    TextView TvTrivia;
+    ImageButton ImgbtnDashboardMenu, ImgbtnNewsLetter, ImgbtnTrivia_Refresh, ImgbtnLearn, PlayGames, Community, ArtsCrafts, Transcript, Imgbtn_dashboard_transcript_info;
+    TextView TvTrivia, TvNewsLetter, Tv_trascript_prompt;
     TextView TvTextDashboard;
     private String currentText = "";
     SharedPreferences preferences;
@@ -254,6 +253,13 @@ public class NewUI_Dashboard extends AppCompatActivity {
             }
         });
 
+        ImgbtnNewsLetter = findViewById(R.id.imgbtn_dashboard_newsletter);
+        ImgbtnNewsLetter.setOnClickListener(v -> {
+            ClickSoundEffect();
+            ImgbtnNewsLetter.setEnabled(false);
+            openDialogLetter();
+        });
+
         ImgbtnLearn = findViewById(R.id.imgbtn_learn);
         ImgbtnLearn.setOnClickListener(v -> {
             DisableNav();
@@ -301,6 +307,61 @@ public class NewUI_Dashboard extends AppCompatActivity {
                 startActivity(Dashboard);
             }, 500);
         });
+
+        Imgbtn_dashboard_transcript_info = findViewById(R.id.imgbtn_dashboard_transcript_info);
+        Imgbtn_dashboard_transcript_info.setOnClickListener(v -> {
+            Imgbtn_dashboard_transcript_info.setEnabled(false);
+            ClickSoundEffect();
+            openTranscriptPrompt();
+        });
+
+        Transcript = findViewById(R.id.imgbtn_transcript);
+        Transcript.setOnClickListener(v -> {
+            DisableNav();
+            animateButton(Transcript);
+            Imgbtn_dashboard_transcript_info.setVisibility(View.INVISIBLE);
+            ClickSoundEffect();
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                EnableNav();
+                Intent Dashboard = new Intent(getApplicationContext(), NewUI_Transliterate.class);
+                startActivity(Dashboard);
+                Imgbtn_dashboard_transcript_info.setVisibility(View.VISIBLE);
+
+
+
+            }, 500);
+        });
+    }
+
+    private void openTranscriptPrompt() {
+        Dialog dlg;
+        dlg = new Dialog(NewUI_Dashboard.this, R.style.PopupDialog);
+        dlg.setCanceledOnTouchOutside(false);  // disable dialog dismiss when touch outside
+        dlg.setContentView(R.layout.activity_newui_trascript_prompt);
+        dlg.show();
+
+        View dialogWindowView = dlg.getWindow().getDecorView();
+        Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+
+        ConstraintLayout Constlayout_transcript_prompt = dlg.findViewById(R.id.constlayout_transcript_prompt);
+        Drawable background = Constlayout_transcript_prompt.getBackground();
+
+        if (background instanceof ShapeDrawable) {
+            ShapeDrawable shapeDrawable = (ShapeDrawable) background;
+            shapeDrawable.getPaint().setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        } else if (background instanceof GradientDrawable) {
+            GradientDrawable gradientDrawable = (GradientDrawable) background;
+            gradientDrawable.setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        }
+
+        Tv_trascript_prompt = dlg.findViewById(R.id.tv_trascript_prompt);
+        Tv_trascript_prompt.setText(R.string.transcript);
+
+        ImageButton Imgbtn_transcript_prompt_ok = dlg.findViewById(R.id.imgbtn_transcript_prompt_ok);
+        Imgbtn_transcript_prompt_ok.setOnClickListener(v -> {
+            Imgbtn_dashboard_transcript_info.setEnabled(true);
+            dlg.dismiss();
+        });
     }
 
     private void setBackgroundColor(){
@@ -323,6 +384,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
         PlayGames.setEnabled(false);
         ArtsCrafts.setEnabled(false);
         Community.setEnabled(false);
+        Transcript.setEnabled(false);
     }
 
     private void EnableNav(){
@@ -330,6 +392,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
         PlayGames.setEnabled(true);
         ArtsCrafts.setEnabled(true);
         Community.setEnabled(true);
+        Transcript.setEnabled(true);
     }
 
     //Set random trivia
@@ -467,6 +530,75 @@ public class NewUI_Dashboard extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacks(runnable);
+    }
+
+    public void openDialogLetter(){
+        Dialog dialog = new Dialog(NewUI_Dashboard.this, R.style.PopupDialog);
+        dialog.setContentView(R.layout.news_letter);
+
+        ConstraintLayout ConstraintLayoutLetter = dialog.findViewById(R.id.constarintlayout_letter);
+        ConstraintLayoutLetter.setEnabled(false);
+        TvNewsLetter = dialog.findViewById(R.id.tv_news_letter);
+        TvNewsLetter.setText(R.string.what_is_new);
+
+        // Entrance animation
+        View dialogView = dialog.getWindow().getDecorView();
+        dialogView.setTranslationY(-1000); // Start above the screen
+        dialogView.setAlpha(0); // Start invisible
+        dialogView.setScaleX(0.2f); // Start scaled down
+        dialogView.setScaleY(0.2f); // Start scaled down
+        dialogView.setRotation(15); // Start slightly tilted to the left
+
+        ObjectAnimator entranceAnimator = ObjectAnimator.ofFloat(dialogView, "translationY", 0);
+        entranceAnimator.setInterpolator(new DecelerateInterpolator());
+        entranceAnimator.setDuration(500);
+
+        ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(dialogView, "alpha", 1);
+        fadeInAnimator.setDuration(100);
+
+        ObjectAnimator scaleXAnimator = ObjectAnimator.ofFloat(dialogView, "scaleX", 1);
+        scaleXAnimator.setDuration(500);
+
+        ObjectAnimator scaleYAnimator = ObjectAnimator.ofFloat(dialogView, "scaleY", 1);
+        scaleYAnimator.setDuration(500);
+
+        ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(dialogView, "rotation", 0);
+        rotationAnimator.setDuration(500);
+
+        entranceAnimator.start();
+        fadeInAnimator.start();
+        scaleXAnimator.start();
+        scaleYAnimator.start();
+        rotationAnimator.start();
+
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            ConstraintLayoutLetter.setEnabled(true);
+            ImgbtnNewsLetter.setEnabled(true);
+        }, 500);
+
+        // Dismiss dialog when view is clicked
+        ConstraintLayoutLetter.setOnClickListener(v -> {
+            // Exit animation
+            ObjectAnimator shrinkAnimatorX = ObjectAnimator.ofFloat(dialogView, "scaleX", 0);
+            ObjectAnimator shrinkAnimatorY = ObjectAnimator.ofFloat(dialogView, "scaleY", 0);
+            ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(dialogView, "alpha", 0);
+            shrinkAnimatorX.setDuration(400);
+            shrinkAnimatorY.setDuration(400);
+            fadeOutAnimator.setDuration(400);
+            shrinkAnimatorX.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    dialog.dismiss();
+                }
+            });
+            shrinkAnimatorX.start();
+            shrinkAnimatorY.start();
+            fadeOutAnimator.start();
+        });
+
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.show();
     }
 
     ConstraintLayout ConstNewSettings;
@@ -699,7 +831,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().getAttributes().windowAnimations = R.style.SettingsDialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 

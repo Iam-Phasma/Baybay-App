@@ -4,5 +4,6 @@
     <style name="MoreActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- No windowLayoutInDisplayCutoutMode for devices with API level < 27 -->
     </style>
+
 </resources>
 

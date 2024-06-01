@@ -96,6 +96,7 @@ public class NewUi_Progress_Chart extends AppCompatActivity {
 
         imgbtnGrapghExit = findViewById(R.id.imgbtn_grapgh_exit);
         imgbtnGrapghExit.setOnClickListener(view -> {
+            ClickSoundEffect();
             finish();
         });
 
