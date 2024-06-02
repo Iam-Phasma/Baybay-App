@@ -22,18 +22,21 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 import es.dmoral.toasty.Toasty;
 
@@ -59,9 +62,8 @@ public class NewUI_Transliterate extends AppCompatActivity {
     // -------
 
     private Toast globalToast;
-    ImageButton Imgbtn_translit_exit, Imgbtn_translit_share, Imgbtn_translit_delete, Imgbtn_translit_copy, Imgbtn_translit_info;
-    TextView TextView_convertedtext, Tv_trascript_prompt;
-    EditText EditText_tagalog;
+    ImageButton Imgbtn_translit_exit, Imgbtn_translit_share, Imgbtn_translit_delete, Imgbtn_translit_copy, Imgbtn_translit_info, Imgbtn_translit_send;
+    TextView  Tv_trascript_prompt;
     String Converted, toConvert;
 
     @Override
@@ -89,26 +91,83 @@ public class NewUI_Transliterate extends AppCompatActivity {
 
 
 
-
         // TYPING
         EditText EditText_tagalog = findViewById(R.id.editText_tagalog);
         // RESULT
         TextView TextView_convertedtext = findViewById(R.id.textView_convertedtext);
-        // Button
-        ImageButton Imgbtn_translit_send = findViewById(R.id.imgbtn_translit_send);
+
+        TextView TvSelection = findViewById(R.id.tvSelection);
+        String[] selections = {"B20+ ◢", "B17 ◢", "B17+ ◢", "B18  ◢"};
+        AtomicInteger num = new AtomicInteger(0);
+        TvSelection.setText(selections[num.get()]);
+
+        TvSelection.setOnClickListener(v -> {
+            TvSelection.setEnabled(false);
+
+            num.set((num.get() + 1) % selections.length);
+            TvSelection.setText(selections[num.get()]);
+
+            if (!EditText_tagalog.getText().toString().equals("")) {
+                Imgbtn_translit_send.performClick();
+            }
+
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                TvSelection.setEnabled(true);
+            }, 200);
+        });
+
+
+        Imgbtn_translit_send = findViewById(R.id.imgbtn_translit_send);
         Imgbtn_translit_send.setOnClickListener(v -> {
             toConvert = EditText_tagalog.getText().toString().trim();
-            if (!toConvert.isEmpty()){
+            if (!toConvert.isEmpty()) {
                 ClickSoundEffect();
-                String mappedText = mapToBaybayin(toConvert);
+
+                String mappedText = Z_BaybayinConverter.mapToBaybayinB20Plus(toConvert);
+                Typeface customFont = Typeface.createFromAsset(getAssets(), "fonts/OpenBaybayin.ttf");
+                TextView_convertedtext.setTextSize(30);
+                if (num.get() == 0) {
+                    mappedText = Z_BaybayinConverter.mapToBaybayinB20Plus(toConvert);
+                    customFont = Typeface.createFromAsset(getAssets(), "fonts/OpenBaybayin.ttf");
+                    TextView_convertedtext.setTextSize(32);
+                } else if (num.get() == 1) {
+                    mappedText = Z_BaybayinConverter.mapToBaybayinB17(toConvert);
+                    customFont = Typeface.createFromAsset(getAssets(), "fonts/baybay.ttf");
+                } else if (num.get() == 2) {
+                    mappedText = Z_BaybayinConverter.mapToBaybayinB17Plus(toConvert);
+                    customFont = Typeface.createFromAsset(getAssets(), "fonts/baybay.ttf");
+                } else if (num.get() == 3) {
+                    mappedText = Z_BaybayinConverter.mapToBaybayinB18(toConvert);
+                    customFont = Typeface.createFromAsset(getAssets(), "fonts/baybay.ttf");
+                }
+
                 try {
-                    Typeface customFont = Typeface.createFromAsset(getAssets(), "fonts/baybay.ttf");
                     TextView_convertedtext.setTypeface(customFont);
                     TextView_convertedtext.setText(mappedText);
-                    TextView_convertedtext.setTextSize(30);
-                } catch (Exception e) {
 
+                    EditText_tagalog.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
+            }else{
+                //if EditText is empty but the TextView is not
+                TextView_convertedtext.setText("");
+                TextView_convertedtext.setTextSize(18);
+                Typeface typeface = ResourcesCompat.getFont(this, R.font.blinker);
+                TextView_convertedtext.setTypeface(typeface);
+
+                cancelToast();
+                globalToast = Toasty.warning(NewUI_Transliterate.this, "Field's empty! Type something.", Toast.LENGTH_SHORT);
+                globalToast.show();
+
+                EditText_tagalog.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(EditText_tagalog, InputMethodManager.SHOW_IMPLICIT);
+
+                scrollOnTop();
             }
         });
 
@@ -124,7 +183,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
                     startActivity(Intent.createChooser(shareIntent, "Share via"));
                 } else {
                     cancelToast();
-                    globalToast = Toasty.warning(NewUI_Transliterate.this, "Nothing to share yet.", Toast.LENGTH_LONG);
+                    globalToast = Toasty.warning(NewUI_Transliterate.this, "Nothing to share yet.", Toast.LENGTH_SHORT);
                     globalToast.show();
                 }
             } catch (Exception e) {
@@ -143,11 +202,11 @@ public class NewUI_Transliterate extends AppCompatActivity {
                     clipboard.setPrimaryClip(clip);
 
                     cancelToast();
-                    globalToast = Toasty.success(NewUI_Transliterate.this, "Successfully copied into clipboard.", Toast.LENGTH_LONG);
+                    globalToast = Toasty.success(NewUI_Transliterate.this, "Successfully copied into clipboard.", Toast.LENGTH_SHORT);
                     globalToast.show();
                 }else{
                     cancelToast();
-                    globalToast = Toasty.warning(NewUI_Transliterate.this, "Nothing to copy yet.", Toast.LENGTH_LONG);
+                    globalToast = Toasty.warning(NewUI_Transliterate.this, "Nothing to copy yet.", Toast.LENGTH_SHORT);
                     globalToast.show();
                 }
             }catch (Exception e){
@@ -169,7 +228,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
                 scrollOnTop();
             }else{
                 cancelToast();
-                globalToast = Toasty.warning(NewUI_Transliterate.this, "Field's already empty! Type something.", Toast.LENGTH_LONG);
+                globalToast = Toasty.warning(NewUI_Transliterate.this, "Field's already empty! Type something.", Toast.LENGTH_SHORT);
                 globalToast.show();
 
                 EditText_tagalog.requestFocus();
@@ -202,144 +261,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
         animScrollToTop.start();
     }
 
-    private String mapToBaybayin(String toConvert) {
-        StringBuilder mappedText = new StringBuilder();
 
-        toConvert = toConvert.replaceAll("(?i)NGA", "ᜅ");
-        toConvert = toConvert.replaceAll("(?i)NGE", "ᜅᜒ");
-        toConvert = toConvert.replaceAll("(?i)NGI", "ᜅᜒ");
-        toConvert = toConvert.replaceAll("(?i)NGO", "ᜅᜓ");
-        toConvert = toConvert.replaceAll("(?i)NGU", "ᜅᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)BA", "ᜊ");
-        toConvert = toConvert.replaceAll("(?i)BE", "ᜊᜒ");
-        toConvert = toConvert.replaceAll("(?i)BI", "ᜊᜒ");
-        toConvert = toConvert.replaceAll("(?i)BO", "ᜊᜓ");
-        toConvert = toConvert.replaceAll("(?i)BU", "ᜊᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)KA", "ᜃ");
-        toConvert = toConvert.replaceAll("(?i)KE", "ᜃᜒ");
-        toConvert = toConvert.replaceAll("(?i)KI", "ᜃᜒ");
-        toConvert = toConvert.replaceAll("(?i)KO", "ᜃᜓ");
-        toConvert = toConvert.replaceAll("(?i)KU", "ᜃᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)DA", "ᜇ");
-        toConvert = toConvert.replaceAll("(?i)DE", "ᜇᜒ");
-        toConvert = toConvert.replaceAll("(?i)DI", "ᜇᜒ");
-        toConvert = toConvert.replaceAll("(?i)DO", "ᜇᜓ");
-        toConvert = toConvert.replaceAll("(?i)DU", "ᜇᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)GA", "ᜄ");
-        toConvert = toConvert.replaceAll("(?i)GE", "ᜄᜒ");
-        toConvert = toConvert.replaceAll("(?i)GI", "ᜄᜒ");
-        toConvert = toConvert.replaceAll("(?i)GO", "ᜄᜓ");
-        toConvert = toConvert.replaceAll("(?i)GU", "ᜄᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)HA", "ᜑ");
-        toConvert = toConvert.replaceAll("(?i)HE", "ᜑᜒ");
-        toConvert = toConvert.replaceAll("(?i)HI", "ᜑᜒ");
-        toConvert = toConvert.replaceAll("(?i)HO", "ᜑᜓ");
-        toConvert = toConvert.replaceAll("(?i)HU", "ᜑᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)LA", "ᜎ");
-        toConvert = toConvert.replaceAll("(?i)LE", "ᜎᜒ");
-        toConvert = toConvert.replaceAll("(?i)LI", "ᜎᜒ");
-        toConvert = toConvert.replaceAll("(?i)LO", "ᜎᜓ");
-        toConvert = toConvert.replaceAll("(?i)LU", "ᜎᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)MA", "ᜋ");
-        toConvert = toConvert.replaceAll("(?i)ME", "ᜋᜒ");
-        toConvert = toConvert.replaceAll("(?i)MI", "ᜋᜒ");
-        toConvert = toConvert.replaceAll("(?i)MO", "ᜋᜓ");
-        toConvert = toConvert.replaceAll("(?i)MU", "ᜋᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)NA", "ᜈ");
-        toConvert = toConvert.replaceAll("(?i)NE", "ᜈᜒ");
-        toConvert = toConvert.replaceAll("(?i)NI", "ᜈᜒ");
-        toConvert = toConvert.replaceAll("(?i)NO", "ᜈᜓ");
-        toConvert = toConvert.replaceAll("(?i)NU", "ᜈᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)PA", "ᜉ");
-        toConvert = toConvert.replaceAll("(?i)PE", "ᜉᜒ");
-        toConvert = toConvert.replaceAll("(?i)PI", "ᜉᜒ");
-        toConvert = toConvert.replaceAll("(?i)PO", "ᜉᜓ");
-        toConvert = toConvert.replaceAll("(?i)PU", "ᜉᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)RA", "\u170D");
-        toConvert = toConvert.replaceAll("(?i)RE", "\u170Dᜒ");
-        toConvert = toConvert.replaceAll("(?i)RI", "\u170Dᜒ");
-        toConvert = toConvert.replaceAll("(?i)RO", "\u170Dᜓ");
-        toConvert = toConvert.replaceAll("(?i)RU", "\u170Dᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)SA", "ᜐ");
-        toConvert = toConvert.replaceAll("(?i)SE", "ᜐᜒ");
-        toConvert = toConvert.replaceAll("(?i)SI", "ᜐᜒ");
-        toConvert = toConvert.replaceAll("(?i)SO", "ᜐᜓ");
-        toConvert = toConvert.replaceAll("(?i)SU", "ᜐᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)TA", "ᜆ");
-        toConvert = toConvert.replaceAll("(?i)TE", "ᜆᜒ");
-        toConvert = toConvert.replaceAll("(?i)TI", "ᜆᜒ");
-        toConvert = toConvert.replaceAll("(?i)TO", "ᜆᜓ");
-        toConvert = toConvert.replaceAll("(?i)TU", "ᜆᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)WA", "ᜏ");
-        toConvert = toConvert.replaceAll("(?i)WE", "ᜏᜒ");
-        toConvert = toConvert.replaceAll("(?i)WI", "ᜏᜒ");
-        toConvert = toConvert.replaceAll("(?i)WO", "ᜏᜓ");
-        toConvert = toConvert.replaceAll("(?i)WU", "ᜏᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)YA", "ᜌ");
-        toConvert = toConvert.replaceAll("(?i)YE", "ᜌᜒ");
-        toConvert = toConvert.replaceAll("(?i)YI", "ᜌᜒ");
-        toConvert = toConvert.replaceAll("(?i)YO", "ᜌᜓ");
-        toConvert = toConvert.replaceAll("(?i)YU", "ᜌᜓ");
-
-        toConvert = toConvert.replaceAll("(?i)NG", "ᜅ᜔");
-        toConvert = toConvert.replaceAll("(?i)B", "ᜊ᜔");
-        toConvert = toConvert.replaceAll("(?i)K", "ᜃ᜔");
-        toConvert = toConvert.replaceAll("(?i)D", "ᜇ᜔");
-        toConvert = toConvert.replaceAll("(?i)G", "ᜄ᜔");
-        toConvert = toConvert.replaceAll("(?i)G", "ᜄ᜔");
-        toConvert = toConvert.replaceAll("(?i)H", "ᜑ᜔");
-        toConvert = toConvert.replaceAll("(?i)L", "ᜎ᜔");
-        toConvert = toConvert.replaceAll("(?i)M", "ᜋ᜔");
-        toConvert = toConvert.replaceAll("(?i)N", "ᜈ᜔");
-        toConvert = toConvert.replaceAll("(?i)P", "ᜉ᜔");
-        toConvert = toConvert.replaceAll("(?i)R", "\u170D ᜔");
-        toConvert = toConvert.replaceAll("(?i)S", "ᜐ᜔");
-        toConvert = toConvert.replaceAll("(?i)T", "ᜆ᜔");
-        toConvert = toConvert.replaceAll("(?i)W", "ᜏ᜔");
-        toConvert = toConvert.replaceAll("(?i)Y", "ᜌ᜔");
-
-        for (int i = 0; i < toConvert.length(); i++) {
-            char character = toConvert.toUpperCase().charAt(i);
-            switch (character) {
-                case 'A':
-                    mappedText.append("ᜀ");
-                    break;
-                case 'E':
-                case 'I':
-                    mappedText.append("ᜁ");
-                    break;
-                case 'O':
-                case 'U':
-                    mappedText.append("ᜂ");
-                    break;
-                case '.':
-                    mappedText.append("᜶");
-                    break;
-                case ',':
-                    mappedText.append("᜵");
-                    break;
-
-                default:
-                    mappedText.append(character);
-                    break;
-            }
-        }
-        return mappedText.toString().trim();
-    }
 
     private void transliterateLimitation(){
         Dialog dlg;
@@ -364,6 +286,14 @@ public class NewUI_Transliterate extends AppCompatActivity {
 
         Tv_trascript_prompt = dlg.findViewById(R.id.tv_trascript_prompt);
         Tv_trascript_prompt.setText(R.string.transcript_limitation);
+
+        dlg.setOnKeyListener((dialogInterface, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                return true;
+            }
+            return false;
+        });
+        dlg.setCanceledOnTouchOutside(false);
 
         ImageButton Imgbtn_transcript_prompt_ok = dlg.findViewById(R.id.imgbtn_transcript_prompt_ok);
         Imgbtn_transcript_prompt_ok.setOnClickListener(v -> {

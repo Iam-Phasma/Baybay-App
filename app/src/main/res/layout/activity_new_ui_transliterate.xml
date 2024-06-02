@@ -20,6 +20,35 @@
         app:srcCompat="@drawable/newui_transliterate_header"
         tools:srcCompat="@drawable/newui_transliterate_header" />
 
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/sans_serif_flf"
+        android:text="Tagalog"
+        android:textColor="#D0824E"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+    <TextView
+        android:id="@+id/tvSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/sans_serif_flf"
+        android:text="◢"
+        android:textColor="#D0824E"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
     <ImageButton
         android:id="@+id/imgbtn_translit_info"
         android:layout_width="55dp"
@@ -128,7 +157,7 @@
                         android:maxLength="5000"
                         android:minLines="6"
                         android:textColor="#2B2B2B"
-                        android:textColorHighlight="#00B68989"
+                        android:textColorHighlight="#86c2ff"
                         android:textColorHint="#92575757" />
                 </androidx.core.widget.NestedScrollView>
             </androidx.core.widget.NestedScrollView>

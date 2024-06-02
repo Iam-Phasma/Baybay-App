@@ -29,6 +29,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -326,9 +327,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
                 Intent Dashboard = new Intent(getApplicationContext(), NewUI_Transliterate.class);
                 startActivity(Dashboard);
                 Imgbtn_dashboard_transcript_info.setVisibility(View.VISIBLE);
-
-
-
             }, 500);
         });
     }
@@ -356,6 +354,15 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         Tv_trascript_prompt = dlg.findViewById(R.id.tv_trascript_prompt);
         Tv_trascript_prompt.setText(R.string.transcript);
+
+        // Prevent dialog from being dismissed when the back button is pressed
+        dlg.setOnKeyListener((dialogInterface, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                return true;
+            }
+            return false;
+        });
+        dlg.setCanceledOnTouchOutside(false);
 
         ImageButton Imgbtn_transcript_prompt_ok = dlg.findViewById(R.id.imgbtn_transcript_prompt_ok);
         Imgbtn_transcript_prompt_ok.setOnClickListener(v -> {
@@ -571,6 +578,13 @@ public class NewUI_Dashboard extends AppCompatActivity {
         scaleYAnimator.start();
         rotationAnimator.start();
 
+        dialog.setOnKeyListener((dialogInterface, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                ConstraintLayoutLetter.performClick();
+                return true;
+            }
+            return false;
+        });
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             ConstraintLayoutLetter.setEnabled(true);
