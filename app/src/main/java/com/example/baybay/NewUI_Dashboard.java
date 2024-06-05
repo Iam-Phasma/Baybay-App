@@ -21,7 +21,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,12 +36,14 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Random;
+
+import es.dmoral.toasty.Toasty;
 
 public class NewUI_Dashboard extends AppCompatActivity {
 
@@ -66,7 +67,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
     };
     // -------
 
-    ImageButton ImgbtnDashboardMenu, ImgbtnNewsLetter, ImgbtnTrivia_Refresh, ImgbtnLearn, PlayGames, Community, ArtsCrafts, Transcript, Imgbtn_dashboard_transcript_info;
+    ImageButton ImgbtnDashboardMenu, ImgbtnNewsLetter, ImgbtnTrivia_Refresh, ImgbtnLearn, PlayGames, Community, ArtsCrafts, Transcript, Imgbtn_transcript_info, Canvas;
     TextView TvTrivia, TvNewsLetter, Tv_trascript_prompt;
     TextView TvTextDashboard;
     private String currentText = "";
@@ -76,6 +77,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
     private TextView DLLinkQuestion;
     private Handler handler = new Handler(Looper.getMainLooper());
     private Runnable runnable;
+    private Toast globalToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,23 +125,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
         TvTrivia = findViewById(R.id.tv_trivia);
         ImgbtnTrivia_Refresh = findViewById(R.id.imgbtn_trivia_refresh);
 
-//        ImgbtnTrivia_Refresh.setEnabled(false);
-//        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-//            ImgbtnTrivia_Refresh.setEnabled(true);
-//        }, 2000);
-
-//        setRandomTextWithAnimation(TvTrivia);
-
-//        ImgbtnTrivia_Refresh.setOnClickListener(v -> {
-//            animateButtonTrivia(ImgbtnTrivia_Refresh);
-//            setRandomTextWithAnimation(TvTrivia);
-//            ClickSoundEffect();
-//            ImgbtnTrivia_Refresh.setEnabled(false);
-//            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-//                ImgbtnTrivia_Refresh.setEnabled(true);
-//            }, 2000);
-//        });
-
         handler.postDelayed(runnable = new Runnable() {
             @Override
             public void run() {
@@ -158,96 +143,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
                     ImgbtnDashboardMenu.setEnabled(true);
                 }, 1000);
-
-//                ImgbtnDashboardMenu.setEnabled(false);
-//
-//                Dialog dlg;
-//                dlg = new Dialog(NewUI_Dashboard.this, R.style.PopupDialog);
-//                dlg.setCanceledOnTouchOutside(false);  //disable dialog dismiss when touch outside
-//                dlg.setContentView(R.layout.activity_new_ui_sound);
-//                dlg.show();
-//
-//                View dialogWindowView = dlg.getWindow().getDecorView();
-//                Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
-//
-//                // Access the button from the dialog's content view
-//                ImageButton ImgBtnSoundBg = dlg.findViewById(R.id.cb_Background);
-//                ImageButton ImgBtnSoundFx = dlg.findViewById(R.id.cb_SEffects);
-//                ImageButton ImgbtnSoundExit = dlg.findViewById(R.id.imgbtn_sound_exit);
-//
-//                //Initialize buttons icon when dialog is opened
-//                if (Z_SoundManager.isBgon[0]) {
-//                    ImgBtnSoundBg.setImageResource(R.drawable.cb_soundon);
-//                } else {
-//                    ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
-//                }
-//
-//                if (Z_SoundManager.isSoundFx[0]) {
-//                    ImgBtnSoundFx.setImageResource(R.drawable.cb_soundon);
-//                } else {
-//                    ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
-//                }
-//
-//                ImgBtnSoundBg.setOnClickListener(v1 -> {
-//                    ClickSoundEffect();
-//                    Z_SoundManager.isBgon[0] = !Z_SoundManager.isBgon[0];  // Toggle the value of isBgon
-//
-//                    onStop();
-//
-//                    // Save Background Music state
-//                    SharedPreferences.Editor editorBg = preferences.edit();
-//                    editorBg.putBoolean("isBgon", Z_SoundManager.isBgon[0]);
-//                    editorBg.apply();
-//
-//                    // Initialize the background music toggle button drawable
-//                    if (Z_SoundManager.isBgon[0]) {
-//                        ImgBtnSoundBg.setImageResource(R.drawable.cb_soundon);
-//                    } else {
-//                        ImgBtnSoundBg.setImageResource(R.drawable.cb_soundoff);
-//                    }
-//
-//                    callMusic();
-//                });
-//
-//                ImgBtnSoundFx.setOnClickListener(v12 -> {
-//                    ClickSoundEffect();
-//                    Z_SoundManager.isSoundFx[0] = !Z_SoundManager.isSoundFx[0];  // Toggle the value of isSFx
-//
-//                    // Save Background Music state
-//                    SharedPreferences.Editor editorSFXicon = preferences.edit();
-//                    editorSFXicon.putBoolean("isSFx", Z_SoundManager.isSoundFx[0]);
-//                    editorSFXicon.apply();
-//
-//                    // Initialize the background music toggle button drawable
-//                    if (Z_SoundManager.isSoundFx[0]) {
-//                        ImgBtnSoundFx.setImageResource(R.drawable.cb_soundon);
-//                    } else {
-//                        ImgBtnSoundFx.setImageResource(R.drawable.cb_soundoff);
-//                    }
-//                });
-//
-//                ImgbtnSoundExit.setOnClickListener(v13 -> {
-//                    ClickSoundEffect();
-//                    ImgbtnDashboardMenu.setEnabled(true);
-//                    dlg.dismiss();
-//                });
-//
-//                //Prevents back press on sound dialog menu
-//                dlg.setOnKeyListener((dialog, keyCode, event) -> {
-//                    return keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP; // Consume the back button press event
-//                });
-//
-//                //Set app version
-//                TextView TvAppVersion = dlg.findViewById(R.id.tv_appversion);
-//                versionName = getAppVersionName();
-//                TvAppVersion.setText("Version: " + versionName);
-//
-//                TextView TvCheckUpdate = dlg.findViewById(R.id.tv_checkupdate);
-//                TvCheckUpdate.setOnClickListener(v1 -> {
-//                    link = "https://baybay-release-web-app.pages.dev/";
-//                    gotoLink(link);
-//                });
-
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -309,9 +204,9 @@ public class NewUI_Dashboard extends AppCompatActivity {
             }, 500);
         });
 
-        Imgbtn_dashboard_transcript_info = findViewById(R.id.imgbtn_dashboard_transcript_info);
-        Imgbtn_dashboard_transcript_info.setOnClickListener(v -> {
-            Imgbtn_dashboard_transcript_info.setEnabled(false);
+        Imgbtn_transcript_info = findViewById(R.id.imgbtn_transcript_info);
+        Imgbtn_transcript_info.setOnClickListener(v -> {
+            Imgbtn_transcript_info.setEnabled(false);
             ClickSoundEffect();
             openTranscriptPrompt();
         });
@@ -320,13 +215,28 @@ public class NewUI_Dashboard extends AppCompatActivity {
         Transcript.setOnClickListener(v -> {
             DisableNav();
             animateButton(Transcript);
-            Imgbtn_dashboard_transcript_info.setVisibility(View.INVISIBLE);
+            Imgbtn_transcript_info.setVisibility(View.INVISIBLE);
             ClickSoundEffect();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 EnableNav();
                 Intent Dashboard = new Intent(getApplicationContext(), NewUI_Transliterate.class);
                 startActivity(Dashboard);
-                Imgbtn_dashboard_transcript_info.setVisibility(View.VISIBLE);
+                Imgbtn_transcript_info.setVisibility(View.VISIBLE);
+            }, 500);
+        });
+
+        Canvas = findViewById(R.id.imgbtn_canvas);
+        Canvas.setOnClickListener(v -> {
+            DisableNav();
+            animateButton(Canvas);
+            ClickSoundEffect();
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                EnableNav();
+//                Intent Dashboard = new Intent(getApplicationContext(), NewUI_Canvas.class);
+//                startActivity(Dashboard);
+                cancelToast();
+                globalToast = Toasty.info(NewUI_Dashboard.this, "Coming soon.", Toast.LENGTH_SHORT);
+                globalToast.show();
             }, 500);
         });
     }
@@ -366,7 +276,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         ImageButton Imgbtn_transcript_prompt_ok = dlg.findViewById(R.id.imgbtn_transcript_prompt_ok);
         Imgbtn_transcript_prompt_ok.setOnClickListener(v -> {
-            Imgbtn_dashboard_transcript_info.setEnabled(true);
+            Imgbtn_transcript_info.setEnabled(true);
             dlg.dismiss();
         });
     }
@@ -392,6 +302,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
         ArtsCrafts.setEnabled(false);
         Community.setEnabled(false);
         Transcript.setEnabled(false);
+        Canvas.setEnabled(false);
     }
 
     private void EnableNav(){
@@ -400,6 +311,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
         ArtsCrafts.setEnabled(true);
         Community.setEnabled(true);
         Transcript.setEnabled(true);
+        Canvas.setEnabled(true);
     }
 
     //Set random trivia
@@ -798,7 +710,6 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         ImageButton BtnAttribution = dialog.findViewById(R.id.btn_attribution);
         BtnAttribution.setOnClickListener(v -> {
-            //Toasty.info(NewUI_Dashboard.this, "Will be added soon. You can view attributes on 'Update site' for now.", Toasty.LENGTH_LONG).show();
             DisableNav();
             dialog.dismiss();
             ClickSoundEffect();
@@ -858,6 +769,12 @@ public class NewUI_Dashboard extends AppCompatActivity {
         } else if (background instanceof GradientDrawable) {
             GradientDrawable gradientDrawable = (GradientDrawable) background;
             gradientDrawable.setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        }
+    }
+
+    private void cancelToast() {
+        if (globalToast != null) {
+            globalToast.cancel();
         }
     }
 

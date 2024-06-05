@@ -83,7 +83,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
 
             <ImageView
                 android:id="@+id/imageView53"
@@ -113,6 +114,21 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView53"
                 app:layout_constraintTop_toTopOf="@+id/imageView53"
                 tools:src="@drawable/newui_trivia_refresh_button" />
+
+            <TextView
+                android:id="@+id/tv_trivia"
+                android:layout_width="265dp"
+                android:layout_height="74dp"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="196dp"
+                android:lines="5"
+                android:maxLines="5"
+                android:text="The term “Baybayin” was derived from the word “baybay” which means to spell. "
+                android:textAlignment="textStart"
+                android:textColor="#222222"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView53"
+                app:layout_constraintStart_toStartOf="@+id/imageView53"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView46"
@@ -190,36 +206,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/imgbtn_artcrafts"
                 tools:src="@drawable/newui_join_community" />
 
-            <ImageButton
-                android:id="@+id/imgbtn_transcript"
-                android:layout_width="wrap_content"
-                android:layout_height="105dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="24dp"
-                android:backgroundTint="#00FFFFFF"
-                android:scaleType="fitCenter"
-                android:src="@drawable/newui_transcirpt"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imgbtn_playgames"
-                app:layout_constraintStart_toStartOf="@+id/imgbtn_playgames"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
-                tools:src="@drawable/newui_transcirpt" />
-
-            <ImageButton
-                android:id="@+id/imgbtn_dashboard_transcript_info"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="-10dp"
-                android:layout_marginEnd="32dp"
-                android:backgroundTint="#00FFFFFF"
-                android:scaleType="centerCrop"
-                android:src="@drawable/newui_card_info_red"
-                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_transcript"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imgbtn_transcript"
-                app:layout_constraintVertical_bias="0.0"
-                tools:src="@drawable/newui_card_info_red" />
-
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
@@ -233,20 +219,46 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView53"
                 app:layout_constraintTop_toBottomOf="@+id/imgbtn_community" />
 
-            <TextView
-                android:id="@+id/tv_trivia"
-                android:layout_width="265dp"
-                android:layout_height="74dp"
-                android:layout_marginStart="38dp"
-                android:layout_marginTop="196dp"
-                android:lines="5"
-                android:maxLines="5"
-                android:text="The term “Baybayin” was derived from the word “baybay” which means to spell. "
-                android:textAlignment="textStart"
-                android:textColor="#222222"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView53"
-                app:layout_constraintStart_toStartOf="@+id/imageView53"
-                app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/imgbtn_transcript"
+                android:layout_width="wrap_content"
+                android:layout_height="105dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/newui_transcirpt"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_playgames"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_playgames"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                tools:src="@drawable/newui_transcirpt" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_transcript_info"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="-10dp"
+                android:layout_marginEnd="32dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@drawable/newui_card_info_red"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_transcript"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_transcript"
+                app:layout_constraintVertical_bias="0.0"
+                tools:src="@drawable/newui_card_info_red" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_canvas"
+                android:layout_width="wrap_content"
+                android:layout_height="105dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/newui_canvas"
+                app:layout_constraintEnd_toEndOf="@+id/imgbtn_playgames"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_playgames"
+                app:layout_constraintTop_toBottomOf="@+id/imgbtn_transcript"
+                tools:src="@drawable/newui_canvas" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

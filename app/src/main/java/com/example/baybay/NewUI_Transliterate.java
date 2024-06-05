@@ -4,10 +4,14 @@ import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.NestedScrollView;
+import android.Manifest;
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -15,16 +19,21 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -36,6 +45,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import es.dmoral.toasty.Toasty;
@@ -62,9 +73,12 @@ public class NewUI_Transliterate extends AppCompatActivity {
     // -------
 
     private Toast globalToast;
-    ImageButton Imgbtn_translit_exit, Imgbtn_translit_share, Imgbtn_translit_delete, Imgbtn_translit_copy, Imgbtn_translit_info, Imgbtn_translit_send;
+    ImageButton Imgbtn_translit_exit, Imgbtn_translit_share, Imgbtn_translit_delete, Imgbtn_translit_copy, Imgbtn_translit_info, Imgbtn_translit_send, Imgbtn_translit_mic;
     TextView  Tv_trascript_prompt;
     String Converted, toConvert;
+    EditText EditText_tagalog;
+    private static final int RQ_SPEECH_REC = 102;
+    private static final int PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +106,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
 
 
         // TYPING
-        EditText EditText_tagalog = findViewById(R.id.editText_tagalog);
+        EditText_tagalog = findViewById(R.id.editText_tagalog);
         // RESULT
         TextView TextView_convertedtext = findViewById(R.id.textView_convertedtext);
 
@@ -115,7 +129,6 @@ public class NewUI_Transliterate extends AppCompatActivity {
                 TvSelection.setEnabled(true);
             }, 200);
         });
-
 
         Imgbtn_translit_send = findViewById(R.id.imgbtn_translit_send);
         Imgbtn_translit_send.setOnClickListener(v -> {
@@ -168,6 +181,26 @@ public class NewUI_Transliterate extends AppCompatActivity {
                 imm.showSoftInput(EditText_tagalog, InputMethodManager.SHOW_IMPLICIT);
 
                 scrollOnTop();
+            }
+        });
+
+        Imgbtn_translit_mic = findViewById(R.id.imgbtn_translit_mic);
+        Imgbtn_translit_mic.setOnClickListener(v -> {
+
+            if (isConnectedToInternet()){
+                recogSpeech();
+
+                EditText_tagalog.clearFocus();
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSION_REQUEST_CODE);
+                }
+            } else {
+                cancelToast();
+                globalToast = Toasty.error(NewUI_Transliterate.this, "Not ready. Check your internet connection", Toast.LENGTH_SHORT);
+                globalToast.show();
             }
         });
 
@@ -254,14 +287,40 @@ public class NewUI_Transliterate extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        callMusic();
+        if (requestCode == RQ_SPEECH_REC && resultCode == Activity.RESULT_OK) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                EditText_tagalog.setText(EditText_tagalog.getText().toString() + " " + data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
+            }
+        }
+    }
+
+    public void recogSpeech() {
+        onStop();
+
+        Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.forLanguageTag("tl"));
+        i.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say something in Tagalog");
+        startActivityForResult(i, RQ_SPEECH_REC);
+    }
+
+    private boolean isConnectedToInternet() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+    }
+
     public void scrollOnTop(){
         NestedScrollView Sv_transliterate = findViewById(R.id.sv_transliterate);
         ObjectAnimator animScrollToTop = ObjectAnimator.ofInt(Sv_transliterate, "scrollY", 0);
         animScrollToTop.setDuration(200);
         animScrollToTop.start();
     }
-
-
 
     private void transliterateLimitation(){
         Dialog dlg;
