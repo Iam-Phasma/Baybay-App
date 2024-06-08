@@ -2,6 +2,7 @@ package com.example.baybay;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
@@ -11,7 +12,9 @@ import androidx.core.widget.NestedScrollView;
 import android.Manifest;
 
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -27,13 +30,14 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.provider.Settings;
 import android.speech.RecognizerIntent;
-import android.speech.SpeechRecognizer;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -45,8 +49,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import es.dmoral.toasty.Toasty;
@@ -56,7 +60,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
     private Z_BackgroundMusicService musicService;
     private boolean isBound = false;
 
-    private ServiceConnection connection = new ServiceConnection() {
+    private final ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Z_BackgroundMusicService.LocalBinder binder = (Z_BackgroundMusicService.LocalBinder) service;
@@ -73,12 +77,12 @@ public class NewUI_Transliterate extends AppCompatActivity {
     // -------
 
     private Toast globalToast;
-    ImageButton Imgbtn_translit_exit, Imgbtn_translit_share, Imgbtn_translit_delete, Imgbtn_translit_copy, Imgbtn_translit_info, Imgbtn_translit_send, Imgbtn_translit_mic;
+    ImageButton Transliterate_exit, Transliterate_share, Transliterate_delete, Transliterate_copy, Transliterate_info, Transliterate_send, Transliterate_mic;
     TextView  Tv_trascript_prompt;
     String Converted, toConvert;
     EditText EditText_tagalog;
-    private static final int RQ_SPEECH_REC = 102;
-    private static final int PERMISSION_REQUEST_CODE = 1;
+    private static final int PERMISSION_REQUEST_CODE = 100;
+    private static final String PERMISSION_RECORD_AUDIO = Manifest.permission.RECORD_AUDIO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +102,6 @@ public class NewUI_Transliterate extends AppCompatActivity {
             getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
 
-        // Set the gradient background color
-        //int singleColor = Color.parseColor("#FCF4E7");
         Theme_Color.init(this);
         setBackgroundColor();
 
@@ -108,7 +110,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
         // TYPING
         EditText_tagalog = findViewById(R.id.editText_tagalog);
         // RESULT
-        TextView TextView_convertedtext = findViewById(R.id.textView_convertedtext);
+        TextView TextView_converted = findViewById(R.id.textView_convertedtext);
 
         TextView TvSelection = findViewById(R.id.tvSelection);
         String[] selections = {"B20+ ◢", "B17 ◢", "B17+ ◢", "B18  ◢"};
@@ -122,7 +124,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
             TvSelection.setText(selections[num.get()]);
 
             if (!EditText_tagalog.getText().toString().equals("")) {
-                Imgbtn_translit_send.performClick();
+                Transliterate_send.performClick();
             }
 
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
@@ -130,19 +132,19 @@ public class NewUI_Transliterate extends AppCompatActivity {
             }, 200);
         });
 
-        Imgbtn_translit_send = findViewById(R.id.imgbtn_translit_send);
-        Imgbtn_translit_send.setOnClickListener(v -> {
+        Transliterate_send = findViewById(R.id.imgbtn_translit_send);
+        Transliterate_send.setOnClickListener(v -> {
             toConvert = EditText_tagalog.getText().toString().trim();
             if (!toConvert.isEmpty()) {
                 ClickSoundEffect();
 
                 String mappedText = Z_BaybayinConverter.mapToBaybayinB20Plus(toConvert);
                 Typeface customFont = Typeface.createFromAsset(getAssets(), "fonts/OpenBaybayin.ttf");
-                TextView_convertedtext.setTextSize(30);
+                TextView_converted.setTextSize(30);
                 if (num.get() == 0) {
                     mappedText = Z_BaybayinConverter.mapToBaybayinB20Plus(toConvert);
                     customFont = Typeface.createFromAsset(getAssets(), "fonts/OpenBaybayin.ttf");
-                    TextView_convertedtext.setTextSize(32);
+                    TextView_converted.setTextSize(32);
                 } else if (num.get() == 1) {
                     mappedText = Z_BaybayinConverter.mapToBaybayinB17(toConvert);
                     customFont = Typeface.createFromAsset(getAssets(), "fonts/baybay.ttf");
@@ -155,8 +157,8 @@ public class NewUI_Transliterate extends AppCompatActivity {
                 }
 
                 try {
-                    TextView_convertedtext.setTypeface(customFont);
-                    TextView_convertedtext.setText(mappedText);
+                    TextView_converted.setTypeface(customFont);
+                    TextView_converted.setText(mappedText);
 
                     EditText_tagalog.clearFocus();
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -167,10 +169,10 @@ public class NewUI_Transliterate extends AppCompatActivity {
 
             }else{
                 //if EditText is empty but the TextView is not
-                TextView_convertedtext.setText("");
-                TextView_convertedtext.setTextSize(18);
+                TextView_converted.setText("");
+                TextView_converted.setTextSize(18);
                 Typeface typeface = ResourcesCompat.getFont(this, R.font.blinker);
-                TextView_convertedtext.setTypeface(typeface);
+                TextView_converted.setTypeface(typeface);
 
                 cancelToast();
                 globalToast = Toasty.warning(NewUI_Transliterate.this, "Field's empty! Type something.", Toast.LENGTH_SHORT);
@@ -184,19 +186,18 @@ public class NewUI_Transliterate extends AppCompatActivity {
             }
         });
 
-        Imgbtn_translit_mic = findViewById(R.id.imgbtn_translit_mic);
-        Imgbtn_translit_mic.setOnClickListener(v -> {
+        Transliterate_mic = findViewById(R.id.imgbtn_translit_mic);
+        Transliterate_mic.setOnClickListener(v -> {
 
             if (isConnectedToInternet()){
-                recogSpeech();
-
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{PERMISSION_RECORD_AUDIO}, PERMISSION_REQUEST_CODE);
+                } else {
+                    requestRecordAudio();
+                }
                 EditText_tagalog.clearFocus();
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSION_REQUEST_CODE);
-                }
             } else {
                 cancelToast();
                 globalToast = Toasty.error(NewUI_Transliterate.this, "Not ready. Check your internet connection", Toast.LENGTH_SHORT);
@@ -204,14 +205,14 @@ public class NewUI_Transliterate extends AppCompatActivity {
             }
         });
 
-        Imgbtn_translit_share = findViewById(R.id.imgbtn_translit_share);
-        Imgbtn_translit_share.setOnClickListener(v -> {
+        Transliterate_share = findViewById(R.id.imgbtn_translit_share);
+        Transliterate_share.setOnClickListener(v -> {
             try {
-                if (TextView_convertedtext.length() != 0) {
+                if (TextView_converted.length() != 0) {
                     ClickSoundEffect();
                     Intent shareIntent = new Intent();
                     shareIntent.setAction(Intent.ACTION_SEND);
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, TextView_convertedtext.getText().toString());
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, TextView_converted.getText().toString());
                     shareIntent.setType("text/plain");
                     startActivity(Intent.createChooser(shareIntent, "Share via"));
                 } else {
@@ -225,13 +226,13 @@ public class NewUI_Transliterate extends AppCompatActivity {
             }
         });
 
-        Imgbtn_translit_copy = findViewById(R.id.imgbtn_translit_copy);
-        Imgbtn_translit_copy.setOnClickListener(v -> {
+        Transliterate_copy = findViewById(R.id.imgbtn_translit_copy);
+        Transliterate_copy.setOnClickListener(v -> {
             try {
-                if (TextView_convertedtext.length() != 0){
+                if (TextView_converted.length() != 0){
                     ClickSoundEffect();
                     ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clip = ClipData.newPlainText("Baybayin", TextView_convertedtext.getText().toString());
+                    ClipData clip = ClipData.newPlainText("Baybayin", TextView_converted.getText().toString());
                     clipboard.setPrimaryClip(clip);
 
                     cancelToast();
@@ -242,19 +243,19 @@ public class NewUI_Transliterate extends AppCompatActivity {
                     globalToast = Toasty.warning(NewUI_Transliterate.this, "Nothing to copy yet.", Toast.LENGTH_SHORT);
                     globalToast.show();
                 }
-            }catch (Exception e){
+            }catch (Exception ignored){
 
             }
         });
 
-        Imgbtn_translit_delete = findViewById(R.id.imgbtn_translit_delete);
-        Imgbtn_translit_delete.setOnClickListener(v -> {
-            if ((TextView_convertedtext.length() != 0) || (EditText_tagalog.length() != 0)){
+        Transliterate_delete = findViewById(R.id.imgbtn_translit_delete);
+        Transliterate_delete.setOnClickListener(v -> {
+            if ((TextView_converted.length() != 0) || (EditText_tagalog.length() != 0)){
                 ClickSoundEffect();
-                TextView_convertedtext.setText("");
-                TextView_convertedtext.setTextSize(18);
+                TextView_converted.setText("");
+                TextView_converted.setTextSize(18);
                 Typeface typeface = ResourcesCompat.getFont(this, R.font.blinker);
-                TextView_convertedtext.setTypeface(typeface);
+                TextView_converted.setTypeface(typeface);
                 EditText_tagalog.setText("");
                 Converted = "";
 
@@ -272,41 +273,95 @@ public class NewUI_Transliterate extends AppCompatActivity {
             }
         });
 
-        Imgbtn_translit_info = findViewById(R.id.imgbtn_translit_info);
-        Imgbtn_translit_info.setOnClickListener(v -> {
+        Transliterate_info = findViewById(R.id.imgbtn_translit_info);
+        Transliterate_info.setOnClickListener(v -> {
             ClickSoundEffect();
-            Imgbtn_translit_info.setEnabled(false);
+            Transliterate_info.setEnabled(false);
             transliterateLimitation();
         });
 
-        Imgbtn_translit_exit = findViewById(R.id.imgbtn_translit_exit);
-        Imgbtn_translit_exit.setOnClickListener(v -> {
+        Transliterate_exit = findViewById(R.id.imgbtn_translit_exit);
+        Transliterate_exit.setOnClickListener(v -> {
             ClickSoundEffect();
             cancelToast();
             finish();
         });
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         callMusic();
-        if (requestCode == RQ_SPEECH_REC && resultCode == Activity.RESULT_OK) {
+        if (requestCode == PERMISSION_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
                 EditText_tagalog.setText(EditText_tagalog.getText().toString() + " " + data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
             }
         }
     }
 
-    public void recogSpeech() {
+    public void startSpeechRecognition() {
         onStop();
 
         Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.forLanguageTag("tl"));
         i.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say something in Tagalog");
-        startActivityForResult(i, RQ_SPEECH_REC);
+        startActivityForResult(i, PERMISSION_REQUEST_CODE);
+    }
+
+
+    public void requestRecordAudio() {
+        if(ActivityCompat.checkSelfPermission(this, PERMISSION_RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED){
+            cancelToast();
+            globalToast = Toasty.warning(NewUI_Transliterate.this, "Permission Granted", Toast.LENGTH_SHORT);
+            globalToast.show();
+            startSpeechRecognition();
+        }else if (ActivityCompat.shouldShowRequestPermissionRationale(this, PERMISSION_RECORD_AUDIO)){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("This feature requires RECORD_AUDIO permission to work as expected.")
+            .setTitle("Permission Required")
+                    .setCancelable(false)
+                    .setPositiveButton("OK", (dialog, which) -> {
+                        ActivityCompat.requestPermissions(NewUI_Transliterate.this, new String[]{PERMISSION_RECORD_AUDIO},PERMISSION_REQUEST_CODE);
+                        dialog.dismiss();
+                    })
+                    .setNegativeButton("Cancel",((dialog, which) -> dialog.dismiss()));
+
+                    builder.show();
+        }else{
+            ActivityCompat.requestPermissions(this, new String[]{PERMISSION_RECORD_AUDIO}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == PERMISSION_REQUEST_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                cancelToast();
+                globalToast = Toasty.warning(NewUI_Transliterate.this, "Permission Granted", Toast.LENGTH_SHORT);
+                globalToast.show();
+                requestRecordAudio();
+            } else if (!ActivityCompat.shouldShowRequestPermissionRationale(this, PERMISSION_RECORD_AUDIO)){
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("This feature is unavailable because it requires permission that you have denied. Please allow microphone permission from settings.")
+                        .setTitle("Permission Required")
+                        .setCancelable(false)
+                        .setNegativeButton("Cancel", ((dialog, which) -> dialog.dismiss()))
+                        .setPositiveButton("Settings", (dialog, which) -> {
+                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package", getPackageName(), null);
+                            intent.setData(uri);
+                            startActivity(intent);
+
+                            dialog.dismiss();
+                        });
+                builder.show();
+            }
+        }
     }
 
     private boolean isConnectedToInternet() {
@@ -329,7 +384,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
         dlg.setContentView(R.layout.activity_newui_trascript_prompt);
         dlg.show();
 
-        View dialogWindowView = dlg.getWindow().getDecorView();
+        View dialogWindowView = Objects.requireNonNull(dlg.getWindow()).getDecorView();
         Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
         ConstraintLayout Constlayout_transcript_prompt = dlg.findViewById(R.id.constlayout_transcript_prompt);
@@ -346,17 +401,12 @@ public class NewUI_Transliterate extends AppCompatActivity {
         Tv_trascript_prompt = dlg.findViewById(R.id.tv_trascript_prompt);
         Tv_trascript_prompt.setText(R.string.transcript_limitation);
 
-        dlg.setOnKeyListener((dialogInterface, keyCode, event) -> {
-            if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-                return true;
-            }
-            return false;
-        });
+        dlg.setOnKeyListener((dialogInterface, keyCode, event) -> keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP);
         dlg.setCanceledOnTouchOutside(false);
 
         ImageButton Imgbtn_transcript_prompt_ok = dlg.findViewById(R.id.imgbtn_transcript_prompt_ok);
         Imgbtn_transcript_prompt_ok.setOnClickListener(v -> {
-            Imgbtn_translit_info.setEnabled(true);
+            Transliterate_info.setEnabled(true);
             dlg.dismiss();
         });
     }
@@ -385,9 +435,6 @@ public class NewUI_Transliterate extends AppCompatActivity {
     }
 
     private void cancelToast() {
-//        if (globalToast != null && globalToast.getView() != null && globalToast.getView().isShown()) {
-//            globalToast.cancel();
-//        }
 
         if (globalToast != null) {
             globalToast.cancel();
