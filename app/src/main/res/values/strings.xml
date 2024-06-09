@@ -2,7 +2,7 @@
     <string name="app_name">Baybay</string>
 
     <string name="what_is_new">
-        Feature: Speech to Text recognition is now available under transliteration. \nChanges: Minor bug fixes.
+        Baybayin Canvas is now available. Create your first digital post and share it online.
     </string>
 
     <string name="transcript">When writing from Tagalog to Baybayin, it\’s <font color="red"><b>NOT</b></font> technically considered a \"translation\". Translation is the process of converting the meaning of words or phrases from one language to another. \n\nYou are essentially <b><i>\"transliterating\"</i></b> the sounds or letters of the Abakada into the corresponding Baybayin character, or converting the Tagalog text into Baybayin, which represent the same sounds and meaning.

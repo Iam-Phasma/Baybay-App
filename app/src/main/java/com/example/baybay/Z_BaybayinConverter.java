@@ -145,8 +145,6 @@ public class Z_BaybayinConverter {
         return mappedText.toString().trim();
     }
 
-
-
     static String mapToBaybayinB18(String toConvert) {
         StringBuilder mappedText = new StringBuilder();
 
@@ -427,7 +425,6 @@ public class Z_BaybayinConverter {
         return mappedText.toString().trim();
     }
 
-
     static String mapToBaybayinB17(String toConvert) {
         StringBuilder mappedText = new StringBuilder();
 
@@ -568,4 +565,146 @@ public class Z_BaybayinConverter {
         return mappedText.toString().trim();
     }
 
+
+
+
+    static String mapToRobotika(String toConvert) {
+        StringBuilder mappedText = new StringBuilder();
+
+        toConvert = toConvert.replaceAll("(?i)NGA", "\u004E");
+        toConvert = toConvert.replaceAll("(?i)NGE", "\u004E"+"\u0065");
+        toConvert = toConvert.replaceAll("(?i)NGI", "\u004E"+"\u0065");
+        toConvert = toConvert.replaceAll("(?i)NGO", "\u004E"+"\u006F");
+        toConvert = toConvert.replaceAll("(?i)NGU", "\u004E"+"\u006F");
+
+        toConvert = toConvert.replaceAll("(?i)BA", "");
+        toConvert = toConvert.replaceAll("(?i)BE", "");
+        toConvert = toConvert.replaceAll("(?i)BI", "");
+        toConvert = toConvert.replaceAll("(?i)BO", "");
+        toConvert = toConvert.replaceAll("(?i)BU", "");
+
+        toConvert = toConvert.replaceAll("(?i)KA", "");
+        toConvert = toConvert.replaceAll("(?i)KE", "");
+        toConvert = toConvert.replaceAll("(?i)KI", "");
+        toConvert = toConvert.replaceAll("(?i)KO", "");
+        toConvert = toConvert.replaceAll("(?i)KU", "");
+
+        toConvert = toConvert.replaceAll("(?i)DA", "");
+        toConvert = toConvert.replaceAll("(?i)DE", "");
+        toConvert = toConvert.replaceAll("(?i)DI", "");
+        toConvert = toConvert.replaceAll("(?i)DO", "");
+        toConvert = toConvert.replaceAll("(?i)DU", "");
+
+        toConvert = toConvert.replaceAll("(?i)GA", "");
+        toConvert = toConvert.replaceAll("(?i)GE", "");
+        toConvert = toConvert.replaceAll("(?i)GI", "");
+        toConvert = toConvert.replaceAll("(?i)GO", "");
+        toConvert = toConvert.replaceAll("(?i)GU", "");
+
+        toConvert = toConvert.replaceAll("(?i)HA", "");
+        toConvert = toConvert.replaceAll("(?i)HE", "");
+        toConvert = toConvert.replaceAll("(?i)HI", "");
+        toConvert = toConvert.replaceAll("(?i)HO", "");
+        toConvert = toConvert.replaceAll("(?i)HU", "");
+
+        toConvert = toConvert.replaceAll("(?i)LA", "");
+        toConvert = toConvert.replaceAll("(?i)LE", "");
+        toConvert = toConvert.replaceAll("(?i)LI", "");
+        toConvert = toConvert.replaceAll("(?i)LO", "");
+        toConvert = toConvert.replaceAll("(?i)LU", "");
+
+        toConvert = toConvert.replaceAll("(?i)MA", "ᜋ");
+        toConvert = toConvert.replaceAll("(?i)ME", "");
+        toConvert = toConvert.replaceAll("(?i)MI", "");
+        toConvert = toConvert.replaceAll("(?i)MO", "");
+        toConvert = toConvert.replaceAll("(?i)MU", "");
+
+        toConvert = toConvert.replaceAll("(?i)NA", "");
+        toConvert = toConvert.replaceAll("(?i)NE", "");
+        toConvert = toConvert.replaceAll("(?i)NI", "");
+        toConvert = toConvert.replaceAll("(?i)NO", "");
+        toConvert = toConvert.replaceAll("(?i)NU", "");
+
+        toConvert = toConvert.replaceAll("(?i)PA", "");
+        toConvert = toConvert.replaceAll("(?i)PE", "");
+        toConvert = toConvert.replaceAll("(?i)PI", "");
+        toConvert = toConvert.replaceAll("(?i)PO", "");
+        toConvert = toConvert.replaceAll("(?i)PU", "");
+
+        toConvert = toConvert.replaceAll("(?i)RA", "");
+        toConvert = toConvert.replaceAll("(?i)RE", "ᜒ");
+        toConvert = toConvert.replaceAll("(?i)RI", "ᜒ");
+        toConvert = toConvert.replaceAll("(?i)RO", "");
+        toConvert = toConvert.replaceAll("(?i)RU", "");
+
+        toConvert = toConvert.replaceAll("(?i)SA", "ᜐ");
+        toConvert = toConvert.replaceAll("(?i)SE", "");
+        toConvert = toConvert.replaceAll("(?i)SI", "");
+        toConvert = toConvert.replaceAll("(?i)SO", "");
+        toConvert = toConvert.replaceAll("(?i)SU", "");
+
+        toConvert = toConvert.replaceAll("(?i)TA", "");
+        toConvert = toConvert.replaceAll("(?i)TE", "");
+        toConvert = toConvert.replaceAll("(?i)TI", "");
+        toConvert = toConvert.replaceAll("(?i)TO", "");
+        toConvert = toConvert.replaceAll("(?i)TU", "");
+
+        toConvert = toConvert.replaceAll("(?i)WA", "");
+        toConvert = toConvert.replaceAll("(?i)WE", "");
+        toConvert = toConvert.replaceAll("(?i)WI", "");
+        toConvert = toConvert.replaceAll("(?i)WO", "");
+        toConvert = toConvert.replaceAll("(?i)WU", "");
+
+        toConvert = toConvert.replaceAll("(?i)YA", "");
+        toConvert = toConvert.replaceAll("(?i)YE", "");
+        toConvert = toConvert.replaceAll("(?i)YI", "");
+        toConvert = toConvert.replaceAll("(?i)YO", "");
+        toConvert = toConvert.replaceAll("(?i)YU", "");
+
+        toConvert = toConvert.replaceAll("(?i)NG", "");
+        toConvert = toConvert.replaceAll("(?i)B", "");
+        toConvert = toConvert.replaceAll("(?i)K", "");
+        toConvert = toConvert.replaceAll("(?i)D", "");
+        toConvert = toConvert.replaceAll("(?i)G", "");
+        toConvert = toConvert.replaceAll("(?i)G", "");
+        toConvert = toConvert.replaceAll("(?i)H", "");
+        toConvert = toConvert.replaceAll("(?i)L", "");
+        toConvert = toConvert.replaceAll("(?i)M", "");
+        toConvert = toConvert.replaceAll("(?i)N", "");
+        toConvert = toConvert.replaceAll("(?i)P", "");
+        toConvert = toConvert.replaceAll("(?i)R", "");
+        toConvert = toConvert.replaceAll("(?i)S", "");
+        toConvert = toConvert.replaceAll("(?i)T", "");
+        toConvert = toConvert.replaceAll("(?i)W", "");
+        toConvert = toConvert.replaceAll("(?i)Y", "");
+
+        for (int i = 0; i < toConvert.length(); i++) {
+            char character = toConvert.toUpperCase().charAt(i);
+            switch (character) {
+                case 'A':
+                    mappedText.append("");
+                    break;
+                case 'E':
+                case 'I':
+                    mappedText.append("");
+                    break;
+                case 'O':
+                case 'U':
+                    mappedText.append("");
+                    break;
+                case '.':
+                    mappedText.append("");
+                    break;
+                case ',':
+                    mappedText.append("");
+                    break;
+
+                default:
+                    mappedText.append(character);
+                    break;
+            }
+        }
+
+        return mappedText.toString().trim();
+    }
 }

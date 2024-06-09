@@ -6,74 +6,464 @@
     android:layout_height="match_parent"
     tools:context=".NewUI_Canvas">
 
+    <ImageButton
+        android:id="@+id/imgbtn_canvas_exit"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        android:src="@drawable/newui_back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/newui_back_button" />
+
+    <TextView
+        android:id="@+id/TitleCanvas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/amasis_black"
+        android:text="Canvas"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn_canvas_exit"
+        app:layout_constraintEnd_toStartOf="@+id/imgbtn_canvas_info"
+        app:layout_constraintStart_toEndOf="@+id/imgbtn_canvas_exit"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_canvas_exit" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_canvas_info"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/the_hand_bold"
+        android:scaleType="fitCenter"
+        android:src="@drawable/newui_info_icon"
+        android:text="( i )"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/newui_info_icon" />
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView7"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_canvas_exit">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/conslayout_canvas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/imgbtn_canvas_exit"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#00FFFFFF"
-                android:scaleType="fitCenter"
-                android:src="@drawable/newui_back_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/newui_back_button" />
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/TitleCanvas"
+                android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/amasis_black"
-                android:text="Canvas"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/blinker"
+                android:text="Font Style"
                 android:textColor="#000000"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_canvas_exit"
-                app:layout_constraintEnd_toStartOf="@+id/imgbtn_canvas_info"
-                app:layout_constraintStart_toEndOf="@+id/imgbtn_canvas_exit"
-                app:layout_constraintTop_toTopOf="@+id/imgbtn_canvas_exit" />
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="@+id/imageView8" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/font_style"
+                tools:srcCompat="@drawable/font_style" />
+
+            <TextView
+                android:id="@+id/tv_font_name"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="11dp"
+                android:background="@drawable/canvas_bg"
+                android:fontFamily="@font/blinker"
+                android:gravity="center|start"
+                android:paddingStart="15dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Cycle to a font style you like"
+                android:textColor="#F44336"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_switch_font_style"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgbtn_switch_font_style"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_switch_font_style" />
 
             <ImageButton
-                android:id="@+id/imgbtn_canvas_info"
+                android:id="@+id/imgbtn_switch_font_style"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="-10dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/imageView8"
+                app:srcCompat="@drawable/newui_canvas_switch"
+                tools:srcCompat="@drawable/newui_canvas_switch" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/tv_font_name"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_switch_font_style"
+                app:layout_constraintTop_toBottomOf="@+id/tv_font_name">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView9"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/font_color"
+                        tools:srcCompat="@drawable/font_color" />
+
+                    <ImageView
+                        android:id="@+id/imageView10"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+                        app:layout_constraintStart_toStartOf="@+id/imageButton4"
+                        app:layout_constraintTop_toTopOf="@+id/imageView9"
+                        app:srcCompat="@drawable/text_alignment"
+                        tools:srcCompat="@drawable/text_alignment" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/blinker"
+                        android:text="Text"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+                        app:layout_constraintEnd_toEndOf="@+id/btn_color_picker"
+                        app:layout_constraintStart_toStartOf="@+id/btn_color_picker"
+                        app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/blinker"
+                        android:text="Alignment"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+                        app:layout_constraintStart_toEndOf="@+id/imageView10"
+                        app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/blinker"
+                        android:text="Backdrop"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                        app:layout_constraintEnd_toEndOf="@+id/btn_bgcolor_picker"
+                        app:layout_constraintStart_toStartOf="@+id/btn_bgcolor_picker"
+                        app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+                    <ImageButton
+                        android:id="@+id/btn_bgcolor_picker"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="24dp"
+                        android:background="@drawable/canvas_bg_textbg_color"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_color_picker"
+                        app:layout_constraintStart_toEndOf="@+id/btn_color_picker"
+                        app:layout_constraintTop_toTopOf="@+id/btn_color_picker" />
+
+                    <ImageButton
+                        android:id="@+id/btn_color_picker"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/canvas_bg_text_color"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintStart_toEndOf="@+id/imageView9"
+                        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="100dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/canvas_bg"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_color_picker"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/btn_color_picker" />
+
+                    <TextView
+                        android:id="@+id/tv_text_alignment"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:fontFamily="@font/blinker"
+                        android:gravity="center"
+                        android:text="Center"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/imageButton4"
+                        app:layout_constraintStart_toStartOf="@+id/imageButton4"
+                        app:layout_constraintTop_toTopOf="@+id/imageButton4" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout15"
+                app:srcCompat="@drawable/font_size"
+                tools:srcCompat="@drawable/font_size" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/blinker"
+                android:text="Font Size"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+                app:layout_constraintStart_toEndOf="@+id/imageView11"
+                app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seekbar_fontsize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="-5dp"
+                android:max="50"
+                android:progress="3"
+                android:progressDrawable="@drawable/seekbar_progress"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbar_thumb"
+                app:layout_constraintEnd_toEndOf="@+id/tv_font_name"
+                app:layout_constraintStart_toStartOf="@+id/imgbtn_switch_font_style"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/seekbar_fontsize"
+                app:srcCompat="@drawable/newui_content"
+                tools:srcCompat="@drawable/newui_content" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/blinker"
+                android:text="Your Qoutes"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView13"
+                app:layout_constraintStart_toEndOf="@+id/imageView13"
+                app:layout_constraintTop_toTopOf="@+id/imageView13" />
+
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView8"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/rounded_corners_tr_typefield"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/seekbar_fontsize"
+                app:layout_constraintStart_toStartOf="@+id/seekbar_fontsize"
+                app:layout_constraintTop_toBottomOf="@+id/textView20">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/editText_tagalog"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="#00C33F3F"
+                        android:ems="10"
+                        android:fontFamily="@font/blinker"
+                        android:foregroundTint="#00C62D2D"
+                        android:gravity="top|left"
+                        android:hint="Type here"
+                        android:inputType="textMultiLine|textNoSuggestions"
+                        android:maxLength="5000"
+                        android:minLines="6"
+                        android:textColor="#2B2B2B"
+                        android:textColorHighlight="#86c2ff"
+                        android:textColorHint="#92575757"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <RelativeLayout
+                android:id="@+id/relativeL_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/seekbar_fontsize"
+                app:layout_constraintStart_toStartOf="@+id/seekbar_fontsize"
+                app:layout_constraintTop_toBottomOf="@+id/nestedScrollView8">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edittext_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="#8093F1"
+                        android:capitalize="characters"
+                        android:ems="10"
+                        android:fontFamily="@font/noto_sans_bold"
+                        android:gravity="center"
+                        android:hint="Type here"
+                        android:inputType="textMultiLine|textNoSuggestions"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="50dp"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="50dp"
+                        android:textAllCaps="true"
+                        android:textColor="#FFFFFF"
+                        android:textColorHighlight="#9FCBF8"
+                        android:textColorHint="#92FFFFFF"
+                        android:typeface="normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/imgbtn_save"
+                android:layout_width="150dp"
+                android:layout_height="65dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/relativeL_content"
+                app:layout_constraintStart_toStartOf="@+id/relativeL_content"
+                app:layout_constraintTop_toBottomOf="@+id/relativeL_content"
+                app:srcCompat="@drawable/newui_canvas_save"
+                tools:srcCompat="@drawable/newui_canvas_save" />
+
+            <ImageButton
+                android:id="@+id/imgbtn_canvas_send"
                 android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginEnd="20dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="8dp"
                 android:backgroundTint="#00FFFFFF"
                 android:clickable="true"
                 android:focusable="true"
                 android:fontFamily="@font/the_hand_bold"
                 android:scaleType="fitCenter"
-                android:src="@drawable/newui_info_icon"
+                android:src="@drawable/newui_transliterate_send"
                 android:text="( i )"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_canvas_exit"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_save"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imgbtn_canvas_exit"
-                tools:src="@drawable/newui_info_icon" />
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_save"
+                tools:src="@drawable/newui_transliterate_send" />
 
-            <Button
-                android:id="@+id/btn_color_picker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="Button"
-                app:layout_constraintEnd_toEndOf="@+id/TitleCanvas"
-                app:layout_constraintStart_toStartOf="@+id/TitleCanvas"
-                app:layout_constraintTop_toBottomOf="@+id/TitleCanvas" />
+            <ImageButton
+                android:id="@+id/imgbtn_canvas_delete"
+                android:layout_width="45dp"
+                android:layout_height="55dp"
+                android:backgroundTint="#00FFFFFF"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/the_hand_bold"
+                android:scaleType="fitCenter"
+                android:src="@drawable/newui_transliterate_delete"
+                android:text="( i )"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imgbtn_save"
+                app:layout_constraintStart_toStartOf="@+id/relativeL_content"
+                app:layout_constraintTop_toTopOf="@+id/imgbtn_save"
+                tools:src="@drawable/newui_transliterate_delete" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

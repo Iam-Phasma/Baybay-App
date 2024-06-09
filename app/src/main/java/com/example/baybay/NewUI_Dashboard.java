@@ -232,11 +232,11 @@ public class NewUI_Dashboard extends AppCompatActivity {
             ClickSoundEffect();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 EnableNav();
-//                Intent Dashboard = new Intent(getApplicationContext(), NewUI_Canvas.class);
-//                startActivity(Dashboard);
-                cancelToast();
-                globalToast = Toasty.info(NewUI_Dashboard.this, "Coming soon.", Toast.LENGTH_SHORT);
-                globalToast.show();
+                Intent Dashboard = new Intent(getApplicationContext(), NewUI_Canvas.class);
+                startActivity(Dashboard);
+//                cancelToast();
+//                globalToast = Toasty.info(NewUI_Dashboard.this, "Coming soon.", Toast.LENGTH_SHORT);
+//                globalToast.show();
             }, 500);
         });
     }

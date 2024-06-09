@@ -17,4 +17,8 @@
     <style name="PopupDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
+    <color name="dark_blue">#FF5555</color>
+    <color name="light_blue">#FFB6B6</color>
+    <color name="sixty_opacity_white">#C3FFFFFF</color>
 </resources>
