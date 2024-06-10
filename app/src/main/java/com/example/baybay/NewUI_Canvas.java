@@ -14,6 +14,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
+import android.media.MediaScannerConnection;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -370,7 +371,7 @@ public class NewUI_Canvas extends AppCompatActivity {
             colorPickerDialog.show();
         }
     }
-
+    GradientDrawable editTextDrawable = new GradientDrawable();
     private void BackgroundColorPicker() {
         colorPickerDialog = new ColorPickerDialog(new ContextThemeWrapper(this, R.style.MoreActivityTheme));
         colorPickerDialog.setDialogTitle("Select a color");
@@ -398,7 +399,7 @@ public class NewUI_Canvas extends AppCompatActivity {
                         GradientDrawable drawable = (GradientDrawable) BgColorPicker.getBackground();
                         drawable.setColor(color);
 
-                        GradientDrawable editTextDrawable = new GradientDrawable();
+
                         editTextDrawable.setColor(color);
                         Edittext_content.setBackground(editTextDrawable);
 
@@ -416,8 +417,9 @@ public class NewUI_Canvas extends AppCompatActivity {
             colorPickerDialog.show();
         }
     }
-
     public void saveImage(){
+        editTextDrawable.setCornerRadius(0);
+
         RelativeLContent.setDrawingCacheEnabled(true);
         RelativeLContent.buildDrawingCache();
         RelativeLContent.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
@@ -442,10 +444,17 @@ public class NewUI_Canvas extends AppCompatActivity {
             fileOutputStream.flush();
             fileOutputStream.close();
 
+            // Trigger media scanner
+            MediaScannerConnection.scanFile(this,
+                    new String[]{myfile.getPath()},
+                    new String[]{"image/jpeg"},
+                    null);
+
             RelativeLContent.setDrawingCacheEnabled(false);
             cancelToast();
             globalToast = Toasty.success(NewUI_Canvas.this, "Saved on downloads folder", Toast.LENGTH_SHORT);
             globalToast.show();
+            editTextDrawable.setCornerRadius(40);
 
         }catch(Exception e){
             cancelToast();
