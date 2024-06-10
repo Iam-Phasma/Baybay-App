@@ -303,7 +303,7 @@
                 android:fontFamily="sans-serif"
                 android:letterSpacing="0"
                 android:lineSpacingExtra="2sp"
-                android:text="Design inspiration from Dribble and Pinterest. \nNotification by SNA Tech.\nNoto Sans Tagalog font developed by Mr. Brenman, SIL OFL license. \nFree to use fonts (Bayani, Chochin, Robotika, Sarimanok, Bayani) by Mr. Lloyd Zapanta."
+                android:text="Design inspiration from Dribble and Pinterest. \nNotification by SNA Tech.\nNoto Sans Tagalog font developed by Mr. Brenman, SIL OFL license. \nFree to use fonts (Bayani, Chochin, Robotika, Sarimanok, etc.) by Mr. Lloyd Zapanta."
                 android:textColor="#1B1B1B"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/tv_brief_introduction12"

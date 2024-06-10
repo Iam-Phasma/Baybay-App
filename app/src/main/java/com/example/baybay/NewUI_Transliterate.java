@@ -387,7 +387,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
         View dialogWindowView = Objects.requireNonNull(dlg.getWindow()).getDecorView();
         Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
-        ConstraintLayout Constlayout_transcript_prompt = dlg.findViewById(R.id.constlayout_transcript_prompt);
+        ConstraintLayout Constlayout_transcript_prompt = dlg.findViewById(R.id.constlayout_canvas_prompt);
         Drawable background = Constlayout_transcript_prompt.getBackground();
 
         if (background instanceof ShapeDrawable) {
@@ -404,7 +404,7 @@ public class NewUI_Transliterate extends AppCompatActivity {
         dlg.setOnKeyListener((dialogInterface, keyCode, event) -> keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP);
         dlg.setCanceledOnTouchOutside(false);
 
-        ImageButton Imgbtn_transcript_prompt_ok = dlg.findViewById(R.id.imgbtn_transcript_prompt_ok);
+        ImageButton Imgbtn_transcript_prompt_ok = dlg.findViewById(R.id.imgbtn_canvas_prompt_ok);
         Imgbtn_transcript_prompt_ok.setOnClickListener(v -> {
             Transliterate_info.setEnabled(true);
             dlg.dismiss();

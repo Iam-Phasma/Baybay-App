@@ -12,7 +12,7 @@ android {
         minSdk 22
         targetSdk 33
         versionCode 1
-        versionName "3.8.0"
+        versionName "3.8.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -58,7 +58,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     //carousel
-    implementation 'com.github.denzcoskun:ImageSlideShow:0.0.6'
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.1'
 
     //refresh
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"

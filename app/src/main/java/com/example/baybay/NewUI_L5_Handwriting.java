@@ -332,7 +332,7 @@ public class NewUI_L5_Handwriting extends AppCompatActivity {
 
         setTitleAndGuide();
 
-        ImageButton ImgbtnWritingPromptOk = dlg.findViewById(R.id.imgbtn_transcript_prompt_ok);
+        ImageButton ImgbtnWritingPromptOk = dlg.findViewById(R.id.imgbtn_canvas_prompt_ok);
         ImgbtnWritingPromptOk.setOnClickListener(v -> {
             dlg.dismiss();
         });

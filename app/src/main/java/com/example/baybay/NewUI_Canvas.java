@@ -1,12 +1,9 @@
 package com.example.baybay;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.res.ResourcesCompat;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +11,9 @@ import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,17 +26,27 @@ import android.text.style.UnderlineSpan;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
+
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.constants.AnimationTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.mrudultora.colorpicker.ColorPickerDialog;
 import com.mrudultora.colorpicker.listeners.OnSelectColorListener;
 import com.mrudultora.colorpicker.util.ColorItemShape;
@@ -48,7 +57,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import es.dmoral.toasty.Toasty;
 
@@ -74,13 +85,15 @@ public class NewUI_Canvas extends AppCompatActivity {
     // -------
 
     private Toast globalToast;
-    ImageButton ColorPicker, BgColorPicker, Canvas_exit, Imgbtn_SwitchFontStyle, Save, CanvasDelete, CanvasSend;
+    ImageButton ColorPicker, BgColorPicker, Canvas_exit, Imgbtn_SwitchFontStyle, Save, CanvasDelete, CanvasSend, Canvas_info;
     private ColorPickerDialog colorPickerDialog;
     SeekBar FontSize;
     EditText Edittext_content;
     ConstraintLayout Conslayout_canvas;
     RelativeLayout RelativeLContent;
     TextView FontNameDisplay;
+
+    private ImageView ImgviewCards;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -146,15 +159,13 @@ public class NewUI_Canvas extends AppCompatActivity {
                     break;
             }
 
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                TvTextAlignment.setEnabled(true);
-            }, 200);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> TvTextAlignment.setEnabled(true), 200);
         });
 
         FontNameDisplay = findViewById(R.id.tv_font_name);
         CanvasSend.setEnabled(false);
 
-        String[] fonts = {"baybayin_bayani.ttf","baybayin_chochin.ttf", "baybayin_robotika.ttf", "baybayin_sarimanok.ttf"};
+        String[] fonts = {"baybayin_bayani.ttf","baybayin_chochin.ttf", "baybayin_robotika.ttf", "baybayin_sarimanok.ttf", "baybayin_sawasdee.ttf", "baybayin_sejong.ttf", "baybayin_tinta.ttf", "baybayin_deko.ttf"};
         final int[] currentFontIndex = {0};
 
         final String[] originalText = {""};
@@ -280,6 +291,13 @@ public class NewUI_Canvas extends AppCompatActivity {
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(Edittext_content, InputMethodManager.SHOW_IMPLICIT);
             }
+        });
+
+        Canvas_info = findViewById(R.id.imgbtn_canvas_info);
+        Canvas_info.setOnClickListener(v -> {
+            ClickSoundEffect();
+            Canvas_info.setEnabled(false);
+            CanvasInfoDialog();
         });
 
         Canvas_exit = findViewById(R.id.imgbtn_canvas_exit);
@@ -436,6 +454,51 @@ public class NewUI_Canvas extends AppCompatActivity {
         }
     }
 
+    private void CanvasInfoDialog(){
+        Dialog dlg;
+        dlg = new Dialog(NewUI_Canvas.this, R.style.PopupDialog);
+        dlg.setCanceledOnTouchOutside(false);  // disable dialog dismiss when touch outside
+        dlg.setContentView(R.layout.activity_newui_canvas_infoprompt);
+        dlg.show();
+
+        View dialogWindowView = Objects.requireNonNull(dlg.getWindow()).getDecorView();
+        Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
+
+        ConstraintLayout Constlayout_canvas_prompt = dlg.findViewById(R.id.constlayout_canvas_prompt);
+        Drawable background = Constlayout_canvas_prompt.getBackground();
+
+        if (background instanceof ShapeDrawable) {
+            ShapeDrawable shapeDrawable = (ShapeDrawable) background;
+            shapeDrawable.getPaint().setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        } else if (background instanceof GradientDrawable) {
+            GradientDrawable gradientDrawable = (GradientDrawable) background;
+            gradientDrawable.setColor(Color.parseColor(Theme_Color.getDefaultColor()));
+        }
+
+        ImageSlider ImgSliderCard = dlg.findViewById(R.id.slider_card);
+        List<SlideModel> slideModelsCards = new ArrayList<>();
+        slideModelsCards.add(new SlideModel(R.drawable.newui_canvas_info_bayani, ScaleTypes.CENTER_INSIDE));
+        slideModelsCards.add(new SlideModel(R.drawable.newui_canvas_info_chochin, ScaleTypes.CENTER_INSIDE));
+        slideModelsCards.add(new SlideModel(R.drawable.newui_canvas_info_robotika, ScaleTypes.CENTER_INSIDE));
+        slideModelsCards.add(new SlideModel(R.drawable.newui_canvas_info_sarimanok, ScaleTypes.CENTER_INSIDE));
+        slideModelsCards.add(new SlideModel(R.drawable.newui_canvas_info_sawasdee, ScaleTypes.CENTER_INSIDE));
+        slideModelsCards.add(new SlideModel(R.drawable.newui_canvas_info_sejong, ScaleTypes.CENTER_INSIDE));
+        slideModelsCards.add(new SlideModel(R.drawable.newui_canvas_info_tinta, ScaleTypes.CENTER_INSIDE));
+        slideModelsCards.add(new SlideModel(R.drawable.newui_canvas_info_deko, ScaleTypes.CENTER_INSIDE));
+        ImgSliderCard.setImageList(slideModelsCards);
+        ImgSliderCard.setSlideAnimation(AnimationTypes.DEPTH_SLIDE);
+        ImgSliderCard.startSliding(5000);
+
+
+        dlg.setOnKeyListener((dialogInterface, keyCode, event) -> keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP);
+        dlg.setCanceledOnTouchOutside(false);
+
+        ImageButton Imgbtn_canvas_prompt_ok = dlg.findViewById(R.id.imgbtn_canvas_prompt_ok);
+        Imgbtn_canvas_prompt_ok.setOnClickListener(v -> {
+            Canvas_info.setEnabled(true);
+            dlg.dismiss();
+        });
+    }
 
 
     private void setBackgroundColor(){

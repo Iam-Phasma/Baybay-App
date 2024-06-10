@@ -258,17 +258,17 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="85dp"
-                app:auto_cycle="true"
-                app:corner_radius="50"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="50"
 
-                app:placeholder="@color/transparent"
-                app:error_image="@color/transparent"
+                app:iss_placeholder="@color/transparent"
+                app:iss_error_image="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewPens"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewPens"
                 app:layout_constraintStart_toStartOf="@+id/imageViewPens"
                 app:layout_constraintTop_toTopOf="@+id/imageViewPens"
-                app:delay="1000"
-                app:period="3000" />
+                app:iss_delay="1000"
+                app:iss_period="3000" />
 
 
             <ImageView
@@ -292,17 +292,17 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="85dp"
-                app:auto_cycle="true"
+                app:iss_auto_cycle="true"
 
-                app:corner_radius="50"
-                app:delay="1000"
-                app:error_image="@color/transparent"
+                app:iss_corner_radius="50"
+                app:iss_placeholder="@color/transparent"
+                app:iss_error_image="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewShirtsPants"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewShirtsPants"
                 app:layout_constraintStart_toStartOf="@+id/imageViewShirtsPants"
                 app:layout_constraintTop_toTopOf="@+id/imageViewShirtsPants"
-                app:period="3000"
-                app:placeholder="@color/transparent" />
+                app:iss_delay="1000"
+                app:iss_period="3000" />
 
             <ImageView
                 android:id="@+id/imageViewBags"
@@ -325,17 +325,17 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="85dp"
-                app:auto_cycle="true"
-                app:corner_radius="50"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="50"
 
-                app:placeholder="@color/transparent"
-                app:error_image="@color/transparent"
+                app:iss_placeholder="@color/transparent"
+                app:iss_error_image="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewBags"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewBags"
                 app:layout_constraintStart_toStartOf="@+id/imageViewBags"
                 app:layout_constraintTop_toTopOf="@+id/imageViewBags"
-                app:delay="1000"
-                app:period="3000" />
+                app:iss_delay="1000"
+                app:iss_period="3000" />
 
             <ImageView
                 android:id="@+id/imageViewStickers"
@@ -358,17 +358,17 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="85dp"
-                app:auto_cycle="true"
-                app:corner_radius="50"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="50"
 
-                app:placeholder="@color/transparent"
-                app:error_image="@color/transparent"
+                app:iss_placeholder="@color/transparent"
+                app:iss_error_image="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewStickers"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewStickers"
                 app:layout_constraintStart_toStartOf="@+id/imageViewStickers"
                 app:layout_constraintTop_toTopOf="@+id/imageViewStickers"
-                app:delay="1000"
-                app:period="3000" />
+                app:iss_delay="1000"
+                app:iss_period="3000" />
 
             <ImageView
                 android:id="@+id/imageViewAccessories"
@@ -391,17 +391,17 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="85dp"
-                app:auto_cycle="true"
-                app:corner_radius="50"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="50"
 
-                app:placeholder="@color/transparent"
-                app:error_image="@color/transparent"
+                app:iss_placeholder="@color/transparent"
+                app:iss_error_image="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewAccessories"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewAccessories"
                 app:layout_constraintStart_toStartOf="@+id/imageViewAccessories"
                 app:layout_constraintTop_toTopOf="@+id/imageViewAccessories"
-                app:delay="1000"
-                app:period="3000" />
+                app:iss_delay="1000"
+                app:iss_period="3000" />
 
             <ImageView
                 android:id="@+id/imageViewCalligraphy"
@@ -424,17 +424,17 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="85dp"
-                app:auto_cycle="true"
-                app:corner_radius="50"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="50"
 
-                app:placeholder="@color/transparent"
-                app:error_image="@color/transparent"
+                app:iss_placeholder="@color/transparent"
+                app:iss_error_image="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewCalligraphy"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewCalligraphy"
                 app:layout_constraintStart_toStartOf="@+id/imageViewCalligraphy"
                 app:layout_constraintTop_toTopOf="@+id/imageViewCalligraphy"
-                app:delay="1000"
-                app:period="3000" />
+                app:iss_delay="1000"
+                app:iss_period="3000" />
 
             <ImageView
                 android:id="@+id/imageViewTattoos"
@@ -457,17 +457,17 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="85dp"
-                app:auto_cycle="true"
-                app:corner_radius="50"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="50"
 
-                app:placeholder="@color/transparent"
-                app:error_image="@color/transparent"
+                app:iss_placeholder="@color/transparent"
+                app:iss_error_image="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewTattoos"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewTattoos"
                 app:layout_constraintStart_toStartOf="@+id/imageViewTattoos"
                 app:layout_constraintTop_toTopOf="@+id/imageViewTattoos"
-                app:delay="1000"
-                app:period="3000" />
+                app:iss_delay="1000"
+                app:iss_period="3000" />
 
             <ImageView
                 android:id="@+id/imageViewEngraving"
@@ -490,17 +490,17 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="85dp"
-                app:auto_cycle="true"
-                app:corner_radius="50"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="50"
 
-                app:placeholder="@color/transparent"
-                app:error_image="@color/transparent"
+                app:iss_placeholder="@color/transparent"
+                app:iss_error_image="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewEngraving"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewEngraving"
                 app:layout_constraintStart_toStartOf="@+id/imageViewEngraving"
                 app:layout_constraintTop_toTopOf="@+id/imageViewEngraving"
-                app:delay="1000"
-                app:period="3000" />
+                app:iss_delay="1000"
+                app:iss_period="3000" />
 
             <ImageView
                 android:id="@+id/imageViewSignsBrands"
@@ -523,17 +523,17 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="7dp"
                 android:layout_marginBottom="85dp"
-                app:auto_cycle="true"
-                app:corner_radius="50"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="50"
 
-                app:placeholder="@color/transparent"
-                app:error_image="@color/transparent"
+                app:iss_placeholder="@color/transparent"
+                app:iss_error_image="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewSignsBrands"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewSignsBrands"
                 app:layout_constraintStart_toStartOf="@+id/imageViewSignsBrands"
                 app:layout_constraintTop_toTopOf="@+id/imageViewSignsBrands"
-                app:delay="1000"
-                app:period="3000" />
+                app:iss_delay="1000"
+                app:iss_period="3000" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

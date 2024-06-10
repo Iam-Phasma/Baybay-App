@@ -54,7 +54,7 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/imgbtn_transcript_prompt_ok"
+        android:id="@+id/imgbtn_canvas_prompt_ok"
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:backgroundTint="#00FFFFFF"

@@ -43,8 +43,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Random;
 
-import es.dmoral.toasty.Toasty;
-
 public class NewUI_Dashboard extends AppCompatActivity {
 
     // NEW BGMUSIC MANAGER
@@ -251,7 +249,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
         View dialogWindowView = dlg.getWindow().getDecorView();
         Z_Dialogs_Animation.applyZoomInAnimationMore(dialogWindowView);
 
-        ConstraintLayout Constlayout_transcript_prompt = dlg.findViewById(R.id.constlayout_transcript_prompt);
+        ConstraintLayout Constlayout_transcript_prompt = dlg.findViewById(R.id.constlayout_canvas_prompt);
         Drawable background = Constlayout_transcript_prompt.getBackground();
 
         if (background instanceof ShapeDrawable) {
@@ -274,7 +272,7 @@ public class NewUI_Dashboard extends AppCompatActivity {
         });
         dlg.setCanceledOnTouchOutside(false);
 
-        ImageButton Imgbtn_transcript_prompt_ok = dlg.findViewById(R.id.imgbtn_transcript_prompt_ok);
+        ImageButton Imgbtn_transcript_prompt_ok = dlg.findViewById(R.id.imgbtn_canvas_prompt_ok);
         Imgbtn_transcript_prompt_ok.setOnClickListener(v -> {
             Imgbtn_transcript_info.setEnabled(true);
             dlg.dismiss();

@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constlayout_transcript_prompt"
+            android:id="@+id/constlayout_canvas_prompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners">
@@ -51,7 +51,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imgbtn_transcript_prompt_ok"
+                android:id="@+id/imgbtn_canvas_prompt_ok"
                 android:layout_width="120dp"
                 android:layout_height="60dp"
                 android:layout_marginBottom="16dp"
