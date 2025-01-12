@@ -204,22 +204,22 @@ public class NewUI_Dashboard extends AppCompatActivity {
 
         Imgbtn_transcript_info = findViewById(R.id.imgbtn_transcript_info);
         Imgbtn_transcript_info.setOnClickListener(v -> {
-            Imgbtn_transcript_info.setEnabled(false);
-            ClickSoundEffect();
-            openTranscriptPrompt();
+            //Imgbtn_transcript_info.setEnabled(false);
+            //ClickSoundEffect();
+            //openTranscriptPrompt();
         });
 
         Transcript = findViewById(R.id.imgbtn_transcript);
         Transcript.setOnClickListener(v -> {
             DisableNav();
             animateButton(Transcript);
-            Imgbtn_transcript_info.setVisibility(View.INVISIBLE);
+            //Imgbtn_transcript_info.setVisibility(View.INVISIBLE);
             ClickSoundEffect();
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
                 EnableNav();
                 Intent Dashboard = new Intent(getApplicationContext(), NewUI_Transliterate.class);
                 startActivity(Dashboard);
-                Imgbtn_transcript_info.setVisibility(View.VISIBLE);
+                //Imgbtn_transcript_info.setVisibility(View.VISIBLE);
             }, 500);
         });
 

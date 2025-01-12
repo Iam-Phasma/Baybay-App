@@ -241,6 +241,7 @@
                 android:backgroundTint="#00FFFFFF"
                 android:scaleType="centerCrop"
                 android:src="@drawable/newui_card_info_red"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/imgbtn_transcript"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/imgbtn_transcript"

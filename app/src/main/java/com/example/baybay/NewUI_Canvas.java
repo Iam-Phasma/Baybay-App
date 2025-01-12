@@ -28,6 +28,7 @@ import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -36,6 +37,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Scroller;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +45,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.viewpager.widget.ViewPager;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -54,6 +57,7 @@ import com.mrudultora.colorpicker.util.ColorItemShape;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -498,6 +502,49 @@ public class NewUI_Canvas extends AppCompatActivity {
         ImgSliderCard.setSlideAnimation(AnimationTypes.DEPTH_SLIDE);
         ImgSliderCard.startSliding(5000);
 
+        ImgSliderCard.setImageList(slideModelsCards);
+        ImgSliderCard.setSlideAnimation(AnimationTypes.DEPTH_SLIDE);
+
+        try {
+            // Access the ViewPager inside ImageSlideshow using reflection
+            Field viewPagerField = ImgSliderCard.getClass().getDeclaredField("viewPager");
+            viewPagerField.setAccessible(true); // Allow access to the private field
+            ViewPager viewPager = (ViewPager) viewPagerField.get(ImgSliderCard);
+
+            // Attach a touch listener to the ViewPager to stop/resume auto-sliding
+            viewPager.setOnTouchListener((view, event) -> {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                    case MotionEvent.ACTION_MOVE:
+                        ImgSliderCard.stopSliding(); // Stop auto-sliding when the user interacts
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        ImgSliderCard.startSliding(5000); // Resume auto-sliding when interaction ends
+                        break;
+                }
+                return false; // Allow swipe functionality to propagate
+            });
+
+            // Access the Scroller inside the ViewPager to slow down the animation
+            Field scrollerField = ViewPager.class.getDeclaredField("mScroller");
+            scrollerField.setAccessible(true);
+
+            // Create a custom Scroller to slow down the sliding animation
+            Scroller customScroller = new Scroller(viewPager.getContext(), new android.view.animation.DecelerateInterpolator()) {
+                @Override
+                public void startScroll(int startX, int startY, int dx, int dy, int duration) {
+                    super.startScroll(startX, startY, dx, dy, 400); // Slide speed
+                }
+            };
+
+            // Replace the ViewPager's Scroller with the custom Scroller
+            scrollerField.set(viewPager, customScroller);
+
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace(); // Handle exceptions for reflection
+        }
 
         dlg.setOnKeyListener((dialogInterface, keyCode, event) -> keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP);
         dlg.setCanceledOnTouchOutside(false);
